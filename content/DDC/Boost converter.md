@@ -93,4 +93,4 @@ B &= \begin{bmatrix}
 \end{aligned}
 $$
 
-
+.
