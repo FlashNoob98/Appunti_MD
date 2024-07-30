@@ -50,7 +50,8 @@ $$
 # Modello affine e bilineare
 
 Unendo le configurazioni precedenti mediante le funzioni di attivazione si ottiene il modello dinamico globalmente valido:
-$$\left\{
+$$
+\left\{
 \begin{aligned}
 \frac{d}{dt} i_{l} &= \frac{Vs}{L} - \frac{v_{c}}{L}(1-u)\\
 \frac{d}{dt} v_{c} &= \frac{i_{l}}{C}(1-u) - \frac{v_{c}}{RC}
@@ -75,7 +76,8 @@ dove il vettore delle incognite $\underline{x} = [i_{l,v_{c}}]^T$ mentre $u\in\m
 
 Si può ora riportare in [[Forma bilineare|forma bilineare]]:
 
-$$\begin{aligned}
+$$
+\begin{aligned}
 A &= \begin{bmatrix}
 0 & -\frac{1}{L} \\ 
 \frac{1}{C} & -\frac{1}{RC}
