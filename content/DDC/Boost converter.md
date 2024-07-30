@@ -57,7 +57,7 @@ $$
 \frac{d}{dt} v_{c} &= \frac{i_{l}}{C}(1-u) - \frac{v_{c}}{RC}
 \end{aligned}\right.
 $$
-
+Quando $u=1$ il componente controllato conduce.
 
 Ottenute le matrici della dinamica si riporta il [[Modello dinamico affine nel controllo|modello affine nel controllo]] 
 
@@ -72,8 +72,7 @@ f(\underline{x}) = \begin{bmatrix}
 \end{bmatrix}
 $$
 
-dove il vettore delle incognite $\underline{x} = [i_{l,v_{c}}]^T$ mentre $u\in\mathbb{R}$ 
-
+dove il vettore delle incognite $\underline{x} = [i_{l,v_{c}}]^T$ mentre $u\in\mathbb{R}$ .
 Si può ora riportare in [[Forma bilineare|forma bilineare]]:
 
 $$
@@ -95,4 +94,5 @@ B &= \begin{bmatrix}
 \end{aligned}
 $$
 
-.
+# DCM
+Se cade l'ipotesi di conduzione continua si ha il fenomeno di conduzione discontinua, la corrente nell'induttore ovvero raggiunge il valore nullo per un certo periodo di tempo, in ogni periodo di switching, ciò comporta il passaggio da 2 a 3 configurazioni, dunque $m$ dovrà essere pari a 2 (e non più 1).
