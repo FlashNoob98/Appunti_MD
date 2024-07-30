@@ -1,4 +1,4 @@
-Il modello affine nel controllo permette di esplicitare le [[grandezze di controllo]],
+Il modello affine nel controllo permette di esplicitare le [[Grandezze di controllo|grandezze di controllo]],
 partendo dal [[Modello dinamico alle configurazioni|modello alle configurazioni]] è possibile esplicitare il sistema mediante funzioni [[Definizione di mappa|mappa]], in questo caso la $F$ e la $C$.
 
 L'equazione della dinamica del modello è:
@@ -9,7 +9,7 @@ Mentre per le uscite:
 $$
 \vec{y} = C(t,\vec{x},\vec{u})
 $$
-Dove $\vec{x}$ è il vettore di stato e $\vec{u}$ è quello delle [[grandezze di controllo]] totali o parziali.
+Dove $\vec{x}$ è il vettore di stato e $\vec{u}$ è quello delle [[Grandezze di controllo|grandezze di controllo]] totali o parziali.
 La $F$ può essere però espressa in forma *autonoma* dunque non dipendente esplicitamente dal tempo e separata in altre due funzioni nel seguente modo:
 $$
 F(\vec{x},\vec{u}) = f(\underline{x})+G(\underline{x})\underline{u}
