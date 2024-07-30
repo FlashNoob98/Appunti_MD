@@ -12,3 +12,5 @@ $$
 
 
 è così chiamata perché lineare rispetto ad $\underline{x}$ se si fissa la $\underline{u}$ e viceversa.
+
+Si riporta l'esempio della [[Boost converter#Modello affine e bilineare|forma bilineare per il boost]].
