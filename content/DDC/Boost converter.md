@@ -72,7 +72,7 @@ f(\underline{x}) = \begin{bmatrix}
 \end{bmatrix}
 $$
 
-dove il vettore delle incognite $\underline{x} = [i_{l,v_{c}}]^T$ mentre $u\in\mathbb{R}$ .
+dove il vettore delle incognite $\underline{x} = [i_{l},v_{c}]^T$ mentre $u\in\mathbb{R}$ .
 Si può ora riportare in [[Forma bilineare|forma bilineare]]:
 
 $$

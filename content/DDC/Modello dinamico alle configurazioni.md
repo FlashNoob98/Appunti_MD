@@ -20,5 +20,5 @@ h_{k} = \left\{\begin{aligned}
 \right.
 $$
 Il modello è per questo motivo chiamato modello dinamico alle configurazioni.
-Il limite di questo modello è la possibilità di applicare criteri dei controlli automatici, non rappresenta un modello reale del sistema in quanto cambia dinamicamente l'intera struttura del sistema. Non espone inoltre in maniera esplicita le grandezze di controllo.
+Il limite di questo modello è la possibilità di applicare criteri dei controlli automatici, non rappresenta un modello reale del sistema in quanto cambia dinamicamente l'intera struttura del sistema. Non espone inoltre in maniera esplicita le [[grandezze di controllo]].
 
