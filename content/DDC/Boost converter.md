@@ -4,7 +4,6 @@ Se si ipotizza la conduzione continua (CCM) si hanno due stati del convertitore 
 l'istante di tempo $t$ è maggiore o minore di $t_{on}$, considerato come il tempo di conduzione del dispositivo dinamico.
 ## t <  $t_{on}$
 Si presenta il modello dinamico del boost converter
-
 ![Immagine](https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Boost_conventions.svg/1920px-Boost_conventions.svg.png)
 Durante la fase iniziale quindi per t<T_on lo switch è in conduzione, il diodo è interdetto dunque
 
@@ -96,3 +95,84 @@ $$
 
 # DCM
 Se cade l'ipotesi di conduzione continua si ha il fenomeno di conduzione discontinua, la corrente nell'induttore ovvero raggiunge il valore nullo per un certo periodo di tempo, in ogni periodo di switching, ciò comporta il passaggio da 2 a 3 configurazioni, dunque $m$ dovrà essere pari a 2 (e non più 1).
+
+# Grandezze di switching
+Il convertitore boost presenta due dispositivi switching, uno di questi però, il diodo, non è controllabile dall'esterno, se si vuole includere il suo stato nel modello globale alle configurazioni è necessario includere una ulteriore variabile di switching $u_2$ che tenga appunto conto dello stato del diodo, ciò aggiunge una ulteriore configurazione al modello, in cui il tiristore non conduce ma il diodo sì a causa della scarica dell'induttore.
+
+$$
+\left\{
+\begin{aligned}
+\frac{d}{dt} i_{l} &= \left[\frac{Vs}{L} - \frac{v_{c}}{L}(1-u_{1})\right]u_{2}\\
+\frac{d}{dt} v_{c} &= \frac{i_{l}}{C}(1-u_{1})u_{2} - \frac{v_{c}}{RC}
+\end{aligned}\right.
+$$
+
+Per determinare il valore di $u_2$ si può usare la [[funzione signum]] nel seguente modo:
+
+$$
+u_{2} = \frac{sign(i_{L})+1}{2}
+$$
+dunque $u_1$ dipende prettamente dal tempo (tempo in cui si impulsa il tiristore) mentre la $u_2$ dipende unicamente dalla corrente nell'induttore, dunque una variabile di stato del sistema.
+
+Sviluppando i prodotti si ottiene un modello non più esprimibile nella forma del controllo:
+
+$$
+\left\{
+\begin{aligned}
+\frac{d}{dt} i_{l} &= \frac{Vs}{L}u_{2} - \frac{v_{c}}{L}(u_{2}-u_{1}u_{2})\\
+\frac{d}{dt} v_{c} &= \frac{i_{l}}{C}(u_{2}-u_{1}u_{2}) - \frac{v_{c}}{RC}
+\end{aligned}\right.
+$$
+
+dato che $u_2$ sarà sempre pari ad 1 per un periodo di tempo superiore ad $u_1$, il loro prodotto sarà allora pari ad $u_1$:
+
+$$
+\left\{
+\begin{aligned}
+\frac{d}{dt} i_{l} &= \frac{Vs}{L}u_{2} - \frac{v_{c}}{L}(u_{2}-u_{1})\\
+\frac{d}{dt} v_{c} &= \frac{i_{l}}{C}(u_{2}-u_{1}) - \frac{v_{c}}{RC}
+\end{aligned}\right.
+$$
+Si definisce la grandezza di controllo del diodo $u_{d}$:
+$$
+u_{d} = u_{2} - u_{1}
+$$
+Il modello diventa:
+$$
+\left\{
+\begin{aligned}
+\frac{d}{dt} i_{l} &= \frac{Vs}{L}(u_{d}+u_{1}) - \frac{v_{c}}{L}u_{d}\\
+\frac{d}{dt} v_{c} &= \frac{i_{l}}{C}u_{d} - \frac{v_{c}}{RC}
+\end{aligned}\right.
+$$
+da cui si ricava il nuovo [[#Modello affine e bilineare|modello affine]] nel controllo:
+$$
+f(\underline{x}) = \begin{bmatrix}
+0 \\ -\frac{x_{2}}{RC}
+\end{bmatrix} \quad
+G(\underline{x}) = \begin{bmatrix}
+\frac{x_{2}}{L} & \frac{V_{s}-x_{2}}{L} \\ \\
+-\frac{x_{1}}{C} & \frac{x_{1}}{C}
+\end{bmatrix}\cdot\begin{bmatrix}
+u_{1} \\ \\ u_{2}
+\end{bmatrix}
+$$
+riportato in [[Forma bilineare|forma bilineare]]:
+$$
+\begin{aligned}
+A &= \begin{bmatrix}
+0 & 0  \\
+0 & -\frac{1}{RC}
+\end{bmatrix};\ a_{0} = 0\ \\
+B_{1} &= \begin{bmatrix}
+0 & \frac{1}{L} \\ 
+-\frac{1}{C} & 0
+\end{bmatrix} ;\ b_{1} = \begin{bmatrix} 0 \\ 0 \end{bmatrix}
+ \\
+B_{2} &= \begin{bmatrix}
+0 & -\frac{1}{L} \\ 
+\frac{1}{C} & 0
+\end{bmatrix} ;\ b_{2} = \begin{bmatrix} \frac{V_{s}}{L} \\ 0 \end{bmatrix}
+\end{aligned}
+$$
+ .

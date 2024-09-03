@@ -12,3 +12,6 @@ $$
 $$
 Non avrebbe senso avere due segnali di controllo con un singolo componente da controllare, va esteso il concetto di [[Grandezze di controllo|grandezza di controllo]].
 
+# Richiami matematici
+È importante rivedere alcuni concetti matematici come il [[Problema di Cauchy|problema di Cauchy]] in quanto nel caso dei convertitori elettrici la funzione che descrive il sistema può essere di classe $C$ infinito, talvolta analitica ma quasi mai continua nel tempo a causa della non linearità dei dispositivi switching. Non esiste dunque secondo il teorema di Cauchy-Lipschitz una soluzione.
+

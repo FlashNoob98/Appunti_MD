@@ -14,6 +14,7 @@ B((V_c)) --> C(( ))
 C ---|ε| D[R] --> E(( ))
 ```
 
+Si può vedere in dettaglio la modifica del modello matematico del [[Boost converter#grandezze di switching|boost converter]] nel caso in cui si considerino 
 
 
 
