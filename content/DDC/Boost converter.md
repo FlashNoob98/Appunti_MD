@@ -2,10 +2,10 @@ Qui si presenteranno i modelli del boost converter
 # Modello dinamico
 Se si ipotizza la conduzione continua (CCM) si hanno due stati del convertitore se
 l'istante di tempo $t$ è maggiore o minore di $t_{on}$, considerato come il tempo di conduzione del dispositivo dinamico.
-## t <  $t_{on}$
+## $t <  t_{on}$
 Si presenta il modello dinamico del boost converter
 ![Immagine](https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Boost_conventions.svg/1920px-Boost_conventions.svg.png)
-Durante la fase iniziale quindi per t<T_on lo switch è in conduzione, il diodo è interdetto dunque
+Durante la fase iniziale quindi per $t<T_{on}$ lo switch è in conduzione, il diodo è interdetto dunque
 
 $$
 \left\{\begin{aligned} L\frac{di_L}{dt} &= V_s \\ C\frac{dv_c}{dt} &= -i_0 = -\frac{v_C}{R} \\ i_L(0^+) & = i_L(0^-) = 0\\ v_C(0^+) &= v_C(0^-) = 0 \end{aligned}\right.
@@ -17,7 +17,7 @@ $$
 $$
 
 
-## t  > $t_{on}$
+## $t  \geq t_{on}$
 Aperto lo switch si ha l'andata in conduzione del diodo, cambia il modello del sistema che diventa:
 $$
 \left\{\begin{aligned} L\frac{di_L}{dt} & = V_s - v_C \\ i_c = i_L &- i_0 = C\frac{dv_c}{dt} = i_L - \frac{v_C}{R} \\ i_L(t_{on}^*) &= i_L(t_{on}^-) \\ v_C(t_{on}^+) & = v_C(t_{on}^-) \end{aligned}\right.
@@ -175,4 +175,66 @@ B_{2} &= \begin{bmatrix}
 \end{bmatrix} ;\ b_{2} = \begin{bmatrix} \frac{V_{s}}{L} \\ 0 \end{bmatrix}
 \end{aligned}
 $$
- .
+ 
+ 
+# Curva integrale
+ Utilizzando il [[Problema di Cauchy|teorema di Cauchy]] si vuole risolvere il [[#Modello dinamico|modello dinamico in CCM]] del convertitore, separato nelle due differenti configurazioni.
+## $t<t_{on}$
+Si mostra l'integrale del modello nella prima configurazione:
+$$
+\begin{aligned}
+v_{C}(t) & = -\frac{I_{0}}{C}t + V_{C_{0}} \\
+i_{L}(t) & = \frac{V_{s}}{L}t + I_{L_{0}}
+\end{aligned}
+$$
+dove $I_{L_0}$ e $V_{C_{0}}$ sono i valori iniziali, $I_0$ la corrente costante assorbita dal carico.
+Si ricava il tempo in funzione della $V_c$  e lo si sostituisce nella funzione della corrente per ricavare la traiettoria parametrica.
+$$
+\begin{aligned}
+t &= \left[V_{C_{0}}-v_{C}(t)\right]\frac{C}{I_{0}} \\
+i_{L}(t) & = \frac{V_{s}}{L}\left[V_{C_{0}}-v_{C}(t)\right]\frac{C}{I_{0}} + I_{L_{0}} \\
+i_{L}(t) & = f(v_{C}(t))
+\end{aligned}
+$$
+Si ottiene l'equazione di un segmento.
+## $t\geq t_{on}$
+Per la seconda configurazione si deriva ulteriormente l'equazione della corrente e si sostituisce la derivata della tensione con la seconda equazione del sistema ottenendo la seguente equazione differenziale del secondo ordine:
+$$
+\frac{d^2i_{L}}{dt^2} + {i_{L}}{\omega_{0}^2} = {I_{0}}\omega_{0}^2
+$$
+dove $\omega_0^2=\frac{1}{LC}$. Per l'ipotesi di continuità i valori iniziali delle variabili di stato sono pari al valore finale raggiunto nel precedente periodo, saranno indicate con $I_{on}$ e $V_{on}$.
+Si risolve l'omogenea associata:
+$$
+\lambda^2 + \omega_{0}^2 = 0 \Rightarrow \lambda_{1 /2} = \pm j \omega 
+$$
+Dunque l'equazione della dinamica sarà:
+$$
+i_{L}(t) = A\cos \left( \omega_{0}(t-t_{on})\right) + B \sin (\omega_{0}(t-t_{on}) )+ I_{0}
+$$
+dunque
+$$
+\begin{aligned}
+i_{L}(t_{on}) &= I_{on} = A+I_{0} & \Rightarrow & & A = I_{on} - I_{0} \\
+\frac{di_{L}}{dt}(t_{on}) &= B\omega_{0} = \frac{V_{s}-V_{C_{on}}}{L} & \Rightarrow & & B = \frac{V_{s}-V_{C_{on}}}{L\cdot \omega_{0}} 
+\end{aligned}
+$$
+Si pongono ora
+$$
+\begin{aligned}
+A & = C\sin \varphi \\
+B & = C\cos \varphi \\
+C & = \sqrt{A^2+B^2}
+\end{aligned}
+$$
+ sostituendo nelle precedenti si ottiene una forma più compatta:
+ $$
+\begin{aligned}
+i_{L}(t) &= \sqrt{ A^2+B^2 }\cdot \sin \left(\omega_{0}(t-t_{{on}})+\arctan \frac{A}{B} \right) \\
+\frac{d}{dt}i_{L}(t) &= \sqrt{ A^2+B^2 }\cdot \omega _{0} \cos \left(\omega_{0}t+\arctan \frac{A}{B} \right)= \\
+&= \sqrt{ A^2+B^2 }\cdot \omega _{0} \cos \left[\arcsin\frac{\left(i_{L}(t)-I_{0}\right)}{\sqrt{ A^2+B^2 }} \right]  = \\
+&=\sqrt{A^2+B^2} \cdot \omega_{0} \sqrt{ 1- \frac{(i_{L}(t)-I_{0})^2}{A^2+B^2} } = \frac{V_{s}-V_{c}(t)}{L} \\
+\left(A^2+B^2\right) \cdot & \left[\frac{A^2+B^2-(i_{L}(t)-I_{0})^2}{A^2+B^2}\right] = \frac{(V_{s}-V_{c}(t))^2}{\omega_{0}^2L^2} \\
+\frac{(V_{s}-V_{c}(t))^2}{\omega_{0}^2L^2} & + (i_{L}(t)-I_{0})^2 = A^2+B^2
+\end{aligned}
+$$
+Quella ottenuta è l'espressione di un ellisse dunque la traiettoria del sistema è *semi-ellittica*, si è trovato il [[Dinamica dei convertitori elettrici#Ciclo limite|ciclo limite]] del convertitore.

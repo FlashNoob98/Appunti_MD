@@ -14,4 +14,7 @@ Non avrebbe senso avere due segnali di controllo con un singolo componente da co
 
 # Richiami matematici
 È importante rivedere alcuni concetti matematici come il [[Problema di Cauchy|problema di Cauchy]] in quanto nel caso dei convertitori elettrici la funzione che descrive il sistema può essere di classe $C$ infinito, talvolta analitica ma quasi mai continua nel tempo a causa della non linearità dei dispositivi switching. Non esiste dunque secondo il teorema di Cauchy-Lipschitz una soluzione.
+## Ciclo limite
+Mediante questo teorema è possibile ricavare ad esempio il [[Boost converter#Curva integrale|ciclo limite]] di un convertitore, ovvero la traiettoria nel tempo delle sue variabili di stato.
+L'orbita descritta dal vettore di stato è sempre una traiettoria isolata, è un'orbita che non si incrocia con nessun'altra orbita che non venga assorbita dall'orbita del ciclo limite stesso.
 
