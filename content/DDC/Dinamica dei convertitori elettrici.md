@@ -1,8 +1,8 @@
 # Modelli dei convertitori
 Per ogni convertitore è possibile descrivere la sua dinamica mediante la giustapposizione di differenti modelli rappresentanti le differenti configurazioni, si ottiene il [[Modello dinamico alle configurazioni|modello dinamico alle configurazioni]].
 
-A causa dei numerosi limiti del [[modello dinamico alle configurazioni]], si è cercato 
-negli anni un'alternativa, un modello che esplicitasse le [[grandezze di controllo]], si è quindi definito il modello dinamico [[Modello dinamico affine nel controllo|affine nel controllo]].
+A causa dei numerosi limiti del [[Modello dinamico alle configurazioni|modello dinamico alle configurazioni]], si è cercato 
+negli anni un'alternativa, un modello che esplicitasse le [[Grandezze di controllo|grandezze di controllo]], si è quindi definito il modello dinamico [[Modello dinamico affine nel controllo|affine nel controllo]].
 
 Tutti i convertitori possono essere scritti nella forma affine del controllo, quando le funzioni $f$ e $g_\nu$ sono in forma affine dello stato allora il modello può essere espresso in [[Forma bilineare|forma bilineare]]. 
 
@@ -11,9 +11,8 @@ $$
 2^m \geq N
 $$
 Non avrebbe senso avere due segnali di controllo con un singolo componente da controllare, va esteso il concetto di [[Grandezze di controllo|grandezza di controllo]].
-## Modello Averaged
+## [[Modello Averaged]]
 Non è sempre semplice ricavare il modello dinamico di un convertitore, inoltre è di difficile da particolarizzare a regime, per questo motivo nel 1976 presso il *Californian Institute of Technology*, [R. D. Middlebrook](https://www.venableinstruments.com/blog/dr-middlebrook) e Slobodan Ćuk, svilupparono i primi modelli per l'analisi dei convertitori elettronici, successivamente nel 1992 fu introdotto il concetto di *State space averaging* da Krein e successivamente fu formalizzato il [[Modello Averaged|modello Averaged]].
-
 # Richiami matematici
 È importante rivedere alcuni concetti matematici come il [[Problema di Cauchy|problema di Cauchy]] in quanto nel caso dei convertitori elettrici la funzione che descrive il sistema può essere di classe $C$ infinito, talvolta analitica ma quasi mai continua nel tempo a causa della non linearità dei dispositivi switching. Non esiste dunque secondo il teorema di Cauchy-Lipschitz una soluzione.
 ## Ciclo limite

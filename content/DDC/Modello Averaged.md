@@ -17,6 +17,22 @@ $$
 $$
 Il modello richiede due semplificazioni:
 - $\left<f (\vec{x})\right>_{0} = f(<\vec{x}>_{0})$
-- $\left<G(\vec{x}\cdot \vec{u})\right>_{0}=\left<G (\vec{x})\right>_{0}\cdot\left<\vec{u}\right>_{0}$
+- $\left<G(\vec{x})\cdot \vec{u}\right>_{0}=\left<G (\vec{x})\right>_{0}\cdot\left<\vec{u}\right>_{0}$
 
-La prima ipotesi è un'uguaglianza esatta se il modello è [[Forma bilineare|bilineare]] 
+La prima ipotesi è un'uguaglianza esatta se il modello è [[Forma bilineare|bilineare]]:
+$$
+f(\vec{x}) = A \vec{x} + a_{0} \Rightarrow \left<f(\vec{x})\right>_{0} = A\left<\vec{x}\right>_{0} + \left<a_{0}\right>_{0} = A\left<\vec{x}\right>_{0} + a_{0} = f(\left<\vec{x}\right>_{0})
+$$
+La seconda ipotesi è più forte ed è valida solo quando i [[Ripple Factor|ripple factor]] sono trascurabili:
+$$
+\begin{aligned}
+\left<x(t)\cdot y(t)\right>_{0} &= C_{0} =\sum_{j=-\infty}^{+\infty} \left<x\right>_{-j}\cdot\left<y\right>_{j} = \left<x\right>_{0}\cdot\left<y\right>_{0} + \sum_{\stackrel{j \neq{0}}{j=-\infty}}^{+\infty}\left<x\right>_{-j}\cdot\left<y\right>_{j} \\
+\sum_{\stackrel{j \neq{0}}{j=-\infty}}^{+\infty}\left<x\right>_{-j}\cdot\left<y\right>_{j} & \leq \sum_{j}\left|\left<x\right>_{-j}\right|\cdot \left|\left<y\right>_{j}\right| \leq \sum_{j}\sqrt{ \left|\left<x\right>_{-j}\right|^2 }\cdot\sqrt{ \left|\left<y\right>_{j}\right|^2 } \leq\\
+&\leq \sum_{j}\sqrt{ \frac{\left|\left<x\right>_{-j}\right|^2 \left<x\right>_{0}^2}{\left<x\right>_{0}^2} }\cdot \sqrt{ \frac{\left|\left<y\right>_{j}\right|^2 \left<y\right>_{0}^2}{\left<y\right>_{0}^2} } \leq \left[ \text{Rf}(x)\cdot \text{Rf}(y)\right] \left<x\right>_{0}\left<y\right>_{0}
+\end{aligned}
+$$
+sostituendo nella prima:
+$$
+\left<x(t)\cdot y(t)\right>_{0} \leq \left<x\right>_{0}\cdot\left<y\right>_{0} +\left[ \text{Rf}(x)\cdot \text{Rf}(y)\right] \left<x\right>_{0}\left<y\right>_{0} \leq \left<x\right>_{0}\cdot\left<y\right>_{0} \left[1+ \text{Rf}(x)\cdot \text{Rf}(y) \right]
+$$
+si ha il prodotto di due termini che tendono a zero, dunque è trascurabile, analogamente queste ipotesi sono valide se il periodo di switching $T$ è molto piccolo.
