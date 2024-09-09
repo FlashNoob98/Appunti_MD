@@ -36,3 +36,9 @@ $$
 \left<x(t)\cdot y(t)\right>_{0} \leq \left<x\right>_{0}\cdot\left<y\right>_{0} +\left[ \text{Rf}(x)\cdot \text{Rf}(y)\right] \left<x\right>_{0}\left<y\right>_{0} \leq \left<x\right>_{0}\cdot\left<y\right>_{0} \left[1+ \text{Rf}(x)\cdot \text{Rf}(y) \right]
 $$
 si ha il prodotto di due termini che tendono a zero, dunque è trascurabile, analogamente queste ipotesi sono valide se il periodo di switching $T$ è molto piccolo.
+
+Si definisce con $\vec{d}$ il vettore dei *duty ratio* ovvero ogni componente switching del convertitore può avere un suo periodo di funzionamento indipendente, applicando le ipotesi appena mostrate si formalizza il modello averaged per una generica struttura:
+$$
+\left<\frac{d\vec{x}}{dt}\right>_{0} = \frac{d}{dt}\left<\vec{x}\right>_{0} = f\left(\left<\vec{x}\right>_{0}\right) + G\left(\left<\vec{x}\right>_{0}\right)\cdot \vec{d}
+$$
+Questo modello è continuo e verifica le condizioni di [[Problema di Cauchy|Cauchy]].
