@@ -175,8 +175,7 @@ B_{2} &= \begin{bmatrix}
 \end{bmatrix} ;\ b_{2} = \begin{bmatrix} \frac{V_{s}}{L} \\ 0 \end{bmatrix}
 \end{aligned}
 $$
- 
- 
+
 # Curva integrale
  Utilizzando il [[Problema di Cauchy|teorema di Cauchy]] si vuole risolvere il [[#Modello dinamico|modello dinamico in CCM]] del convertitore, separato nelle due differenti configurazioni.
 ## $t<t_{on}$
