@@ -41,4 +41,4 @@ Si definisce con $\vec{d}$ il vettore dei *duty ratio* ovvero ogni componente sw
 $$
 \left<\frac{d\vec{x}}{dt}\right>_{0} = \frac{d}{dt}\left<\vec{x}\right>_{0} = f\left(\left<\vec{x}\right>_{0}\right) + G\left(\left<\vec{x}\right>_{0}\right)\cdot \vec{d}
 $$
-Questo modello è continuo e verifica le condizioni di [[Problema di Cauchy|Cauchy]].
+Questo modello è continuo e verifica le condizioni di [[Problema di Cauchy|Cauchy]], la soluzione trovata però è $\left<x(t)\right>_{0}$ e non $x(t)$, si deve verificare se coincide con il sistema reale.
