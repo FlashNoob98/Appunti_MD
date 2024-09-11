@@ -44,3 +44,4 @@ $$
 Questo modello è continuo e verifica le condizioni di [[Problema di Cauchy|Cauchy]], la soluzione trovata però è $\left<x(t)\right>_{0}$ e non $x(t)$, si deve verificare se coincide con il sistema reale.
 ## State space averaged
 Si consideri un sistema con due configurazioni, si applica la media mobile al suo [[Modello dinamico affine nel controllo|modello affine]], 
+prova prova
