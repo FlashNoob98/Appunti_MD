@@ -5,7 +5,7 @@ draft: false
 
 [[DDC/Dinamica-dei-convertitori-elettrici|Dinamica dei convertitori]]
 
-[[Azionamenti-Elettrici/Introduzione al corso|Azionamenti Elettrici]]
+[[Azionamenti-Elettrici/Azionamenti Elettrici|Azionamenti Elettrici]]
 
-[[Metodologie di Progettazione degli Impianti Elettrici/Introduzione al corso|Metodologie di Progettazione degli Impianti Elettrici]]
+[[Metodologie di Progettazione degli Impianti Elettrici/Progettazione degli Impianti Elettrici|Metodologie di Progettazione degli Impianti Elettrici]]
 
