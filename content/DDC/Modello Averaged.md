@@ -43,5 +43,17 @@ $$
 $$
 Questo modello è continuo e verifica le condizioni di [[Problema di Cauchy|Cauchy]], la soluzione trovata però è $\left<x(t)\right>_{0}$ e non $x(t)$, si deve verificare se coincide con il sistema reale.
 ## State space averaged
-Si consideri un sistema con due configurazioni, si applica la media mobile al suo [[Modello dinamico affine nel controllo|modello affine]], 
-prova prova
+Si consideri un sistema con due configurazioni, si applica la media mobile al suo [[Modello dinamico affine nel controllo|modello affine]]: 
+$$
+\frac{d}{dt} \left<\vec{x}\right>_{0} = A\left<\vec{x}\right>_{0} + a_{0} + \sum_{k=1}^{n} \left[B_{k} \left<\vec{x}\right>_{0} + b_{k}\right]d_{k}
+$$
+nel caso di due configurazioni si ha la seguente corrispondenza:
+$$
+\left\{ 
+\begin{aligned}
+&A = A_{2}; \quad  B_{2}\vec{v} = a_{0}; \quad  B_{k} = (A_{1}-A_{2})\vec{x} \\ 
+&(B_{1}-B_{2})\vec{v} = b_{k}
+\end{aligned}
+\right.
+$$
+L'equivalenza non è valida se aumenta l'ordine del convertitore.
