@@ -28,15 +28,17 @@ J = m \rho^2
 $$
 Si riportano i raggi giratori di alcuni corpi
 - **Cilindro omogeneo pieno** di raggio $R$: $\rho = R /\sqrt{ 2 }$ e $J = \pi R^4 L \gamma / 2\ [kg\ m^2]$ con $\gamma$ la densità del materiale. Il momento di inerzia è proporzionale con la lunghezza ma è proporzionale con la potenza quarta del raggio. Se si desiderano accelerazioni forti è necessario costruire macchine di raggio piccolo e più lunghe, viceversa se è richiesta una grande inerzia si costruiscono macchine di raggio maggiore.
-- **Cilindro omogeneo cavo** con raggio interno $R_i$ e raggio esterno $R$, si calcola il momento di inerzia del cilindro esterno con la formula precedente e si sottrae quello calcolato sul raggio interno, essendo vuoto, dunque:
+- **Cilindro omogeneo cavo** con raggio interno $R_i$ e raggio esterno $R$, si calcola il momento di inerzia del cilindro esterno con la formula precedente e si sottrae quello calcolato sul raggio interno, essendo vuoto, 
+  dunque:
   $$
-    \rho = \sqrt{ (R_{i}^2+R^2) /2 } \quad J = \pi(R^4 - R^4_{i}) L \gamma / 2
- $$
-- **Linea d'albero**: si suppongano $n$$ masse di raggio differente calettate sullo stesso albero, se il collegamento è rigido e tutte le masse ruotano alla stessa velocità allora il momento di inerzia complessivo è pari alla somma dei singoli momenti di inerzia.
+    \rho = \sqrt{ (R_{i}^2+R^2) /2 } \quad J = \pi(R^4 - R^4_{i}) L \gamma /  2
+    $$
+- **Linea d'albero**: si suppongano n masse di raggio differente calettate sullo stesso albero, se il collegamento è rigido e tutte le masse ruotano alla stessa velocità allora il momento di inerzia complessivo è pari alla somma dei singoli momenti di inerzia.
   $$
       J_{\text{tot}} = \sum_{k=1}^n J_{n}
-   $$
+     $$
 Derivando due volte l'equazione del moto si ottiene l'espressione rispetto alla posizione $\theta$.
+
 
 # Trasmissioni meccaniche
 La trasmissione meccanica più semplice è quella mediante il collegamento diretto degli assi di rotazione del motore e del carico, mediante giunti meccanici rigidi, elastici o cardanici.
@@ -52,10 +54,12 @@ Trasmissione a cremagliera: permette di trasformare un moto circolare in un moto
 Se gli alberi sono diversi, nel caso di ruote di raggio differente, come già anticipato, queste avranno velocità angolari differenti in modulo e verso.
 Le forze agenti sull'albero motore $1$ ad esempio della ruota movente è pari al momento di inerzia della ruota $1$ insieme al momento resistente della ruota $2$ ad essa collegata.
 $$
-\left\{\begin{aligned}
+\left\{
+\begin{aligned}
 M - f_{2}R_{1} &= J_{1} \frac{d\omega_{1}}{dt}\\
 f_{1}R_{2} - M_{L} &= J_{2} \frac{d\omega_{2}}{dt}
-\end{aligned}\right.
+\end{aligned}
+\right.
 $$
 supponendo  le forze tangenziali $f$ identiche e sommando:
 $$
@@ -73,7 +77,9 @@ L'energia cinetica di una massa in rotazione, connessa ad un'altra che ruota a v
 $$
 W_{r,cin} = \frac{1}{2} J_{r} \omega^2_{r} = \frac{1}{2} J'_{r}\omega^2_{1}
 $$
+
 Analogamente si può calcolare rapidamente il riporto sfruttando l'uguaglianza delle potenze:
+
 $$
 M_{2}\omega_{2} = M'_{2} \omega_{1} \Rightarrow M_{2}' = M_{2} \frac{\omega_{2}}{\omega_{1}} = M_{2}\frac{{R_{1}}}{R_{2}}
 $$
