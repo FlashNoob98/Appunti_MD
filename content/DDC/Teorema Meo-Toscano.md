@@ -16,7 +16,7 @@ $$
 \end{aligned}
 \right.
 $$
-un altro [[problema di Cauchy]] espresso in una variabile differente.
+un altro [[Problema di Cauchy|problema di Cauchy]] espresso in una variabile differente.
 
 Sia fissato $T_\eta>0$ il massimo periodo di switching di un convertitore e $L>0$ l'intervallo di osservazione, se 
 $$
@@ -33,7 +33,7 @@ $$
 $$
 e $\vec{x}=\sqrt{ \sum_{k=1}^n x^2_{k} }$ dove $a$ e $b$ dipendenti dalle costanti di Lipschitz del convertitore e da $L$.
 
-L'errore del [[modello averaged]] tende a 0 se il periodo di switching tende a 0, è solitamente considerato accettabile un errore del 10% sul ripple delle correnti e un errore dell'1% su quello delle tensioni del convertitore.
+L'errore del [[Modello Averaged|modello averaged]] tende a 0 se il periodo di switching tende a 0, è solitamente considerato accettabile un errore del 10% sul ripple delle correnti e un errore dell'1% su quello delle tensioni del convertitore.
 Oltre a stimare l'errore del modello si può fissare un errore desiderato e calcolare il massimo periodo di switching con la seguente formula inversa:
 $$
 T_{\eta} = g\eta \cdot e^{-[t_{0}-L]q}

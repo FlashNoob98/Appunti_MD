@@ -43,7 +43,7 @@ $$
 $$
 Questo modello è continuo e verifica le condizioni di [[Problema di Cauchy|Cauchy]], la soluzione trovata però è $\left<x(t)\right>_{0}$ e non $x(t)$, si deve verificare se coincide con il sistema reale.
 ## State space averaged
-Si consideri un sistema con due configurazioni, si applica la [[media mobile]] al suo [[Modello dinamico affine nel controllo|modello affine]]: 
+Si consideri un sistema con due configurazioni, si applica la [[Media Mobile|media mobile]] al suo [[Modello dinamico affine nel controllo|modello affine]]: 
 $$
 \frac{d}{dt} \left<\vec{x}\right>_{0} = A\left<\vec{x}\right>_{0} + a_{0} + \sum_{k=1}^{n} \left[B_{k} \left<\vec{x}\right>_{0} + b_{k}\right]d_{k}
 $$
@@ -78,4 +78,4 @@ Krein osservò che se in $u_k$ sono presenti discontinuità solo nel dominio del
 Se $T\to 0^+$ allora $\vec{x}_{T}(t) \to y(t)$ uniformemente.
 Nel 1926 Lehmann dimostrò che questo era vero anche per le discontinuità in $x$.
 
-Osservando i risultati ottenuti mediante il modello averaged e quello dinamico si vide che in alcuni casi questi producevano risultati confrontabili, ovvero il risultato del modello averaged coincideva con la [[media mobile]] dei risultati del modello dinamico. In altri casi ciò non si verificava, soltanto nel 2018 con il [[Teorema Meo-Toscano]] si ricavò uno strumento analitico per calcolare l'errore tra i due modelli.
+Osservando i risultati ottenuti mediante il modello averaged e quello dinamico si vide che in alcuni casi questi producevano risultati confrontabili, ovvero il risultato del modello averaged coincideva con la [[Media Mobile|media mobile]] dei risultati del modello dinamico. In altri casi ciò non si verificava, soltanto nel 2018 con il [[Teorema Meo-Toscano]] si ricavò uno strumento analitico per calcolare l'errore tra i due modelli.
