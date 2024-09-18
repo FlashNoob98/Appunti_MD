@@ -43,7 +43,7 @@ $$
 $$
 Questo modello è continuo e verifica le condizioni di [[Problema di Cauchy|Cauchy]], la soluzione trovata però è $\left<x(t)\right>_{0}$ e non $x(t)$, si deve verificare se coincide con il sistema reale.
 ## State space averaged
-Si consideri un sistema con due configurazioni, si applica la media mobile al suo [[Modello dinamico affine nel controllo|modello affine]]: 
+Si consideri un sistema con due configurazioni, si applica la [[media mobile]] al suo [[Modello dinamico affine nel controllo|modello affine]]: 
 $$
 \frac{d}{dt} \left<\vec{x}\right>_{0} = A\left<\vec{x}\right>_{0} + a_{0} + \sum_{k=1}^{n} \left[B_{k} \left<\vec{x}\right>_{0} + b_{k}\right]d_{k}
 $$
@@ -57,3 +57,25 @@ $$
 \right.
 $$
 L'equivalenza non è valida se aumenta l'ordine del convertitore.
+$$
+\left\{
+\begin{aligned}
+\frac{d}{dt} \vec{x} &= f_{0} (\vec{x}) + \sum_{k=1}^n f_{k}(\vec{x}) \cdot u_{k}(\vec{x},t) \\
+\vec{x}(t_{0}) &= \vec{x}_{0}
+\end{aligned}
+\right.
+$$
+$$
+\left\{
+\begin{aligned}
+\frac{d}{dt} \vec{y} &= f_{0} (\vec{y}) + \sum_{k=1}^n f_{k}(\vec{y}) \cdot d_{k}(\vec{y},t) \\
+\vec{y}(t_{0}) &= \vec{y}_{0}
+\end{aligned}
+\right.
+$$
+I due sistemi hanno la stessa forma ma $u_k$ ha valori nell'insieme discreto $\{0,1\}$ mentre $d_k$ è reale e ha valori in $[0,1]$. 
+Krein osservò che se in $u_k$ sono presenti discontinuità solo nel dominio del tempo, allora il primo problema ammette una soluzione $\vec{x}_T(t)$ con $T$ il periodo di switching del convertitore.
+Se $T\to 0^+$ allora $\vec{x}_{T}(t) \to y(t)$ uniformemente.
+Nel 1926 Lehmann dimostrò che questo era vero anche per le discontinuità in $x$.
+
+Osservando i risultati ottenuti mediante il modello averaged e quello dinamico si vide che in alcuni casi questi producevano risultati confrontabili, ovvero il risultato del modello averaged coincideva con la [[media mobile]] dei risultati del modello dinamico. In altri casi ciò non si verificava, soltanto nel 2018 con il [[Teorema Meo-Toscano]] si ricavò uno strumento analitico per calcolare l'errore tra i due modelli.
