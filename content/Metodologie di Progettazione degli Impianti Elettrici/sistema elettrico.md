@@ -8,4 +8,4 @@ Quando si parla di **distribuzione** ci si riferisce ancora alla compagnia di di
 
 Gli impianti di utilizzazione partono invece dalle cabine secondarie, ad esempio una cabina utente, di proprietà dell'utilizzatore elettrico, oppure di una cabina "pubblica", di proprietà dell'ente distributore che alimenta i carichi civili. Quando si studia la cabina secondaria si deve analizzare sia l'impianto a valle, utilizzatore, sia l'impianto di distribuzione a monte, vanno gestiti i problemi di protezione sia dell'impianto che delle linee a monte, garantire il funzionamento dell'intera rete anche in caso di guasto.
 
-Nello studio della cabina principale verrà analizzato anche lo stato del neutro dell'impianto, sarà solitamente connesso a terra negli impianti BT e isolato o connesso con impedenza nel caso di impianti in MT.
+Nello studio della cabina principale verrà analizzato anche lo [[Stato del neutro|stato del neutro]] dell'impianto, sarà solitamente connesso a terra negli impianti BT e isolato o connesso con impedenza nel caso di impianti in MT.
