@@ -22,11 +22,16 @@ La corrente capacitiva sulla linea 2 ad esempio sarà:
 $$
 I_{C_{2}} = j \vec{V_{2}} \omega C_{0} = j \sqrt{ 3 } \vec{E_{2}} \omega C_{0}
 $$
-<center>La relazione sulle correnti è la seguente:</center>
+La relazione sulle correnti è la seguente:
 
 $$
 I_{g} + I_{C_{1}} + I_{C_{2}} =  0
 $$
 La corrente di guasto è dunque pari alla somma delle correnti capacitive.
 
+<center>
+
 ![[prova0x.svg]]
+
+</center>
+
