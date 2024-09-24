@@ -21,6 +21,9 @@
 
 :root[saved-theme="dark"] {
   color-scheme: dark;
+  img {
+    filter:invert(100);
+  } 
 }
 
 :root[saved-theme="light"] {
@@ -44,3 +47,4 @@
     display: none;
   }
 }
+

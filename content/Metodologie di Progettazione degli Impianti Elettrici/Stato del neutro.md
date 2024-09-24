@@ -27,3 +27,6 @@ $$
 I_{g} + I_{C_{1}} + I_{C_{2}} =  0
 $$
 La corrente di guasto è dunque pari alla somma delle correnti capacitive.
+
+![immagine](prova0x.svg)
+

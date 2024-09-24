@@ -9,3 +9,16 @@ tsconfig.tsbuildinfo
 private/
 .replit
 replit.nix
+
+# LaTex SVGs aux
+content/img/*.4tc
+content/img/*.4ct
+content/img/*.aux
+content/img/*.dvi
+content/img/*.css
+content/img/*.html
+content/img/*.tmp
+content/img/*.xref
+content/img/*.log
+content/img/*.lg
+content/img/*.idv
