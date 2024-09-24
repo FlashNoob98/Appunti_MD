@@ -26,4 +26,8 @@ $$
 \phi_{2}(\tau) &= G_{2}(\tau) + K_{2}
 \end{aligned}
 $$
-Si scelgono $K_1$ e $K_2$ tali che $G_1(C^-) = G_2(C^+)$ ottenendo il seguente integrale:
+Si scelgono $K_1$ e $K_2$ tali che $G_1(C^-) = G_2(C^+)$ ricavando il seguente integrale:
+$$
+\frac{1}{T} \int_{t-T}^{t} x_{1}'(\tau) d\tau = \frac{1}{T} [\cancel{G_{1}(C^-)} - G_{1}(t-T) + G_{2}(t) - \cancel{G_{2}(C^+)}] = G_{2}(t) - G_{1}(t-T)
+$$
+dato che $G_{1}(C^-) =G_{2}(C^+)$.
