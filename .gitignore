@@ -23,3 +23,4 @@ content/img/*.log
 content/img/*.lg
 content/img/*.idv
 content/img/*.pdf
+content/img/*.synctex*

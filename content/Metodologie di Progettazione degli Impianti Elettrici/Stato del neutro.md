@@ -31,7 +31,7 @@ La corrente di guasto è dunque pari alla somma delle correnti capacitive.
 
 <center>
 
-![[prova0x.svg]]
+![[prova.svg]]
 
 </center>
 

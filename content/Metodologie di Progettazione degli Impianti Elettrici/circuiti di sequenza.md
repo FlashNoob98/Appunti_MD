@@ -77,7 +77,8 @@ $$
 \vec{A}_a \\ \vec{A}_b \\ \vec{A}_c
 \end{bmatrix}
 $$
-.
+
+
 Si vuole applicare la rappresentazione alle sequenze al circuito appena presentato, formato da un carico RL equilibrato.
 $$
 [T_{s}]^{-1} = \begin{pmatrix}
@@ -114,7 +115,7 @@ $$
 (\alpha + \alpha^2)Z_{M} + Z_{s}
 \end{bmatrix}
 $$
-Continuando lo svolgimento
+Continuando lo svolgimento:
 $$
 \begin{pmatrix}
 \vec{E}_{0} \\ \vec{E_{d}} \\ \vec{E_{i}}    
@@ -126,7 +127,7 @@ $$
 Z_{s}+2Z_{m} & 0 & 0 \\ 
 0 & Z_{s} - Z_{m} & 0  \\
 0 & 0 & Z_{s} - Z_{m}
-\end{bmatrix}
+\end{bmatrix}\cdot
 \begin{bmatrix}
 \vec{I_{0}} \\ \vec{I_{d}} \\ \vec{I_{i}}
 \end{bmatrix}
@@ -134,9 +135,22 @@ $$
 Si sono disaccoppiate le tre terne e si possono ricavare i tre circuiti equivalenti, va poi calcolato il tipo di collegamento tra questi tre circuiti a seconda della tipologia di guasto.
 Il forzamento ha solitamente solo la componente diretta, si considera il forzamento reale che è solitamente una terna simmetrica diretta.
 
-## Guasto trifase a terra
-Si utilizzano in questo caso le terne di sequenza per studiare il corto circuito trifase a terra.
+<center>
 
+![[circuiti_sequenza_aperti.svg]]
+
+</center>
+
+
+## Guasto trifase a terra
+Si utilizzano in questo caso le terne di sequenza per studiare il corto circuito trifase a terra. La linea si considera ancora equilibrata, dunque non possono 
+<center>
+
+![[circuiti_sequenza_cc_trifase.svg]]
+
+</center>
+
+Dunque la corrente di guasto presenterà la sola componente diretta $\vec{I_{d}}= \vec{E_{d}^0} /\dot{Z_{d}}$.
 ## Guasto monofase a terra
 Delle tre fasi della linea, solo una fase è guasta verso terra, si vuole capire come collegare i tre circuiti alle sequenze. Si considera la fase $\vec{E_{1}}=0$ a terra, dunque
 $$
@@ -150,26 +164,39 @@ $$
 \vec{E_{0}} \\ \vec{E_{d}} \\ \vec{E_{i}}
 \end{bmatrix}
 $$
-Dunque la prima riga è nulla. Si riprende la trasformazione inversa rispetto alle correnti, sapendo che c'è corrente solo nel primo conduttore,
+Dunque la prima riga è nulla, ovvero $\vec{E_{0}}+\vec{E_{d}}+\vec{E_{i}}=0$. Si riprende la trasformazione inversa rispetto alle correnti, sapendo che c'è corrente solo nel primo conduttore,
 $\vec{I_{1}}=\vec{I_{g}},\vec{I_{2}}=0,\vec{I_{3}}=0$ ma rispetto alle terne di sequenza le tre correnti sono uguali, dunque i tre circuiti sono in serie.
+<center>
+
+![[circuiti_sequenza_cc_monofase.svg]]
+
+</center>
+
 $$
 \begin{bmatrix}
-I_{0} \\ I_{d} \\ I_{i}
+\vec{I_{0}} \\ \vec{I_{d}} \\ \vec{I_{i}}
 \end{bmatrix} = \frac{1}{3}
 \begin{bmatrix}
-1 & 1 & 1 \\ 1 & \alpha & \alpha^2
+1 & 1 & 1 \\ 1 & \alpha & \alpha^2 \\ 1 & \alpha^2 & \alpha
 \end{bmatrix}
 \begin{bmatrix}
-I_{g} \\ 0 \\ 0
+\vec{I_{g}} \\ 0 \\ 0
 \end{bmatrix}
 $$
+dunque $\vec{I_{0}} = \vec{I_{d}}=\vec{I_{i}}=\vec{I_{g}} /3$, si calcola la corrente di guasto:
 
 $$
 \frac{\vec{I_{g}}}{3} = \frac{\vec{E_{d}^0}}{Z_{d}+Z_{i}+Z_{0}}
 $$
 ## Guasto monofase mediante impedenza
-In questo caso è presente una impedenza di guasto $Z_g$, dunque sarà presente una tensione $E_1=Z_{g}I_{g}$ pari alla impedenza di guasto moltiplicata la corrente di guasto, valgono ancora le considerazioni precedenti sulla serie tra i circuiti di guasto a causa della relazione sulle correnti. Si posiziona l'impedenza di guasto (moltiplicata per 3) sul ramo comune tra i tre circuiti, affinché si rispetti la condizione:
+In questo caso è presente una impedenza di guasto $\dot{Z_g}$, dunque sarà presente una tensione $\vec{E_1}=\dot{Z_{g}}\vec{I_{g}}$ pari alla impedenza di guasto moltiplicata la corrente di guasto, valgono ancora le considerazioni precedenti sulla serie tra i circuiti di guasto a causa della relazione sulle correnti. Si posiziona l'impedenza di guasto (moltiplicata per 3) sul ramo comune tra i tre circuiti, affinché si rispetti la condizione:
 $$
-\cancel{3}Z_{g}\frac{I_{g}}{\cancel{3}} = E_{d}+E_{i}+E_{0} = E_{1}
+\cancel{3}Z_{g}\cdot\frac{I_{g}}{\cancel{3}} = \vec{E_{d}}+\vec{E_{i}}+\vec{E_{0}} = \vec{E_{1}}
 $$
-.
+Il circuito di guasto ottenuto è il seguente:
+<center>
+
+![[circuiti_sequenza_cc_monofase_impedenza.svg]]
+
+</center>
+
