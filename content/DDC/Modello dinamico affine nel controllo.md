@@ -29,7 +29,7 @@ f_{n}(x_{1},x_{2}\dots x_{n})
 \end{bmatrix}
 $$
 
-$G$ è invece una mappa, $G(\underline{x}):\mathbb{R}^n\rightarrow\mathbb{R}^{n\times m}$ ed è così rappresentata:
+$G$ è invece una [[Definizione di mappa|mappa]], $G(\underline{x}):\mathbb{R}^n\rightarrow\mathbb{R}^{n\times m}$ ed è così rappresentata:
 $$
 G(\underline{x}) = \begin{bmatrix}
 g_{11}(\underline{x}),\ \dots,\ g_{1m}(\underline{x}) \\ 
