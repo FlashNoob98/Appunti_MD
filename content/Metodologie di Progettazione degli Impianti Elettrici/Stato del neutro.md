@@ -49,7 +49,7 @@ dalla maglia di guasto si vede che $\vec{V}_{o'o} = \vec{E_{1}}$.
 La corrente di guasto è in anticipo di 90° rispetto alla tensione che agiva sulla fase guasta.
 Si può calcolare il modulo della corrente di guasto geometricamente, le correnti $\vec{I}_{C_{2}}$ e $\vec{I}_{C_{3}}$ sono identiche e formano un triangolo isoscele, dunque:
 $$
-\left|\vec{I}_{C_{2}}+\vec{I}_{C_{3}}\right| = 2\sqrt{ 3 } E \omega C_{0} \cos(60°) =  2\sqrt{ 3 } E \omega C_{0} \frac{\sqrt{ 3 }}{2} = 3E \omega C_{0}
+\left|\vec{I}_{C_{2}}+\vec{I}_{C_{3}}\right| = 2\sqrt{ 3 } E \omega C_{0} \cos(30°) =  2\sqrt{ 3 } E \omega C_{0} \frac{\sqrt{ 3 }}{2} = 3E \omega C_{0}
 $$
 Non sarebbe così semplice usare l'interpretazione grafica nel caso in cui ci sia una impedenza di guasto diversa da zero.
 
@@ -82,4 +82,32 @@ In questo caso il calcolo di $\vec{I}_g$ diventa:
 $$
 \vec{I}_{g} = \frac{3 \vec{E}}{\cancel{\dot{Z}_{d}+\dot{Z}_{i}}+\dot{Z}_{0} + 3R_{g}} = \frac{3\vec{E}}{3R_{g} + \frac{1}{j \omega C_{0}}} = \frac{3\vec{E}j\omega C_{0}}{3R_{g}j\omega C_{0}+1}
 $$
-Le impedenze induttive della rete $(jX_{d},jX_{i})$ sono trascurabili rispetto all'impedenza capacitiva dovuta all'accoppiamento verso terra, dunque $\dot{Z_{0}} =\frac{1}{j\omega C_{0}}$ prevale sulle altre.
+Le impedenze induttive della rete $(jX_{d},jX_{i})$ sono trascurabili rispetto all'impedenza capacitiva dovuta all'accoppiamento verso terra e vista dalla sequenza omopolare, dunque $\dot{Z_{0}} =\frac{1}{j\omega C_{0}}$ prevale sulle altre (negli altri casi la sommatoria delle correnti è nulla e non c'è richiusura mediante gli accoppiamenti capacitivi).
+
+## Incidenza dei parametri sul valore di corrente
+Si suppone ad esempio che il corto circuito avvenga mediante un contatto accidentale, dunque la resistenza di guasto diventa la serie della resistenza del corpo e di quella di contatto con la terra, dunque $R_{g} = R_{B}+R_{EB} = 2000\Omega+1000\Omega$, in BT con neutro connesso a terra, la corrente di guasto è circa $76mA$:
+$$
+I_{g} = \frac{230}{3000} \simeq 76 mA
+$$
+In BT si può trascurare $C_0$ se la lunghezza dei cavi è piccola, ciò non è sempre vero se l'impianto si estende per alcuni metri, ad esempio in un impianto industriale.
+Un cavo di $2km$ fornisce un valore di $C_0\simeq{0.8\mu F}$ e dunque una corrente di guasto,calcolata con la formula precedente, pari a $60 \sim 70 mA$ sicuramente pericolosa per il corpo umano.
+Mettere a terra il neutro in BT elimina l'incertezza sulle capacità parassite, si ha più certezza di controllare la corrente di guasto.
+
+In Alta Tensione invece la capacità $C_{0}$ aumenta, dunque la reattanza diminuisce fino a a raggiungere gli ordini di grandezza delle reattanze induttive, si può incorrere in sovratensioni dovute a fenomeni di risonanza. Collegando il neutro a terra si trascura l'impedenza capacitiva.
+
+## Bobina di Petersen
+In media tensione si vuole limitare la corrente di guasto, non ci sono grossi problemi legati alla sicurezza o alla risonanza, le linee spesso sono in cavo e vengono considerate "lunghe" già a partire da $1km$.
+Si pone una bobina $L$ in cabina attraversata da una certa corrente, in caso di guasto franco, $\vec{I}_L=\frac{\vec{E}_{1}}{j \omega L}$ tale che ([[Leggi di Kirchhoff#Legge di Kirchhoff per le correnti|LKC]])
+$$
+\vec{I}_{L} + \vec{I}_{C_{2}} + \vec{I}_{C_{3}}+  \vec{I}_{g} = 0
+$$
+Va dimensionata la bobina $L$ affinché si annulli la corrente di guasto, ricordando il grafico precedente sarà pari alla $I_g$:
+$$
+\vec{I}_{L} = -\left( \vec{I}_{C_{2}}-\vec{I}_{C_{3}} \right) \Rightarrow I_{L} = 3E\omega C_{0}
+$$
+quindi la $L$:
+$$
+I_{L} = \frac{E}{\omega L} \Rightarrow L = \frac{1}{3 \omega^2 C_{0}}
+$$
+Si crea un fenomeno di risonanza parallelo, le tre correnti che nel circuito omopolare attraversano le capacità, si richiudono tutte nell'unica induttanza $L$, per questo motivo il fattore 3.
+Non si ha mai un accoppiamento perfetto a causa dell'incertezza della $C_0$ e della resistenza di guasto, esistono dunque le normative che forniscono il valore ideale della $L$ in funzione della massima corrente di guasto in media tensione.
