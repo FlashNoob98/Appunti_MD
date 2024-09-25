@@ -1,3 +1,4 @@
+[Pubblicato nel 2018](https://www.iris.unina.it/handle/11588/717197)
 Sia $x_T(t)$ la soluzione del seguente problema differenziale:
 $$
 \left\{

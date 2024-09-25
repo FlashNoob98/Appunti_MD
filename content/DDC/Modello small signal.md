@@ -5,9 +5,9 @@ $$
 $$
 dunque
 $$
-\frac{d}{dt}<\vec{x}_{0}>= \frac{1}{T}\frac{d}{dt} (F(t)-F(t-T)) = \frac{1}{T}[x_{1}(t)-x_{1}(t-T)] = \frac{1}{T} \int_{t-T}^T \frac{d}{dt} [x_{1}(\tau)d\tau] = \frac{<dx_{1}>_{0}}{dt}
+\frac{d}{dt}\langle \vec{x}_{0} \rangle = \frac{1}{T}\frac{d}{dt} (F(t)-F(t-T)) = \frac{1}{T}[x_{1}(t)-x_{1}(t-T)] = \frac{1}{T} \int_{t-T}^T \frac{d}{dt} [x_{1}(\tau)d\tau] = \frac{\langle dx_{1}\rangle_{0}}{dt}
 $$
-Una funzione è *generalmente continua* se contiene discontinuità al massimo in un insieme
+Una funzione è **generalmente continua** se contiene discontinuità al massimo in un insieme
 numerabile di punti, ovvero i punti di discontinuità non sono punti di accumulazione, si può ancora eseguire l'integrale.
 Sia $C$ il punto di discontinuità, si può eventualmente prolungare la funzione per continuità se esiste finito il limite dell'integrale quando $\tau$ tende a $C$.
 $$
@@ -16,7 +16,7 @@ $$
 &G(\tau) = G(t-\tau) + \int_{t-\tau}^\tau x_{1}'(\tau)d\tau \quad \forall \tau \in [t-T,C[ 
 \end{aligned}
 $$
-Si calcola la funzione nel punto di discontinuità
+Si calcola la funzione integrale nel punto di discontinuità
 $$
 G_{1}(C) = G_{1}(C^-) = G_{1}(t-T) + \lim_{ \tau \to C^- } \int_{t-T}^C x_{1}'(\tau) d \tau
 $$
@@ -29,7 +29,7 @@ $$
 $$
 Si scelgono $K_1$ e $K_2$ tali che $G_1(C^-) = G_2(C^+)$ ricavando il seguente integrale:
 $$
-\frac{1}{T} \int_{t-T}^{t} x_{1}'(\tau) d\tau = \frac{1}{T} [\cancel{G_{1}(C^-)} - G_{1}(t-T) + G_{2}(t) - \cancel{G_{2}(C^+)}] = G_{2}(t) - G_{1}(t-T)
+\frac{1}{T} \int_{t-T}^{t} x_{1}'(\tau) d\tau = \frac{1}{T} \left[\cancel{G_{1}(C^-)} - G_{1}(t-T) + G_{2}(t) - \cancel{G_{2}(C^+)}\right] = G_{2}(t) - G_{1}(t-T)
 $$
 dato che $G_{1}(C^-) =G_{2}(C^+)$.
 La funzione ricavata sarà continua in tutto l'intervallo ma derivabile ovunque eccetto il punto $C$.
@@ -44,10 +44,49 @@ F:\Omega \subset \mathbb{R}^n \times \mathbb{R}^m \to \mathbb{R}^n
 $$
 Sia un punto $\vec{S}_{0}$ appartenente al dominio $\Omega$:
 $$
-\vec{S}_{0} \equiv \left(\left\langle  \vec{x}  \right\rangle_{0} ,\ \vec{d}_{0} \right)
+\vec{S}_{0} \equiv \left(\left\langle  \vec{x_{0}}  \right\rangle ,\ \vec{d}_{0} \right)
 $$
 si esegue una piccola variazione sommando un vettore $\vec{h}$ tale che 
 $$
 \vec{S}_{0} +\vec{h} = \vec{S}_{1} \subset \Omega
 $$
-ovvero si ha una piccola variazione intorno $\vec{S}_{0}$ contenuta nel dominio iniziale $\Omega$.
+ovvero si ha una *piccola* variazione intorno $\vec{S}_{0}$ contenuta nel dominio iniziale $\Omega$. Il vettore $\vec{h}$ dovrà avere le stesse dimensioni di $\vec{S}$ e può essere così generalmente indicato:
+$$
+\vec{h} = (\langle \delta x_{1} \rangle, \dots, \langle \delta x_{n} \rangle, \delta d_{1} ,\dots, \delta d_{m}    )
+$$
+Se la funzione $F$ è almeno di classe $\mathbb{C}^2$, non deve essere necessariamente $\mathbb{C}^\infty$, esiste dunque una forma di Taylor nel punto $\vec{S}_{1}$ a partire da $\vec{S}_{0}$, ovvero:
+$$
+F\left( \vec{S}_{1} \right) = F\left( \vec{S}_{0} +\vec{h}\right) = \left.F\left( \vec{S}_{0} \right) + J_{F}\right|_{\vec{S}_{0}} \cdot \vec{h} + \vec{r}\left( {h} \right)
+$$
+si è indicato con $J_F$ la matrice *Jacobiana* di $F$ e con $\vec{r}(h)$ il resto di Lagrange.
+La matrice Jacobiana è così definita:
+$$
+J_{F} = \begin{pmatrix}
+\frac{\partial f_{1}}{\partial \langle x_{1} \rangle }, & \frac{\partial f_{1}}{\partial \langle x_{2} \rangle }, &\dots, & \frac{\partial f_{1}}{\partial \langle x_{n} \rangle }, & \frac{\partial f_{1}}{\partial  d_{1} }, & \dots, & \frac{\partial f_{1}}{\partial  d_{m} } \\ 
+\vdots \\ 
+\frac{\partial f_{n}}{\partial \langle x_{1} \rangle }, & \frac{\partial f_{n}}{\partial \langle x_{2} \rangle }, &\dots, & \frac{\partial f_{n}}{\partial \langle x_{n} \rangle }, & \frac{\partial f_{n}}{\partial  d_{1} }, & \dots, & \frac{\partial f_{n}}{\partial  d_{m} }
+\end{pmatrix}
+$$
+ha dimensioni $n\times (n+m)$.
+
+Dunque si analizza lo spostamento dello stato, escludendo il vettore $\vec{d}$:
+$$
+F\left( \vec{S}_{1} \right) = \frac{d}{dt}\left( \vec{X}_{0}+ \left\langle  \delta \vec{x}  \right\rangle_{0}  \right) =  \frac{d}{dt} \left( \vec{X}_{1} \right)
+$$
+Se $\vec{S}_{0}$ è un punto di equilibrio stazionario, allora $F\left( \vec{S}_{0} \right)=0 = \frac{d}{dt}\left( \left\langle  \vec{x}  \right\rangle_{0} \right)$ e il limite del resto tende a zero:
+$$
+\lim_{ ||h|| \to 0 } \frac{r\left(\vec{h} \right)}{\vec{h}} = 0
+$$
+si può scegliere uno spostamento $\vec{h}$ piccolo, in tali ipotesi la forma di Taylor diventa la seguente:
+$$
+\left.F\left( \vec{S}_{0} + \vec{h}\right) =  J_{F}\right|_{\vec{S}_{0}} \cdot \vec{h}
+$$
+Si può dividere la matrice Jacobiana in due sotto-matrici affiancate, la prima $A_s$ quadrata di dimensioni $n\times n$, la seconda $B_s$ di dimensioni $n\times m$, in questo modo si può scomporre l'applicazione dello Jacobiano al vettore $\vec{h}$ degli spostamenti nel seguente modo:
+$$
+F\left( \vec{S}_{0} + \vec{h}\right) = A_{s} \left\langle  \delta \vec{x}  \right\rangle + B_{s}   \delta \vec{d} = \frac{d}{dt}\left( \vec{X}_{0} + \left\langle  \delta \vec{x}  \right\rangle  \right)
+$$
+ma $\frac{d}{dt}\vec{X}_{0}=0$ per ipotesi di stazionarietà, dunque
+$$
+\left.\left. \frac{d}{dt}\left( \left\langle  \delta \vec{x}  \right\rangle  \right) = A_{s}\right|_{\vec{S}_{0}} \left\langle  \delta \vec{x}  \right\rangle + B_{s}\right|_{\vec{S}_{0}}   \delta \vec{d}  
+$$
+Il modello è lineare....
