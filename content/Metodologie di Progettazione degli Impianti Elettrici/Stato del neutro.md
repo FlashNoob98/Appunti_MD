@@ -94,20 +94,3 @@ Un cavo di $2km$ fornisce un valore di $C_0\simeq{0.8\mu F}$ e dunque una corren
 Mettere a terra il neutro in BT elimina l'incertezza sulle capacità parassite, si ha più certezza di controllare la corrente di guasto.
 
 In Alta Tensione invece la capacità $C_{0}$ aumenta, dunque la reattanza diminuisce fino a a raggiungere gli ordini di grandezza delle reattanze induttive, si può incorrere in sovratensioni dovute a fenomeni di risonanza. Collegando il neutro a terra si trascura l'impedenza capacitiva.
-
-## Bobina di Petersen
-In media tensione si vuole limitare la corrente di guasto, non ci sono grossi problemi legati alla sicurezza o alla risonanza, le linee spesso sono in cavo e vengono considerate "lunghe" già a partire da $1km$.
-Si pone una bobina $L$ in cabina attraversata da una certa corrente, in caso di guasto franco, $\vec{I}_L=\frac{\vec{E}_{1}}{j \omega L}$ tale che ([[Leggi di Kirchhoff#Legge di Kirchhoff per le correnti|LKC]])
-$$
-\vec{I}_{L} + \vec{I}_{C_{2}} + \vec{I}_{C_{3}}+  \vec{I}_{g} = 0
-$$
-Va dimensionata la bobina $L$ affinché si annulli la corrente di guasto, ricordando il grafico precedente sarà pari alla $I_g$:
-$$
-\vec{I}_{L} = -\left( \vec{I}_{C_{2}}-\vec{I}_{C_{3}} \right) \Rightarrow I_{L} = 3E\omega C_{0}
-$$
-quindi la $L$:
-$$
-I_{L} = \frac{E}{\omega L} \Rightarrow L = \frac{1}{3 \omega^2 C_{0}}
-$$
-Si crea un fenomeno di risonanza parallelo, le tre correnti che nel circuito omopolare attraversano le capacità, si richiudono tutte nell'unica induttanza $L$, per questo motivo il fattore 3.
-Non si ha mai un accoppiamento perfetto a causa dell'incertezza della $C_0$ e della resistenza di guasto, esistono dunque le normative che forniscono il valore ideale della $L$ in funzione della massima corrente di guasto in media tensione.

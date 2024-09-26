@@ -62,7 +62,7 @@ Ottenute le matrici della dinamica si riporta il [[Modello dinamico affine nel c
 
 $$
 f(\underline{x}) = \begin{bmatrix}
-\frac{Vs}{L}-\frac{x_{2}}{L}\\ \\
+\frac{Vs}{L}-\frac{x_{2}}{L}\\ 
 \frac{x_{1}}{C}  -\frac{x_{2}}{RC}
 \end{bmatrix}
 \quad G(\underline{x}) = \begin{bmatrix}
@@ -237,3 +237,51 @@ i_{L}(t) &= \sqrt{ A^2+B^2 }\cdot \sin \left(\omega_{0}(t-t_{{on}})+\arctan \fra
 \end{aligned}
 $$
 Quella ottenuta è l'espressione di un ellisse dunque la traiettoria del sistema è *semi-ellittica*, si è trovato il [[Dinamica dei convertitori elettrici#Ciclo limite|ciclo limite]] del convertitore.
+
+# Modello small signal
+Si ricava il modello small signal a partire dall'averaged per il boost converter.
+Partendo dal [[#Modello affine e bilineare]]:
+$$
+\frac{d}{dt} \begin{bmatrix}
+\langle i_{L} \rangle \\ \langle v_{C} \rangle  
+\end{bmatrix} = \begin{bmatrix}
+0 & -\frac{1}{L} \\ \frac{1}{C} & -\frac{1}{RC}
+\end{bmatrix} 
+\begin{bmatrix}
+\langle \delta i_{L} \rangle \\ \langle \delta v_{C} \rangle  
+\end{bmatrix} +
+\begin{bmatrix}
+\frac{V_{s}}{L} \\ 0
+\end{bmatrix} + 
+\begin{bmatrix}
+0 & \frac{1}{L} \\ -\frac{1}{C} & 0
+\end{bmatrix}
+\begin{bmatrix}
+\langle i_{L} \rangle \\ \langle v_{C} \rangle  
+\end{bmatrix}
+$$
+si ricava la matrice $A_s = A+B_{\nu}\cdot D_{\nu}$ ovvero
+$$
+A_{s} = \begin{bmatrix}
+0 & -\frac{1}{L} \\ \frac{1}{C} & -\frac{1}{RC}
+\end{bmatrix} + 
+\begin{bmatrix}
+0 & \frac{1}{L} \\ -\frac{1}{C} & 0
+\end{bmatrix} D = 
+\begin{bmatrix}
+0 & -\frac{1}{L}(1-D) \\ \frac{1}{C}(1-D) & -\frac{1}{RC}
+\end{bmatrix}
+$$
+mentre per il calcolo della matrice $B_s$ sono necessari $\langle v_{C} \rangle = \frac{V_{s}}{1-D}$ e $\langle i_{L} \rangle=\frac{\left\langle  v_{C}  \right\rangle}{R(1-D)} = \frac{V_{s}}{R(1-D)^2}$ calcolati nel punto di equilibrio, dunque:
+$$
+B_{s} = \begin{bmatrix}
+0 & \frac{1}{L} \\ -\frac{1}{C} & 0
+\end{bmatrix}\cdot
+\begin{bmatrix}
+\frac{V_{s}}{R(1-D)^2} \\ \frac{V_{s}}{1-D}
+\end{bmatrix} =
+\begin{bmatrix}
+\frac{V_{s}}{L(1-D)} \\ -\frac{V_{s}}{RC(1-D)^{2}}
+\end{bmatrix}
+$$
+

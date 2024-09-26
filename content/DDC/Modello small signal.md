@@ -89,4 +89,19 @@ ma $\frac{d}{dt}\vec{X}_{0}=0$ per ipotesi di stazionarietà, dunque
 $$
 \left.\left. \frac{d}{dt}\left( \left\langle  \delta \vec{x}  \right\rangle  \right) = A_{s}\right|_{\vec{S}_{0}} \left\langle  \delta \vec{x}  \right\rangle + B_{s}\right|_{\vec{S}_{0}}   \delta \vec{d}  
 $$
-Il modello è lineare....
+Il modello è lineare, si è sostituita una varietà geometrica differenziabile con un iperpiano tangente al punto di equilibrio.
+
+## Linearizzazione del modello bilineare
+Se il modello Averaged è in [[Forma bilineare|forma bilineare]] è allora banale ricavare il modello small signal.
+$$
+\frac{d}{dt} \left\langle  \vec{x}  \right\rangle_{0} = A \left\langle  \vec{x}  \right\rangle_{0} +\vec{a}_{0}  + \sum_{\nu = 1}^{m} \left[ \vec{B}_{\nu} \left\langle  \vec{x}  \right\rangle_{0} + b_{\nu}  \right]d_{\nu}
+$$
+dunque le matrici $A_s$ e $B_s$:
+$$
+\begin{aligned}
+A_{s} &= \left. \frac{\partial f}{\partial \left\langle  \vec{x}  \right\rangle }\right|_{\text{eq.}}  = A + \sum_{\nu=1}^m B_{\nu}D_{\nu,\text{eq.}} \\
+B_{s} &= \left. \frac{\partial f}{\partial d }\right|_{\text{eq.}}  =\sum_{\nu=1}^n \left[B_{\nu}X_{\text{eq.}}+b_{\nu}\right]
+\end{aligned}
+$$
+dove $D_{\nu,\text{eq.}}$ e $X_{\text{eq.}}$ sono calcolate nel punto di equilibrio.
+Questo modello è stato calcolato per il [[Boost converter#Modello small signal|boost converter]]. 
