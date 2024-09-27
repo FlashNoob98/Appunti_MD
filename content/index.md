@@ -9,3 +9,5 @@ draft: false
 
 [[Metodologie di Progettazione degli Impianti Elettrici/Progettazione degli Impianti Elettrici|Metodologie di Progettazione degli Impianti Elettrici]]
 
+[[generazione fotovoltaica ed eolica|Generazione da fonte fotovoltaica ed eolica]]
+
