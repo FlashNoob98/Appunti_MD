@@ -24,3 +24,8 @@ content/img/*.lg
 content/img/*.idv
 content/img/*.pdf
 content/img/*.synctex*
+
+# Python and aider-chat
+.aider*
+.venv/*
+.env

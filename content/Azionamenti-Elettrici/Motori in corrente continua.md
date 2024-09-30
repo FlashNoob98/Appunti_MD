@@ -17,7 +17,7 @@ Se si alimenta il rotore mediante le spazzole quindi si avrà una forza elettrom
 La corrente incontra metà avvolgimenti "in un verso", gli altri in verso opposto.
 Durante il passaggio da un collettore all'altro, cambierà il verso della corrente nel conduttore, questo sarà dello stesso segno durante mezza rotazione, il passaggio da un semipiano all'altro e dunque il cambio del verso della corrente, si ha la commutazione.
 
-La lamella è leggermente più stretta della spazzola per questo motivo ci saranno sempre alcuni istanti in cui le spazzole tocchino due differenti lamelle, in questo momento l'avvolgimento è cortociruitato. Si assume che la commutazione sia lineare.
+La lamella è leggermente più stretta della spazzola per questo motivo ci saranno sempre alcuni istanti in cui le spazzole tocchino due differenti lamelle, in questo momento l'avvolgimento è cortocircuitato. Si assume che la commutazione sia lineare.
 
 Ad aumentare il numero di matasse, aumenta la precisione con la quale si può approssimare la caduta di forza magnetomotrice ad una funzione lineare, si ottiene una forma a triangolo, con il picco ortogonale all'asse polare, chiamato **asse interpolare**. È la posizione delle spazzole a determinare l'asse magnetico del rotore, dato che questo è simmetrico rispetto al suo asse.
 
