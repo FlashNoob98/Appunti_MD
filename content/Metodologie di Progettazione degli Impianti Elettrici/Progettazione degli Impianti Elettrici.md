@@ -14,4 +14,4 @@ Verranno analizzati dei casi studio reali, si cercherà di introdurre anche appl
 Materiale didattico: Conte o Fellin
 Guide blu arricchite con aspetti normativi approfonditi, in particolare per le cabine MT e BT
 Sicurezza elettrica (Carrescia)
-[[Stato del neutro]], resistenza di terra
+[[Stato del neutro]], [[resistenza di terra]] 

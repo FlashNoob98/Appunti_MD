@@ -9,3 +9,5 @@ Un professionista è libero di non seguire la normativa, non può però utilizza
 Discorso diverso riguarda invece gli standard, sono scelte commerciali che permettono la realizzazione di un numero limitato di motori di tipologia diversa, non hanno a che fare con le normative.
 Altre scelte importanti presenti nello standard sono la potenza nominale, l'altezza d'asse e la classe energetica, dal 2019 devono essere almeno IE5.
 Le macchine ad alto rendimento sono però più grandi e più voluminose.
+
+I motori elettrici possono essere in corrente alternata o in [[Motori in corrente continua|corrente continua]].

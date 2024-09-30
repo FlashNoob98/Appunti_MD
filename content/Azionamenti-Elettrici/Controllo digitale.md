@@ -1,4 +1,4 @@
-Il controllo digitale appartiene alla teoria secondo la quale si può controllare un sistema analogico mediante un dispositivo digitale, si può demandare la legge di controllo ad un calcolatore.
+Il controllo digitale appartiene alla teoria secondo la quale si può controllare un sistema analogico mediante un [[Schede a microcontrollore|dispositivo digitale]], si può demandare la legge di controllo ad un calcolatore.
 I segnali utilizzati sono digitali.
 I controlli digitali hanno vari vantaggi:
 - Flessibilità, la possibilità di fornire funzioni di controllo anche non lineari mediante righe di codice, senza dover riconfigurare un circuito

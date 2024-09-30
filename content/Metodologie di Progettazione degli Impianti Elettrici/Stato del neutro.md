@@ -1,4 +1,5 @@
 Fondamentale per la sicurezza e la [[Progettazione degli Impianti Elettrici|progettazione degli impianti elettrici]] è lo studio dello stato del neutro.
+Questo può essere **isolato**, con connessione **franca a terra** oppure mediante **impedenza**, in particolare mediante [[bobina di Petersen]].
 # Materializzazione del neutro
 Avviene mediante la realizzazione di tre impedenze uguali connesse alle rispettive fasi e tra loro, la terna di tensioni esercita sulle impedenze sarà pari a:
 $$

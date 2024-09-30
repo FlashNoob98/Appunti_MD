@@ -1,4 +1,4 @@
- Esistono varie tipologie di azionamenti, esistono quelli *meccanici*, *idraulici*, *pneumatici* ed *elettrici*, questi ultimi si fanno apprezzare per l'elevata flessibilità di impiego, la maggiore semplicità di controllo, gli elevati livelli di precisione e rapidità di controllo, la semplicità realizzativa, elevati rendimenti e bassi consumi senza carico, bassa rumorosità, conseguenza anche della grande diffusione dell'energia elettrica.
+Esistono varie tipologie di azionamenti, esistono quelli *meccanici*, *idraulici*, *pneumatici* ed [[Scelta dei motori elettrici|elettrici]], questi ultimi si fanno apprezzare per l'elevata flessibilità di impiego, la maggiore semplicità di controllo, gli elevati livelli di precisione e rapidità di controllo, la semplicità realizzativa, elevati rendimenti e bassi consumi senza carico, bassa rumorosità, conseguenza anche della grande diffusione dell'energia elettrica.
 
 Secondo la norma CEI 301-1 possiamo definire azionamento o PDS (Power Drive System) **un qualunque sistema che converta energia elettrica in energia meccanica mediante l’ausilio di apparecchiature elettroniche di supporto di potenza**.
 
@@ -24,3 +24,9 @@ Un tipo di azionamento prevede il controllo della *coppia*, è una grandezza che
 
 Successivamente si può effettuare un controllo "più esterno" che controlli, sempre in catena chiusa, la velocità, l'uscita del regolatore di velocità è proprio la coppia di riferimento da imporre al regolatore interno; quello descritto viene definito **controllo in cascata**.
 Analogamente si può realizzare un regolatore di posizione, esterno a quello di velocità.
+
+<center>
+
+![[controllo_cascata_motore.png]]
+
+</center>
