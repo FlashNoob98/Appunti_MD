@@ -33,3 +33,52 @@ $$
 dove $T_c$ è il tempo di campionamento.
 
 Se si campiona un segnale sinusoidale con passo $T_c$, si ricostruisce lo stesso segnale in ritardo di $\frac{T_c}{2}$. 
+
+# Sintesi del controllore digitale
+Si riconduce il controllore come un sistema lineare tempo invariante lineare, il suo modello differenziale può essere analizzato in forma algebrico mediante la *Z-transform* e in forma razionale fratta.
+Antitrasformando nel dominio del tempo, l'uscita all'istante $k$ è combinazione lineare degli ingressi e delle uscite precedenti $k-\nu$, il controllore memorizza un totale di $2\nu+1$ valori.
+
+Esistono due principali metodi per sintetizzare un regolatore digitale, la **sintesi diretta** in cui si discretizza il modello continuo $G(s)$ e lo si trasforma in un sistema equivalente a tempo discreto $\tilde{G}(z)$, successivamente si realizza nel dominio del tempo il regolatore discreto.
+In alternativa la **sintesi indiretta**, più semplice, si realizza prima il controllore nel tempo continuo per rispettare le caratteristiche, poi lo si discretizza.
+
+Si consideri ad esempio un regolatore integrale:
+$$
+\frac{d}{dt}y = u \Leftrightarrow \frac{Y(s)}{U(s)} = \frac{1}{s}
+$$
+Esistono vari metodi per discretizzare l'integrale, Eulero avanti o Eulero inidetro sono i più semplici, si approssima il valore in ogni periodo $T_s$ pari a quello assunto all'inizio o alla fine dell'intervallo discreto.
+In alternativa c'è il metodo dei trapezi, o *tustin*, ovvero integrazione trapezoidale, è un'approssimazione di ordine 1, si considera l'integrazione della secante tra i due punti all'estremità di ogni periodo.
+
+Trasformando le equazioni alle differenze dei tre metodi, si ottengono tre differenti funzioni di trasferimento:
+$$
+\begin{aligned}
+- \ &s\rightarrow  \frac{{z-1}}{T_{c}}\ (\text{FE}) \\
+- \ &s\rightarrow \frac{{z-1}}{zT_{c}}\ (\text{BE}) \\
+- \ &s\rightarrow \frac{2}{T_{c}}\frac{{z-1}}{z+1} (\text{TU})
+\end{aligned}
+$$
+Alcune discretizzazioni potrebbero però tagliare alcuni poli del sistema, si potrebbe avere, a causa di una mancata accuratezza di discretizzazione, uno *shifting* della frequenza massima misurata ad esempio.
+
+Fissato il tempo di campionamento $T_c$ è fissata la pulsazione di Nyquist.
+
+Si vuole modellare un controllore PI, ovvero $K_{P}+\frac{K_{I}}{s}=\frac{K_I}{s} \left( 1  + \frac{s}{\omega_{z}} \right)$ con $\omega_{z}=\frac{K_{I}}{K_{P}}$.
+Mantenendo elevata la distanza tra la pulsazione $\omega_{z}$ e quella di Nyquist si mantiene una buona approssimazione tra il modello discreto e quello continuo, al limite se $\omega_{\text{Nyquist}}\geq 50\omega_{z}$ allora i modelli quasi coincidono.
+
+Solitamente si usano sempre i metodi di Backward Euler e Tustin, poche volte il Forward Euler. 
+Si parla di *compressione* in frequenza, alle altre frequenze c'è una grande differenza tra la funzione di trasferimento del regolatore a tempo continuo e a tempo discreto.
+Ovvero la funzione di trasferimento a tempo discreto è traslata in avanti rispetto a quella a tempo continuo.
+Se si vuole avere l'errore nullo, tra i due modelli, in una certa frequenza (non si può mai avere in tutto lo spettro) si può utilizzare la trasformazione di Tustin modificata ed effettuare il *pre-warping*:
+$$
+s \to R\left(\frac{\tilde{\omega}}{\frac{2}{T_{c}}\tan\left( \frac{\tilde{\omega}T_{c}}{2} \right)} \frac{2}{T} \frac{e^j\tilde{\omega}T_{c-1}}{ej\omega T_{c}+1}\right) = R(j\tilde{\omega})
+$$
+Può essere richiesta nel caso in cui si cerchino prestazioni più elevate ad una certa frequenza.
+
+Se si vuole discretizzare l'intera catena SISO di controllo si hanno i seguenti tre step:
+- Campionamento dell'errore: $E(e^{j\omega T_{c}}) \simeq\frac{{1}}{T_{c}}E_{a}(j\omega)$ in banda base
+- Controllo digitale: $D(e^{j\omega T_{c}} )=\tilde{R}(e^{j\omega T_{c}})e^{-j\omega T_{c}}E(e^{j\omega T_{c}})$
+- PWM digitale: $V_{MO} = T_{c}e^{-j\omega \frac{T_{c}}{2}}D(e^{j\omega T_{c}})$
+Complessivamente:
+$$
+\frac{V_{MO}(j\omega)}{E_{a}(j\omega)} =\tilde{R}(e^{j\omega T_{c}})e^{-j \frac{3}{2}}\dots
+$$
+È sempre introdotto un ritardo nel sistema di controllo digitale, è fondamentale scegliere opportunamente il tempo di campionamento, evitare il fenomeno di frequency warping e inoltre scegliere la massima frequenza di switching dei componenti, minore della massima frequenza ammissibile del convertitore.
+Al massimo se la PWM è double update deve essere la frequenza del controllore pari al doppio della frequenza di switching dei componenti.
