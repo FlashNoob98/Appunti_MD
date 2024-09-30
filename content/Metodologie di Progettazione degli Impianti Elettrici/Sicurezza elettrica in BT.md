@@ -39,7 +39,13 @@ Si trasformano poi le curve di pericolosità in curve di sicurezza, tra le due �
 Gli effetti sull'uomo dovuti alla presenza di una corrente nel corpo umano possono essere la scossa e lo shock:
 - La scossa si identifica con la percezione della corrente nel corpo, non causa effetti permanenti
 - Lo shock ha degli effetti, eventualmente permanenti
+<center>
+
+![[curva_sicurezza_elettrica_BT_no_BG.png]]
+
+</center>
 Esiste una prima soglia pari a $0.5mA$ per la quale non c'è percezione della corrente, è chiamata appunto **soglia di  percezione**.
+
 Successivamente una regione in cui non ci sono effetti permanenti sul corpo umano ma la corrente inizia a sovrapporsi con la normale attività elettrica del sistema nervoso, sono presenti  andamenti decrescenti $t/A$ da 50 a 200$mA$, la curva limite è chiamata **curva di tetanizzazione**, indica il limite in cui inizia l'irrigidimento dei muscoli. Fin quando persiste la corrente non si riesce a controllare la reazione del corpo.
 
 La regione superiore è invece la curva di **fibrillazione**(ventricolare) oltre la quale la corrente interagisce con il muscolo cardiaco, si può avere **l'arresto respiratorio** fino ad arrivare all'**arresto cardiaco**, con il passare del tempo anche ustioni.
