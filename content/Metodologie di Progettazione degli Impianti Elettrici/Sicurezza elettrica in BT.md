@@ -1,8 +1,8 @@
-La sicurezza elettrica è fondamentale nella stesura di un progetto, il concetto stesso di sicurezza guida la progettazione di un impianto elettrico,soprattutto quando c'è l'interazione tra gli apparecchi elettrici e l'uomo, per questo motivo si pone particolare accento per la sicurezza degli impianti in BT.
+La sicurezza elettrica è fondamentale nella stesura di un progetto, il concetto stesso di sicurezza guida la progettazione di un impianto elettrico, soprattutto quando c'è l'interazione tra gli apparecchi elettrici e l'uomo, per questo motivo si pone particolare accento per la sicurezza degli impianti in BT.
 
 Il termine sicurezza proviene dal concetto di proteggere l'uomo dai malfunzionamenti dei componenti, essi dipendono dall'affidabilità dei componenti.
 
-L'introduzione della sicurezza è posta nell'articolo 32 della cotituzione italiana in cui si definisce l'italia come una Repubblica garante della sicurezza e dell'incolumità delle persone, a valle di quest'ultimo sono posti numerosi articoli che fanno riferimento alla sicurezza in ambito laboratiavo.
+L'introduzione della sicurezza è posta nell'articolo 32 della costituzione italiana in cui si definisce l'Italia come una Repubblica garante della sicurezza e dell'incolumità delle persone, a valle di quest'ultimo sono posti numerosi articoli che fanno riferimento alla sicurezza in ambito lavorativo.
 
 Si parla di sicurezza anche in termini di risarcimenti del danno, quindi sono presenti riferimenti al codice civile e penale.
 Va citato il **testo unico sulla sicurezza** ovvero decreto legislativo 88 che fa riferimento alla
@@ -12,18 +12,18 @@ Legge 136 del 1968 introduce all'articolo 1 la regola dell'arte, un impianto o u
 Il CEI è il normatore delle regole per definire la realizzazione di un impianto a regola d'arte, il CEI non definisce le leggi ma definisce lo stato dell'arte.
 Se un impianto è realizzato secondo le norme CEI può essere definito a regola d'arte e rispondente alle leggi.
 
-Non deve esiste re un limite al mglioramento tecnologico, un impianto non deve per forza rispettare le norme CEI a patto che si riesca a dimostrare di aver raggiunto un livello di sicurezza superiore, è legato al princiio di sviluppo tecnologioc, non si deve impedire la messa in atto di misure superioreia lle norme CEI.
+Non deve esistere un limite al miglioramento tecnologico, un impianto non deve per forza rispettare le norme CEI a patto che si riesca a dimostrare di aver raggiunto un livello di sicurezza superiore, è legato al principio di sviluppo tecnologico, non si deve impedire la messa in atto di misure superiore alle norme CEI.
 
 Il comitato elettrotecnico italiano nacque come ente normatore e comitato di enti che lavoravano nell'ambito elettrico come ENEL, per garantire la sicurezza.
 
 Con l'IMQ, Istituto Marchio di Qualità, fornisce la marchiatura di qualità agli apparecchi e agli impianti, si parla sempre di enti italiani.
 Il marchio IMQ garantisce l'approvazione del costruttore, l'approvazione del prototipo e il controllo della produzione.
 
-L'approvazione del costruttore implica che il costruttore abbia predisposto un  impianto di  produzione approvato dell'IMQ.
-L'aoprovazione del prototipo implica che l'IMQ abbia approvato un prototipo e ne garantisca le prestazioni in termmini disicurezza.
-Il controllo di produzione 'IMQ' prevede dei contollo prriodici sul processo di produzione del prodotto lungo tutta la catensa di montaggio.
+L'approvazione del costruttore implica che il costruttore abbia predisposto un impianto di  produzione approvato dell'IMQ.
+L'approvazione del prototipo implica che l'IMQ abbia approvato un prototipo e ne garantisca le prestazioni in termini di sicurezza.
+Il controllo di produzione 'IMQ' prevede dei controlli periodici sul processo di produzione del prodotto lungo tutta la catena di montaggio.
 
-In riferimento ai marchi di qualità, con la comunità Europea è nata l'esigenza di garantire il funzionamento di prodotti in tutat europa, il CENELEC, ente europeo è disposto a fornire le normative per abbattere le barriere commerciali e fornire le carartteristiche dei prodotti europei.
+In riferimento ai marchi di qualità, con la comunità Europea è nata l'esigenza di garantire il funzionamento di prodotti in tutta Europa, il CENELEC, ente europeo è disposto a fornire le normative per abbattere le barriere commerciali e fornire le caratteristiche dei prodotti europei.
 
 Direttiva 35 2014 riguarda le apparecchiature in Bassa Tensione ed è una delle più importanti perchè garantiscono la sicurezza degli utenti finali e del personale non esperto.
 
