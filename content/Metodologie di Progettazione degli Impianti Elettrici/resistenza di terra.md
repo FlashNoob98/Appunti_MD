@@ -47,7 +47,7 @@ Siano i dispersori numerati 1 e 2 di raggio $r_1$ ed $r_2$, la tensione $E$ tra 
 $$
 E = U_{1} - U_{2} 
 $$
-ovvero pari alla differenza di potenziale tra i due dispersori, si può sfruttare il PSE per calcolare il potenziale sui due dispersori, utilizzando la formula precedente:
+ovvero pari alla differenza di potenziale tra i due dispersori, si può sfruttare il PSE (Principio di sovrapposizione degli effetti) per calcolare il potenziale sui due dispersori, utilizzando la formula precedente:
 $$
 U(x_{1}) - U(x_{2}) = \frac{\rho I}{2\pi}\left( \frac{1}{x_{1}} - \frac{1}{x_{2}} \right)
 $$
@@ -69,3 +69,90 @@ $$
 E = \frac{\rho I}{2\pi r_{1}}+\frac{\rho I}{2\pi r_{2}} - \frac{\rho I}{\pi D}
 $$
 Il campo elettrico è legato ai campi generati dai semplici dispersori e diminuito di un termine inversamente proporzionale alla loro distanza $D$, a grandi distanze si può trascurare l'interferenza tra i dispersori.
+
+## Coppia di dispersori collegati in parallelo
+Si analizza il caso in cui una coppia di dispersori sia collegata in parallelo e posti a disperdere una certa corrente complessiva $I$.
+Ciascun dispersore è attraversato da una corrente $I_1$ e $I_2$, la tensione di terra $U_E$ è pari alla resistenza di terra per la corrente:
+$$
+U_{E} = \frac{\rho}{2\pi r_{1}} I_{1} + \frac{\rho}{2\pi(D-r_{1})}I_{2} = \frac{\rho}{2\pi r_{1}} I_{1} + \frac{\rho}{2\pi D}I_{2}
+$$
+La resistenza del secondo dispersore è riferita rispetto al riferimento fissato nel primo dispersore.
+Nei casi tipici $D\gg (r_{1},r_{2})$ dunque si può approssimare il secondo termine.
+
+Si vuole generalizzare per $n$ dispersori:
+$$
+U_{E} = R_{11}I_{1} + R_{12}I_{2}\dots
+$$
+Si calcola il potenziale dovuto alla corrente nel secondo dispersore:
+$$
+U_{E} = \frac{\rho}{2\pi(D-r_{2})}I_{1} + \frac{ \rho}{2\pi r_{2}}I_{2} =\frac{\rho}{2\pi D}I_{1} + \frac{ \rho}{2\pi r_{2}}I_{2}= R_{21}I_{1} + R_{22}I_{2}
+$$
+Uguagliando le due relazioni:
+$$
+\left\{
+\begin{aligned}
+U_{E} &= R_{11}I_{1} + R_{12}I_{2} \\ U_{E} &=R_{21}I_{1}+R_{22}I_{2}
+\end{aligned}
+\right.
+$$
+La resistenza totale di terra è pari al rapporto tra la tensione totale di terra $U_E$ e la corrente dispersa $I$.
+Si risolve il sistema con cramer:
+$$
+\left\{
+\begin{aligned}
+I_{1} &= \frac{U_{E}R_{22}-U_{E}R_{12}}{R_{11}R_{22}-R_{12}R_{21}} & =  U_{E}\frac{R_{22}-R_{12}}{R_{11}R_{22}-R_{12}R_{21}} \\
+I_{2} &= \frac{U_{E}R_{11}-U_{E}R_{21}}{R_{11}R_{22}-R_{12}R_{21}}& =  U_{E}\frac{R_{11}-R_{21}}{R_{11}R_{22}-R_{12}R_{21}}
+\end{aligned}
+\right.
+$$
+Il denominatore è identico, è semplice sommare le correnti e raccogliere i termini:
+$$
+I = U_{E} \frac{R_{22}+R_{11}-R_{12}-R_{21}}{R_{11}R_{22}-R_{12}R_{21}}
+$$
+Immediatamente, invertendo questo rapporto si ottiene la resistenza di terra $R_T=\frac{U_{E}}{I}$.
+
+All'aumentare di $D$ le resistenze "miste" $R_{12}$ e $R_{21}$ tendono ad essere piccole rispetto a $R_{11}$ e $R_{22}$, dunque la resistenza di terra diventa il parallelo delle resistenze mutue dei dispersori:
+$$
+R_{T} \simeq \frac{R_{11}R_{22}}{R_{11}+R_{22}}
+$$
+
+## Caso generico con $n$ dispersori
+Posti $n$ dispersori in parallelo si hanno le seguenti espressioni:
+$$
+U_{E} = R_{11}I_{1}+R_{12}I_{2} + \dots +R_{1n}I_{n}
+$$
+in forma compatta con la forma matriciale:
+$$
+\begin{bmatrix}
+U_{E} \\ \vdots\\ U_{E}
+\end{bmatrix} = \begin{bmatrix}
+ \text{} \\ R \\ \text{}
+\end{bmatrix}\cdot
+\begin{bmatrix}
+I_{1} \\ \vdots \\ I_{n}
+\end{bmatrix}\Rightarrow
+\begin{bmatrix}
+I_{1} \\ \vdots \\ I_{n}
+\end{bmatrix} =  \begin{bmatrix}
+ \text{} \\ G \\ \text{}
+\end{bmatrix} \cdot \begin{bmatrix}
+U_{E} \\ \vdots\\ U_{E}
+\end{bmatrix}
+$$
+dove $G=R^{-1}$ la matrice delle conduttanze.
+La corrente totale sarà la somma delle correnti $I_j$ dei singoli dispersori, dunque:
+$$
+I = \sum_{j=1}^n U_{E}\sum_{k=1}^n G_{j,k} = U_{E}
+\sum_{j=1}^n \sum_{k=1}^n G_{j,k}
+$$
+dunque la resistenza di terra:
+$$
+R_{E} = \frac{U_{E}}{I} = \frac{1}{\sum_{j=1}^n \sum_{k=1}^n G_{j,k}}
+$$
+In questo caso è più difficile sostenere l'ipotesi di $D$ grande, dunque sono presenti anche le conduttanze mutue, non è detto che siano trascurabili e si possa calcolare la resistenza totale con la formula del parallelo.
+
+La generica resistenza parziale si può calcolare con:
+$$
+R_{i,j} = \frac{\rho}{2\pi(D_{i,j}-r_{j})}\ ;\ R_{i,i}=\frac{\rho}{2\pi r_{i}}
+$$
+.
