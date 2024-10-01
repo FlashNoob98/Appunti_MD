@@ -49,6 +49,6 @@ Se la macchina è compensata, l'induttanza di armatura è molto bassa, dunque la
 
 # Classificazione dei motori in corrente continua
 Vengono classificate dal collegamento dell'avvolgimento di eccitazione rispetto a quello di armatura, quindi in *serie*, in *parallelo*, o *compound* per le macchine ad **eccitazione dipendente**, collegate ad un'unica rete. 
-L'eccitazione può essere **indipendente** se questa è connessa ad una rete differente oppure è realizzata mediante magneti permanenti.
+L'eccitazione può essere [[motore ad eccitazione indipendente|indipendente]] se questa è connessa ad una rete differente oppure è realizzata mediante magneti permanenti.
 
 La macchina ad eccitazione indipendente ha preso piede negli ultimi anni con lo sviluppo dei convertitori e la facilità di realizzare alimentazioni differenti, prima più difficili da realizzare.

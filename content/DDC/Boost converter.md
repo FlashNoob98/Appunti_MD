@@ -240,7 +240,7 @@ Quella ottenuta è l'espressione di un ellisse dunque la traiettoria del sistema
 
 # Modello small signal
 Si ricava il modello small signal a partire dall'averaged per il boost converter.
-Partendo dal [[#Modello affine e bilineare]]:
+Partendo dal [[#Modello affine e bilineare|modello affine e bilineare]]:
 $$
 \frac{d}{dt} \begin{bmatrix}
 \langle i_{L} \rangle \\ \langle v_{C} \rangle  
@@ -285,3 +285,21 @@ B_{s} = \begin{bmatrix}
 \end{bmatrix}
 $$
 
+Si ipotizza di sostituire il valor medio delle grandezze con un valore costante ed una variazione $\delta$ ottenendo
+$$
+\begin{aligned}
+\frac{d}{dt} \langle i_{L} \rangle &= \frac{d}{dt}(I_{L}+ \langle \delta i_{L} \rangle ) = \frac{V_{s}}{L} - \frac{\left\langle  V_{c} + \delta v_{C}  \right\rangle}{L} [1-(D+\delta d)] \\
+\frac{d}{dt}  \langle v_{C} \rangle &= \frac{d}{dt}(V_{c}+\langle \delta v_{C} \rangle ) = \frac{I_{L}+\langle \delta i_{L} \rangle }{C} [1-(D+\delta d)] - \frac{V_{C}+\langle \delta v_{C} \rangle }{RC}
+\end{aligned}
+$$
+
+ricordando che a regime i valori medi sono legati dalla seguente relazione: $V_{s}=V_{c}(1-D)$ si semplifica la prima relazione:
+$$
+\frac{d}{dt}(\langle \delta i_{L} \rangle +I_{L} ) = \cancel{\frac{V_{S}}{L} - \frac{V_{C}}{L}[1-D]} + \frac{V_{C}\cdot\delta d}{L} - \frac{\delta v_{C}}{L}(1-D) + \frac{{\langle\delta v_{C}\rangle\langle \delta d \rangle}}{L}
+$$
+L'ultimo termine è trascurabile se le variazioni sono piccole, si ottiene un termine del secondo ordine.
+Analogamente per la tensione:
+$$
+\frac{d}{dt}(V_{C}+\langle \delta v_{C} \rangle ) = \frac{I_{L}+\langle \delta i_{L} \rangle}{C} [1-(D+\delta d)] - \frac{V_{C}+\left\langle\delta v_{C}\right\rangle}{RC}
+$$
+...
