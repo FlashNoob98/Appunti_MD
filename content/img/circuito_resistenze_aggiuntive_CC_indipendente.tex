@@ -1,14 +1,19 @@
 \documentclass[tikz]{standalone}
-\usepackage{circuitikz}
+\usepackage[american voltages]{circuitikz}
+
+
+
+
 \begin{document}
 
 
 \begin{tikzpicture}[scale=1.5, transform shape]
-  \draw (0,0) to[short, o-] (0,1) to[Vsource, l_=U] (0,2) to[R, l_=R1] (1,2) to[R, l_=R2] (2,2) to[R, l_=R3] (3,2) to[R, l_=R4] (4,2) to[short,-*] (4,1) to[motor, l_=M] (4,0) to[short,-*] (0,0);
-  \draw (1,2) to[short,-*] (1,1) to[spst, l_=S1] (1,0);
-  \draw (2,2) to[short,-*] (2,1) to[spst, l_=S2] (2,0);
-  \draw (3,2) to[short,-*] (3,1) to[spst, l_=S3] (3,0);
-  \draw (4,2) to[short,-*] (4,1) to[spst, l_=S4] (4,0);
+  \draw (-0.4,-1) to[open, v^<={$V_a$}, *-*] (-0.4,2)--(0,2) to[R, l_=R1] (2,2) to[R, l_=R2] (4,2) to[R, l_=R3] (6,2) to[R, l_=R4] (8,2) to[short,-*] (8,1) --(8,0.5) to node[elmech]{$M$} (8,-0.5) -- ++(0,-0.5) to[short] (-0.4,-1);
+  
+  \draw (0.2,2) to[short,-] (0.2,1)  to[spst, l_=S1]  ++(1.8,0)   -|(2,2);
+  \draw (2,1)  to[spst, l_=S2,*-] ++(2,0) -| (4,2);
+  \draw (4,1) to[spst, l_=S3,*-] ++(2,0) -| (6,2);
+  \draw (6,1) to[spst, l_=S4,*-] ++(2,0) -| (8,2);
 \end{tikzpicture}
 
 
