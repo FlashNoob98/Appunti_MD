@@ -187,6 +187,11 @@ Variando la tensione invece si ha la variazione del punto di intersezione con l'
 
 In questo caso va aumentato l'angolo di innesco di un convertitore, può essere eseguita quasi con continuità (alla frequenza di switching dei convertitori), si possono eseguire variazioni talmente piccole da "nascondere" in pratica le oscillazioni della coppia.
 
+<center>
+
+![[coppia_velocita_avviamento_CC_indipendente_variazione_tensione.svg]]
+</center>
+
 Non ha senso variare la tensione di eccitazione per l'avviamento in quanto si avrebbe una corrente più bassa, quindi coppia inferiore.
 
 # Regolazione di velocità
@@ -195,4 +200,5 @@ Si vuole spostare il punto di lavoro, si può intervenire su $V_a$, sul flusso $
 Si inserisce sempre una resistenza variabile a monte del circuito di armatura, inserendo la resistenza aggiuntiva, analogamente al caso dell'avviamento si ha una nuova caratteristica a pendenza inferiore, la coppia motrice è inferiore alla coppia resistente e la macchina rallenta, non è detto che segua la curva caratteristica, non è una traiettoria ma un insieme di punti di equilibrio.
 ## Regolazione con variazione di tensione
 Si varia la tensione di armatura con un valore inferiore a quello nominale, $V_a$ minore implica lo spostamento della curva verso sinistra, il transitorio è simile a quello della regolazione reostatica, la macchina si porta in un nuovo punto di equilibrio.
+
 In questo caso si ha un assorbimento di potenza inferiore rispetto all'altro metodo di regolazione. Il metodo non è dissipativo rispetto al precedente.
