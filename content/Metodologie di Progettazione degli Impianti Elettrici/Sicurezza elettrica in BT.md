@@ -112,3 +112,5 @@ Si vuole infine costruire la curva di sicurezza $t/V$, sulla soglia di $50V$ si 
 
 </center>
 
+Le curve di pericolosità e sicurezza sono considerazioni fatte in BT perché gli utenti non sono esperti.
+In caso di ambienti speciali in MT, accessibili solo a personale autorizzato e qualificato, si possono utilizzare le curve più a destra e si considera il valore del 50% per i valori di resistenza, il tempo limite non è più 5 secondi ma 10 e la tensione asintotica riportata nella curva di sicurezza diventa $80V$ e non più $50$.
