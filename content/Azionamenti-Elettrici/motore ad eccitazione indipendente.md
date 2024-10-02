@@ -202,3 +202,110 @@ Si inserisce sempre una resistenza variabile a monte del circuito di armatura, i
 Si varia la tensione di armatura con un valore inferiore a quello nominale, $V_a$ minore implica lo spostamento della curva verso sinistra, il transitorio è simile a quello della regolazione reostatica, la macchina si porta in un nuovo punto di equilibrio.
 
 In questo caso si ha un assorbimento di potenza inferiore rispetto all'altro metodo di regolazione. Il metodo non è dissipativo rispetto al precedente.
+
+Con entrambi i metodi si può coprire la parte sinistra del piano rispetto alla velocità di sincronismo, si sottintenderà il metodo con variazione di tensione per evitare le perdite dissipative sul reostato.
+
+## Regolazione con variazione di flusso
+Si può agire sul flusso di eccitazione, proporzionale alla corrente:
+$$
+\Phi = \Phi_{e} = L_{e}I_{e} = \frac{L_{e}V_{e}}{R_{e}} 
+$$
+dunque diminuendo la tensione di eccitazione si riduce la corrente e quindi il flusso di eccitazione, a parità di coppia però si ha la minore coppia possibile se si lavora a flusso nominale, lo si può al massimo diminuire e non aumentare, *deflussaggio* in inglese *flux reduction(?)*.
+Si ha una variazione sia del coefficiente angolare che del punto di intersezione della caratteristica.
+Sicuramente il punto di intersezione aumenta, dunque si sposta verso destra e diminuisce il coefficiente angolare.
+Si coprono in questo modo punti del piano a velocità maggiori rispetto a quella di sincronismo.
+
+Il circuito di eccitazione ha una potenza di pochi punti percentuali la nominale, è più semplice variare la tensione in un circuito di bassa potenza, sembrerebbe più conveniente variare il flusso. Per una fissata coppia però, se il flusso diminuisce troppo deve aumentare la corrente, che non può superare a regime la nominale.
+
+Nel transitorio la variazione della tensione di eccitazione ha una costante di tempo più elevata rispetto ai metodi precedenti, nell'ordine delle frazioni del secondo. La tensione di armatura ha una variazione negli ordini dei millisecondi.
+È comunque l'unico metodo possibile per superare la velocità di sincronismo.
+
+Riassumendo **per velocità inferiori alla velocità di sincronismo si interviene sulla tensione di armatura, per velocità maggiori della velocità di sincronismo si riduce il flusso, mantenendo la tensione di armatura nominale**.
+
+Riducendo il flusso, a corrente limitata, si riduce la coppia massima, tutti i punti compresi nella regione limitata dalla coppia nominale e dalla caratteristica verticale nominale (1).
+In questa regione il flusso può essere mantenuto pari al flusso nominale.
+
+Nella regione con velocità superiori al sincronismo è necessario ridurre il flusso, si mantiene la tensione pari alla nominale e la corrente pari alla nominale per tracciare la curva limite a destra, in realtà se la macchina è auto-raffreddata, la corrente nominale dipende anche dalla velocità.
+Dunque anche la potenza elettrica è pari alla nominale, a meno delle perdite (joule+ferro+meccaniche) coincide tipicamente con la potenza meccanica.
+Le perdite nel ferro e meccaniche possono comunque essere solitamente trascurate:
+$$
+P_{\text{mecc}} = P_{\text{el},n}-R_{a}I_{a,n}^2
+$$
+Ma la potenza meccanica è anche pari a $M\cdot \omega$ dunque si traccia un ramo di iperbole, la velocità massima è pari a 2 volte la velocità nominale.
+
+Si chiama **dominio di regolazione** in regime continuativo la porzione di piano compresa nelle aree (1) e (2).
+
+Aumentando la corrente limite si potrebbe avere un dominio traslato verso l'alto che delimiti una regione di sovraccarico, potrebbe essere utile però durante l'accelerazione iniziale della macchina, avere una coppia superiore alla nominale.
+
+Questa corrente attraversa però il **[[Dinamica dei convertitori elettrici|convertitore]]**, dunque il fattore pari a circa 2 volte la corrente nominale, potrebbe essere molto più alto sull'asincrono ma ciò non viene fatto a causa del limite del convertitore, non è facilmente sovraccaricabile, i dispositivi a semiconduttore tendono a rompersi in seguito a sovracorrenti..
+Con l'aggiunta del convertitore dunque si alimenta con un range molto ampio il motore.
+
+L'intervento sul flusso è dissipativo? A pari coppia e flusso, la corrente deve aumentare.
+
+# Frenatura elettrica
+Per frenare un moto è necessario sviluppare una forza o una coppia che si opponga al verso del moto o della rotazione.
+Se questa forza è sviluppata elettricamente, si parla di frenatura elettrica.
+
+Il segno di $M_e$ dipende sia dal flusso che dalla corrente di armatura ma la costante di tempo del flusso, come già anticipato è maggiore, dunque si preferisce invertire il verso della corrente di armatura, ancora una volta si sfrutta il convertitore.
+Dall'equazione di equilibrio del circuito di armatura si ricava:
+$$
+I_{a} = \frac{V_{a}-E}{R_{a}} \Rightarrow V_{a}<E
+$$
+la tensione indotta $E$ varia lentamente, è funzione della velocità del rotore, inoltre non avrebbe senso aumentare la velocità per effettuare una frenatura!
+## Frenatura a recupero
+Dunque si agisce sulla tensione di armatura, dunque
+$$
+V_{a} < E \Rightarrow k\Phi \omega_{s} < k\Phi \omega_{r} \Rightarrow \omega_{s}<\omega_{r}
+$$
+Si supponga inizialmente di essere sulla caratteristica nominale e avere una coppia resistente costante con la velocità, si trova il punto di lavoro della macchina.
+Si mantiene la tensione di eccitazione costante e si riduce quella di armatura, intervenendo sull'angolo di innesco del convertitore, avviene in tempi molto brevi, inferiori alla caratteristica dinamica meccanica della macchina, che mantiene la stessa velocità precedente, si raggiunge un punto $P'$ con ordinata negativa (coppia frenante) $M_F$, la coppia sarà inferiore alla resistente, riportando la macchina in una curva a coppia negativa, ho rallentato la macchina.
+
+Tra i punti $P'$ e $P''$ la corrente è negativa, la tensione resta positiva, dunque fornisce energia alla rete, la potenza meccanica sarà anch'essa negativa.
+Viene per questo motivo chiamata frenatura a recupero di energia.
+
+Se si annulla la tensione, ho comunque una frenatura ma non reimmetto energia in rete, non ho recupero.
+Devo usare un convertitore a doppia polarità di tensione, per arrestare il motore nell'ultimo tratto, devo fornire energia alla rete.
+
+## Frenatura reostatica
+La frenatura è tanto più rapida quanto maggiore è la coppia frenante, ma la corrente è maggiore, si hanno perdite Joule maggiori.
+
+La corrente però durante l'avviamento, se venisse fatto a flusso costante, sarebbe attraversata da una corrente troppo elevata; si inserisce in questo caso una resistenza di frenatura.
+$$
+I_{a}=\frac{E=k\Phi \Omega_{r}}{R_{a}+R_{F}}
+$$
+Per mantenere elevata la coppia frenante, si può diminuire progressivamente la resistenza inserita, mantenendo la coppia frenante elevata. Si può eseguire questa operazione anche con una serie di resistenze da bypassare.
+
+## Frenatura in controcorrente (tensione invertita)
+È possibile effettuare una frenatura invertendo il verso della tensione di armatura:
+$$
+I_{a} = - \frac{{V_{a}+E}}{R_{a}}
+$$
+La corrente sarebbe eccessivamente più grande, per questo motivo anche con questo metodo devo inserire una resistenza durante la frenatura.
+
+Muovendomi lungo la caratteristica frenante avrei successivamente un funzionamento da motore in verso opposto, raggiungendo un nuovo punto di equilibrio con velocità inversa, va dunque disalimentato il motore quando si raggiunge la velocità nulla. In questo caso non è necessario inserire una resistenza variabile. Anche in questo caso la frenatura è dissipativa.
+
+## Calcolo dell'energia dissipata
+Si vuole calcolare l'energia dissipata durante i processi di avviamento e/o frenatura:
+$$
+W_{e} = \int_{0}^{t_{avv}} R_{a}I_{a}^2dt = \int_{0}^{t_{avv}} R_{a}I_{a}I_{a}dt = \int_{0}^{t_{avv}} (V_{a}-E)\frac{M_{e}}{k \Phi} dt
+$$
+utilizzando l'equazione di d'Alembert si sostituisce la coppia con la variazione di velocità, cambiando la variabile di integrazione:
+$$
+W_{e} = \int_{0}^{\omega_{s}} \left( \frac{V_a}{k\Phi} -\frac{k\Phi\omega_{r}}{k\Phi} \right) Jd\omega_{r} =
+J\int_{0}^{\omega_{s}} (\omega_{s}-\omega_{r})d\omega_{r} = J\omega_{s}^2 - \frac{J}{2}\omega_{s}^2 = \frac{1}{2}J\omega_{s}^2
+$$
+Si è supposto di avviare la macchina a vuoto, partendo da velocità nulla fino alla velocità di sincronismo.
+
+La macchina ha dissipato la stessa energia cinetica che conteneva durante il moto, ovvero si ha un rendimento di avviamento del 50%, dell'energia totale fornita dalla rete, metà è necessaria all'avviamento, metà viene immagazzinata dal rotore.
+
+Si è assunto nel calcolo la tensione $V_a$ costante, come per l'avviamento reostatico, a prescindere dal numero e dal tipo di resistenze utilizzate.
+
+Durante l'avviamento a tensione variabile, si suppone di mantenere la corrente costante, non posso usare le tensioni nell'integrale perché non saprei integrarle, dunque:
+$$
+W_{e} = \int_{0}^{t_{avv}} R_{a}I_{a,lim} \frac{M_{e}}{k\Phi} dt = \frac{R_{a}I_{a,lim}J}{k\Phi} \int_{0}^{\omega_{s}}d\omega_{r} = \frac{R_{a}I_{a,lim}J}{k\Phi} \omega_{s}
+$$
+Ma la corrente $I_{a,lim} = \alpha I_{a,n}$ dunque:
+$$
+W_{e} = J\alpha I_{a,n} \frac{R_{a}V_{a,n}\omega_{s}}{k\Phi V_{a,n}} = J\alpha \beta \omega_{s}^2 = \frac{1}{2}j\omega_{s}^22\alpha \beta
+$$
+avendo posto $R_{a}I_{a,n} = \beta V_{a,n}$ si è ridotta l'energia dissipata al 20%, dato che $2\alpha \beta\ll{1}$ in certe condizioni (?).
