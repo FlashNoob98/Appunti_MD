@@ -302,4 +302,13 @@ Analogamente per la tensione:
 $$
 \frac{d}{dt}(V_{C}+\langle \delta v_{C} \rangle ) = \frac{I_{L}+\langle \delta i_{L} \rangle}{C} [1-(D+\delta d)] - \frac{V_{C}+\left\langle\delta v_{C}\right\rangle}{RC}
 $$
-...
+Il modello è stato però calcolato in un punto di regime, dunque si trascurano i valori costanti e si valutano le medie delle variazioni, in sintesi il modello diventa:
+$$
+\left\{
+\begin{aligned}
+\frac{d}{dt}\langle \delta i_{L} \rangle  & =   \frac{V_{s}}{(1-D)}\cdot\frac{\delta d}{L} - \frac{\delta v_{C}}{L}(1-D) \\
+\frac{d}{dt}\langle \delta v_{C} \rangle  &=  \frac{\langle \delta i_{L} \rangle }{C}(1-D)
+- \frac{\langle \delta v_{C} \rangle }{RC}
+\end{aligned}
+\right.
+$$
