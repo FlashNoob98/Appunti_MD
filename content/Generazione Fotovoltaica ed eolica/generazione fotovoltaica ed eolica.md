@@ -109,3 +109,28 @@ Hanno preso piede a largo delle coste della Danimarca a causa dei venti costanti
 
 Il soft starter serve all'avviamento della macchina elettrica e portarla alla velocità di sincronismo, viene poi bypassato con uno switch.
 Il power factor compensator, come dice il nome, compensa la potenza reattiva assorbita dalla rete per magnetizzare lo statore.
+
+La macchina asincrona può funzionare su una *rete prevalente* dove tensione e frequenza sono fissate, non funzionerebbe su una rete passiva, a meno di utilizzare un sistema di condensatori a valle, non ci sarebbe un assorbimento di potenza reattiva altrimenti. Non è una soluzione utilizzabile in soluzioni stand-alone.
+Il limite di questa macchina è che ha una caratteristica molto ripida, mentre la caratteristica della turbina è a campana per diversi valori di velocità del vento, la velocità della macchina può variare poco e di conseguenza quella della turbina, non è detto che riesca a stare vicino al punto di massima potenza della turbina.
+Potrei solo pensare di utilizzare un sistema di riduzione variabile ma perderei la caratteristica di affidabilità e minima manutenzione richiesta.
+
+Il soft-starter è necessario all'avviamento, inizialmente la turbina è avviata dalla rete mediante il funzionamento da motore della macchina asincrona, quando la coppia fornita dalla turbina è sufficientemente elevata da aumentare la velocità oltre il sincronismo, il soft starer viene disinserito.
+
+
+## Sistema a velocità semi-variabile
+Si usa ancora una macchina asincrona ma il rotore non è a gabbia ma avvolto, utilizzando degli anelli disposti sul rotore, è possibile inserire delle resistenze variabili, è un sistema dissipativo. Si può variare la caratteristica del motore intorno la velocità di scorrimento, si ha una variazione maggiore della velocità, circa il 10% ma ha una caratteristica dissipativa.
+Il pacco di condensatori di filtro può essere disposto in prossimità della macchina elettrica o alla base del pilone, vicino l'attacco alla rete.
+
+## Sistema a velocità completamente variabile
+Può essere composto da 3 principali soluzioni, macchina sincrona a gabbia, a magneti permanenti e a rotore avvolto.
+Sono sempre connesse alla rete mediante almeno due convertitori: un raddrizzatore e un inverter.
+Avere due convertitori indipendenti permette di controllare indipendentemente la potenza che fornisce la turbina e quella da fornire alla rete.
+L'inverter deve garantire un certo valore di fattore di potenza, inoltre devo garantire la stabilità della tensione dello stadio in continua, se questo resta costante allora tutta la potenza prodotta dalla turbina viene convertita in potenza elettrica.
+
+Variando la frequenza della macchina elettrica si può variare la velocità della macchina e di conseguenza sfruttare tutto il range di velocità della turbina.
+
+
+## Sistema a doppia alimentazione
+Unisce le soluzioni del sistema a resistenze rotoriche e di quello con il convertitore. Gli avvolgimenti di statore sono alimentati dalla rete, l'avvolgimento di rotore è invece connesso ad un convertitore a tensione e frequenza variabile, ma legata allo scorrimento.
+
+Il limite della variazione di velocità e di circa il 30% della velocità di sincronismo, il rotore assorbe una potenza pari al 30% della potenza apparente, in questo modo si riduce il costo di installazione del convertitore che sarà più piccolo.
