@@ -134,3 +134,22 @@ Variando la frequenza della macchina elettrica si può variare la velocità dell
 Unisce le soluzioni del sistema a resistenze rotoriche e di quello con il convertitore. Gli avvolgimenti di statore sono alimentati dalla rete, l'avvolgimento di rotore è invece connesso ad un convertitore a tensione e frequenza variabile, ma legata allo scorrimento.
 
 Il limite della variazione di velocità e di circa il 30% della velocità di sincronismo, il rotore assorbe una potenza pari al 30% della potenza apparente, in questo modo si riduce il costo di installazione del convertitore che sarà più piccolo.
+
+# Modello matematico
+Vedi il modello matematico dell'asincrono sulle slide 1
+Convenzione da motore scritto usando come variabili di stato il flusso di rotore e statore.
+
+Nel caso di un generatore completamente variabile, il controllo è indipendente sui singoli convertitori, entrambi attraversati dall'intera potenza attiva, ho un range di variabilità della velocità completo.
+Su entrambi i convertitori si esegue una [[space vector modulation]].
+Il primo convertitore è un 2L-VSR, solitamente si usano gli IGBT, sono componente completamente controllabili, a valle è posto un inverter con la stessa struttura e gli stessi componenti.
+
+Il controllo regola la tensione da fornire alla macchina, in funzione della coppia fornita dalla turbina, cercando di mantenere la velocità ottima.
+
+Devo garantire la tensione costante sul condensatore del DC-Link, altrimenti una eventuale variazione sarebbe a scapito della potenza fornita dalla macchina.
+
+È fondamentale garantire un power quality in uscita dall'inverter, in particolare bisogna ridurre al minimo le armoniche di corrente, va limitato il THD di corrente per non distorcere la tensione a causa dell'impedenza di rete.
+
+Il DC-Link deve essere posto ad una tensione pari a $\frac{3}{2}$ il valore massimo di rete, se si usa una PWM, per evitare il rischio di sovra modulazione, la tensione di prima armonica deve essere proporzionale, linearmente, con la tensione in continua, mediante un coefficiente $M$ di modulazione.
+Se si raggiunge un indice di modulazione maggiore di 1, il legame non è più lineare, si va  verso "soluzioni a onda quadra", aumenta l'ampiezza della prima armonica ma aumentano le armoniche più alte, riducendo la power quality.
+
+
