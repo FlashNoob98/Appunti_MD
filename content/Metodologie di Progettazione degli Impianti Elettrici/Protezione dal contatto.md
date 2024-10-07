@@ -61,10 +61,50 @@ Per la normativa, il costruttore dell'interruttore differenziale deve fornire i 
 
 ### Interruttori differenziali in parallelo
 Si ipotizzi di avere due interruttori differenziali con eventualmente un valore di interruzione differente, va calcolata la $R_E$ in base al valore del differenziale più alto.
+$$
+R_{E} \leq \frac{U_{L}}{I_{dn}}
+$$
+L'interruttore differenziale con la corrente più grande garantisce la massima resistenza di terra, se si rieseguisse il calcolo con una corrente inferiore si otterrebbe una resistenza più alta.
 
 ### Interruttore differenziale con più carichi
 Questa situazione può essere pericolosa nel caso in cui ci sia un primo guasto del neutro, un guasto della fase in un secondo momento si richiuderebbe nel neutro guasto, senza richiudersi in cabina, non verrebbe rilevato dall'interruttore differenziale.
 Per questo motivo è fondamentale utilizzare un unico impianto di terra, in caso di doppio guasto si avrebbe una corrente di corto circuito.
 
 ### Interruttori differenziali a cascata
-Si ha un interruttore differenziale principale, a cui sono collegati più interruttori differenti, ognuno alla propria linea.
+Si ha un interruttore differenziale principale, a cui sono collegati più interruttori differenti, ognuno alla propria linea, si sceglie questa soluzione quando l'impianto è molto vasto oppure un impianto molto vecchio può avere correnti di dispersione troppo elevate che sollecitino l'interruttore unico, non garantendo la continuità del servizio.
+Possono essere ad esempio interruttori trifase o monofase, tutta la parte di impianto dall'interruttore generale ai singoli differenziali non sarebbe protetta, si deve garantire che non vi siano masse tra queste due parti, oppure garantire un doppio isolamento.
+Se ciò non è possibile va necessariamente posto un differenziale a monte, producendo appunto il sistema di interruttori differenziali in serie, va risolto però il problema della selettività.
+
+Ad un interruttore differenziale sono legati dei valori di corrente differenziale e il tempo di massimo intervento associato a quella corrente:
+$$
+\begin{aligned}
+I_{dn}\ \quad &  2I_{dn} & 5I_{dn} \\
+0.3s\ \quad & 0.15s & 0.04s
+\end{aligned}
+$$
+Il valore del tempo massimo di intervento non è sufficiente a garantire la selettività, va osservata una fascia di tempo che indichi un minimo (curva di non intervento, detta anche tempo di tempo massimo di non intervento) ed un massimo. Entrambe le curve devono essere al di sopra della curva di massimo intervento del differenziale a valle, che deve intervenire prima.
+
+## Interruttori differenziali selettivi
+Detti anche interruttori di tipo $S$ sono più lenti dei precedenti, hanno i seguenti tempi minimi e massimi di intervento:
+$$
+\begin{aligned}
+I_{dn}\ \quad &  2I_{dn} & 5I_{dn} \\
+0.5s\ \quad & 0.2s & 0.15s \\
+0.13s\ \quad & 0.06 & 0.05
+\end{aligned}
+$$
+La curva di non intervento del selettivo non deve essere al di sotto della curva di massimo intervento dell'interruttore a valle.
+(rivedi sulle norme)
+
+
+## Masse estranee
+Si ha un carico monofase connesso al proprio impianto di terra, rappresentata da una resistenza $R_E$. Si supponga ci sia una massa estranea come ad esempio una tubatura, collegata al terreno; si supponga il contatto contemporaneo tra la massa estranea e la massa dell'apparecchio connessa all'impianto di terra, mediante una resistenza del corpo $R_B$.
+In un impianto TT, in condizioni ordinarie va garantita una tensione limite $U_L$ di $50V$. 
+La massa estranea, connessa a terra presenta una propria resistenza di terra, aggiuntiva, le curve di pericolosità erano state calcolate usando una resistenza verso terra di $1000\Omega$ in condizioni ordinarie e $200\Omega$ in condizioni particolari. Se la resistenza verso terra della massa estranea è superiore a questi valori, va allora connessa all'impianto di terra mediante un conduttore equipotenziale principale.
+
+Inoltre si potrebbe avere una interruzione della continuità della massa estranea, generando una ulteriore resistenza di terra equivalente, di valore diverso, per questo motivo per ogni *radice* della massa estranea va garantito il collegamento all'impianto di terra, altrimenti introdurrebbero un potenziale differente dal potenziale di terra.
+
+## Impianto industriale con schermo
+In caso di impianto industriale che presenti conduttori in guaina o sbarra, con un isolamento principale ed una guaina esterna, schermante, questa guaina viene utilizzata come conduttore di protezione e connessa a terra.
+L'interruttore differenziale è composto da un dispositivo toroidale che circondi tutti i cavi.
+Si separa il conduttore di protezione dal cavo e lo si fa circolare due volte attraverso il toroide, in modo da avere un flusso indotto in caso di guasto sullo schermo che solleciti l'interruttore.
