@@ -90,3 +90,40 @@ il coefficiente $\dot{c}_k$ calcolato mediante il prodotto di convoluzione delle
 $$
 \dot{c}_{k} = \sum_{j=-\infty}^{+\infty} \left\langle  \vec{x}  \right\rangle_{k-j} \left\langle  \vec{y}  \right\rangle_{j} = \left\langle  \vec{x} \circledast \vec{y}  \right\rangle_{k}
 $$
+
+### Esempio
+Si consideri ad esempio una serie $x$ con 5 termini $(-2,2)$ ed una serie $y$ con tre termini $(-1,1)$, incluso l'ordine 0.
+L'ordine $k$ dell'armonica prodotto può essere al più pari alla somma algebrica dei termini $x$ ed $y$ del prodotto di convoluzione, se si cerca il k-esimo termine generale, la somma algebrica degli indici deve essere pari a k.
+$$
+\begin{aligned}
+\langle x\cdot y \rangle_{-3} &= [x_{-2}\cdot y_{-1}]e^{-j{3}\omega t} \\
+\langle x\cdot y \rangle_{-2} &= [x_{-2}\cdot y_{0} + x_{-1}\cdot y_{-1}]e^{-j{2}\omega t}\\
+\langle x\cdot y \rangle_{-1} &= [x_{-2}\cdot y_{1} + x_{-1}\cdot y_{0} + x_{0}\cdot y_{-1}] e^{-j\omega t} \\
+\langle x\cdot y \rangle_{0} &= [x_{-1}\cdot y_{-1} + x_{0}\cdot y_{0} + x_{1}\cdot y_{-1}] \\
+\langle x\cdot y \rangle_{1} &= [x_{0}\cdot y_{1} + x_{1}\cdot y_{0} + x_{2}\cdot y_{-1}] e^{j \omega t} \\
+\langle x\cdot y \rangle_{2} &= [x_{2}\cdot y_{0} + x_{1}\cdot y_{1}] e^{j{2}\omega t} \\
+\langle x\cdot y \rangle_{3} &= [x_{2}\cdot y_{1}]e^{j{3} \omega t}
+\end{aligned}
+$$
+Come si vede la media del prodotto di ordine nullo non è pari al prodotto delle medie.
+## Disuguaglianza triangolare
+$$
+\langle x(t)\cdot y(t) \rangle_{0} = C_{0} = \sum_{j=-\infty}^{+\infty} \langle x \rangle_{-j}\langle y \rangle_{j}   = 
+\langle x \rangle_{0} \langle y \rangle_{0} + \sum_{\stackrel{j=-\infty}{j\neq{0}}}^{+\infty} \langle x \rangle_{-j}\langle y \rangle_{j}
+$$
+Si studia la sommatoria dei moduli sfruttando la [disuguaglianza di Schwarz](https://it.wikipedia.org/wiki/Disuguaglianza_di_Cauchy-Schwarz):
+$$
+\sum_{\stackrel{j=-\infty}{j\neq{0}}}^{+\infty} \langle x \rangle_{-j}\langle y \rangle_{j} \leq \sum|\langle x \rangle_{-j} |\cdot |\langle y \rangle_{j} | \leq \sum \sqrt{ |\langle x \rangle_{-j} |^2 } \cdot \sqrt{ |\langle y \rangle_{j} |^2 } \leq
+\sum \sqrt{ \frac{{|\langle x\rangle_{-j}|^2 \langle x \rangle_{0}^2 }}{\langle x_{0} \rangle^2 }} \cdot
+\sqrt{ \frac{{|\langle y\rangle_{j}|^2 \langle y \rangle_{0}^2 }}{\langle y_{0} \rangle^2 }}
+$$
+Moltiplicando e dividendo per il valor medio si riconosce la formula del ripple factor:
+$$
+\sum_{\stackrel{j=-\infty}{j\neq{0}}}^{+\infty} \langle x \rangle_{-j}\langle y \rangle_{j} \leq [\text{Rf}(x)\cdot\text{Rf}(y)]\langle x \rangle_{0}\langle y \rangle_{0}  
+$$
+Sostituendo nell'equazione precedente si ottiene la tesi:
+$$
+\langle x(t)\cdot y(t) \rangle_{0} \leq \langle x \rangle_{0}\langle y \rangle_{0}[1+\text{Rf}(x)\cdot\text{Rf}(y)]   
+$$
+secondo la quale la media del prodotto si può approssimare con il prodotto delle medie se i *ripple factor* sono sufficientemente piccoli.
+Con le considerazioni fatte si può calcolare il [[Boost converter#Modello GAM|modello averaged generalizzato del convertitore boost]].

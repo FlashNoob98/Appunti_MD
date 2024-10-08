@@ -312,3 +312,5 @@ $$
 \end{aligned}
 \right.
 $$
+# Modello GAM
+..
