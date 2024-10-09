@@ -313,4 +313,72 @@ $$
 \right.
 $$
 # Modello GAM
-..
+Assumendo che la tensione in uscita dal convertitore sia praticamente costante a causa della capacità, si possono trascurare le armoniche di tensione e considerare per semplicità solo la prima armonica di corrente.
+Dunque le grandezze in esame saranno: $\langle i_{L} \rangle_{k}, k=[-1,0,1]$ e $\langle v_{L} \rangle_{k},k=0$.
+Si valuta il modello dinamico per ogni armonica:
+$$
+\begin{aligned}
+\frac{ \left\langle  di_{L} \right\rangle_{0}}{dt} &= \frac{{\langle  V_{S}\rangle_{0}}}{L} - \frac{\left\langle  v_{C}(1-u) \right\rangle_0}{L}  \\
+\frac{ \left\langle  di_{L} \right\rangle_{1}}{dt} &= \frac{{\langle  V_{S}\rangle_{1}}}{L} - \frac{\left\langle  v_{C}(1-u) \right\rangle_1}{L} \\
+\frac{ \left\langle  di_{L} \right\rangle_{-1}}{dt} &= \frac{{\langle  V_{S}\rangle_{-1}}}{L} - \frac{\left\langle  v_{C}(1-u) \right\rangle_{-1}}{L}\\
+\frac{ \left\langle  dv_{C} \right\rangle_{0}}{dt} &= \frac{{\langle  i_{L}(1-u)\rangle_{0}}}{C} - \frac{\left\langle  v_{C} \right\rangle_0}{RC}
+\end{aligned}
+$$
+In realtà la terza equazione è complessa coniugata della seconda e potrebbe omettersi.
+La tensione $V_S$ si assume costante, dunque non ha contenuto armonico:
+$\frac{\langle V_{S}\rangle_{0}}{L}=\frac{V_{S}}{L}$ e $\frac{\langle V_{S}\rangle_{1}}{L}=0$.
+Si ricorda inoltre la formula della derivata della media:
+$$
+\left\langle  \frac{d}{dt}  \right\rangle_{k} = \frac{d}{dt}\left\langle  \vec{x}  \right\rangle _{k} + j\omega k\left\langle  \vec{x}  \right\rangle_{k} 
+$$
+applicata alla seconda equazione, si porta il segno di derivata fuori dall'operatore media:
+$$
+\frac{d \left\langle  i_{L} \right\rangle_{1}}{dt} = -j\omega \langle i_{L} \rangle_{1}  - \frac{\left\langle  v_{C}(1-u) \right\rangle_1}{L} 
+$$
+Si è ottenuta un'equazione complessa in due incognite, ottenendo un sistema complessivo di quattro equazioni in quattro incognite:
+$$
+\left\{
+\begin{aligned}
+\langle i_{L} \rangle_{0} &= x_{1}\\
+\langle i_{L} \rangle_{1} &= x_{2} + jx_{3}\\
+\langle v_{C} \rangle_{0} &= x_{4} 
+\end{aligned}
+\right.
+$$
+Inoltre va sviluppata la media del prodotto di $v_C$ e $i_L$ per la funzione di controllo $u$, in questo caso è una funzione gradino periodico, di cui si [[media generalizzata funzione gradino|sviluppano le medie]] di ordine $k$ e si ottiene: $\langle u \rangle_{k}=M_{k}+jN_{k}$ e quindi per $k=1\Rightarrow \langle 1-u \rangle_{k}=-(M_{k}+jN_{k})$, dato che la media di ordine 0 è proprio $1-d$.
+
+Si calcolano tutte le medie dei prodotti presenti nel modello:
+$$
+\begin{aligned}
+\langle v_{C} (1-u)\rangle_{0} &= \langle v_{C} \rangle_{0}(1-d) = x_{4}(1-d) \\
+\langle v_{C}(1-u) \rangle_{1} &= \langle v_{C} \rangle_{0}\langle (1-u) \rangle_{1} = -\langle v_{C} \rangle_{0}(M_{1}+jN_{1}) = - x_{4}(M_{1}+jN_{1}) \\
+\langle i_{L}(1-u) \rangle_{0} &= \langle i_{L} \rangle_{-1}\langle 1-u \rangle_{1} + \langle i_{L} \rangle_{1}\langle 1-u \rangle_{-1} + \langle i_{L} \rangle_{0}(1-d) = \\
+&= -2x_{2}M_{1} + (-2x_{3}N_{1}) + x_{1}(1-d)
+\end{aligned}
+$$
+Somma di due numeri complessi coniugati:
+$$
+\begin{aligned}
+\dot{x}\cdot \dot{y} + \check{x}\cdot \check{y} &\Rightarrow (x_{R}+jx_{I})(y_{R}-jy_{I}) + (x_{R}-jx_{I})(y_{R}+jy_{I}) = \\
+&= 2 \mathrm{Re}\{\dot{x}\}\mathrm{Re}\{\dot{y}\} + 2 \mathrm{Im}\{\dot{x}\}\mathrm{Im}\{\dot{y}\}
+\end{aligned}
+$$
+Si riorganizzano le equazioni e si riscrive il sistema in forma canonica con il vettore di incognite $x$:
+$$
+\left\{
+\begin{aligned}
+\frac{d}{dt} x_{1} &= \frac{V_{S}}{L} - \frac{x_{4}}{L}(1-d) \\
+\frac{d}{dt} x_{2} &= \frac{x_{4}}{L}M_{1} + \omega x_{3}\\
+\frac{d}{dt}x_{3} &= \frac{x_{4}}{L}N_{1} - \omega x_{2} \\
+\frac{d}{dt} x_{4} &= \frac{\left(x_{1}(1-d)-2x_{2}M_{1}-2x_{3}N_{1}\right)}{C} -\frac{x_{4}}{RC}
+\end{aligned}
+\right.
+$$
+Risolto il sistema differenziale si può ricostruire la dinamica delle grandezze di stato mediante l'equazione di sintesi armonica:
+$$
+\begin{aligned}
+i_{L}(t) &= \langle i_{L} \rangle_{-1}e^{-j\omega t} + \langle i_{L} \rangle_{0} + \langle i_{L} \rangle_{1}e^{j\omega t} \\
+v_{C}(t) &= \langle v_{C} \rangle_{0} 
+\end{aligned}
+$$
+.
