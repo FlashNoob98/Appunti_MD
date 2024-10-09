@@ -1,10 +1,10 @@
-Si vuole presentare il sistema di controllo di una macchina incorrente continua ad eccitazione indipendente, si vuole controllare la corrente o il flusso della macchina per regolare la coppia.
+Si vuole presentare il sistema di controllo di una macchina in corrente continua ad eccitazione indipendente, si vuole controllare la corrente o il flusso della macchina per regolare la coppia.
 
 Nel dominio di lavoro a potenza costante, per aumentare la velocità va diminuito il flusso, mantenuto nominale fino alla velocità nominale.
 Per diminuire il flusso si diminuisce la corrente di eccitazione.
 
 La corrente di eccitazione non avverte il flusso sostenuto dalla corrente di armatura, le due regolazioni possono essere fatte in maniera indipendente.
-Il flusso di armatura presenta ai capi dell'avvolgimento una tensione indotta.
+Il flusso di armatura fornisce ai capi dell'avvolgimento una tensione indotta $E$.
 
 Per il circuito di armatura si usa un sistema in cascata, per quello di eccitazione un singolo regolatore per regolare la corrente di eccitazione.
 
@@ -21,19 +21,18 @@ Per il controllo di posizione, si usa la definizione di velocità
 $$
 \frac{d\theta}{dt} = \omega_{r}
 $$
-quindi controllare la posizione implica forzare una coppia.
+quindi controllare la posizione implica ancora forzare una coppia con una certa legge di controllo.
 
-Nelle macchine elettriche le variabili di stato sono la corrente di armatura e la velocità, sono grandezze fisiche che hanno costanti di tempo diverso tra loro, ovvero rispetto ad un termine di riferimento omogeneo, ad esempio alla corrente si associa come termine di paragone la corrente nominale, per la velocità si usa la velocità nominale.
-
+Nelle macchine elettriche le variabili di stato sono la corrente di armatura e la velocità, sono grandezze fisiche che hanno costanti di tempo diverso tra loro, per confrontare queste costanti di tempo è necessario normalizzare le grandezze, ovvero rispetto ad un termine di riferimento omogeneo, ad esempio alla corrente si associa come termine di paragone la corrente nominale, per la velocità si usa la velocità nominale.
 Ad esempio in quanto tempo la corrente va da 0 al valore nominale?
 In quanto tempo la velocità va da 0 alla nominale?
-Si confrontano questi due tempi.
+Si confrontano questi due tempi per vedere quale variabile di stato è più veloce.
 
-Presa una macchina elettrica tradizionale (non un servomotore), di fissata potenza, ad esempio 11kW, la corrente di armatura ha un tempo di evoluzione di centinaia di microsecondi, quello della velcoità di centinaia di millisecondi, ci sono 3 ordini di grandezza di differenza.
+Presa una macchina elettrica tradizionale (non un servomotore), di fissata potenza, ad esempio 11kW, la corrente di armatura ha un tempo di evoluzione di centinaia di microsecondi, quello della velocità di centinaia di millisecondi, ci sono 3 ordini di grandezza di differenza.
 Questa caratteristica permette di utilizzare il controllo in cascata, ogni anello di controllo non risente dell'azione dell'azione dell'anello addizionale.
 
-Un anello di corrente controlla il valore della corrente misurata sulla base della corrente di riferimento, quello di velocità è analogo, l'anello di corrente è più veloce perchè agisce su una variabile di stato con una dinamica più rapida.
-Su questa supposizione, che durante il controllo della corrente, la velcoità resti invariata, è fondmentale per permettere il controllo incascata.
+Un anello di corrente controlla il valore della corrente misurata sulla base della corrente di riferimento, quello di velocità è analogo, l'anello di corrente è più veloce perché agisce su una variabile di stato con una dinamica più rapida.
+Su questa supposizione, che durante il controllo della corrente, la velocità resti invariata, è fondamentale per permettere il controllo in cascata.
 
 L'anello di corrente confronta la corrente con quella di riferimento e fornisce in uscita il valore del forzamento (tensione di armatura) da fornire alla macchina.
 
