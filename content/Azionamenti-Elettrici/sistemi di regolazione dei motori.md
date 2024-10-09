@@ -101,3 +101,4 @@ Anche in questo caso va garantito un certo periodo di tensione nulla sul carico 
 In questo caso si può fornire una tensione bipolare al carico ma la corrente è comunque unidirezionale.
 
 Utilizzando quattro componenti attivi, con una opportuna configurazione si può anche eventualmente invertire la corrente.
+
