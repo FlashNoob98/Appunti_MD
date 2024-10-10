@@ -58,3 +58,85 @@ Devo però scrivere tutte le variabili in termini di flusso di rotore e corrente
 
 Scomponendo le equazioni in parte reale e immaginaria si evidenziano poi le due dinamiche accoppiate per quanto riguarda la coppia e il flusso, si introdurrà infine il modello dello statore per passare dal controllo a corrente impressa alla tensione effettiva da fornire alla macchina.
 
+**L'algoritmo di alimentazione** è il modello della macchina + una equazione ausiliaria.
+È un controllo vettoriale perché controlliamo ampiezza e fase nel tempo di grandezze proporzionali alla corrente e al flusso.
+
+
+
+Si vuole eseguire il cambio di sistema di riferimento dallo statore a rotore, si suppone di sovrapporre il piano assiale della macchina con quello dei componenti simmetrici.
+Le grandezze che più comunemente vengono controllate sono il flusso di rotore e le correnti di statore.
+
+Definizione flusso di rotore:
+$$
+\vec{\Phi}_{r}^s = L_{r}'\vec{I}_{r}^s + L_{m}\vec{I}_{s}^s
+$$
+Equazione di rotore:
+$$
+0 = R_{r}'\vec{i}_{r}' + L_{r}' \frac{d}{dt} \vec{i}_{r}' + L_{m}\frac{d}{dt} \left( \vec{i}_{s}^se^{-jp\theta_{r}} \right) = 
+R_{r}'\vec{i}_{r}' + \frac{d}{dt}\vec{\Phi}_{r}'
+$$
+Si moltiplicano ambo i membri per due esponenziali che riportano al rotore e al riferimento rotante: $e^{jp\theta_{r}}e^{-j\Psi_{r}^s}$ ottenendo:
+$$
+0 = R_{r}'\vec{i}_{r}'e^{jp\theta_{r}}e^{-j\Psi_{r}^s} + e^{jp\theta_{r}}e^{-j\Psi_{r}^s}\frac{d}{dt}\vec{\Phi}_{r}'
+$$
+si portano gli esponenziali nella derivata:
+$$
+e^{jp\theta_{r}}e^{-j\Psi_{r}^s}\frac{d}{dt}\vec{\Phi}_{r}' =
+\frac{d}{dt}\left[ \vec{i}_{r}'e^{jp\theta_{r}}e^{-j\Psi_{r}^s} \right] - (jp\omega_{r}-\omega )\vec{\Phi}_{r}'e^{jp\theta_{r}}e^{-j\Psi_{r}^s} = 
+\frac{d}{dt}\vec{\Phi}_{r}' + j(\omega-p\omega_{r})\vec{\Phi}_{r}'
+$$
+con $\omega=\frac{d}{dt}\Psi_{r}^s$.
+Si riscrive l'equazione nel nuovo sistema di riferimento rotante:
+$$
+0 = R_{r}'\vec{i}_{r}' + \frac{d}{dt}\vec{\Phi}_{r} + j(\omega-p\omega_{r})\vec{\Phi}_{r}
+$$
+si ricorda che
+$$
+\vec{i}_{r} = \frac{1}{L_{r}'}\left( \vec{\Phi}_{r} - L_{m}\vec{i}_{s} \right)
+$$
+e quindi:
+$$
+\frac{d}{dt} \vec{\Phi}_{r} + j(\omega-p\omega_{r})\vec{\Phi}_{r} + \sigma_{r}\vec{\Phi}_{r} = \sigma_{r}L_{m}\vec{i}_{s}
+$$
+con $\sigma_{r}=\frac{R_{r}'}{L_{r}'}$ e $k_{r}=\frac{L_{m}}{L_{r}'}$.
+
+Proiettando in parte reale e immaginaria si ottiene un sistema di due equazioni, ricordando il flusso solidale al sistema di riferimento e dunque con componente solo reale.
+$$
+\vec{i}_{s} = i_{sd} + ji_{sq}\qquad \vec{\Phi}_{r}=\phi
+$$
+si ricava:
+$$
+\left\{
+\begin{aligned}
+0 &= -\sigma_{r}L_{m}i_{sd} + \sigma_{r}\phi_{r} + \frac{d}{dt}\phi_{r} \\
+0 &= -\sigma_{r}L_{m}i_{sq} + (\omega-p\omega_{r})\phi_{r}
+\end{aligned}
+\right.
+$$
+Se $i_{sd}$ è costante nel tempo, essa è pari al flusso di rotore, superata la dinamica, dunque la componente di asse diretto di statore mantiene il flusso costante se essa è costante.
+Controllando questa corrente si impone il valore del flusso al valore desiderato.
+
+La seconda equazione è un legame algebrico tra la velocità, il flusso e la corrente in quadratura.
+
+## Momento della coppia
+È una grandezza scalare, è invariante rispetto ai sistemi di riferimento:
+$$
+T_{m}=\frac{3}{2}pL_{m}\mathrm{Im}\left\{ \vec{i}_{s}^s \vec{i}_{r}^{s*} \right\} = \frac{3}{2} p \frac{L_{m}}{\dot{L}_{r}} \mathrm{Im} \left\{ \vec{i}_{s}^s e^{-j\Psi_{r}^s} \left( \vec{\Phi}_{r}^{s*} - L_{m}\vec{i}_{s}^{s*} \right)\right\} = \frac{3}{2}p \frac{L_{m}}{\dot{L}_{r}}\mathrm{Im}\left\{ \vec{i}_{s}\vec{\Phi}_{r}^* \right\}
+$$
+dunque l'unica parte immaginaria è quella della corrente:
+$$
+T_{m} = \frac{3}{2}pk_{r}\phi_{r}i_{sq}
+$$
+dove $\phi_{r}$ è il modulo.
+Assieme alla prima equazione realizza il disaccoppiamento tra flusso di rotore e corrente di statore, come ciò che avviene in una macchina a corrente continua ad eccitazione indipendente.
+
+(controllo a orientamento di campo del flusso di rotore indiretto)
+
+# Equazione di statore
+Segui dalle slide 😅
+
+La tensione impressa nel sistema di riferimento rotante è pari alla somma delle cadute più i due termini di tensione indotta trasformatorica più il termine mozionale $j\omega L_{m}\vec{i}_{r}$.
+
+In questo caso le equazioni non possono essere disaccoppiate, i termini di caduta resistivi e trasformatorici si trovano sullo stesso asse mentre i termini mozionali agiscono sull'asse opposto.
+
+Queste equazioni possono essere utilizzate sia per calcolare i valori da fornire alla macchina, sia per misurare le grandezze di stato.
