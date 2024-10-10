@@ -62,7 +62,7 @@ Scomponendo le equazioni in parte reale e immaginaria si evidenziano poi le due 
 È un controllo vettoriale perché controlliamo ampiezza e fase nel tempo di grandezze proporzionali alla corrente e al flusso.
 
 
-
+# Equazione di rotore
 Si vuole eseguire il cambio di sistema di riferimento dallo statore a rotore, si suppone di sovrapporre il piano assiale della macchina con quello dei componenti simmetrici.
 Le grandezze che più comunemente vengono controllate sono il flusso di rotore e le correnti di statore.
 
@@ -118,7 +118,45 @@ Controllando questa corrente si impone il valore del flusso al valore desiderato
 
 La seconda equazione è un legame algebrico tra la velocità, il flusso e la corrente in quadratura.
 
-## Momento della coppia
+# Equazione di statore
+Si sviluppano le equazioni di statore:
+$$
+\begin{aligned}
+\vec{V}_{s}^s &= R_{s}\vec{i}_{s}^s + L_{s} \frac{d}{dt} \vec{i}_{s}^s + L_{m} \frac{d}{dt}\left( \vec{i}_{r}'e^{jp\theta_{r}} \right) \\
+\vec{V}_{s}^s &= R_{s}\vec{i}_{s}^s + L_{s} \frac{d}{dt}\vec{i}_{s}^s + L_{m} \frac{d}{dt}\vec{i}_{r}^s \\
+&\text{trasformazione nel riferimento rotante} \\
+\vec{V}_{s}^se^{-j\psi_{r}^s} &= R_{s} \vec{i}_{s}^se^{-j\psi_{r}^s} + L_{s}e^{-j\psi_{r}^s} \frac{d}{dt}\vec{i}_{s}^s + L_{m}e^{-j\psi_{r}^s} \frac{d}{dt}\vec{i}_{r}^s \\
+&\text{portando l'esponenziale nella derivata} \\
+\vec{V}_{s} &= R_{s}\vec{i}_{s} + L_{s}\frac{d}{dt} \vec{i}_{s} + j\omega L_{s} \vec{i}_{s} + L_{m} \frac{d}{dt} \vec{i}_{r} + j\omega L_{m}\vec{i}_{r} \\
+&\text{ponendo } \vec{i}_{r} = \frac{1}{L_{r}'}\left( \vec{\Phi}_{r}-L_{m} \vec{i}_{s} \right) \\
+\vec{V}_{s} &= R_{s}\vec{i}_{s} + L_{s} \frac{d}{dt} \vec{i}_{s} + j\omega L_{s} \vec{i}_{s} + \frac{L_{m}}{L_{r}'} \frac{d}{dt} \vec{\Phi}_{r} - \frac{L_{m}^2}{L_{r}'}\frac{d}{dt}\vec{i}_{s} + \frac{j\omega L_{m}}{L_{r}'}\Phi_{r} - \frac{j\omega L_{m}^2}{L_{r}'}\vec{i}_{s} \\
+\vec{V}_{s} &= R_{s}\vec{i}_{s} + \sigma_{s}L_{s} \frac{d}{dt} \vec{i}_{s} + j\omega \sigma_{s}L_{s} \vec{i}_{s} + k_{r} \frac{d}{dt} \vec{\Phi}_{r} + j\omega k_{r}\vec{\Phi}_{r}
+\end{aligned}
+$$
+Avendo posto, per l'ultima equazione: 
+$$
+\left\{
+\begin{aligned}
+\sigma_{s} &= L_{s} \left( 1- \frac{L_{m}^2}{L_{s}L_{r}'} \right)\\
+k_{r}&= \frac{L_{m}}{L_{r}'}
+\end{aligned}
+\right.
+$$
+
+La tensione impressa nel sistema di riferimento rotante è pari alla somma delle cadute più i due termini di tensione indotta trasformatorica più il termine mozionale $j\omega L_{m}\vec{i}_{r}$.
+Ancora una volta si scompone la corrente nelle due componenti diretta e in quadratura, ottenendo un'equazione reale ed una immaginaria:
+$$
+\begin{aligned}
+v_{sd} &= r_{s}i_{sd} + \sigma_{s}L_{s} \frac{d}{dt}i_{sd} + k_{r} \frac{d}{dt} \Phi_{r} - \omega \sigma_{s}L_{s}i_{sq}\\
+v_{sq} &= r_{s} i_{sq} + \sigma_{s}L_{s} \frac{d}{dt} i_{sq} + \omega \sigma_{s}L_{s}i_{sd} + \omega k_{r}\Phi_{r}
+\end{aligned}
+$$
+
+In questo caso le equazioni non possono essere disaccoppiate, i termini di caduta resistivi e trasformatorici si trovano sullo stesso asse mentre i termini mozionali agiscono sull'asse opposto.
+
+Queste equazioni possono essere utilizzate sia per calcolare i valori da fornire alla macchina, sia per misurare le grandezze di stato.
+
+# Momento della coppia
 È una grandezza scalare, è invariante rispetto ai sistemi di riferimento:
 $$
 T_{m}=\frac{3}{2}pL_{m}\mathrm{Im}\left\{ \vec{i}_{s}^s \vec{i}_{r}^{s*} \right\} = \frac{3}{2} p \frac{L_{m}}{\dot{L}_{r}} \mathrm{Im} \left\{ \vec{i}_{s}^s e^{-j\Psi_{r}^s} \left( \vec{\Phi}_{r}^{s*} - L_{m}\vec{i}_{s}^{s*} \right)\right\} = \frac{3}{2}p \frac{L_{m}}{\dot{L}_{r}}\mathrm{Im}\left\{ \vec{i}_{s}\vec{\Phi}_{r}^* \right\}
@@ -131,12 +169,3 @@ dove $\phi_{r}$ è il modulo.
 Assieme alla prima equazione realizza il disaccoppiamento tra flusso di rotore e corrente di statore, come ciò che avviene in una macchina a corrente continua ad eccitazione indipendente.
 
 (controllo a orientamento di campo del flusso di rotore indiretto)
-
-# Equazione di statore
-Segui dalle slide 😅
-
-La tensione impressa nel sistema di riferimento rotante è pari alla somma delle cadute più i due termini di tensione indotta trasformatorica più il termine mozionale $j\omega L_{m}\vec{i}_{r}$.
-
-In questo caso le equazioni non possono essere disaccoppiate, i termini di caduta resistivi e trasformatorici si trovano sullo stesso asse mentre i termini mozionali agiscono sull'asse opposto.
-
-Queste equazioni possono essere utilizzate sia per calcolare i valori da fornire alla macchina, sia per misurare le grandezze di stato.
