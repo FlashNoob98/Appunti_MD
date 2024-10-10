@@ -83,3 +83,31 @@ In caso di guasto, la tensione di contatto aumenta all'aumentare della distanza 
 Nel sistema TT invece c'era un collegamento a terra della massa del carico, per questo motivo cambia la filosofia della protezione dai contatti indiretti.
 Inoltre la corrente che circola nel conduttore di protezione è molto piccola, non causa una caduta di tensione.
 In prossimità del trasformatore la tensione di contatto è minima.
+
+# Presenza di masse estranee
+In caso di masse estranee nell'impianto può essere necessario connetterle con un conduttore equipotenziale al conduttore di protezione nei sistemi TT. In caso di contatto tra una massa guasta ed una estranea non vi sarà differenza di potenziale.
+
+Nel sistema TN il collegamento potrebbe eventualmente essere fatto tra le masse e il conduttore di protezione, si vede una tensione che aumenta linearmente dalla cabina fino al punto di guasto lungo il conduttore di protezione, a causa della corrente di guasto.
+È come se fosse un circuito a corrente impressa.
+
+Si può realizzare un collegamento equipotenziale supplementare, nel caso in cui sia presente un quadro secondario.
+Il problema può essere risolto anche eliminando il quadro secondario, in tal caso va ripetuto il collegamento del conduttore di protezione per ciascun utilizzatore.
+
+In ogni caso, se $R_{pa}I_{a}<U_{L}$ non è necessario realizzare il collegamento equipotenziale supplementare.
+
+
+## Guasto su una linea a terra
+In caso di guasto su una linea a terra, la corrente si richiude attraverso il terreno, si avrebbe una corrente nel terreno che può portare in tensione tutte le masse dell'impianto mediante la resistenza $R_N$ in cabina, attraversata dalla corrente di guasto:
+$$
+U_{0} \frac{R_{N}}{R_{EF}+R_{N}} \leq U_{L}
+$$
+dove $R_{EF}$ è la resistenza di guasto della fase.
+Si può dimensionare $R_N$:
+$$
+R_{N} \leq \frac{U_{L}R_{EF}}{U_{0}-U_{L}}
+$$
+Non si può assegnare in maniera deterministica un valore ad $R_{EF}$, dipende dal guasto.
+
+## Corto circuito fase-neutro
+Si ha una tensione crescente sul conduttore di neutro, funzione della corrente di guasto.
+
