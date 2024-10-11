@@ -169,3 +169,22 @@ dove $\phi_{r}$ è il modulo.
 Assieme alla prima equazione realizza il disaccoppiamento tra flusso di rotore e corrente di statore, come ciò che avviene in una macchina a corrente continua ad eccitazione indipendente.
 
 (controllo a orientamento di campo del flusso di rotore indiretto)
+
+
+## Condizione ausiliaria completa
+Si considerala condizione di funzionamento limite per il flusso:
+$$
+\vec{\Phi}_{r} = f(\omega_{r}) = \left\{ 
+\begin{aligned}
+\vec{\Phi}_{r,n} &\qquad 0\leq \omega_{r} \leq \omega_{r,n}\\
+\frac{\vec{\Phi}_{r,n}}{\omega_{r,n}} \frac{1}{\omega_{r}} &\qquad \omega_{r} > \omega_{r,n}
+\end{aligned}
+\right.
+$$
+Il modello della strategia di controllo si calcola sempre ad anello aperto, si trascura in prima ipotesi ad esempio la saturazione del circuito magnetico. Per avere un sistema robusto dal punto di vista del controllo, il sistema deve rispondere a variazioni dei riferimenti in maniera efficace.
+Per fare ciò è utile utilizzare un sistema in retroazione, ad esempio mediante un controllo in cascata.
+
+Il modello feed-forward verrà utilizzato inoltre per calcolare grandezze non direttamente misurabili.
+Si usano ad esempio gli *osservatori di stato* che permettono la stima dello stato del sistema mediante questi modelli.
+
+Queste equazioni permettono la realizzazione del [[Controllo di velocità di tipo indiretto|controllo della macchina asincrona]].
