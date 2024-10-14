@@ -82,3 +82,31 @@ $$
 $$
 È sempre introdotto un ritardo nel sistema di controllo digitale, è fondamentale scegliere opportunamente il tempo di campionamento, evitare il fenomeno di frequency warping e inoltre scegliere la massima frequenza di switching dei componenti, minore della massima frequenza ammissibile del convertitore.
 Al massimo se la PWM è double update deve essere la frequenza del controllore pari al doppio della frequenza di switching dei componenti.
+
+
+Nella libreria Simscape Electrical, two-level-converter si utilizza il model type **Switching function** per il convertitore.
+Simulink > Dashboard > Edit per creare un campo editabile per modificare un parametro eventuale della workspace o di SImulink.
+
+SI imposta il riferimento di corrente dall'esterno, si moltiplica per $\omega*t$ e si generano le tre fasi.
+Un PI non annulla però l'errore su un ingresso sinusoidale ma solo al gradino, quindi il controllore PI mi fornisce un errore residuo, che aumenta all'aumentare della frequenza.
+Anche a 50Hz ho comunque un ritardo.
+
+Se si passa nel riferimento di Clarke, si calcola il componente simmetrico di una grandezza omopolare..
+Dunque la tensione del centro stella, in un sistema a tre fili, non entra nella dinamica della corrente.
+Moltiplicando ambo i membri dell'espressione per una rotazione $e^{-j\theta}$ si ottiene un riferimento in componente diretta e in quadratura.
+In questo caso la compensazione avviene sia con la contro fem che con i *termini mozionali* $j\omega L$..
+
+# Controllore risonante
+Si piazza un polo alla frequenza delle correnti da controllare nel carico, ovvero la pulsazione dei riferimenti.
+$$
+\vec{i}^* = {I}_{d}e^{j\omega_{0} t} + I_{i}e^{-j\omega_{0} t}
+$$
+posso usare un controllore di questo tipo:
+$$
+\frac{1}{s-j\omega_{0}}+ \frac{1}{s+j\omega_{0}} = \frac{2s}{s^2+\omega_{0}^2}
+$$
+Si ottiene un controllore a banda passante con un picco elevato ad $\omega_{0}$, l'errore di corrente viene fornito ad un $K_p$ e un $K_{i}$ di questo secondo controllore.
+In MATLAB la funzione *c2d* mi permette di discretizzare la funzione di trasferimento.
+Anche in questo caso all'aumentare della frequenza si ha un peggioramento del regolatore a causa della discretizzazione.
+Si può fare un pre-warping per avere un regolatore che coincida con quello a tempo continuo alla frequenza di risonanza.
+Si annulla nuovamente l'errore.
