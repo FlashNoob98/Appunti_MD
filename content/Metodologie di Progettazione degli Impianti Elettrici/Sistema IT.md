@@ -21,4 +21,96 @@ Guasto con due masse, si realizza un impianto di terra per ogni utilizzatore o g
 Questa corrente può portare le masse a tensioni differenti. Andrebbe installato un sistema differenziale oppure realizzare un unico impianto di terra, in tal caso non ci sarà corrente nel terreno ma un corto circuito franco.
 
 
-L'obbiettivo è risolvere il guasto prima che avvenga il secondo, si monitorano le tensioni "stellate", si pongono delle lampade sulle tre fasi connesse e il neutro. Si avrà infatti una variazione di tensione in caso di guasto, e di luminosità delle lampade.
+In caso di secondo guasto una corrente di guasto incide in una maglia che coinvolge due fasi e l'impianto di terra, se questo è diverso per ogni massa allora il sistema si "riduce" ad un sistema TT, per questo motivo è necessario utilizzare un interruttore differenziale.
+Se invece l'impianto di terra è unico ci si riconduce ad un sistema TN, vengono utilizzati in questo caso dei sistemi di protezione da sovracorrente.
+
+Al fine di garantire la continuità di servizio, è necessario risolvere il guasto prima che avvenga il secondo, si monitorano le tensioni "stellate", si pongono delle lampade sulle tre fasi connesse e il neutro. Si avrà infatti una variazione di tensione in caso di guasto, e di luminosità delle lampade.
+
+Un sistema di protezione che monitori la tensione sulle fasi è quello di utilizzare un sistema "a trasformatore" utilizzando un primario a stella e un secondario a triangolo con in serie un *relee* di rilevazione, in caso di guasto si ha una tensione al secondario più elevata. Si passa da una tensione al secondario di $\sqrt{ 3 }E$ a $3E$.
+
+Si preferisce comunque usare sempre un impianto di terra comune per evitare l'utilizzo di interruttori differenziali, riconducendo il sistema IT in sistema TN in caso di doppio guasto a terra.
+
+# Dimensionamento di un sistema IT
+In caso di doppio guasto, con impianto di terra comune per le masse, si deve garantire che 
+$$
+I_{a}\dot{Z}_{s} = \sqrt{ 3 }U_{0}
+$$
+Ma la tensione di alimentazione è somma di due fasi, dunque compare un termine $\sqrt{ 3 }$.
+Si dimensiona la corrente di intervento degli interruttori o l'impedenza di linea:
+$$
+I_{a} \leq \frac{\sqrt{ 3 }U_{0}}{2\dot{Z}_{s}} \qquad \dot{Z}_{s}\leq \frac{\sqrt{ 3 }U_{0}}{2I_{a}}
+$$
+In questo caso, a differenza del sistema TN, l'anello di guasto è lungo il doppio.
+Dato che l'impedenza di guasto dipende dal punto in cui avviene il guasto, si dimensiona per il punto di massima distanza, in modo da avere un'impedenza massima e quindi la minima corrente di guasto, che deve essere maggiore della corrente di interruzione dell'interruttore magneto-termico.
+
+Il tempo di intervento è identico a quello del sistema TN:
+$$
+\begin{matrix}
+U_{0} / U & \text{tempo C.O.} &\text{tempo C.P.}\\
+120 / 230 & 0.8s & 0.4s \\
+230 / 400 & 0.4s  &0.2s \\
+400 / 690 & 0.2s &  0.06s\\
+690 / 1000 & 0.1 & 0.02s
+\end{matrix}
+$$
+I valori sono legati ai livelli di isolamento dei cavi, in caso di guasto a terra di una fase, incide sul cavo, rispetto a terra la tensione concatenata.
+
+In caso di guasto fase neutro, è la tensione stellata $U_0$ ad incidere sull'anello di guasto, si rimuove il $\sqrt{ 3 }$.
+Dunque è sufficiente soddisfare la relazione 
+$$
+I_{a} \leq \frac{U_{0}}{2\dot{Z}_{s}}
+$$
+e non la precedente con il $\sqrt{ 3 }$.
+Il sistema di protezione potrebbe non essere sufficientemente veloce.
+
+In aree differenti si possono usare impianti di terra differenti, in tal caso potrebbe essere necessario l'uso di un interruttore differenziale.
+
+
+Va ricordata la presenza di accoppiamenti capacitivi nel sistema IT, in  caso di guasto della fase 3 a terra, vi sarà una corrente di guasto che si richiude appunto mediante gli accoppiamenti capacitivi, uno spostamento del centro stella:
+$$
+\vec{U}_{EN} = \frac{\vec{U}_{01}(j\omega C_{0})+\vec{U}_{02}(j\omega C_{0})+\vec{U}_{03}\left( j\omega C_{0}+\frac{1}{R} \right)}{\frac{1}{R}+3j\omega C_{0}}
+$$
+semplificando:
+$$
+\vec{U}_{EN} = \frac{\vec{U}_{03}}{1+3j\omega C_{0}R}
+$$
+dove $R$ è la resistenza di guasto a terra, il centro stella si sposta.
+La tensione $\vec{U}_{3E}$ della fase rispetto a terra sarà:
+$$
+\vec{U}_{3E} = \vec{U}_{03}-\vec{U}_{EN}
+$$
+Si sposta su una semicirconferenza dall'origine al punto $\vec{E}_{3}$, al variare della resistenza di guasto $R$.
+La tensione sulle altre fasi aumenta, la $\vec{U}_{3E}$ è proprio la tensione alla quale si porterà la massa guasta.
+
+
+## Guasto induttivo
+Può esserci un problema di risonanza in caso di guasto induttivo, sarà sufficiente installare una resistenza $R_{0}$ nel punto di neutro, riapplicando l'equazione precedente si sostituisce l'impedenza $j\omega L$ ad $R$:
+$$
+\vec{U}_{EN} = \frac{\vec{U}_{01}(j\omega C_{0})+\vec{U}_{02}(j\omega C_{0})+\vec{U}_{03}\left( j\omega C_{0}+\frac{1}{j\omega L} \right)}{\frac{1}{j\omega{L}}+3j\omega C_{0}}
+$$
+semplificando:
+$$
+\vec{U}_{EN} = \frac{\vec{U}_{03}}{1-3\omega^2LC_{0}}
+$$
+La tensione $\vec{U}_{EN}$ si porta ad un valore superiore alla $\vec{U}_{03}$, al limite la condizione di risonanza:
+$$
+3\omega^2LC_{0} = 1 \Rightarrow L=\frac{1}{3\omega^2C_{0}}
+$$
+in tal caso la tensione "diverge". Collegando il neutro a terra mediante una resistenza aggiuntiva $R_{0}$, **non confonderla con la resistenza dell'impianto di terra del neutro per i sistemi TT e TN**.
+La resistenza aggiuntiva modifica il calcolo della tensione nel seguente modo:
+$$
+\vec{U}_{EN} = \frac{\vec{U}_{01}(j\omega C_{0})+\vec{U}_{02}(j\omega C_{0})+\vec{U}_{03}\left( j\omega C_{0}+\frac{1}{j\omega L} \right)}{\frac{1}{j\omega{L}}+3j\omega C_{0} + \frac{1}{R_{0}}}
+$$
+e quindi:
+$$
+\vec{U}_{EN} = \frac{\vec{U}_{03}}{(j\omega L)\left( \frac{1}{j\omega L}+\frac{1}{R_{0}}+3j\omega C_{0} \right)} = \frac{\vec{U}_{03}}{1+\frac{j\omega L}{R_{0}}-3\omega^2C_{0}L}
+$$
+dunque in condizioni di risonanza resta il termine $\frac{j\omega L}{R_{0}}$ con il quale dimensionare $R_0$, conosciuta la $L^*$ di risonanza.
+$$
+\frac{\omega L^*}{R_{0}} = 1 \Rightarrow \frac{\omega}{3\omega^2C_{0}} =R_{0} \leq \frac{1}{3\omega C_{0}}
+$$
+un valore tipico è circa
+$$
+\frac{10^7}{3\cdot 2\pi f\cdot 5000} \simeq 100\Omega
+$$
+conviene in realtà mettersi al limite del valore massimo, altrimenti ci si riconduce ad un sistema TT.
