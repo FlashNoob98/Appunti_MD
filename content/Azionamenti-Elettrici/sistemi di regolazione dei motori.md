@@ -102,3 +102,18 @@ In questo caso si può fornire una tensione bipolare al carico ma la corrente è
 
 Utilizzando quattro componenti attivi, con una opportuna configurazione si può anche eventualmente invertire la corrente.
 
+# Raddrizzatori
+Una tipologia di convertitore che ha in ingresso una tensione alternata e in uscita una tensione continua viene chiamata raddrizzatore. Possono essere monofase o trifase.
+
+Il raddrizzatore più semplice è il ponte a diodi, orientati nello stesso verso, si possono sostituire i diodi con i tiristori ottenendo diverse tipologie di convertitori monofase:
+- non controllato: 4 diodi
+- semi controllato: 2 diodi e 2 tiristori
+- total controllato: 4 tiristori
+Aggiungendo un'ulteriore gamba è possibile realizzare una struttura trifase:
+- non controllato: 6 diodi
+- semi controllato: 3 diodi e 3 tiristori
+- total controllato: 6 tiristori
+
+Il circuito è tempo variante e non lineare, si può analizzare l'andamento del valore medio ma saranno presenti delle ondulazioni, che hanno un effetto sulla macchina elettrica (la coppia varia linearmente con la corrente di armatura).
+
+Inoltre le perdite sono funzione del valore efficace della corrente mentre la coppia solo del valore medio.
