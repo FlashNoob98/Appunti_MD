@@ -96,6 +96,7 @@ $$
 # DCM
 Se cade l'ipotesi di conduzione continua si ha il fenomeno di conduzione discontinua, la corrente nell'induttore ovvero raggiunge il valore nullo per un certo periodo di tempo, in ogni periodo di switching, ciò comporta il passaggio da 2 a 3 configurazioni, dunque $m$ dovrà essere pari a 2 (e non più 1).
 
+
 # Grandezze di switching
 Il convertitore boost presenta due dispositivi switching, uno di questi però, il diodo, non è controllabile dall'esterno, se si vuole includere il suo stato nel modello globale alle configurazioni è necessario includere una ulteriore variabile di switching $u_2$ che tenga appunto conto dello stato del diodo, ciò aggiunge una ulteriore configurazione al modello, in cui il tiristore non conduce ma il diodo sì a causa della scarica dell'induttore.
 
@@ -176,6 +177,67 @@ B_{2} &= \begin{bmatrix}
 \end{aligned}
 $$
 
+# Modello ROAM
+Si può utilizzare il [[modello ROAM]] per studiare la dinamica in DCM.
+Riprendendo il sistema alle configurazioni:
+$$
+\left\{
+\begin{aligned}
+\frac{d}{dt} i_{l} &= \frac{Vs}{L}u_{2} - \frac{v_{c}}{L}(u_{2}-u_{1})\\
+\frac{d}{dt} v_{c} &= \frac{i_{l}}{C}(u_{2}-u_{1}) - \frac{v_{c}}{RC}
+\end{aligned}\right.
+$$
+In questo caso non si conosce in anticipo il valore di $t_1$ in cui si annulla la corrente $i_L$ in quanto è proprio un'incognita del sistema.
+La dinamica di $v_C$ è però molto più lenta rispetto al periodo $T$ di switching con cui varia la corrente $i_L$, dunque la si assume costante.
+Le variabili di stato sono inoltre associate allo stato energetico di un sistema, in questo caso, in ogni periodo di switching la corrente parte da un valore nullo, dunque si può supporre che non influisca lo stato del sistema.
+
+La dinamica della corrente è dunque:
+$$
+\left\{
+\begin{aligned}
+\frac{V_{S}}{L}t &\qquad 0\leq t<t_{on}\\
+\frac{V_{S}-\langle v_{C} \rangle_{0} }{L}(t-t_{on})+I_{M} & \qquad t_{on} \leq t < t_{on}+t_{1} \\
+0 &\qquad t_{on}+t_{1}\leq t < T
+\end{aligned}
+\right.
+$$
+Ci si sofferma sulla dinamica funzione di $t_1$:
+$$
+\left\{
+\begin{aligned}
+\frac{d}{dt} i_{L} &= \frac{V_{s}}{L} - \frac{\langle v_{C} \rangle_{0}}{L} \qquad t_{on} \leq t < t_{on}+t_{1} \\
+i_{L}(t_{on}) &= I_{M}
+\end{aligned}
+\right.
+$$
+si riporta invece la dinamica $\vec{x}_{LF}$ con il modello averaged esatto:
+$$
+\frac{d}{dt} \langle v_{C} \rangle_{0} = \frac{\langle i_{L}(u_{2}-u_{1}) \rangle_{0} }{C} - \frac{\langle v_{C} \rangle_{0}}{RC}  
+$$
+al fine di stimare il valor medio si ricava il tempo $t_1$ in funzione di $v_C$:
+$$
+\begin{aligned}
+i_{L}(t_{on}+t_{1}) =0 &= \frac{V_{S}-\langle v_{C} \rangle_{0} }{L}t_{1} +\frac{V_{S}}{L}t_{on} \\
+-V_{S}t_{on} &= (V_{S}-\langle v_{C} \rangle_{0} )t_{1} \\
+t_{1} &= \frac{V_{S}\cdot t_{on}}{\langle v_{C} \rangle_{0}-V_{S} }
+\end{aligned}
+$$
+Con l'ultima relazione si può ricavare il valor medio del prodotto, vedendo anche la forma d'onda della corrente:
+$$
+\langle i_{L}(u_{2}-u_{1}) \rangle_{0} = \frac{I_{M}\cdot t_{1}}{2T} = \frac{V_{S}t_{on}}{2LT}\cdot \frac{V_{S}t_{on}}{\langle v_{C} \rangle_{0}-V_{S} } = \frac{V_{S}^2d^2T}{2L(\langle v_{C} \rangle_{0}-V_{S} )}
+$$
+e quindi l'espressione completa della tensione:
+$$
+\frac{d}{dt}\langle v_{C} \rangle_{0} = \frac{V_{S}^2d^2T}{2LC(\langle v_{C} \rangle_{0}-V_{S} )} - \frac{\langle v_{C}\rangle_{0}}{RC}  
+$$
+tutto in funzione di $\langle v_{C} \rangle_{0}$.
+Se si calcolasse il ripple:
+$$
+R_{PP}(i_{L}) = \frac{\Delta i_{L}}{\langle i_{L} \rangle_{0} } = \frac{I_{\text{max}}\cdot2T}{I_{\text{max}}(t_{on}+t_{1})} = \frac{2T}{t_{on}+t_{1}} \gg 1
+$$
+Non è trascurabile il ripple e dunque non si può utilizzare in questo caso il [[Modello Averaged]].
+
+
 # Curva integrale
  Utilizzando il [[Problema di Cauchy|teorema di Cauchy]] si vuole risolvere il [[#Modello dinamico|modello dinamico in CCM]] del convertitore, separato nelle due differenti configurazioni.
 ## $t<t_{on}$
@@ -239,7 +301,7 @@ $$
 Quella ottenuta è l'espressione di un ellisse dunque la traiettoria del sistema è *semi-ellittica*, si è trovato il [[Dinamica dei convertitori elettrici#Ciclo limite|ciclo limite]] del convertitore.
 
 # Modello small signal
-Si ricava il modello small signal a partire dall'averaged per il boost converter.
+Si ricava il [[modello small signal]] a partire dall'averaged per il boost converter.
 Partendo dal [[#Modello affine e bilineare|modello affine e bilineare]]:
 $$
 \frac{d}{dt} \begin{bmatrix}
@@ -340,7 +402,7 @@ $$
 &\frac{s^2RLC +sL+ (1-D)^2s}{sRL}\delta v_{C}= \frac{(1-D)v_{C}}{sL} - \frac{v_{C}}{R(1-D)}= \frac{R(1-D)^2 -sL}{sLR(1-D)}v_{C}\delta d
 \end{aligned}
 $$
-Si esprime la funzione di trasferimento:
+Si esprime la [[funzione di trasferimento]]:
 $$
 \frac{\delta v_{C}}{\delta d} = \frac{\frac{R(1-D)^2 -sL}{\cancel{sLR}(1-D)}v_{C}}{\frac{s^2RLC +sL+ (1-D)^2s}{\cancel{sRL}}} = \frac{(R(1-D)^2-sL)v_{C}}{(1-D)(s^2RLC+sL+R(1-D)^2)}
 $$
