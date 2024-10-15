@@ -312,6 +312,54 @@ $$
 \end{aligned}
 \right.
 $$
+Può essere riscritto nella seguente forma per ricavare la [[funzione di trasferimento]]:
+$$
+\left\{
+\begin{aligned}
+\frac{d}{dt} \left\langle  \delta \vec{x}  \right\rangle &= A_{s} \left\langle  \delta \vec{x}  \right\rangle  +B_{s} \cdot\delta d\\
+\frac{d}{dt}y &= C\delta \vec{x}\\
+&\text{ovvero}\\
+L \frac{d}{dt} \left\langle  \delta i_{L}  \right\rangle &= V_{C}\delta d - (1-D) \langle \delta v_{C} \rangle \\
+C \frac{d}{dt} \langle \delta v_{C} \rangle &= (1-D) \langle \delta i_{L} \rangle -\frac{ \left\langle  \delta v_{C} \right\rangle}{R} - I_{L}\delta d   
+\end{aligned}
+\right.
+$$
+Si trasformano le equazioni nel dominio di Laplace:
+$$
+\left\{
+\begin{aligned}
+sL\delta i_{L} &= V_{c}\delta d - (1-D)\delta v_{C}\\
+sC\delta v_{C} &= (1-D)\left[ \frac{V_{c}\delta d - (1-D)\delta v_{C}}{sL} \right] - \frac{\delta v_{C}}{R} - I_{L}\delta d
+\end{aligned}
+\right.
+$$
+raccogliendo la seconda equazione e ricordando che $I_{L}=\frac{V_{C}}{R(1-D)}$:
+$$
+\begin{aligned}
+&\left[ sC + \frac{(1-D)^2}{sL} +\frac{1}{R} \right]\delta v_{C} = \left[ \frac{(1-D)v_{C}}{sL} -I_{L}\right]\delta d\\
+&\frac{s^2RLC +sL+ (1-D)^2s}{sRL}\delta v_{C}= \frac{(1-D)v_{C}}{sL} - \frac{v_{C}}{R(1-D)}= \frac{R(1-D)^2 -sL}{sLR(1-D)}v_{C}\delta d
+\end{aligned}
+$$
+Si esprime la funzione di trasferimento:
+$$
+\frac{\delta v_{C}}{\delta d} = \frac{\frac{R(1-D)^2 -sL}{\cancel{sLR}(1-D)}v_{C}}{\frac{s^2RLC +sL+ (1-D)^2s}{\cancel{sRL}}} = \frac{(R(1-D)^2-sL)v_{C}}{(1-D)(s^2RLC+sL+R(1-D)^2)}
+$$
+dividendo per $R(1-D)^2$ si ottiene una forma canonica:
+$$
+\frac{\delta v_{C}}{\delta d} = \frac{v_{C}\left( 1-\frac{sL}{R(1-D)^2} \right)}{(1-D)\left( 1+\frac{sL}{R(1-D)^2}+\frac{s^2LC}{(1-D)^2} \right)}
+$$
+dalla quale si possono definire dei parametri caratteristici per il boost:
+$$
+\begin{matrix}
+G_{d{0}} = \frac{v_{C}}{1-D} & \omega_{z}=\frac{R(1-D)^2}{L}\\ Q = (1-D)R\sqrt{ \frac{C}{L} } & \omega_{0}^2 = \frac{1-D}{LC}
+\end{matrix}
+$$
+e riscrivere la funzione di trasferimento in una [[funzione di trasferimento#FdT dei convertitori|forma generale]]:
+$$
+\frac{\delta v_{C}}{\delta d} = G_{d 0} \frac{1-\frac{s}{\omega_{z}}}{1 + \frac{s}{Q\omega_{0}} + \frac{s^2}{\omega_{0}^2}}
+$$
+.
+
 # Modello GAM
 Assumendo che la tensione in uscita dal convertitore sia praticamente costante a causa della capacità, si possono trascurare le armoniche di tensione e considerare per semplicità solo la prima armonica di corrente.
 Dunque le grandezze in esame saranno: $\langle i_{L} \rangle_{k}, k=[-1,0,1]$ e $\langle v_{L} \rangle_{k},k=0$.
