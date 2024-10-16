@@ -114,3 +114,35 @@ $$
 \frac{10^7}{3\cdot 2\pi f\cdot 5000} \simeq 100\Omega
 $$
 conviene in realtà mettersi al limite del valore massimo, altrimenti ci si riconduce ad un sistema TT.
+
+## Esercizio sul sistema IT con impianti di terra separati
+Questo è il caso sconsigliato dalle norme.
+Bisogna garantire la tensione di contatto non pericolosa al secondo guasto, il sistema diventa TT.
+Si deve garantire l'intervento dell'interruttore differenziale solo al secondo guasto e non al primo.
+
+Al primo guasto saranno presenti gli accoppiamenti capacitivi, tra le fasi e anche il conduttore di neutro, distribuito; saranno quindi presenti quattro accoppiamenti capacitivi.
+
+La tensione verso terra del neutro, con la fase 2 guasta con una resistenza $R_E$:
+$$
+\vec{U}_{EN} = \frac{\vec{U}_{01}j\omega C_{0}+\vec{U}_{02}\left( j\omega C_{0}+\frac{1}{R_{E}} \right)+\vec{U}_{03}j\omega C_{0}}{4j\omega C_{0} + \frac{1}{R_{E}}}
+$$
+mettendo in evidenza:
+$$
+\vec{U}_{EN} = \frac{\vec{U}_{0}\frac{1}{R_{e}}}{\frac{1}{R_{E}}+4j\omega C_{0}} = \frac{\vec{U}_{0}}{1+4j\omega C_{0}R_{E}}
+$$
+Si vuole calcolare la corrente di guasto $\vec{I}_{g}$, quella che si richiude attraverso la resistenza di guasto, non è l'intera corrente che attraversa la fase guasta.
+$$
+\vec{I}_{g} = \frac{\vec{U}_{02}-\vec{U}_{EN}}{R_{E}} = \vec{U}_{0}\cdot \frac{\frac{1}{R_{E}}}{1+4j\omega C_{0}R_{E}}
+$$
+In realtà la corrente è prevalente sugli accoppiamenti capacitivi al primo guasto, si può trascurare il termine resistivo.
+
+$$
+R_{E}\cdot \vec{I}_{g}\leq \vec{U}_{L} \Rightarrow \frac{R_{E}\vec{U}_{0}}{R_{E}+\frac{1}{4j\omega C_{0}}}\leq \vec{U}_{L}\Rightarrow \frac{R_{E}U_{0}}{\sqrt{ R_{E}^2 +\frac{1}{16\omega^2C_{0}^2} }} \leq U_{L}
+$$
+
+Si configura un sistema TT con il collegamento del neutro mediante una capacità.
+Normativa: 
+$$
+R_{E} \leq \frac{U_{L}}{\sqrt{ U_{0}^2 - U_{L^2} }}\cdot \frac{1}{4\omega C_{0}}
+$$
+supponendo che $\vec{U}_{0}$ e $\vec{U}_{L}$ siano in quadratura.
