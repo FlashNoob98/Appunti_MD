@@ -140,3 +140,118 @@ Ovvero si sottrae la fase $\omega t_{d}$ all'intero sistema, uno sfasamento dell
 Si riduce il margine di fase, ovvero la distanza della fase da $180°$ quando il modulo della funzione di trasferimento è unitario.
 A pari omega, all'aumentare di $t_d$ si riduce il margine di fase, riducendo la stabilità del sistema, si riduce la banda passante concessa.
 
+Al tempo di ritardo va aggiunto il ritardo del tempo di calcolo, solitamente variabile nel tempo, si considera comunque il tempo di campionamento successivo per produrre l'uscita, al fine di mantenere costante il tempo di calcolo, dunque $T_s$ è il tempo di campionamento (sampling), lo si pone uguale al tempo di modulazione e al tempo di controllo, esiste dunque un unico tempo di ritardo.
+Il tempo di delay vale:
+$$
+t_{d} = \frac{T_{m}}{2} + T_{s} = \frac{3}{2}T_{s}
+$$
+nell'ipotesi appena fatta in cui il tempo di modulazione e di campionamento coincidano.
+
+Ciò non vale per i raddrizzatori dove il tempo di modulazione è il periodo della frequenza di uscita del raddrizzatore, dipende dalla tensione di ingresso, il monofase controllato ha un tempo di modulazione a 100Hz.
+
+Sullo stesso controllore devo eseguire sia il controllo della corrente di armatura che di eccitazione.
+Nel caso del raddrizzatore, $T_d=\frac{1}{2}T_{m}$ e $T_m$ è nell'ordine dei millisecondi.
+
+Nel dominio della frequenza:
+$$
+F_{o}(\omega) = \frac{K_{p}j\omega_{t}+K_{i}}{j\omega_{t}}\left( \frac{1}{R_{a}+j\omega_{t}L_{a}} \right) e^{-j\omega t_{d}}
+$$
+Ci si pone nella frequenza di taglio $\omega_{t}$ dove il modulo della funzione ad anello aperto vale 1.
+Si trascura $K_i$ se il controllore è ben realizzato, se il sistema è controllabile allora $L_{a}\omega_{t}\gg R_{a}$, si trascura anche $R_a$ ottenendo:
+$$
+F_{o}(\omega) =\left( \frac{ K_{p}}{j\omega_{t}L_{a}} \right) e^{-j\omega t_{d}}
+$$
+il margine di fase alla $\omega_{t}$ (se non ci fosse l'esponenziale) ci sarebbe sempre un margine di fase di 90°, diminuisce invece ulteriormente di $\omega_{t} t_{d}$.
+Si considera un margine di fase minimo di 30° e massimo di 60°, la $\omega_{t}$ raddoppia nel passaggio del margine di fase più basso a quello più alto.
+
+## Margine di fase a 60° e 30°
+Si chiamano $\omega_{th}$ la frequenza di taglio con margine di 60°, dunque $\omega_{th}t_{d}=30^\circ=\frac{\pi}{6}$ ma $t_d$ è $\frac{3}{2}T_{s}$, dunque 
+$$
+\omega_{th} = \frac{\pi}{9T_{s}}=\frac{\pi f_{s}}{9} \simeq \frac{f_{s}}{3}
+$$
+dividendo per $2\pi$:
+$$
+f_{th} = \frac{f_{s}}{18}
+$$
+e analogamente per la frequenza con margine a 30°:
+$$
+f_{tl} = \frac{f_{s}}{9}
+$$
+Solitamente ci si pone "a metà" ovvero circa tra 1/13 e 1/14 della $f_s$.
+
+Il $K_p$ vale $L_{a}\omega_{t}$ alla frequenza di taglio, dunque sarà diverso per i due diversi margini di fase.
+Per il margine più basso, $K$ vale il doppio.
+
+Il polo elettrico del motore si trova al reciproco della costante di tempo di armatura.
+$$
+K_{p,th} = \frac{1}{3}\frac{L_{a}}{T_{s}} \qquad K_{i,th} = \frac{1}{3} \frac{R_{a}}{T_{s}}
+$$
+$$
+K_{p,lh} = \frac{2}{3} \frac{L_{a}}{T_{s}} \qquad K_{i,lh}=\frac{2}{3} \frac{R_{a}}{T_{s}}
+$$
+Non si può applicare questa tecnica se la resistenza è estremamente piccola.
+
+# Risposta ad anello chiuso
+Se la resistenza è nulla si ricava la risposta ad anello chiuso del sistema, si trascura in questo caso il ritardo per semplicità.
+$$
+F_{0}(s) = \frac{K_{p}s+K_{i}}{s} \cdot \frac{1}{L_{a}s} = \frac{K_{p}s+K_{i}}{L_{a}s^2}
+$$
+Fissato un riferimento, quando il sistema è lontano, il regolatore è saturato, interviene l'azione di anti wind-up, il regolatore è saturato, si moltiplica per 0 l'azione integrale nella fase iniziale.
+
+Bisogna sempre garantire la controllabilità della corrente, dunque ci si pone nella worst case condition quando si fornisce la tensione nominale alla macchina, si vuole mantenere la controllabilità della corrente, ovvero della sua derivata, devo quindi avere una tensione con un certo margine rispetto alla nominale, solitamente il 10%.
+
+Appena terminata la fase di saturazione, interviene il controllo integrale, sarà presente una sovraelongazione contenuta.
+
+Si calcola la risposta ad anello chiuso:
+$$
+F_{c}(s) = \frac{F_{o}(s)}{1+F_{o}(s)} = \frac{K_{p}s+K_{i}}{L_{a}s^2+K_{p}s+K_{i}}
+$$
+tra la corrente di riferimento e la corrente in uscita.
+Ma stiamo ragionando nel punto con riferimento costante, dunque la derivata $K_{p}s$ al numeratore si trascura, si ottiene un sistema formato da un polo del secondo ordine.
+$$
+F_{c}(s) = \frac{K_{i}}{L_{a}s^2+K_{p}s+K_{i}}
+$$
+Le soluzioni del polinomio del secondo ordine sono:
+$$
+\lambda_{1,2} = \frac{-K_{p} \pm \sqrt{ K_{p}^2-4K_{i}L_{a} }}{2L_{a}}
+$$
+la sovraelongazione della risposta dipende dal rapporto tra la parte reale e immaginaria dei poli complessi e coniugati, se si pone la parte reale identica a quella immaginaria si ottiene la seguente formula:
+$$
+K_{i} = \frac{1}{2}\cdot\frac{K_{p}^2}{L_{a}}
+$$
+Se si conosce la resistenza di armatura conviene usare la precedente, in tal caso si può usare questa.
+
+# Anello esterno del controllo in cascata, regolatore di velocità
+La velocità di un sistema si qualifica come variabile di stato mediante la seguente relazione di d'Alembert:
+$$
+J \frac{d\omega_{r}}{dt} = M_{e} - M_{r}
+$$
+si controlla la derivata della velocità mediante la $M_e$, la $M_{r}$ è invece la perturbazione, si userà anche in questo caso un PI.
+Non è facile compensare la coppia resistente, è difficile da misurare, in ogni caso si ha un sistema del primo ordine..
+La si confronta (annullando la coppia resistente) con quella della corrente quando la resistenza è nulla:
+$$
+L_{a} \frac{di_{a}}{dt} = v_{a}
+$$
+La dinamica è simile, il ruolo di $J$ è tenuto da $L_{a}$...
+posso usare la precedente relazione tra $K_{i}$ e $K_p$ dunque:
+$$
+K_{i} = \frac{1}{2} \cdot \frac{K_{p}^2}{J}
+$$
+Ma come dimensiono il $K_p$? La velocità ha costanti di tempo molto più elevate, la banda passante prima cambiava tra 1/9 e 1/16 della frequenza di campionamento.
+
+Nella pratica invece il limite è la coppia che si riesce a fornire.. dovrei fornire coppie migliaia di volte la coppia massima... dunque ci si pone alla velocità nominale e coppia nulla.. è sufficiente porre la tensione di armatura pari alla tensione indotta nominale.
+
+Si suppone di porre un carico resistente pari al carico nominale, in teoria è quello limite, si ha quindi una derivata della velocità negativa, si decide il valore massimo di sotto o sovraelongazione della velocità, ciò avviene quando $M_e=M_{r}$, si suppone che l'intervento del regolatore di velocità sia quasi istantaneo rispetto alla corrente e quindi al raggiungimento del nuovo valore di coppia, dunque la coppia di riferimento è pari a:
+$$
+K_{p}\varepsilon_{\omega} = M_{e,n}
+$$
+si vuole supporre un valore del 5% di sottoelongazione (ovvero di errore di velocità)
+$$
+K_{p}\cdot 0.05 \omega_{r,n} = M_{e,n}
+$$
+e quindi 
+$$
+K_{p} = \frac{M_{e,n}}{0.05 \omega_{r,n}}
+$$
+Il limite per il $K_p$ è la banda passante per raggiungere l'instabilità.
+Ci si muove tra il 5% e il 10%, solo in applicazioni più spinte al 2.5%.
