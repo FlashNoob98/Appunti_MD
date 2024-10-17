@@ -235,7 +235,7 @@ Se si calcolasse il ripple:
 $$
 R_{PP}(i_{L}) = \frac{\Delta i_{L}}{\langle i_{L} \rangle_{0} } = \frac{I_{\text{max}}\cdot2T}{I_{\text{max}}(t_{on}+t_{1})} = \frac{2T}{t_{on}+t_{1}} \gg 1
 $$
-Non è trascurabile il ripple e dunque non si può utilizzare in questo caso il [[Modello Averaged]].
+Non è trascurabile il ripple e dunque non si può utilizzare in questo caso il [[Modello Averaged|modello averaged]].
 
 
 # Curva integrale
