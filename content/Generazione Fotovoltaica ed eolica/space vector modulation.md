@@ -188,3 +188,31 @@ Il modello feed-forward verrà utilizzato inoltre per calcolare grandezze non di
 Si usano ad esempio gli *osservatori di stato* che permettono la stima dello stato del sistema mediante questi modelli.
 
 Queste equazioni permettono la realizzazione del [[Controllo di velocità di tipo indiretto|controllo della macchina asincrona]].
+
+# Equazione di statore nel riferimento rotante
+Si riporta il bilancio delle tensioni dello statore:
+$$
+V_{sd} = R_{s}i_{sd} + \sigma_{s}L_{s}\frac{d}{dt}i_{sd} + k_{r}\frac{d\Phi_{r}}{dt} - \sigma_{s}L_{s} \omega_{s}i_{sq}
+$$
+Componente simmetrico di tensione impresso, proiettato lungo $d$ + caduta ohmica + coefficiente di auto per la derivata della corrente e il flusso di rotore, termine trasformatorico - termine mozionale proporzionale alla corrente in quadratura.
+Ad una variazione di corrente in quadratura corrisponde una variazione della caduta di tensione sull'asse diretto.
+
+Equazione sull'asse in quadratura:
+$$
+V_{sq} = R_{s}i_{sq} + \sigma_{s}L_{s} \frac{d}{dt}i_{sq} + \sigma_{s}L_{s}\omega_{s}i_{sd} + k_{r}\omega_{s}\Phi_{r}
+$$
+Anche in questo caso sono presenti due termini trasformatorici e due mozionali.
+Le due equazioni sono accoppiate dai termini mozionali. Si semplifica quando si realizza la condizione ausiliaria.
+
+Si aggiunge l'equazione di rotore, sull'asse diretto, chiuso in corto circuito:
+$$
+0 = -\sigma_{r} L_{m}i_{sd} + \sigma_{r}\Phi_{r} + \frac{d}{dt}\Phi_{r}
+$$
+sull'asse in quadratura:
+$$
+\omega_{s} = p\omega_{r} + \frac{\sigma_{r}L_{m}i_{sq}}{\Phi_{r}}
+$$
+I termini delle prime due tensioni, accoppiate con lo stesso asse, vengono controllate dai regolatori e le uscite sono chiamate $\tilde{v}_{sd}$ e $\tilde{v}_{sq}$, non si considera l'effetto di accoppiamento delle correnti degli assi opposti, per questo motivo vanno poi considerati i termini di compensazione. È più difficile però la taratura delle costanti, queste grandezze possono essere stimate o misurate direttamente.
+
+L'algoritmo di controllo, a partire dalla velocità del vento, conosce la potenza massima ottenibile dalla mappa della turbina. Se la potenza del vento estraibile è superiore alla massima potenza che la turbina può produrre allora si limita alla massima potenza della turbina.
+Quindi si ottimizza il valore di velocità della turbina, fornendo un'opportuna coppia resistente con la macchina elettrica.
