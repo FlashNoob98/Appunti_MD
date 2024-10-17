@@ -108,3 +108,4 @@ Inoltre si potrebbe avere una interruzione della continuità della massa estrane
 In caso di impianto industriale che presenti conduttori in guaina o sbarra, con un isolamento principale ed una guaina esterna, schermante, questa guaina viene utilizzata come conduttore di protezione e connessa a terra.
 L'interruttore differenziale è composto da un dispositivo toroidale che circondi tutti i cavi.
 Si separa il conduttore di protezione dal cavo e lo si fa circolare due volte attraverso il toroide, in modo da avere un flusso indotto in caso di guasto sullo schermo che solleciti l'interruttore.
+
