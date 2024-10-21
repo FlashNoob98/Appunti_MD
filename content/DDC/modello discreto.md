@@ -22,3 +22,35 @@ Si ricorda la definizione di matrice esponenziale $e^A$:
 $$
 e^A = \sum_{k=0}^{+\infty} \frac{A^k}{k!} 
 $$
+Si suppone di campionare lo stato di un sistema ad ogni cambio di configurazione, dunque per un ciclo se ci fossero $N$ configurazioni si avrebbero $N$ campioni.
+
+Si effettua un cambio di variabile:
+$$
+\lambda = \tau-t_{\rho-1} \Rightarrow \tau=\lambda+t_{\rho-1}\Rightarrow d\tau=d\lambda
+$$
+Si definisce il duty-ratio $\rho$-esimo $d\rho=\frac{t_{\rho}-t_{\rho-1}}{T_{s}}$ e si sostituisce nella formula esponenziale precedente:
+$$
+\vec{x_{\rho}}(t_{\rho}) = e^{A_{\rho}d_{\rho}T_{s}}\vec{x}_{\rho-1} + \int_{0}^{d_{\rho}T_{s}}e^{A_{\rho}(d_{\rho}T_{s}-\lambda)}B_{\rho}\vec{V}_{k}d\lambda
+$$
+Supponendo la variazione di tensione infinitesima tra un ciclo e l'altro si può portare il termine $\vec{V}_{k}$ fuori dall'integrale e si effettua un cambio di variabile:
+$$
+\eta = d_{\rho}T_{s} -\lambda
+$$
+$$
+\vec{x}_{\rho}=e^{A_{\rho}d_{\rho}T_{s}}\vec{x}_{\rho-1} + \vec{V}_{k}\int_{0}^{d_{\rho}T_{s}} e^{A_{\rho}\eta}B_{\rho}d\eta
+$$
+Si calcola la soluzione $N$ volte per ogni configurazione e per ogni ciclo $K$:
+$$
+X_{k+1} = \Phi_{k}\vec{X}_{k} + \Gamma_{k}\vec{V}_{k}
+$$
+ottenendo il **modello discreto esatto**.
+
+Svolgendo l'integrale:
+$$
+\int_{0}^{d_{\rho}T_{s}}e^{A_{\rho}\eta}B_{\rho}d \eta = \left[A_{\rho}^{-1}e^{A_{\rho}\eta}\cdot B_{\rho}\right]_{0}^{d_{\rho}T_{s}} = 
+A_{\rho}^{-1}\left[e^{A_{\rho}d_{\rho}T_{s}}-\hat{I}\right]B_{\rho}
+$$
+Sostituendo si ottiene:
+$$
+\vec{x}_{\rho}=e^{A_{\rho}d_{\rho}T_{s}}\vec{x}_{\rho-1} + A_{\rho}^{-1}\left[e^{A_{\rho}d_{\rho}T_{s}}-\hat{I}\right]B_{\rho} \vec{V}_{k}
+$$
