@@ -54,3 +54,4 @@ Sostituendo si ottiene:
 $$
 \vec{x}_{\rho}=e^{A_{\rho}d_{\rho}T_{s}}\vec{x}_{\rho-1} + A_{\rho}^{-1}\left[e^{A_{\rho}d_{\rho}T_{s}}-\hat{I}\right]B_{\rho} \vec{V}_{k}
 $$
+Si particolarizza il modello per il [[Boost converter#Modello discreto|boost converter]].

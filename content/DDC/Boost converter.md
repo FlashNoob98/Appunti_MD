@@ -492,3 +492,27 @@ v_{C}(t) &= \langle v_{C} \rangle_{0}
 \end{aligned}
 $$
 .
+# Modello discreto
+Si suppone che il convertitore lavori in CCM e sia composto da soli due stati:
+$$
+\vec{x}_{1} = e^{A_{1}dT_{s}}\vec{x}_{k-1} + A_{1}^{-1} \left[ e^{A_{1}dT_{s}}-\hat{I} \right]B V_{s}
+$$
+per lo stato successivo:
+$$
+\vec{x}_{k+1} = \vec{x}_{2}=e^{A_{2}(1-d)T_{s}}\vec{x}_{1} + A_{2}^{-1}\left[e^{A_{2}(1-d)T_{s}}-\hat{I}\right]BV_{s}
+$$
+La matrice $B$ resta costante per le due configurazioni in questo caso.
+
+Sostituendo:
+$$
+\vec{x}_{2} = e^{A_{2}(1-d)T_{s}}\left[e^{A_{1}dT}\right]\vec{x}_{k-1} + \left\{ e^{A_{2}(1-d)T_{s}}\cdot A_{1}^{-1} \left[e^{A_{1}dT_{s}}-\hat{I}\right]B + A_{2}^{-1}\left[e^{A_{2}(1-d)T_{s}}-\hat{I}\right]B \right\}V_{s}
+$$
+generalizzando
+$$
+\Phi_{k}= \prod_{\rho=1}^{N}e^{A_{\rho}d_{\rho}T_{s}}
+$$
+è il termine di forma ricorrente mentre
+$$
+\Gamma_{k}=e^{A_{N}d_{n}T_{s}}\cdot A_{N-1}^{-1}\left[e^{A_{N-1}d_{n-1}T}-\hat{I}\right]B_{N-1} + \sum_{\rho=1}^{N}A_{\rho}^{-1}\left[e^{A_{\rho}d_{\rho}T_{s}}-\hat{I}\right]B_{\rho}
+$$
+il termine incrementale.
