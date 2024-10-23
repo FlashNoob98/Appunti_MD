@@ -156,3 +156,47 @@ $$
 R_{i,j} = \frac{\rho}{2\pi(D_{i,j}-r_{j})}\ ;\ R_{i,i}=\frac{\rho}{2\pi r_{i}}
 $$
 .
+
+# Rete magliata di dispersori
+In caso di reti in seconda e terza categoria, la tensione pericolosa può trasferirsi alle masse anche mediante le correnti di guasto. Va dimensionata la $R_E$ per calcolare le tensioni delle masse a causa di un guasto nelle reti di distribuzione in MT e AT.
+
+In caso di [[protezione dai contatti indiretti in alta tensione#Dispersori interrati|dispersore interrato]] si vede che il potenziale nel generico punto $P$ sulla superficie è pari a:
+$$
+U(P) = \frac{\rho I}{2\pi \sqrt{ r^2 +h^2}}
+$$
+La tensione totale di terra invece, che si ha anche sulle masse è pari a:
+$$
+U_{E} = \frac{\rho I}{4\pi r_{0}} + \frac{\rho I}{4\pi(2h-r_{0})}
+$$
+ciò implica che la resistenza di terra:
+$$
+R_{E} = \frac{\rho}{4\pi r_{0}} + \frac{\rho}{4\pi(2h-r_{0})}
+$$
+In caso di dispersione, si ha un andamento del potenziale del terreno che decresce con un andamento $\frac{1}{r}$ con la distanza dal punto in cui viene interrato il dispersore.
+Il gradiente del potenziale è ovviamente negativo:
+$$
+\frac{dU}{dr} = - \frac{\rho I}{2\pi \sqrt{ \left(r^2 + h^2 \right)^3}}
+$$
+
+La tensione di passo è definita come la differenza di potenziale che si ha sul terreno con due punti distanti $1m$ in senso radiale rispetto al punto di dispersione.
+
+Per analizzare le curve di pericolosità è necessario stimare la resistenza del corpo, in questo caso si considera il circuito piede-piede,una serie di due resistenze, non sono più considerati in parallelo.
+
+In caso di contatto con una massa che si trovi ad una certa distanza dal dispersore, la tensione di contatto è pari alla differenza di potenziale tra la $U_E$ e la $U(P)$.
+La massima tensione di contatto, per guasti in MT è di 80 V.
+
+## Modellazione del dispersore lineare
+Può essere visto come una sequenza di sfere infinitesime, dunque si può risolvere il problema con un calcolo integrale del potenziale,se si volesse calcolare in maniera accurata della resistenza di terra. È analogo l'andamento del potenziale, soprattutto per distanze sufficienti dal dispersore.
+
+# Sistema con più dispersori
+Se si utilizzano due dispersori connessi in parallelo, si vuole calcolare l'andamento della tensione di passo e di contatto, solitamente in ogni caso, soddisfatta la sicurezza rispetto alle tensioni di contatto è garantita anche quella rispetto alle tensioni di passo.
+
+Si ipotizza di realizzare una **maglia di dispersori**, si considera l'andamento tra due dispersori e lo si ripete in un quadrato composto da quattro dispersori.
+
+Si suppone di conoscere il perimetro del quadrato, ad esempio 40 m, la massima distanza dai dispersori, dove il potenziale è minimo, è lungo la diagonale del quadrato, ci si riconduce però allo studio del potenziale in caso in cui ci siano due dispersori.
+
+Si realizza una griglia di punti con distanze $10,20,30,40$ e si esprime il valore in p.u. del potenziale rispetto al potenziale di terra $U_E$.
+Il picco del potenziale si ha a $20\sqrt{ 2 }\ m$ rispetto al riferimento, ovvero il punto centrale della diagonale.
+
+Si vede che all'aumentare del numero di dispersori, diminuisce la variazione del potenziale all'interno della rete di dispersori.
+Si dispongono solitamente i dispersori ad una distanza di 1 metro.
