@@ -11,3 +11,6 @@ Altre scelte importanti presenti nello standard sono la potenza nominale, l'alte
 Le macchine ad alto rendimento sono però più grandi e più voluminose.
 
 I motori elettrici possono essere in corrente alternata o in [[Motori in corrente continua|corrente continua]].
+
+Le macchine in corrente alternata possono essere sincrone o [[Macchina asincrona|asincrone]].
+
