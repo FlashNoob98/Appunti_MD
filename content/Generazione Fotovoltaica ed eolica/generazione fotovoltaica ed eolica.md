@@ -84,7 +84,7 @@ Questo schema può essere anche lo stesso di un impianto mini o micro eolico, di
 A seconda della tipologia di generatore si usa un nome diverso per il sistema eolico, analogamente anche il convertitore elettronico dovrà essere differente.
 Al variare della velocità del vento la turbina fornisce una potenza differente al sistema, si deve intersecare la curva a campana Coppia-Velocità della turbina con la coppia resistente fornita dalla macchina elettrica, per ogni curva si può cercare di raggiungere il punto di massimo della curva, variando la curva resistente della macchina elettrica.
 
-Per questo motivo il [[Azionamenti Elettrici|controllo]] della macchina elettrica è fondamentale, per effettuare tale controllo va utilizzato un sistema diverso in funzione della tecnologia della macchina, per questo motivo posso avere un sistema a **velocità fissa** o a **velocità variabile** o **semi-variabile**.
+Per questo motivo il [[Azionamenti elettrici|controllo]] della macchina elettrica è fondamentale, per effettuare tale controllo va utilizzato un sistema diverso in funzione della tecnologia della macchina, per questo motivo posso avere un sistema a **velocità fissa** o a **velocità variabile** o **semi-variabile**.
 Converrebbe in teoria lavorare sempre a velocità variabile per inseguire i punti di massimo della sorgente, aleatoria.
 
 ### Sistema a velocità fissa

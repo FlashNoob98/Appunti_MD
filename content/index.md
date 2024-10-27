@@ -3,11 +3,11 @@ title: I miei appunti
 draft: false
 ---
 
-[[Dinamica dei convertitori elettrici|Dinamica dei convertitori]]
+[Dinamica dei convertitori](/DDC/)
 
-[[Azionamenti-Elettrici/Azionamenti Elettrici|Azionamenti Elettrici]]
+[Azionamenti elettrici](/Azionamenti-Elettrici/)
 
-[[Metodologie di Progettazione degli Impianti Elettrici/Progettazione degli Impianti Elettrici|Metodologie di Progettazione degli Impianti Elettrici]]
+[Metodologie di Progettazione degli Impianti Elettrici](/Metodologie-di-Progettazione-degli-Impianti-Elettrici/)
 
-[[generazione fotovoltaica ed eolica|Generazione da fonte fotovoltaica ed eolica]]
+[Generazione da fonti fotovoltaica ed eolica](/Generazione-Fotovoltaica-ed-eolica/)
 
