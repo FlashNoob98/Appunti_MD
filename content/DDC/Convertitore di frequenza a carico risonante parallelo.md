@@ -55,7 +55,7 @@ $$
 i_{f} \\ v_{C} \\ i_{0}
 \end{bmatrix}=
 \begin{bmatrix}
--\frac{R_{f}}{L_{f}} & +\frac{1}{L_{f}} & 0  \\
+-\frac{R_{f}}{L_{f}} & \frac{1}{L_{f}} & 0  \\
 -\frac{1}{C} & 0 & -\frac{1}{C} \\
 0 & \frac{1}{L} & -\frac{R}{L}
 \end{bmatrix}\cdot
@@ -65,5 +65,90 @@ i_{f} \\ v_{C} \\ i_{0}
 \begin{bmatrix}
 \frac{1}{L_{f}} \\ 0 \\ 0
 \end{bmatrix}V_{d}
+$$
+I componenti da controllare nel sistema sono 4, dunque vi saranno quattro segnali di controllo ma vanno sempre rispettate le seguenti condizioni:
+$$
+\begin{aligned}
+\text{Impedire CC sulla linea:}& \\
+u_1 + u_2 = 1& \\ u_1' + u_2' = 1& \\ 
+\text{Garantire maglia di conduzione:}& \\
+u_1 = u_1'& \\ u_2 = u_2'&
+\end{aligned}
+$$
+Dunque lo spazio di controllo è l'insieme dei segnali di controllo linearmente indipendenti,
+è un sottoinsieme dell'insieme di controllo, ovvero una sua base, è la famiglia libera massimale.
+L'insieme di controllo è invece l'insieme dei segnali che verranno inviati ai componenti, pari al numero dei componenti da controllare.
+Se si usassero tutti e quattro i segnali si avrebbe la relazione tra la tensione in ingresso e in uscita:
+$$
+v = \frac{v_c}{2}\left[u_1+u_1'-u_2-u_2'\right]
+$$
+I vincoli tra le variabili sarebbero inclusi nel modello differenziale ottenendo un sistema di 7 equazioni, considerando solo il "comando libero" si semplifica il calcolo del modello dinamico alle configurazioni.
+# Modello ai valori istantanei
+Si rappresenta il modello ai valori istantanei:
+$$
+\left\{
+\begin{aligned}
+\frac{di_{F}}{dt} &= \frac{v_{d}-R_{F}i_{F}-v_{C}(2u_{1}-1)}{L_{F}} \\
+\frac{dv_{C}}{dt} &= \frac{(2u_{1}-1)i_{F}-i_{0}}{C}\\
+\frac{di_{0}}{dt} &= \frac{v_{C}}{L} - \frac{R}{L}i_{0}
+\end{aligned}
+\right.
+$$
+# Modello GAM
+Analogamente a quanto fatto per il [[Boost converter#Modello GAM|boost converter]] si può ricavare il modello GAM, nell'ipotesi in cui si trascurino le armoniche di corrente $i_{F}$ nel filtro e tensione e corrente sul carico abbiano solo la prima componente.
+$$
+\left\{
+\begin{aligned}
+\frac{d}{dt} \langle i_{F} \rangle_{0} &= \frac{\langle v_{d} \rangle_{0} }{L_{F}} - \frac{R_{F}}{L_{F}} \langle i_{F} \rangle_{0} -  \frac{\langle v_{C}u_{1} \rangle_{0} }{L_{F}} \\
+\frac{d}{dt} \langle v_{C} \rangle_{1} &= -j\omega \langle v_{C} \rangle_{1} + \frac{\langle i_{F}u_{1} \rangle_{1} }{C} - \frac{\langle i_{0} \rangle_{1} }{C} \\
+\frac{d}{dt}\langle i_{0} \rangle_{1} &= -j\omega \langle i_{0} \rangle_{1} + \frac{\langle v_{C} \rangle_{1} }{L} -\frac{R}{L}\langle i_{0} \rangle_{1}  
+\end{aligned}
+\right.
+$$
+
+Si indicano le variabili di stato:
+$$
+\begin{aligned}
+\langle i_{F} \rangle_{0} &= x_{1}\\
+\langle v_{C} \rangle_{1} &= x_{2} + jx_{3} \\
+\langle i_{0} \rangle_{1} &= x_{4} +jx_{5} 
+\end{aligned}
+$$
+La tensione è la corrente sul carico sono sinusoidali, dunque si è assunto che il loro valore medio sia nullo.
+Il segnale di controllo $u$ è un'onda quadra simmetrica, che assume valori $[-1,1]$ e cambia segno, per semplicità, a $\frac{T}{2}$, dunque ne si calcola il contenuto armonico.
+$$
+\begin{aligned}
+\langle u \rangle_{k} &= \frac{1}{T} \int_{0}^T u(\tau) e^{-j\omega k\tau}d\tau = \frac{1}{T}\int_{0}^{T/2} u(\tau) e^{-j\omega k\tau}d\tau - \frac{1}{T} \int_{\frac{T}{2}}^T u(\tau) e^{-j\omega k\tau}d\tau = \\
+&=\frac{1}{T}\cdot \frac{1}{-j\omega k} \left\{ \left[e^{-j\omega k\tau}\right]_{0}^{T/2} - \left[e^{-j\omega k\tau}\right]_{T/2}^{T} \right\} = \frac{j}{2\pi k}\left[ e^{-jk\pi} -1 -e^{-j2k\pi} + e^{-jk\pi} \right] = \\
+&= \frac{\cancel{2}j}{\cancel{2}\pi k} \left[e^{-jk\pi}-1\right]
+\end{aligned}
+$$
+In conclusione per $k$ pari la media è nulla, per $k$ dispari vale:
+$$
+\langle u \rangle_{k} = -\frac{2j}{k\pi} 
+$$
+Si calcolano i prodotti:
+$$
+\langle v_{C}u \rangle_{0} = \langle v_{C} \rangle_{1}\langle u \rangle_{-1} + \langle v_{C} \rangle_{-1}\langle u \rangle_{1} = -\frac{4}{\pi}x_{3}
+$$
+e ancora:
+$$
+\langle i_{F}u \rangle_{1} = \langle i_{F} \rangle_{0}\langle u \rangle_{1} = -\frac{2j}{\pi}x_{1}   
+$$
+mentre il valor medio di tensione in uscita dal ponte a diodi è:
+$$
+\langle v_{d} \rangle_{0} = \frac{3\sqrt{ 2 }}{\pi}V_{\Delta}
+$$
+Si può dunque rappresentare il modello GAM nelle variabili di stato generalizzate:
+$$
+\left\{
+\begin{aligned}
+\frac{dx_{1}}{dt} &= \frac{3}{\pi}\frac{\sqrt{ 2 }V_{\Delta}}{L_{F}} - \frac{R_{F}}{L_{F}}x_{1} + \frac{4}{\pi L_{F}}x_{3}\\
+\frac{dx_{2}}{dt} &= \omega x_{3}-\frac{x_{4}}{C} \\
+\frac{dx_{3}}{dt} &= -\omega x_{2} -\frac{2}{\pi} \frac{x_{1}}{C} -\frac{x_{5}}{C} \\
+\frac{dx_{4}}{dt} &= \omega x_{5} +\frac{1}{L}x_{2} -\frac{R}{L}x_{4} \\
+\frac{dx_{5}}{dt} &= -\omega x_{4} +\frac{1}{L}x_{3} - \frac{R}{L}x_{5}
+\end{aligned}
+\right.
 $$
 .
