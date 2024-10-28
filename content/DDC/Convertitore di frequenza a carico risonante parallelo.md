@@ -151,4 +151,23 @@ $$
 \end{aligned}
 \right.
 $$
+
+# Modello ROAM
+Si può considerare la dinamica della corrente nel filtro più lenta rispetto a quella delle grandezze di stato del convertitore a valle, per questo motivo si può studiare il sistema mediante il [[modello ROAM]] analizzando la dinamica della seconda e terza equazione:
+$$
+\begin{aligned}
+j\omega \vec{V}_{C} &= -\frac{2}{\pi}j \frac{\langle i_{F} \rangle_{0} }{C} - \frac{\vec{I}_{0}}{C} \\
+j\omega \vec{I}_{0} &= \frac{\vec{V}_{C}}{L} - \frac{R}{L}\vec{I}_{0} \Rightarrow (R+j\omega L)\vec{I}_{0} =\vec{V}_{C}
+\end{aligned}
+$$
+sostituendo la $\vec{I}_{0}$ nella prima:
+$$
+\begin{aligned}
+j\omega C\vec{V}_{C} &= -\frac{2}{\pi} jx_{1} - \frac{\vec{V}_{C}}{R+j\omega L} \\
+\left( j\omega C +\frac{1}{R+j\omega L} \right)\vec{V}_{C} &= -\frac{2}{\pi}jx_{1} \\
+\left[ \frac{j\omega RC - \omega^2LC +1}{R+J\omega L} \right]\vec{V}_{C} &= -\frac{2}{\pi}jx_{1} \\
+\vec{V}_{C} &= -\frac{2}{\pi}jx_{1} \cdot \frac{R+j\omega L}{1 -\omega^2LC+j\omega RC} \\
+\vec{V}_{C} &= -2jx_{1}\cdot \frac{(R+j\omega L)\left[(1-\omega^2LC)-j\omega RC\right]}{\left[ (1-\omega^2LC)^2 + (\omega RC)^2\right]} = x_{2}+jx_{3}
+\end{aligned}
+$$
 .
