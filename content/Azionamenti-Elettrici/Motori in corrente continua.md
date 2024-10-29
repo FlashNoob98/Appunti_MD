@@ -52,3 +52,15 @@ Vengono classificate dal collegamento dell'avvolgimento di eccitazione rispetto 
 L'eccitazione può essere [[motore ad eccitazione indipendente|indipendente]] se questa è connessa ad una rete differente oppure è realizzata mediante magneti permanenti.
 
 La macchina ad eccitazione indipendente ha preso piede negli ultimi anni con lo sviluppo dei convertitori e la facilità di realizzare alimentazioni differenti, prima più difficili da realizzare.
+
+# Tensioni nominali delle macchine in corrente continua
+Sono solitamente fissate dai costruttori, a seconda della tipologia di convertitore da utilizzare sulla macchina.
+La tensione del raddrizzatore nominale a vuoto deve essere moltiplicata per la caduta sulla linea e per un coefficiente di rendimento del convertitore, tale serie di prodotti fornisce la tensione nominale della macchina:
+$$
+V_{n} = 0.9 \cdot 0.95 \cdot V_{d0} = 0.855 \frac{2\sqrt{ 2 }}{\pi} 220 = 169.3\ [V] \simeq 180\ [V]
+$$
+Nel caso di un ponte monofase semicontrollato.
+
+Nel caso di un ponte totalcontrollato per un angolo alpha limitato tra 0 e 90 si considera una tensione del motore più bassa, non si hanno tensioni negative che genererebbero delle sovratensioni interne alla macchina.
+Se si considera un ponte a 2 quadranti in ogni caso si devono escludere angoli vicini a 180° e per simmetria escluderne anche alcuni vicino lo 0°, dunque il range varia tra 30° e 150°, si inserisce un fattore di riduzione del 15%.
+Inoltre avere un margine sul valore di $\alpha$ si possono recuperare eventuali riduzioni della tensione di rete.
