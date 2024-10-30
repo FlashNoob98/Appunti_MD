@@ -167,7 +167,36 @@ j\omega C\vec{V}_{C} &= -\frac{2}{\pi} jx_{1} - \frac{\vec{V}_{C}}{R+j\omega L} 
 \left( j\omega C +\frac{1}{R+j\omega L} \right)\vec{V}_{C} &= -\frac{2}{\pi}jx_{1} \\
 \left[ \frac{j\omega RC - \omega^2LC +1}{R+J\omega L} \right]\vec{V}_{C} &= -\frac{2}{\pi}jx_{1} \\
 \vec{V}_{C} &= -\frac{2}{\pi}jx_{1} \cdot \frac{R+j\omega L}{1 -\omega^2LC+j\omega RC} \\
-\vec{V}_{C} &= -2jx_{1}\cdot \frac{(R+j\omega L)\left[(1-\omega^2LC)-j\omega RC\right]}{\left[ (1-\omega^2LC)^2 + (\omega RC)^2\right]} = x_{2}+jx_{3}
+\vec{V}_{C} &= -2jx_{1}\cdot \frac{(R+j\omega L)\left[(1-\omega^2LC)-j\omega RC\right]}{\left[ (1-\omega^2LC)^2 + (\omega RC)^2\right]} \\
+\vec{V}_{C}&= x_{2}+jx_{3}
 \end{aligned}
 $$
-.
+Va sostituita nella dinamica della prima equazione la media di ordine zero del prodotto $V_{C}u$:
+$$
+\langle v_{C}u \rangle_{0} = -\frac{4}{\pi}x_{3} = -\frac{4}{\pi} \mathrm{Im}{\vec{V}_{C}}
+$$
+dunque $x_3$:
+$$
+x_{3} = -\frac{2}{\pi} x_{1} \frac{(R - \cancel{R\omega^2LC} + \cancel{R\omega^2LC})}{(1-\omega^2LC)^2+(\omega RC)^2} = x_{1}R(\omega)
+$$
+sostituendo nella prima equazione:
+$$
+\frac{d}{dt}x_{1} = \frac{3}{\pi}\frac{\sqrt{ 2 }V_{\Delta}}{L_{F}} - \frac{R_{F}}{L_{F}}x_{1} + \frac{4}{\pi L_{F}}x_{1}R(\omega)
+$$
+Raccogliendo i termini si ottiene un'equazione differenziale del primo ordine:
+$$
+L \frac{di}{dt} = V - Ri
+$$
+dove 
+$$
+R = \frac{R_{F}}{L_{F}} -\frac{4}{\pi }x_{1}R(\omega)
+$$
+Si ricavano le altre variabili:
+$$
+\begin{aligned}
+V_{C} &= \langle V_{C} \rangle_{-1} e^{-j\omega t} + \langle V_{C} \rangle_{1} e^{j\omega t}   \\
+i_{0} &= \langle i_{0} \rangle_{-1} e^{-j\omega t} + \langle i_{0} \rangle_{1} e^{j\omega t}  \\
+\langle i_{F} \rangle_{0} &= x_{1}  
+\end{aligned}
+$$
+Non si ricava dunque il valore istantaneo nel tempo con precisione ma si ritiene che coincidano con la prima armonica (nel caso delle grandezze sul carico) o il valore medio per la corrente di filtro.
