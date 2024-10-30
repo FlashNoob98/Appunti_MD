@@ -52,3 +52,10 @@ Si ha a monte un contattore trifase che collega la linea, comandata da un'unica 
 Si dispone un altro contattore trifase sui morsetti "inferiori" della macchina.
 Un terzo contattore trifase permette il collegamento a triangolo, va chiuso dopo aver aperto il contattore di centro stella, devo attendere un certo tempo prima di chiudere quello a triangolo per non mandare la linea in corto circuito.
 
+# Avviamento diretto da rete
+Nel caso in cui la rete fosse dimensionata per avviare la macchina, si dovrebbe utilizzare un contattore per avviare una macchina e non solo un interruttore, questo dispositivo infatti garantisce la chiusura contemporanea delle tre fasi, a differenza dell'interruttore.
+Inoltre il contattore è pilotabile da un relè esterno.
+È inoltre possibile allontanare i comandi del contattore dalla macchina, si può programmare l'intervento in base a fenomeni esterni, l'interruttore invece interviene solo per qualche fenomeno che avviene sullo stesso circuito.
+Il contattore interviene mediante lo spostamento di una bobina su una guida, attraversata da corrente, essa si muoverà sempre con la stessa forza a pari corrente.
+
+Per compiere un avviamento stella-triangolo, la macchina deve essere 400/690V e non 230/400.

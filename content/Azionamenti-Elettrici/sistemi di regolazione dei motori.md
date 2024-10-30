@@ -117,3 +117,6 @@ Aggiungendo un'ulteriore gamba è possibile realizzare una struttura trifase:
 Il circuito è tempo variante e non lineare, si può analizzare l'andamento del valore medio ma saranno presenti delle ondulazioni, che hanno un effetto sulla macchina elettrica (la coppia varia linearmente con la corrente di armatura).
 
 Inoltre le perdite sono funzione del valore efficace della corrente mentre la coppia solo del valore medio.
+
+# Sistema Ward Leonard
+Un sistema particolare di regolazione di un motore in corrente continua prevede di utilizzare un sistema di più macchine sullo stesso asse, una dinamo, un motore asincrono ed un generatore. La dinamo e il generatore alimentano i circuiti della macchina sincrona.
