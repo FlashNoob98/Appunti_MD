@@ -3,11 +3,12 @@ Controllo a minimizzazione delle perdite.
 Convertitore back-back a doppio stadio, su una macchina asincrona.
 L'algoritmo di alimentazione implementa come funzione ausiliaria la minimizzazione delle perdite.
 
-Ci si pone sempre nel riferimento solidale al flusso di rotore
+Ci si pone sempre nel riferimento solidale al flusso di rotore.
 Si esplicitano le perdite:
 $$
 P_{\text{loss}} = 3R_{s}\left(I_{ds}^2+I_{qs}^2\right) + 3R_{r}\left(I_{dr}^2+I_{qr}^2\right) + c_{\text{Fe}}\omega_{e}^2\psi_{m}^2 + c_{\text{str}}\omega_{e}^2
-\left(I_{dr}^2+I_{qr}^2\right)$$
+\left(I_{dr}^2+I_{qr}^2\right)
+$$
 Si possono riassumere con due coefficienti:
 $$
 P_{\text{loss}} = aI_{ds}^2 + bI_{qs}^2
