@@ -80,4 +80,36 @@ Nel grafico coppia-velocità c'è un limite di frontiera a coppia costante, fino
 
 Per superare la velocità limite devo deflussare, ovvero spostare la curva di tensione verso destra, viceversa per aumentare la coppia devo necessariamente aumentare la corrente e non rispettare il limite coppia su corrente massimo.
 
+$$
+\omega_{r,0}= \frac{V_{L}}{p\Phi_{r}}
+$$
+La velocità $\omega_{r,0}$ è quella per cui a corrente $i_{sq }=0$ si ha coppia nulla???
+$$
+\vec{i}_{sq} = \frac{1}{L_{s} }\sqrt{ \frac{V_{L}^2}{(p\omega_{r})^2}-\vec{\Phi}_{r}^2 }
+$$
+Per correnti $i_{sd}$ negative si ha una  corrente massima maggiore.
 
+# Schema di controllo
+L'anello più esterno di controllo è sempre quello di velocità, in uscita dal regolatore di velocità c'è il valore di coppia.
+Mediante una costante di proporzionalità si associa alla coppia un valore di $i_{sq}$, da cui si ricava $i_{sd}$ in base alla condizione ausiliaria.
+Per velocità inferiori alla velocità base (analogamente correnti di $i_{sq}\leq \bar{i}_{sq}$ ovvero la frontiera di corrente), $i_{sd}$ sarà nulla.
+
+Viceversa per $\bar{i}_{sq}<i_{sq}\leq i_{sq,M}$ allora la $i_{sd}$ si ricava invertendo questa relazione:
+$$
+\left( i_{sd}^* + \frac{\Phi_{r}}{L_{s}} \right)^2 + i_{sq}^2 = \left( \frac{V_{L}}{p\omega_{r}L_{s}} \right)^2
+$$
+ovvero:
+$$
+i_{sd}^* = \frac{1}{L_{s}}[\sqrt{ (\dots) }]
+$$
+.
+Le due correnti di riferimento vengono poi inviate ai PI o ai regolatori ad isteresi connessi al driver de motore.
+In alternativa si possono usare le equazioni di statore per realizzare una compensazione e utilizzare il controllo SVM.
+$$
+v_{sd}^* = \tilde{v}_{sd} - Q \hat{i}_{sq}
+$$
+e
+$$
+v_{sq}^*= \tilde{v}_{sq} + Q\hat{i}_{sd} + E
+$$
+dove $Q=p\omega_{r}L_s$ ed $E=p\omega_{r}\phi_{r}$.
