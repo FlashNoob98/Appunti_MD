@@ -77,3 +77,16 @@ $$
 La potenza convenzionale totale è la somma delle tre potenze convenzionali dei tre circuiti: $P_{t}=P_{1}+P_{2}+P_{3}=1200+2600+1860=5660\ W$
 si ricava la potenza contrattuale più vicina pari a 6kW, corrispondente ad una potenza specifica di $43\ W/m^2$.
 
+# Criteri di dimensionamento dell'impianto elettrico
+Esistono tre criteri per dimensionare un impianto elettrico:
+quello elettrico, che tiene conto della caduta di tensione lungo la linea, quello termico e quello economico.
+
+Nel criterio elettrico si modella la linea con una serie RL, si calcola la caduta di tensione lungo la linea con un'approssimazione:
+$$
+\Delta V = RI\cos \varphi + XI\sin \varphi
+$$
+Si può utilizzare la caduta percentuale e le potenze attiva e reattiva:
+$$
+\Delta V_{\%} = \frac{RP+XQ}{V_{n}^2}
+$$
+Questa seconda forma è più comoda per il calcolo dei sistemi di rifasamento.
