@@ -59,7 +59,7 @@ Gli spazi isomorfi conservano la struttura algebrica, ad esempio l'uso del metod
 ## Metrica di uno spazio vettoriale
 Uno spazio vettoriale $X$ definito su $\mathbb{K}$ si dice **metrico** se si può definire una funzione $d:X\times X\to\mathbb{R}_{0}^+$ definita metrica.
 Si chiama *distanza* di $\vec{x}$ da $\vec{y}$ la funzione metrica applicata ai due vettori:
-- $d\left( \vec{x},\vec{y} \right)\geq 0\ d\left( \vec{x},\vec{y} \right)=0\Leftrightarrow \vec{x}\equiv\vec{y}$
+- $d\left( \vec{x},\vec{y} \right)\geq 0\quad\quad d\left( \vec{x},\vec{y} \right)=0\Leftrightarrow \vec{x}\equiv\vec{y}$
 - $d\left( \vec{x},\vec{y} \right)=d\left( \vec{y},\vec{x} \right)$
 - $d\left( \vec{x},\vec{z} \right)\leq d\left( \vec{x},\vec{y} \right)+d\left( \vec{y},\vec{z} \right)$
 La metrica permette di definire il concetto di *intorno* di un punto, così come il punto di accumulazione, il limite, la derivata.
@@ -78,3 +78,36 @@ $$
 d_{p}\left( \vec{x},\vec{y} \right) = \left\{ \sum_{k=1}^n \left| x_{k}-y_{k} \right|^p\right\}^{1/p}
 $$
 per $p=2$ la metrica si chiama **euclidea** (teorema di Pitagora).
+
+# Successione di Cauchy
+Dato uno spazio metrico $X$, si considera una successione di elementi $x_{n}$ nello spazio.
+Si dice che la successione è di Cauchy se
+$$
+\forall \ \varepsilon>0 \ \exists\  N>0: \forall\ n,m>N \Rightarrow d(x_{n},x_{m})<\varepsilon
+$$
+ovvero dopo un certo numero $N$ di elementi della successione, la distanza tra questi si riduce ad un valore $\varepsilon$ arbitrario.
+Le successioni convergenti sono tutte successioni di Cauchy ma non è sempre vero il viceversa, ad esempio la successione
+$$
+\{a_{n}\} : a_{n}=\left( 1+\frac{1}{n} \right)^n
+$$
+è di Cauchy perché la distanza tra i suoi elementi si riduce all'aumentare dell'ordine $n$ ma non converge.
+La somma della serie tende al numero di Nepero che è irrazionale mentre gli elementi della serie sono stati definiti nello spazio dei numeri razionali $\mathbb{Q}$.
+
+Un altro esempio se si definisce uno spazio $X:]-1,1[$ , la successione
+$$
+a_{n}=\left( 1-\frac{1}{n} \right)
+$$
+è di Cauchy ma converge ad 1 che è esterno dello spazio di definizione.
+Uno spazio metrico si dice **completo** se ogni successione di Cauchy converge ad un elemento dello spazio metrico.
+
+## Spazi normati
+Sia $X$ un $\mathbb{K}$-spazio, si definisce l'operatore norma "$||\cdot||$"$:X\to\mathbb{R}_{0}^+$, see quest'ultimo ha le seguenti proprietà lo spazio si dice **normato**:
+- $||\vec{x}||\geq 0\quad\quad ||\vec{x}||=0\Leftrightarrow\vec{x}=\vec{0}$
+- $||\lambda \vec{x}||=|\lambda|\cdot||\vec{x}||\quad \lambda\in\mathbb{K}$
+- $||\vec{x}+\vec{y}||\leq||\vec{x}||+||\vec{y}||$
+Il concetto di norma amplia il concetto di ampiezza di un vettore, il modulo è una particolare norma.
+La norma può indurre una metrica:
+$$
+d\left( \vec{x},\vec{y} \right)\stackrel{\Delta}{=} ||\vec{x}-\vec{y}||
+$$
+Uno spazio normato che sia completo rispetto alla metrica indotta dalla norma prende il nome di **spazio di Banach**.
