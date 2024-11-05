@@ -59,3 +59,124 @@ Inoltre il contattore è pilotabile da un relè esterno.
 Il contattore interviene mediante lo spostamento di una bobina su una guida, attraversata da corrente, essa si muoverà sempre con la stessa forza a pari corrente.
 
 Per compiere un avviamento stella-triangolo, la macchina deve essere 400/690V e non 230/400.
+
+# Controllo della macchina asincrona
+Un modo semplice per controllare la macchina asincrona è quello di variare la resistenza di rotore, se questo è ad anelli, oppure variare il numero di coppie polari, in maniera discreta. Questi sistemi offrono però una capacità limitata di regolare le velocità.
+
+Trascurando la caduta nello statore si può approssimare la tensione di fase con la tensione indotta $\vec{V}\simeq \vec{E}$.
+La tensione indotta è proporzionale al flusso di mutua:
+$$
+{E} = \omega \Phi_{m}N_{s}\xi_{s} = 2\pi N_{s}\xi_{s}f\Phi_{m}
+$$
+ma il flusso di mutua:
+$$
+\Phi_{m} = B_{m}\tau_{p}L
+$$
+Al variare dei parametri della macchina variano le prestazioni della macchina, può variare il punto di magnetizzazione del ferro.
+$$
+L_{m} = \frac{N^2}{\mathbf{R}} = \frac{N^2}{\frac{l}{\mu S}}
+$$
+Al variare dell'induttanza varierà la corrente, per questo motivo si cerca di lavorare a flusso costante.
+Si cerca di mantenere dunque la seguente legge di controllo:
+$$
+V = k f
+$$
+fino alla frequenza nominale in cui si ha la tensione nominale, oltre si mantiene la tensione costante al valore nominale, per non danneggiare l'isolamento della macchina. Per frequenze maggiori della nominale, inoltre, il flusso diminuisce, non si va in saturazione ma in deflussaggio.
+Va implementata la legge nel convertitore, si regola solo la $f$ e si ricava la tensione di conseguenza, non possono essere indipendenti.
+
+Si analizza il circuito a T della macchina:
+$$
+\vec{\Phi}_{m} = L_{m}\vec{I}_{\mu} = L_{m}\left( \vec{I}_{s} + \vec{I}'_{r} \right)
+$$
+ma la corrente di rotore si può esprimere in funzione di quella di statore:
+$$
+\left( \frac{R'_{r}}{s} +j\omega L'_{dr} \right)\vec{I}_{r}' + jL_{m}\left( \vec{I}_{s}+\vec{I}_{r}' \right) = 0
+$$
+dunque
+$$
+\left( \frac{R_{r}'}{s} + j\omega L_{r}' \right)\vec{I}_{r}' = -j\omega L_{m}\vec{I}_{s}
+$$
+ovvero
+$$
+\vec{I}_{r}' = -\frac{j\omega L_{m}}{R_{r}' + js\omega L_{r}'}\vec{I}_{s}
+$$
+avendo posto
+$$
+L_{r}'=L'_{dr}+L_{m}
+$$
+Si riscrive l'equazione del flusso:
+$$
+\vec{\Phi}_{m} = L_{m}\vec{I}_{s} \frac{R_{r}' + js\omega L_{dr}'}{R_{r}' + js\omega L_{r}'}
+$$
+ovvero dipende dalla corrente di statore e dallo scorrimento, fissata la $\omega$, non è vero che il flusso resta costante, come ipotizzato nel circuito ad L.
+Al variare della frequenza varia anche la coppia della macchina, se questa diminuisce allora diminuisce anche la coppia.
+Ciò è dovuto ad una diminuzione del flusso con la frequenza, a basse frequenze soprattutto prevale la caduta sulla resistenza di statore rispetto all'induttanza di dispersione, la $\vec{E}$ non varia linearmente con la variazione di $\vec{V}$.
+
+A basse velocità si può ovviare questo problema usando una tensione maggiore, compensata, la legge di controllo diventa:
+$$
+V = kf + V_{0}
+$$
+ovvero a frequenza nulla, le induttanze sono corto circuiti, si fa in modo in cui
+$$
+\frac{V_{0}}{R_{s}} = I_{n}
+$$
+Devo conoscere la resistenza dello statore per ricavare questa seconda legge, in fase di avvio della macchina, il convertitore potrebbe effettuare la misura di questa resistenza per calcolare la tensione minima $V_{0}$.
+
+
+## Coppia limite costante
+Si vuole ricavare una legge di controllo per avere la coppia limite (alla corrente limite) costante al variare della frequenza.
+La coppia elettromagnetica:
+$$
+M = \frac{3R'_{r}}{s}I_{r}'^{2}\cdot \frac{1-s}{\omega_{r}}
+$$
+ma $\omega_{r}=(1-s)\frac{\omega}{p}$ quindi
+$$
+M = 3p \frac{R_{r}'}{s\omega} I_{r}'^2
+$$
+ma la corrente di rotore:
+$$
+\vec{I}_{r}' = -\frac{js\omega L_{m}}{R_{r}'+js\omega L_{r}'} \vec{I}_{s}
+$$
+svolgendo il quadrato del modulo:
+$$
+M = 3p \frac{R_{r}'}{\cancel{s\omega}} \cdot \frac{(s\omega)^{\cancel{2}} L_{m}^2I_{s}^2}{R_{r}'^2 + (s\omega)^2 L_{r}'^2}
+$$
+si calcola la coppia limite imponendo la corrente limite:
+$$
+M_{L} = 3p \frac{R_{r}' (s\omega)_{L}L_{m}^2 I_{sL}}{R_{r}'^2 + (s\omega)_{L}^2 L_{r}'^2}
+$$
+dunque la coppia resta costante se $(s\omega)$ è costante e quindi se il flusso è costante.
+
+Si ricava la tensione di alimentazione rispetto ai parametri di macchina nel circuito a T:
+$$
+\vec{V} = \vec{I}_{s}\dot{Z}_{eq} = \vec{I}_{s} \left[ R_{s}+j\omega L_{ds} + \frac{j\omega L_{m}(R_{r}'+js\omega L_{dr}')}{R_{r}' + js\omega L_{r}'} \right]
+$$
+Separando in parte reale e immaginaria:
+$$
+\vec{V} = \vec{I}_{s}(R_{s}+j\omega \dot{\gamma}) = \vec{I}_{s}[R_{s}-\omega \gamma_{I}+j\omega \gamma_{R}]
+$$
+svolgendo il modulo:
+$$
+V = I_{s}\sqrt{ (R_{s}-\omega \gamma_{I})^2 + \omega^2\gamma_{R}^2 }
+$$
+sviluppando il binomio:
+$$
+V = I_{s} \sqrt{ R_{s}^2 -2R_{s}\omega\gamma_{I} +\omega^2\gamma^2 }
+$$
+con $\gamma^2 = \gamma_{I}^2+\gamma_{R}^2$.
+Questa condizione deve valere anche nelle condizioni limite, imponendo i valori di gamma limite e corrente limite, si ottiene una legge $V-\omega$ che permette di mantenere flusso e coppia costante anche a frequenze minori, senza sovraccaricare la macchina.
+Questa legge dipende però dai parametri elettrici della macchina.
+
+Non è però detto che i parametri restino costanti in ogni punto di funzionamento della macchina.
+Il dominio di funzionamento della macchina si può costruire fornendo una retta orizzontale nel piano coppia-velocità che garantisca la coppia nominale per velocità inferiori a quella nominale.
+Tutte le caratteristiche al di sotto di questa retta sono ottenibili in egual modo con la stessa legge precedente ma un valore di $(s\omega)$ più piccolo, nel caso in cui si desideri una coppia inferiore.
+
+Oltre la frequenza nominale, la caduta sulla resistenza di statore diventa trascurabile rispetto a quella sull'induttanza di dispersione, si può considerare la $V\simeq E=kf\Phi$. Le curve di funzionamento saranno più piccole, i punti a corrente nominale formano una curva a coppia decrescente.
+Lungo questa curva la potenza apparente assorbita è costante in quanto la tensione e la corrente sono pari alla nominale.
+Se la potenza è costante anche la potenza meccanica è costante, dunque la caratteristica coppia velocità è un ramo di iperbole, per frequenza superiore alla nominale.
+
+Si può utilizzare una forma approssimata della coppia per scorrimenti piccoli:
+$$
+M = \frac{3p}{\omega} \frac{V^2}{\left(\frac{R_{r}'}{s}\right)} = \frac{3p}{\omega} \frac{V^2s}{R_{r}'}
+$$
+Si ha la velocità massima in rapporto alla coppia di rovesciamento, ovvero se la coppia di rovesciamento è il doppio della nominale, la velocità massima è il doppio della velocità nominale.
