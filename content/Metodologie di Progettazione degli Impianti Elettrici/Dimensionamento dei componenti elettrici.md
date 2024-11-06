@@ -90,3 +90,109 @@ $$
 \Delta V_{\%} = \frac{RP+XQ}{V_{n}^2}
 $$
 Questa seconda forma è più comoda per il calcolo dei sistemi di rifasamento.
+
+Si tende a trascurare il termine induttivo, considerando solo il valore della resistenza variabile con la lunghezza, si assume la reattanza costante pari a $k$:
+$$
+\Delta V = k+RI\cos \varphi
+$$
+## Linea a sbalzo
+Una linea alimenta un carico all'estremità, si assume $\cos \varphi=1$:
+$$
+\Delta V = RI = \frac{\rho L}{S}I \leq \Delta V_{\text{amm}}
+$$
+si definisce il momento amperometrico $M=LI$ ottenendo la sezione minima del conduttore:
+$$
+S \geq 2 \frac{\rho M}{\Delta V_{\text{amm}}}
+$$
+Il fattore 2 per un carico monofase (2 conduttori).
+
+Trovata la sezione si può calcolare la reattanza del cavo e verificare che la $\Delta V_{\text{amm}}$ sia maggiore della $\Delta V$ effettiva del cavo:
+$$
+\Delta V = RI\cos \varphi + XI\sin \varphi
+$$
+con $R$ ed $X$ forniti dal costruttore del cavo, fissata la sezione, moltiplicati per la lunghezza complessivo del circuito.
+
+## Carichi distribuiti lungo la linea
+Lungo una linea sono distribuiti più carichi disposti ad una certa distanza, si identificano le lunghezze $l_{1},l_{2},\dots,l_{n}$ le distanze tra le varie utenze e con $L_{1},L_{2},\dots, L_{n}$ le distanze dei carichi dall'alimentazione.
+
+In questo caso la condizione da verificare è a fine linea, (la più critica) dunque la $\Delta V$ totale a fine linea si calcola:
+$$
+\Delta V = \sum_{i=1}^N I_{i}\cdot\sum_{j=1}^i r_{j} = \frac{2\rho}{S} \sum_{i=1}^{N}I_{i}L_{i} = \frac{2\rho}{S}\sum_{i=1}^N M_{i} \leq \Delta V_{\text{amm}}
+$$
+con
+$$
+r_{j} = \frac{\rho l_{j}}{S_{j}}
+$$
+le resistenze parziali della linea tra i carichi.
+Si assume la sezione costante lungo tutta la linea.
+
+Si può calcolare una linea con una lunghezza equivalente tale che:
+$$
+\sum_{i=1}^NI_{i}L_{i} = \sum_{i=1}^N I_{i}\cdot L_{eq} \Rightarrow L_{eq} = \frac{\sum_{i=1}^NI_{i}L_{i}}{\sum_{i=1}^N I_{i}}
+$$
+## Linea con sezioni differenti
+Si definisce con $I_{i}'$ una corrente "di tratto" pari, successivamente ad ogni carico alla somma dei carichi a valle, si semplifica la formula della caduta di tensione:
+$$
+\Delta V = \sum_{i=1}^N \rho \frac{ l_{i}}{S_{i}}I_{i}'
+$$
+Si può introdurre una funzione costo:
+$$
+f(S_{1},S_{2},\dots,S_{N})=S_{1}l_{1}+S_{2}l_{2}+\dots+S_{N}l_{n}
+$$
+pari al volume di materiale utilizzato, può essere moltiplicata per 2 con linee monofase o per $\sqrt{ 3 }$ per linee trifase, si vuole minimizzare la funzione rispetto ad $S$ mantenendo però il vincolo su $\Delta V$.
+$$
+\left\{
+\begin{aligned}
+&\stackrel{\text{min}}{S} f\left( \vec{S} \right)\\
+&\varphi\left( \vec{S} \right) = \Delta V
+\end{aligned}
+\right.
+$$
+Si può risolvere il problema di ottimizzazione mediante i moltiplicatori di Lagrange, fissando la caduta di tensione si minimizza la funzione obiettivo.
+$$
+\begin{aligned}
+\mathcal{L} &= f\left( \vec{S} \right) + \lambda\left( \varphi\left( \vec{S} \right)-\Delta V \right) \\
+\frac{\partial\mathcal{L}}{\partial S_{i}} &=0 \\
+\frac{\partial\mathcal{L}}{\partial \lambda} &=0 \Rightarrow \varphi\left( \vec{S} \right) = \Delta V
+\end{aligned}
+$$
+Si svolge la derivata rispetto alle sezioni:
+$$
+\frac{\partial\mathcal{L}}{\partial S_{i}} = \frac{\partial f}{S_{1}} + \lambda\frac{\partial \varphi}{\partial S_{1}}
+$$
+ottenendo (per cavo monofase)
+$$
+\begin{aligned}
+&2l_{1}-\lambda\frac{2\rho l_{1}}{S_{1}^2}I_{1}' = 0\\
+&\vdots\\
+&2l_{i}-\lambda\frac{2\rho l_{i}}{S_{i}^2}I_{i}' = 0
+\end{aligned}
+$$
+un set di equazioni per ogni sezione del cavo, semplificando:
+$$
+\frac{S_{i}^2}{I_{i}'}=\lambda \rho \Rightarrow \frac{S_{i}}{\sqrt{ I_{i}' }} = \sqrt{ \lambda \rho } = \alpha
+$$
+dunque il rapporto tra $S_{i}$ e $I_{i}'$ è costante e pari a $\sqrt{ \lambda \rho }$, in altre parole:
+$$
+\frac{S_{1}}{\sqrt{ I_{1}' }} =\frac{S_{2}}{\sqrt{ I_{2}' }} = \dots =\frac{S_{N}}{\sqrt{ I_{N}' }} = \alpha
+$$
+Si sostituisce la sezione i-esima con la radice della corrente per $\alpha$:
+$$
+\Delta V = 2\rho \sum_{i=1}^N \frac{l_{i}I_{i}'}{\sqrt{ I_{i}' }\alpha}
+$$
+da cui si può calcolare il coefficiente $\alpha$:
+$$
+\alpha = \frac{2\rho}{\Delta V} \sum_{i=1}^N {l_{i}\sqrt{  I_{i}'}}
+$$
+e dividendo per $\rho$ si può ricavare il moltiplicatore di Lagrange $\lambda$.
+
+## Carichi equidistanti
+Se i carichi sono equidistanti lungo la linea, ovvero $l_{1}=l_{2}=\dots=l_{N}$ come nel caso di sistemi di illuminazione, la caduta di tensione diventa:
+$$
+\Delta V = \frac{2\rho}{S}lI(n+(n-1)+(n-2)+\dots+1) = \frac{2\rho}{S}Il \frac{n(n+1)}{2}\leq \Delta V_{\text{amm}}
+$$
+oppure
+$$
+\Delta V = \frac{2\rho}{S} I_{t}\left( \frac{L}{2}  +\frac{l}{2} \right) \leq \Delta V_{\text{amm}}
+$$
+se il numero di carichi tende all'infinito si ottiene l'equazione di un carico uniformemente distribuito.
