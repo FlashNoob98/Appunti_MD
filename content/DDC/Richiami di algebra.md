@@ -222,3 +222,33 @@ Costituiscono anche la base per le funzioni $\mathbb{L}^2$ che sono esprimibili 
 
 ## Trasformata di Steinmetz
 Il prodotto scalare nello spazio di Hilbert di ordine nullo $\left\langle  \vec{x}  \right\rangle_{0}$ viene chiamato *trasformata di Steinmetz*, restituisce uno scalare complesso, chiamato **fasore**. Dato che il prodotto scalare produce un isomorfismo nello spazio, si conserva la struttura algebrica tra le funzioni sinusoidali e i fasori.
+
+## Teorema delle proiezioni
+Sia definito uno spazio di Hilbert $H$ su un campo $\mathbb{K}$, un sottospazio $M\subset H$, per ogni vettore $\vec{x}$ appartenente allo spazio, esiste ed è unico il vettore proiezione di $\vec{x}$ su $M$:
+$$
+\forall\ \vec{x} \in H, \exists{!}\ \vec{m}_{0}:||\vec{x}-\vec{m}_{0}|| \leq ||\vec{x}-\vec{m}||\ \forall\ \vec{m}\in M
+$$
+Ovvero esiste un unico vettore che minimizza la distanza tra $\vec{x}$ e il sottospazio $M$, questo vettore è ortogonale al sottospazio e dunque a qualsiasi altro vettore di $M$. Ogni vettore dello spazio di Hilbert si può scomporre in una somma di due vettori, uno appartenente ad un sottospazio, l'altro ad esso ortogonale.
+
+# Proprietà dei coefficienti della serie di Fourier
+Si riporta i legame tra i coefficienti della serie bilatera e unilatera:
+$$
+C_{k} = \frac{A_{k}-jB_{k}}{2} \Rightarrow |C_{k}|^2 =  \frac{A_{k}^2+B_{k}^2}{4} 
+$$
+espressione delle due serie:
+$$
+v(t) = \sum_{k=1}^{+\infty} A_{k}\cos(k\omega t) + B_{k}\sin(k\omega t) = \sum_{k=1}^{+\infty} S_{k}\sin(k\omega t+\varphi_{k}) 
+$$
+Relazione con i valori efficaci:
+$$
+S_{k}^2 = A_{k}^2 + B_{k}^2 = 2\left[A_{k,\text{rms}}^2+B_{k,\text{rms}}^2\right] = 2S_{k,\text{rms}}^2
+$$
+Per la serie bilatera:
+$$
+2C_{k}^2 = \frac{A_{k}^2+B_{k}^2}{2} = A_{k,\text{rms}}^2 + B_{k,\text{rms}}^2 = S_{k,\text{rms}}^2
+$$
+
+Identità di Parseval:
+$$
+V_{\text{rms}} = \sqrt{ \sum_{k=1}^{+\infty}V_{k,\text{rms}}^2 }
+$$
