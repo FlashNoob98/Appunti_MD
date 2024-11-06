@@ -100,7 +100,7 @@ $$
 è di Cauchy ma converge ad 1 che è esterno dello spazio di definizione.
 Uno spazio metrico si dice **completo** se ogni successione di Cauchy converge ad un elemento dello spazio metrico.
 
-## Spazi normati
+# Spazi normati
 Sia $X$ un $\mathbb{K}$-spazio, si definisce l'operatore norma "$||\cdot||$"$:X\to\mathbb{R}_{0}^+$, see quest'ultimo ha le seguenti proprietà lo spazio si dice **normato**:
 - $||\vec{x}||\geq 0\quad\quad ||\vec{x}||=0\Leftrightarrow\vec{x}=\vec{0}$
 - $||\lambda \vec{x}||=|\lambda|\cdot||\vec{x}||\quad \lambda\in\mathbb{K}$
@@ -111,3 +111,114 @@ $$
 d\left( \vec{x},\vec{y} \right)\stackrel{\Delta}{=} ||\vec{x}-\vec{y}||
 $$
 Uno spazio normato che sia completo rispetto alla metrica indotta dalla norma prende il nome di **spazio di Banach**.
+
+## Forma bilineare
+Sia $f$ un'applicazione tra due spazi vettoriali su uno stesso campo $\mathbb{K}$, si dice che $f$ è **bilineare** se:
+$$
+\begin{aligned}
+\text{Lineare rispetto al}&\text{ primo argomento}\\
+f\left( \alpha \vec{v}_{1}+\beta \vec{v}_{2},\vec{v}' \right) &= \alpha f\left( \vec{v}_{1},\vec{v}' \right) + \beta f\left( \vec{v}_{2},\vec{v} '\right) \\
+\text{Lineare rispetto al}&\text{ secondo argomento}\\
+f\left( \vec{v},\alpha\vec{v}_{1}'+\beta \vec{v}_{2}' \right) &= \alpha f\left( \vec{v},\vec{v}_{1}' \right) + \beta f\left( \vec{v}, \vec{v}_{2}\right) \\
+f\left( \vec{v},\vec{v}' \right) &= f\left( \vec{v}',\vec{v} \right)
+\end{aligned}
+$$
+se vale la terza relazione è anche **simmetrica**.
+
+### Prodotto scalare
+Si definisce *prodotto scalare*:
+$$
+S\left( \vec{x},\vec{y} \right): V\times V \to \mathbb{R}
+$$
+È una forma bilineare simmetrica definita su un campo reale nello spazio $V$ cartesiano su se stesso, deve essere:
+- Non degenere: $S\left( \vec{x},\vec{y} \right)=0\quad \forall\ \vec{x}\in V\Rightarrow \vec{y}=0$
+- Definito positivo: $S\left( \vec{x},\vec{x} \right)>0\ \forall\ \vec{x}\neq {0}$
+Si riporta il prodotto scalare di uno spazio vettoriale numerico $\mathbb{R}^n$ sul campo $\mathbb{R}$:
+$$
+\left\langle  \vec{x},\vec{y}  \right\rangle = \sum_{k=1}^n x_{k}y_{k}\quad \vec{x},\vec{y}\in\mathbb{R}^n 
+$$
+ovvero la sommatoria delle componenti di pari ordinata.
+
+# Forma sesquilineare
+Siano dati due spazi vettoriali sullo stesso campo $\mathbb{K}$, si dice che $f$ è una forma **sesquilineare** se:
+$$
+\begin{aligned}
+\text{Lineare rispetto al}&\text{ primo argomento}\\
+f\left( \alpha \vec{v}_{1}+\beta \vec{v}_{2},\vec{v}' \right) &= \alpha f\left( \vec{v}_{1},\vec{v}' \right) + \beta f\left( \vec{v}_{2},\vec{v} '\right) \\
+\text{Antilineare rispetto al}&\text{ secondo argomento}\\
+f\left( \vec{v},\alpha\vec{v}_{1}'+\beta \vec{v}_{2}' \right) &=  \check{\alpha} f\left( \vec{v},\vec{v}_{1}' \right) + \check{\beta} f\left( \vec{v}, \vec{v}_{2}\right) \\
+f\left( \vec{v},\vec{v}' \right) &= \overline{f\left( \vec{v}',\vec{v} \right)} \text{ complesso coniugato}
+\end{aligned}
+$$
+Se il campo $\mathbb{K}=\mathbb{R}$ la forma sesquilineare degenera nella bilineare dato che $\alpha=\check{\alpha}\ \forall \alpha\in\mathbb{R}$.
+## Proprietà hermitiana
+Un prodotto scalare *hermitiano* è una forma sesquilineare simmetrica così definita:
+$$
+h\left( \vec{x},\vec{y} \right) \longrightarrow h:V\times V \in\mathbb{C}
+$$
+dove $V$ è uno spazio vettoriale definito su un campo complesso $\mathbb{C}$.
+Ad esempio il prodotto hermitiano canonico su uno spazio $V\in\mathbb{C}^n$:
+$$
+\left\langle  \vec{x},\vec{y}  \right\rangle = \sum_{k=1}^n x_{k}\check{y}_{k} 
+$$
+con $\check{y}_{k}$ il complesso coniugato di $y_{k}$.
+
+# Metrica euclidea
+Sia un campo vettoriale $V\in\mathbb{R}^n$ dotato di prodotto scalare, si dice che questo spazio è *euclideo*, il prodotto scalare può indurre una norma, dunque una metrica.
+Si definisce la norma indotta:
+$$
+\left\langle  \vec{x},\vec{x}  \right\rangle = \sum_{k=1}^nx_{k}^2 \Rightarrow 
+||\vec{x}|| \stackrel{\Delta}{=} \sqrt{ \left\langle  \vec{x},\vec{x}  \right\rangle  }
+$$
+
+## Spazio pre-hilbertiano
+Si definisce spazio pre-hilbertiano uno spazio vettoriale su cui si definisce un prodotto scalare che induce una norma e quindi una metrica, si introduce allora il concetto di **angolo**, dato che:
+$$
+\left\langle  \vec{x},\vec{y}  \right\rangle \leq ||\vec{x}||\cdot||\vec{y}|| 
+$$
+allora
+$$
+\cos \theta \stackrel{\Delta}{=}  \frac{\left\langle  \vec{x},\vec{y}  \right\rangle }{||\vec{x}||\cdot||\vec{y}||} \leq 1\quad \theta\in[-\pi,\pi] 
+$$
+ed esiste un solo angolo $\theta$ che verifica la precedente uguaglianza.
+
+# Spazio di Hilbert
+Lo spazio di Hilbert è uno spazio pre-hilbertiano che, rispetto alla norma indotta dal prodotto scalare, è anche uno spazio metrico completo, ovvero è uno spazio di [[#Spazi normati|Banach]].
+
+Si definisce con $\mathbb{L}^2$ lo spazio delle funzioni di quadrato sommabile, sono uno spazio di Hilbert e si può definire in questo spazio il **valore efficace**:
+$$
+V_{rms} \stackrel{\Delta}{=} \sqrt{ \frac{1}{T}\int_{0}^T v^2(t)dt }
+$$
+In questo spazio è anche possibile definire il prodotto scalare hermitiano:
+$$
+\langle f,g \rangle \stackrel{\Delta}{=} \frac{1}{T}\int_{0}^Tf(t) \check{g}(t)dt
+$$
+e di conseguenza una norma:
+$$
+||f|| = \sqrt{ \langle f,f \rangle  } =\sqrt{ \frac{1}{T}\int_{0}^T f^2(t)dt }
+$$
+dunque il valore efficace è una norma in uno spazio hilbertiano.
+
+## Base dello spazio di Hilbert
+Si può calcolare il prodotto scalare tra un generico vettore $\vec{x}$ di uno spazio di Hilbert e il termine $e^{jk\omega t}$:
+$$
+\left\langle  \vec{x}  \right\rangle_{k} = \left\langle  \vec{x},e^{j\omega k\tau}  \right\rangle  = \frac{1}{T} \int_{0}^T x(\tau)e^{-jk\omega \tau}d\tau
+$$
+quello ottenuto è per definizione il coefficiente della serie di Fourier di $\vec{x}$ di ordine $k$, coincide con la proiezione di $\vec{x}$ lungo la direzione $e^{j\omega k\tau}$, dunque una generica funzione $x(t)$ esprimibile in serie di Fourier è contenuta in uno spazio di Hilbert:
+$$
+x(t) = \sum_{k=-\infty}^{+\infty} \left\langle  \vec{x}  \right\rangle_{k}e^{jk\omega t} 
+$$
+dunque infiniti termini generano la funzione $x(t)$, questo concetto si può estendere al concetto di base, ovvero dati $N$ vettori $\{e_{1},e_{2},\dots,e_{N}\}\in H$ contenuti nello spazio di Hilbert, formano una base hilbertiana se:
+$$
+\begin{aligned}
+\langle e_{i},e_{j} \rangle &= 0 \ \forall\ k\neq j \\
+\langle e_{i},e_{j} \rangle &= 1 \ \forall\ k = j 
+\end{aligned}
+$$
+ovvero sono linearmente indipendenti.
+
+Questi vettori sono un sistema ortogonale completo e formano quindi una base dello spazio di Hilbert di dimensione infinita.
+Costituiscono anche la base per le funzioni $\mathbb{L}^2$ che sono esprimibili in serie di Fourier, che può infatti esprimersi come combinazione lineare della base di Hilbert.
+
+## Trasformata di Steinmetz
+Il prodotto scalare nello spazio di Hilbert di ordine nullo $\left\langle  \vec{x}  \right\rangle_{0}$ viene chiamato *trasformata di Steinmetz*, restituisce uno scalare complesso, chiamato **fasore**. Dato che il prodotto scalare produce un isomorfismo nello spazio, si conserva la struttura algebrica tra le funzioni sinusoidali e i fasori.
