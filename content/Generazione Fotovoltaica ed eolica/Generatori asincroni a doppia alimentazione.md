@@ -121,6 +121,28 @@ Sostituendo $V_{sd}$ e $V_{sq}$:
 $$
 \begin{aligned}
 P_{s} &= \frac{3}{2} (-R_{s}(I_{sd}^2 + I_{sq}^2) + \cancel{X_{s}I_{sq}I_{sd}} - X_{m}I_{rq}I_{sd} - \cancel{X_{s}I_{sd}I_{sq}}+ X_{m}I_{rd}I_{sq}) = \\
-&= \frac{3}{2} (-R_{s}(I_{sd}^2 + I_{sq}^2) + X_{m}(I_{rd}I_{sq}-I_{sd}I_{rq}))
+&= \frac{3}{2} (-R_{s}(I_{sd}^2 + I_{sq}^2) + X_{m}(I_{rd}I_{sq}-I_{sd}I_{rq})) = \\
+& = -\frac{3}{2}(R_{s}(I_{sd}^2+I_{sq}^2))- \frac{\frac{\omega}{p}M_{e}}{3/2} = -P_{\omega,s}-P_{\delta}
 \end{aligned}
 $$
+ricordando che 
+$$
+M_{e} = -\frac{3}{2}p\mathrm{Im}\{(I_{sd}+jI_{sq})(\cancel{\Phi_{sd}}- j\Phi_{sq})\} 
+$$
+La potenza di rotore:
+$$
+\begin{aligned}
+P_{r} &= \frac{3}{2}\mathrm{Re}\left( \vec{V}_{r}\check{\vec{I}_{r}^s} \right) = \frac{3}{2}(V_{rd}I_{rd}^s + V_{rq}I_{rq})  =\\
+&= \frac{3}{2} \left[R_{r}(I_{rd}^2-I_{rq}^2)-s (X_{r}I_{rq}^s-X_{m}I_{sq})I_{rd}^s + s(X_{r}I_{rd}^s-X_{m}I_{sd})I_{rq}^s\right] = \\
+&= \frac{3}{2}[R_{r}({I_{rd}^s}^2+{I_{rq}^s}^2)] - sP_{\delta} = P_{\omega,r} - sP_{\delta}
+\end{aligned}
+$$
+È stata fatta la convenzione del generatore per la $P_s$ e dell'utilizzatore la $P_{r}$, dunque la potenza elettrica generata $P_{el}=P_{s}-P_{r}$:
+$$
+P_{s}-P_{r} = P_{el} =  -P_{\omega,s} - P_{\omega,r} - (1-s)P_{\delta} = -P_{\omega,\text{tot}} - P_{\text{mecc}}
+$$
+A regime la potenza della turbina è pari alla potenza meccanica assorbita dal motore:
+$$
+P_{t}>0 = -(1-s)P_{\delta}
+$$
+la potenza di traferro è sempre negativa, dunque la potenza iniettata nel rotore è maggiore di zero per scorrimenti positivi e viceversa per scorrimenti negativi.
