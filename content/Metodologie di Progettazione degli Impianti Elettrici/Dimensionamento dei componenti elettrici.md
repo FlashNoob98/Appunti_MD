@@ -196,3 +196,96 @@ $$
 \Delta V = \frac{2\rho}{S} I_{t}\left( \frac{L}{2}  +\frac{l}{2} \right) \leq \Delta V_{\text{amm}}
 $$
 se il numero di carichi tende all'infinito si ottiene l'equazione di un carico uniformemente distribuito.
+
+## Carico alimentato da due estremità
+Si ha una linea alimentata da due punti $A$ e $B$ con un carico centrale, si suppone che si possa separare questa linea in due linee separate attraversate da due differenti correnti $I_{A}$ e $I_B$ virtuali, si assume che la tensione nei due punti di alimentazione sia la stessa, la corrente si ripartirà in maniera inversa rispetto alla resistenza dei due differenti tratti di linea $R_{A}$ e $R_{B}$ ovvero mediante un partitore di corrente:
+$$
+I_{A} = I \frac{R_{B}}{R_{A}+R_{B}}\quad I_{B }=I \frac{R_{A}}{R_{A}+R_{B}}
+$$
+supponendo che le due sezioni siano le stesse, la resistenza è $\frac{\rho L}{S}$, il partitore dipenderà solo dalla lunghezza dei due tratti di linea:
+$$
+I_{A} = I \frac{L_{B}}{L_{A}+L_{B}}=\frac{M_{B}}{L}\qquad I_{B}=I \frac{L_{A}}{L_{a}+L_{B}}=\frac{M_{A}}{L}
+$$
+definendo i momenti amperometrici e con $L=L_{A}+L_{B}$ la lunghezza della linea.
+
+La caduta di tensione dal punto $A$:
+$$
+\Delta V_{A} = \frac{2\rho I_{A}L_{A}}{S} = \frac{2\rho L_{A}}{S} \frac{M_{B}}{L} \leq \Delta V_{\text{amm}}\rightarrow S\geq S_{A}
+$$
+caduta di tensione dal punto $B$:
+$$
+\Delta V_{B} = \frac{2\rho I_{B}L_{B}}{S} = \frac{2\rho L_{B}}{S} \frac{M_{A}}{L} \leq \Delta V_{\text{amm}}\rightarrow S\geq S_{B}
+$$
+si sceglierà come sezione minima la massima sezione tra $S_A$ e $S_B$:
+$$
+S\geq \text{max}(S_{A},S_{B})
+$$
+si è assunto che le due sezioni fossero uguali, se invece si vede che le sezioni $S_A$ ed $S_{B}$ sono molto diverse tra loro, allora andrebbe eseguito il calcolo senza poter passare alle lunghezze ma considerando tutta la resistenza.
+
+## Carichi multipli su linea alimentata da due punti
+In questo caso la procedura è analoga, si calcola la corrente $I_{A}$ mediante un partitore di corrente:
+$$
+I_{A} = \frac{(L_{2}+L_{3}+L_{4})}{4} + I_{2}\left( \frac{L_{3}+L_{4}}{L} \right) + I_{3} \frac{L_{4}}{L}
+$$
+Per la corrente $I_B$:
+$$
+I_{B} = I_{1} \frac{L_{1}}{L} + \frac{I_{2}(L_{1}+L_{2})}{L} + I_{3} \frac{L_{1}+L_{2}+L_{{3}}}{L} 
+$$
+
+Se i punti di alimentazione avessero tensione diversa:
+$$
+I_{A} = \sum_{i=1}^{N} \frac{M_{Bi}}{L} + \frac{V_{A}-V_{B}}{R_{AB}}
+$$
+e
+$$
+I_{B} = \sum_{i=1}^{N} \frac{M_{Ai}}{L} + \frac{V_{B}-V_{A}}{R_{AB}}
+$$
+
+## Linea radiale
+Si suppone di avere una dorsale A-B, nel punto B sono poste altre linee di derivazione, si deve garantire la massima caduta di tensione per ogni dorsale.
+$$
+\Delta V_{0} = 2\rho \left[ \frac{L_{0}}{S_{0}}\sum_{j=1}^{n}I_{dj} + \sum_{i=1}^{n_{0}} \frac{M_{Ai}}{S_{0}} \right]
+$$
+La caduta di tensione tra il punto $B$ e un punto finale di un ramo è pari a:
+$$
+\Delta V_{j} = \frac{2\rho}{S_{j}} \sum_{i=1}^{n_{j}} M_{Bi,j} = \frac{2\rho}{S_{j}} M_{Bj} = \Delta V'
+$$
+con $j$ si intende la linea, $i$ il carico.
+
+Si ottiene una costante $k$:
+$$
+\frac{M_{Bj}}{S_{j}} = \frac{\Delta V'}{2\rho} = \frac{1}{k} \Rightarrow S_{j} = kM_{Bj}
+$$
+Si può assumere che la sezione della linea a monte sia pari alla somma delle sezioni dei rami:
+$$
+S_{0} = \sum_{j=1}^{n}S_{j} = k\sum_{j=1}^n M_{Bj} \Rightarrow k = \frac{S_{0}}{\sum_{j=1}^n M_{Bj} }
+$$
+Si riscrive la caduta $j$-esima rispetto alla sezione $S_{0}$:
+$$
+\Delta V_{j} = \frac{2\rho}{S_{0}} \sum_{j=1}^{n_{j}} M_{Bj} 
+$$
+Raggruppando le due cadute:
+$$
+\Delta V = \Delta V_{0}  +\Delta V_{j} = \frac{2\rho}{S_{0}}\left[ L_{0} \sum_{j=1}^n I_{dj} + \sum_{i=1}^{n_{0}} M_{Ai} + \sum_{j=1}^{n} M_{Bj} \right] \leq \Delta V_{\text{amm}}
+$$
+Si ricava infine la sezione $j$-esima:
+$$
+S_{j} = k M_{Bj} = S_{0} \frac{M_{Bj}}{\sum_{j=1}^{n} M_{Bj}}
+$$
+ovvero la sezione di ogni ramo è proporzionale al momento amperometrico di quel ramo.
+
+## Metodo di Coltri
+Sia data una rete complessa, si calcola la corrente lungo un tratto $AB$:
+$$
+I_{AB} = \sum_{i=1}^{n_{A}} \frac{M_{Bi}}{L_{AB}} + \frac{V_{A}-V_{B}}{R_{AB}}
+$$
+e così via per tutti i rami connessi ad $A$:
+$$
+I_{AC} = \sum_{i=1}^{n_{A}} \frac{M_{Ci}}{L_{AC}} + \frac{V_{A}-V_{C}}{R_{AC}}
+$$
+ma la somma di tutte queste correnti è nulla:
+$$
+0= \sum_{i=1}^{n_{A}} \frac{M_{Bi}}{L_{AB}} + \sum_{i=1}^{n_{A}} \frac{M_{Ci}}{L_{AC}} + \dots  + \frac{V_{A}-V_{B}}{R_{AB}} +\frac{V_{A}-V_{C}}{R_{AC}} + \dots
+$$
+Le incognite sono le tensioni ai nodi, si scriveranno tante equazioni simili per quanti nodi sono presenti, si può utilizzare come metodo di verifica.
+In alternativa si può usare un metodo iterativo per calcolare le sezioni delle linee, questo metodo permette di utilizzare il criterio elettrico nelle reti magliate.
