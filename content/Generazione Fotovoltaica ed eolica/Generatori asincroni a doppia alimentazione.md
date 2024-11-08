@@ -146,3 +146,34 @@ $$
 P_{t}>0 = -(1-s)P_{\delta}
 $$
 la potenza di traferro è sempre negativa, dunque la potenza iniettata nel rotore è maggiore di zero per scorrimenti positivi e viceversa per scorrimenti negativi.
+
+# Controllo
+Si riprendono le equazioni (1:04:18)
+$$
+\left\{
+\begin{aligned}
+V_{sd} &= \frac{R_{s}}{L_{s}}\Phi_{sd} - \frac{L_{m}}{L_{s}}{R_{s}} {i}_{rd} + \frac{d}{dt} \Phi_{sd}\\
+V_{sq } &= -\frac{L_{m}}{L_{s}}R_{s}i_{rq} + \omega_{s}\Phi_{sd} \\
+V_{rd} &= R_{r}i_{rd} + \sigma_{r}L'_{r} \frac{d}{dt} i_{rd} - (\omega_{s} - p\omega_{r}) \sigma_{r}L_{r}i_{rq} + K_{s} \frac{d}{dt}\Phi_{sd} \\
+V_{rq} &= R_{r}i_{rq}  + \sigma_{r}L'_{r} \frac{d}{dt} i_{rq} + (\omega_{s}-p\omega_{r})\sigma_{r}L_{r}i_{rq} + (\omega_{s}-p\omega_{r})K_{s}\Phi_{sd} \\
+T_{el} &= \frac{3}{2}p \frac{L_{m}}{L_{s}} \Phi_{sd} i_{rq}
+\end{aligned}
+\right.
+$$
+In queste equazioni (terza e quarta) si potrebbero sostituire la derivata di $\Phi_{sd}$ in funzione di $i_{sd}$ e $i_{sq}$.
+Si può ancora una volta imporre una condizione ausiliaria, come mantenere il flusso di asse diretto costante, è un pò più complesso perchè nella prima equazione si è realizzato il disaccoppiamento tra il flusso  di statore e la corrente di rotore secondo l'asse inquadratura:
+$$
+\frac{d}{dt} \Phi_{sd} + \frac{R_{s}}{L_{s}} \Phi_{sd} = V_{sd} + \frac{L_{m}}{L_{s}}R_{s}i_{rd}
+$$
+si ottiene una cosa simile al FOC, ma la componente $V_{sd}$ non può essere variata, solo la corrente di rotore può variare il flusso rispetto all'asse diretto.
+Se si riesce ad imporre la derivata del flusso pari a zero, ovvero imporre un valore di $i_{rd}$:
+$$
+\Phi_{sd}=\text{cost}=\Phi_{sd,\text{nom}} : \frac{\Phi_{s}R_{s}}{L_{s}} = V_{sd} + \frac{L_{m}}{L_{s}}R_{s} i_{rd}
+$$
+ovvero:
+$$
+i_{rd} = \frac{\Phi_{s}}{L_{m}} - \frac{V_{sd}}{R_{s}} \frac{L_{s}}{L_{m}}
+$$
+Si sottrae un termine proporzionale alla tensione all'asse diretto alla componente di $i_{rd}$, imponendo questa equazione si ottiene il flusso costante e si possono trascurare i termini differenziali del flusso (ultimo termine terza equazione $K_{s} \frac{d}{dt}\Phi_{sd}$).
+
+Si avrà un controllo sulla corrente $i_{rq}$ per regolare la coppia, mantenendo poi il flusso costante controllando la corrente $i_{rd}$.
