@@ -252,3 +252,13 @@ Identità di Parseval:
 $$
 V_{\text{rms}} = \sqrt{ \sum_{k=1}^{+\infty}V_{k,\text{rms}}^2 }
 $$
+# Spazi affini
+Si consideri un insieme $\mathbb{A}\neq 0$ e sia $\mathbb{K}-V$ uno spazio vettoriale $V$ sul campo $\mathbb{K}$, sia possibile un'applicazione $\Pi$ tra due spazi vettoriali, si definisce **spazio affine** associato allo spazio $V$ sul campo $\mathbb{K}$ la terna $(\mathbb{A},V,\Pi)$ con $\Pi:\mathbb{A}\times\mathbb{A}\to V$ se gode delle seguenti proprietà:
+- L'applicazione $P$ è suriettiva: $\forall\ P \in\mathbb{A},\forall\ \vec{v}\in V\ \exists{!}\ Q\in\mathbb{A}:\Pi(P,Q)=\vec{V}$
+- Gode dell'identità di Charles: $P,Q,Z \in\mathbb{A}\Rightarrow \Pi(Q,Z)=\Pi(P,Q)+\Pi(Q,Z)$
+Un'applicazione è suriettiva se e solo se ogni elemento di $B$ è immagine di almeno un elemento di $A$, ovvero tutti gli elementi di $B$ sono immagini di almeno un elemento di $A$, l'insieme immagine coincide col codominio della funzione.
+$F:A\to B$.
+
+Non vale il viceversa, l'applicazione inversa $\Pi^{-1}(P,Q)$ fornisce un sottoinsieme di $\mathbb{A}$, fornisce ovvero anche infinite coppie di $P$ e $Q$ in $\mathbb{A}$.
+Fissato un punto $P$ e un vettore $\vec{V}\ \exists!\ Q : \Pi(P,Q)=\vec{v}$ ma dato $\vec{v}$ esistono infinite coppie di $P$ e $Q$ che forniscono $\vec{v}$.
+Segmento orientato...
