@@ -180,3 +180,5 @@ $$
 M = \frac{3p}{\omega} \frac{V^2}{\left(\frac{R_{r}'}{s}\right)} = \frac{3p}{\omega} \frac{V^2s}{R_{r}'}
 $$
 Si ha la velocità massima in rapporto alla coppia di rovesciamento, ovvero se la coppia di rovesciamento è il doppio della nominale, la velocità massima è il doppio della velocità nominale.
+
+Si analizzano i [[convertitori per la macchina asincrona]].
