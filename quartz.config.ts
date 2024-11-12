@@ -17,7 +17,7 @@ const config: QuartzConfig = {
       tagID: 'G-1V5LEJG0RM',
     },
     locale: "it-IT",
-    baseUrl: "quartz.jzhao.xyz",
+    baseUrl: "flashnoob98.github.io/Appunti_MD",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "created",
     theme: {
