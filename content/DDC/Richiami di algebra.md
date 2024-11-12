@@ -254,11 +254,132 @@ V_{\text{rms}} = \sqrt{ \sum_{k=1}^{+\infty}V_{k,\text{rms}}^2 }
 $$
 # Spazi affini
 Si consideri un insieme $\mathbb{A}\neq 0$ e sia $\mathbb{K}-V$ uno spazio vettoriale $V$ sul campo $\mathbb{K}$, sia possibile un'applicazione $\Pi$ tra due spazi vettoriali, si definisce **spazio affine** associato allo spazio $V$ sul campo $\mathbb{K}$ la terna $(\mathbb{A},V,\Pi)$ con $\Pi:\mathbb{A}\times\mathbb{A}\to V$ se gode delle seguenti proprietà:
-- L'applicazione $P$ è suriettiva: $\forall\ P \in\mathbb{A},\forall\ \vec{v}\in V\ \exists{!}\ Q\in\mathbb{A}:\Pi(P,Q)=\vec{V}$
+- L'applicazione $\Pi$ è suriettiva: $\forall\ P \in\mathbb{A},\forall\ \vec{v}\in V\ \exists{!}\ Q\in\mathbb{A}:\Pi(P,Q)=\vec{V}$
 - Gode dell'identità di Charles: $P,Q,Z \in\mathbb{A}\Rightarrow \Pi(Q,Z)=\Pi(P,Q)+\Pi(Q,Z)$
 Un'applicazione è suriettiva se e solo se ogni elemento di $B$ è immagine di almeno un elemento di $A$, ovvero tutti gli elementi di $B$ sono immagini di almeno un elemento di $A$, l'insieme immagine coincide col codominio della funzione.
 $F:A\to B$.
 
 Non vale il viceversa, l'applicazione inversa $\Pi^{-1}(P,Q)$ fornisce un sottoinsieme di $\mathbb{A}$, fornisce ovvero anche infinite coppie di $P$ e $Q$ in $\mathbb{A}$.
 Fissato un punto $P$ e un vettore $\vec{V}\ \exists!\ Q : \Pi(P,Q)=\vec{v}$ ma dato $\vec{v}$ esistono infinite coppie di $P$ e $Q$ che forniscono $\vec{v}$.
-Segmento orientato...
+
+L'applicazione $\Pi(P,Q)$ è detta segmento orientato di $PQ$, oppure vettore applicato in $P$ con estremo in $Q$ tale che:
+$$
+\vec{PQ} = Q-P
+$$
+e gode delle ulteriori proprietà:
+- $\Pi(P,P)=0$
+- $\Pi(P,Q)=0\Leftrightarrow P\equiv Q$
+- $\Pi(P,Q)=-\Pi(Q,P)$
+
+Come già espresso, l'applicazione $\Pi$ è suriettiva, tuttavia fissato un $P$, si considera l'applicazione indotta con $P$ fisso $\Pi_{P}(Q)=\vec{v}$ in questo caso $Q$ è unico quindi l'applicazione è biunivoca; viceversa dato $\vec{v}$ esiste un solo punto $Q_1$ raggiunto dal vettore $\vec{v}$ centrato in $P$ fissato.
+
+Questo insieme è un isomorfismo, conserva la struttura algebrica, induce in $\mathbb{A}$ una struttura algebrica simile a quella degli spazi vettoriali, dunque la struttura algebrica di $\mathbb{A}$ verrà
+indotta dalla struttura di $V$, dunque se $V$ ha dimensione $n$ anche $\mathbb{A}$ avrà dimensione $n$.
+
+Lo spazio $(\mathbb{A},V,\Pi)$ in cui si è fissato il punto $P$ si dice spazio affine, se si considera una coppia data dal punto $O$ di $A$ e la base $B$, si può definire in questo spazio affine il seguente sistema $S$ fatto dalla base $B$ e il punto $O$. $B$ è uno spazio vettoriale di dimensione $n$, in $V$.
+$$
+S= (O,B)
+$$
+In questo spazio affine, ogni vettore $\vec{v}$ è sempre formato da componenti dello spazio vettoriale.
+Fissati $P$ ed $O$, si può descrivere il punto $P$ rispetto ad $O$ mediante le sue coordinate.
+Dunque i punti dello spazio $\mathbb{A}$ sono associati ai vettori applicati all'origine, con i vettori $\vec{v}$ pari a $P-O$ e le componenti di $\vec{v}$ sono le sue coordinate rispetto ad $O$.
+
+## Sottospazio di Hilbert
+Si consideri uno spazio $\mathbb{R}^3$ di Hilbert, si definisce il prodotto scalare:
+$$
+\langle x,y \rangle \stackrel{\Delta}{=} \sum_{k=1}^{3}x_{k}y_{k}
+$$
+che induce una metrica ed una distanza.
+Si definisce uno spazio affine associato a $\mathbb{R}^3$ un piano ortogonale ad un dato vettore $\vec{w}$ tale che $\vec{w}$ sia ortogonale a tutti i vettori $PQ$ giacenti sul piano.
+
+$\vec{w}=a\hat{i}+b\hat{j}+c\hat{k}$ con $\hat{i},\hat{j},\hat{k}$ una base hilbertiana dato che i tre versori sono tra loro ortogonali. I coefficienti $a,b,c$ sono anch'essi costanti perché coefficienti di $\vec{w}$ rispetto alla base, si definiscono le coordinate dei punti $P$ e $Q$ rispetto l'origine ovvero:
+$P=(x,y,z)$ e $Q=(x_{Q},y_{Q},z_{Q})$, l'applicazione del prodotto scalare restituisce:
+$$
+\left\langle  \vec{w},P-Q  \right\rangle = a(x-x_{Q})  + b(y-y_{Q}) + c(z-z_{Q}) = d
+$$
+Fissato $Q$ saranno presenti infiniti punti $P$ giacenti sul piano, si ottiene proprio l'espressione del piano ortogonale al vettore $\vec{w}$.
+Se $Q$ coincide con l'origine allora $d=0$, si ottiene un piano ortogonale a $\vec{w}$ che passa per l'origine, dunque il prodotto scalare fornisce l'equazione di un iperpiano.
+
+### Spazio delle funzioni di quadrato sommabile
+Si indica con $\vec{v}$ l'elemento di un campo su $\mathbb{R}^3$ con componenti $v_{1},v_{2},v_{3}$ funzioni sinusoidali sfasate tra loro di 120°.
+Si riprende la precedente equazione del piano, se il punto $Q$ giace nell'origine avrà componenti nulle e di conseguenza l'equazione del piano è del tipo:
+$$
+ax+by+cz = 0
+$$
+o più in generale:
+$$
+\sum_{k=1}^n a_{k}x_{k}=0
+$$
+per un iperpiano in $\mathbb{R}^n$ di dimensione $n$.
+
+Nel caso di un sistema elettrico trifase, si può dunque considerare un generico vettore di tensione così definito:
+$$
+\vec{v} = \left[v_{1}(t),v_{2}(t),v_{3}(t)\right]^T
+$$
+Espressi in un riferimento cartesiano $\mathbb{R}^3$ tale che $\vec{w}=\hat{i}+\hat{j}+\hat{k}$ il vettore diventa:
+$$
+\vec{v} = v_{1}\hat{i} + v_{2}\hat{j} + v_{3}\hat{k}
+$$
+Se si annulla il prodotto scalare tra $\vec{v}$ e $\vec{w}$ allora si dice che il sistema di tensioni è simmetrico ovvero:
+$$
+\left\langle  \vec{v},\vec{w}  \right\rangle =v_{1}+v_{2}+v_{3} =0  
+$$
+dunque $\vec{w}\perp \vec{v}:\vec{v}\neq0$ cioè $\vec{v}$ giace sul piano ortogonale a $\vec{w}$ che passa per l'origine degli assi.
+
+Questa considerazione vale per qualsiasi vettore tale che la somma delle sue componenti sia nulla, ad esempio la somma di correnti che incidono in un nodo sarà necessariamente nulla, si possono allora rappresentare mediante un vettore che giace sul piano ortogonale al vettore composto dalla somma dei versori della base; in questo modo non sono più necessarie tre componenti per rappresentare il vettore ma solo due (la terza è sostituita dal vincolo di somma nulla, non si è ridotto il grado di libertà ma si usa solo una rappresentazione diversa).
+
+# Rappresentazione del vettore di tensione con due componenti
+Si definisce una terna di tensioni simmetriche e sinusoidali nel seguente modo:
+$$
+v_{k} = \sqrt{ 2 }V_{\Delta} \cos\left( \omega t - \frac{2k\pi}{3} \right)\quad k=0,1,2
+$$
+Si definisce un primo versore $\vec{v}_{d}$ che giace sul piano:
+$$
+\vec{v}_{d} = \frac{\vec{v}}{||\vec{v}||}
+$$
+con $\vec{v}=[v_{1},v_{2},v_{3}]$ mentre il modulo:
+$$
+\begin{aligned}
+||\vec{v}|| &= \sqrt{ (\sqrt{ 2 }V_{\Delta})^2 \left[ \cos^2\omega t + \cos^2\left( \omega t-\frac{2\pi}{3} \right) + \cos^2\left( \omega t - \frac{4\pi}{3} \right) \right] } = \\
+&= \sqrt{ 2 }V_{\Delta} \sqrt{ \frac{1}{2} + \frac{\cos 2\omega t}{2} + \frac{1}{2} + \frac{\cos\left( 2\omega t-\frac{2\pi}{3} \right)}{2} + \frac{1}{2} + \frac{\cos\left( 2\omega t-\frac{4\pi}{3} \right)}{2} } = \\
+&= \sqrt{ 2 }V_{\Delta} \frac{\sqrt{ 3 }}{\sqrt{ 2 }} = \sqrt{ 3 }V_{\Delta}
+\end{aligned}
+$$
+Raggruppando il numeratore e il denominatore:
+$$
+\begin{aligned}
+\hat{v}_{d} &=  \frac{\sqrt{ 2 }V_{\Delta}\left[ \cos (\omega t)\hat{i} + \cos\left( \omega t-\frac{2\pi}{3} \right)\hat{j} +\cos\left( \omega t - \frac{4\pi}{3} \right)\hat{k}  \right]}{\sqrt{ 3 }V_{\Delta}} = \\
+&= \sqrt{ \frac{2}{3} }\left[ \cos (\omega t)\hat{i} + \cos\left( \omega t-\frac{2\pi}{3} \right)\hat{j} +\cos\left( \omega t - \frac{4\pi}{3} \right)\hat{k}  \right]
+\end{aligned}
+$$
+Il secondo vettore, chiamato $\hat{v}_{q}$ deve giacere anch'esso nello stesso piano ma ortogonale a $\hat{v}_{d}$, dunque si sfrutta la formula di Poisson, che ci garantisce queste caratteristiche mediante la derivata del vettore stesso:
+$$
+\hat{v}_{q} = \frac{\frac{d}{dt}\hat{v}_{d}}{|| \frac{d}{dt} \hat{v}_{d} ||}
+$$
+Si calcola il numeratore:
+$$
+\frac{d}{dt}\hat{v}_{d} = -\frac{\sqrt{ 2 }\cancel{V_{\Delta}}\left[ \omega \sin (\omega t)\hat{i} + \omega \sin\left( \omega t-\frac{2\pi}{3} \right)\hat{j} +\omega \sin\left( \omega t-\frac{4\pi}{3} \right)\hat{k}\right]}{\frac{\cancel{\sqrt{ 2 }V_{\Delta}}\sqrt{ 3 }}{\cancel{\sqrt{ 2 }}}}
+$$
+mentre il modulo della derivata:
+$$
+\left|\left| \frac{d}{dt} \hat{v}_{d} \right|\right| = \frac{\sqrt{ \omega^2\sin^2(\omega t)+\omega^2\sin^2\left( \omega t-\frac{2\pi}{3} \right)+\omega^2\sin^2\left( \omega t-\frac{4\pi}{3} \right) }}{\frac{\sqrt{ 2 }}{\sqrt{ 3 }}} = \sqrt{ \frac{3}{2} }\omega
+$$
+effettuando il rapporto:
+$$
+\hat{v}_{q} = -\left[  \sin (\omega t)\hat{i} +  \sin\left( \omega t-\frac{2\pi}{3} \right)\hat{j} + \sin\left( \omega t-\frac{4\pi}{3} \right)\hat{k}\right]
+$$
+
+Infine si riporta il terzo versore, che individua il piano pari alla somma dei tre versori (o al versore del vettore somma $\vec{w}$):
+$$
+\hat{v}_{\gamma} = \frac{\vec{w}}{||\vec{w}||} = \frac{\hat{i}+\hat{j}+\hat{k}}{\sqrt{ 3 }}
+$$
+Con questi tre versori si può ricavare la matrice di cambiamento di base tra il riferimento cartesiano $(\hat{i},\hat{j},\hat{k})$ e quello ortonormale di Park $(\hat{v}_{d},\hat{v}_{q},\hat{v}_{\gamma})$:
+$$
+P_{\perp} = \sqrt{ \frac{2}{3} }
+\begin{pmatrix}
+\cos (\omega t) & \cos\left( \omega t-\frac{2\pi}{3} \right) & \cos\left( \omega t-\frac{4\pi}{3} \right)\\ \\
+-\sin(\omega t) & - \sin \left( \omega t-\frac{2\pi}{3} \right) & -\sin\left( \omega t-\frac{4\pi}{3} \right)\\  \\
+\frac{1}{\sqrt{ 2 }} & \frac{1}{\sqrt{ 2 }} & \frac{1}{\sqrt{ 2 }}
+\end{pmatrix}
+$$
+è una matrice ortogonale perché moltiplicata per la sua inversa fornisce come risultato la matrice identità, ovvero la sua inversa coincide con la trasposta.
