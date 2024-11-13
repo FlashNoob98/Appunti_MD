@@ -289,3 +289,52 @@ $$
 $$
 Le incognite sono le tensioni ai nodi, si scriveranno tante equazioni simili per quanti nodi sono presenti, si può utilizzare come metodo di verifica.
 In alternativa si può usare un metodo iterativo per calcolare le sezioni delle linee, questo metodo permette di utilizzare il criterio elettrico nelle reti magliate.
+
+## Dimensionamento degli interruttori
+Un interruttore magneto-termico è composto prevalentemente da tre parametri: $I_{n},I_{f},I_{nf}$ ovvero la corrente di intervento nominale, la corrente di intervento certo, la corrente di non intervento.
+
+Le normative di riferimento per gli ambienti domestici sono la CEI 60898 mentre per gli impianti industriali la CEI 6097-2.
+La norma per la progettazione in BT è la CEI 64/8.
+
+I costruttori degli interruttori devono rispettare le prime due per realizzare apparecchi a norma.
+
+$I_{f}$ è la corrente convenzionale di sicuro intervento, ovvero delimita l'inizio della caratteristica a tempo inverso, si definisce quindi il tempo di intervento $t_{f}$ convenzionale di $1h\ (I_{n}\leq 63A)$ e di $2h\ (I_{n}>63A)$.
+
+$I_{nf}$ la corrente convenzionale di non intervento, è quella per cui con certezza non c'è intervento per i tempi convenzionali prima definiti.
+
+Solitamente per interruttori industriali:
+$$
+\begin{aligned}
+\text{Ambito }& \text{industriale:}\\
+I_{nf} &= 1.13I_{n}\\
+I_{f} &= 1.45I_{n}\\
+\text{Ambito }& \text{domestico:}\\
+I_{nf} &= 1.05I_{n}\\
+I_{f} &= 1.30I_{n}\\
+\end{aligned}
+$$
+Ovvero entro $1h$ si ammettono sovraccarichi del 45% e del 30%.
+
+Si introduce con $I_{m}$ il valore di corrente oltre il quale l'intervento è dovuto al relee magnetico.
+
+La corrente di impiego e la portata del cavo, rispettivamente $I_b$ e $I_{z}$.
+
+La 64/8 fornisce due condizioni da rispettare:
+- $I_{b}\leq I_n<I_{z}$, di conseguenza la $I_{f}$ sarà maggiore della portata $I_z$, ovvero è consentito un sovraccarico della linea di massimo $45\%$ per un determinato periodo di tempo.
+- $I_f\leq 1.45I_{z}$ Questa seconda condizione è automaticamente verificata se l'interruttore è realizzato a norma, se si rispetta la precedente.
+
+Il valore di $I_{m}$ dipende dalla tipologia di interruttore:
+- Interruttore B: $3I_{n}\leq I_{m}<5I_{n}$
+- Interruttore C: $5I_{n}\leq I_{m}<10I_{n}$
+- Interruttore D(avviamento motori): $10I_{n}\leq I_{m}<20I_{n}$
+- Interruttore MA, in ambito industriale non ha protezione termica: $I_{m}=12I_{n}$
+- Interruttore K, in ambito industriale: $14I_{n}\leq I_{m}<20$
+- Interruttore Z, in ambito industriale: $2.4I_{n}\leq I_{m}<3.6I_{n}$
+
+Il **potere di interruzione nominale** dell'interruttore modulare da 125A è 50kA per l'ambito industriale e 25kA per quello domestico.
+
+Si definiscono i poteri di apertura
+- Nominale: $I_{cn}$ E' la corrente che può attraversare l'interruttore per un tempo indefinito senza che l'interruttore subisca alcun tipo di danno.
+- Estremo: $I_{cu}$ è la massima corrente che è in grado di aprire, dopo questo ciclo l’interruttore può essere danneggiato e non è garantito che sia in grado di portare la sua corrente nominale indefinitamente.
+- Di servizio: $I_{cs}$ Analoga alla $I_{cu}$ ma dopo il superamento della sequenza l'interruttore deve essere in grado di riprendere normalmente il suo servizio di protezione.
+
