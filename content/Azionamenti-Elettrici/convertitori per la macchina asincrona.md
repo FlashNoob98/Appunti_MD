@@ -53,3 +53,5 @@ Si suppone di dividere il periodo fondamentale della tensione desiderata in tant
 Se l'intervallo $\Delta$ è molto piccolo si può approssimare meglio la sinusoide.
 Il principale vantaggio di questa tecnica è che si può controllare anche l'ampiezza della tensione in uscita agendo sul secondo stadio, nei casi precedenti invece era il primo stadio a controllare le ampiezze e il secondo controllava solo la frequenza.
 I convertitori VSI con modulazione permettono di isolare il comportamento della capacità di filtro, è più rapido eseguire variazioni di tensione.
+
+Vedi [[controllo scalare della macchina asincrona]].
