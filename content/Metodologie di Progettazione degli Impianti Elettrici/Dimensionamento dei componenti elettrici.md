@@ -338,3 +338,19 @@ Si definiscono i poteri di apertura
 - Estremo: $I_{cu}$ è la massima corrente che è in grado di aprire, dopo questo ciclo l’interruttore può essere danneggiato e non è garantito che sia in grado di portare la sua corrente nominale indefinitamente.
 - Di servizio: $I_{cs}$ Analoga alla $I_{cu}$ ma dopo il superamento della sequenza l'interruttore deve essere in grado di riprendere normalmente il suo servizio di protezione.
 
+## Corrente di corto circuito
+Si calcola la minima corrente di corto circuito, a fine linea:
+$$
+I_{CC} = \frac{0.8U_{0}}{1.5\times{2} \frac{\rho l}{S}}
+$$
+Per il calcolo della massima corrente di corto circuito invece si fa riferimento alle CEI 0-21.
+Alcuni valori:
+$$
+\begin{matrix}
+1F & 6kA/\cos \varphi=0.7\\ 
+3F & 6ka/\cos \varphi=0.7 \\
+3F+ & 10kA/\cos \varphi=0.5 & P\leq 33kW \\ 
+3F+ & 20kA/\cos \varphi=0.3 & P> 33kW \\
+\end{matrix}
+$$
+Gli ultimi due valori sono per guasti trifase, il secondo per guasto fase neutro su linea trifase, il primo per linea monofase.
