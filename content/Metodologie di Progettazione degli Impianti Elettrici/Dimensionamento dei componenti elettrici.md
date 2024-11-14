@@ -354,3 +354,69 @@ $$
 \end{matrix}
 $$
 Gli ultimi due valori sono per guasti trifase, il secondo per guasto fase neutro su linea trifase, il primo per linea monofase.
+
+# Criterio termico
+Il criterio termico si basa sull'individuazione della portata $I_{z}$ di un cavo a partire dalla corrente di impiego $I_{b}$ e trovare quindi la sezione $S$ commercialmente disponibile del cavo.
+I parametri per determinare la portata di un cavo sono la resistività, la resistenza termica dell'isolamento del conduttore, entrambi i parametri dipendono dalla temperatura.
+
+Dunque la dipendenza è dal materiale del conduttore, rame o alluminio;
+il materiale dell'isolante e quindi PVC o EPR o XLPE;
+la temperatura altera la resistività e la resistenza termica.
+Il problema di trasmissione termica dipende dalla tipologia di posa del cavo, se incassato, se interrato, se in muratura ecc.. si usano solitamente delle tabelle che permettono l'individuazione della portata del cavo presenti nella norma CEI-UNEL 35024/1.
+Riportano la portata del cavo per determinare le condizioni standard identificate in due categorie, cavi non interrati e cavi interrati, le tabelle sono divise per tipologia di conduttore mentre la tipologia di posa viene tenuta in conto per dei coefficienti correttivi: $K_{1},K_{2}$ nel caso di cavi non interrati oppure quattro parametri per cavi interrati:
+$K_{1},K_{2},K_{3},K_{4}$.
+
+Il parametro $K_{1}$ dipende dalla temperatura e $K_{2}$ dal fascio di conduttori, ovvero il numero di conduttori vicini e la loro disposizione.
+$K_{1}=1$ se la temperatura è quella fornita dal costruttore, solitamente $30°C$ mentre per temperature diverse ci saranno delle tabelle fornite dal costruttore che forniscono $K_{1}$, questo parametro riduce la portata del cavo per temperature ambiente più alte di 30°C.
+
+$K_{2}$ dipende dalla disposizione degli altri eventuali cavi, se sono disposti in piano orizzontale, verticale o in fascio,
+entrambi i parametri dipendono dalla tipologia di posa.
+
+Se è presente un interruttore lungo una linea, sarà la corrente nominale dell'interruttore a determinare il valore di ingresso nelle tabelle, piuttosto che $I_{b}$.
+
+## Cavi interrati
+Come per quelli non interrati sono presenti due parametri $K_{1}$ e $K_{2}$ analoghi ai precedenti ma si aggiungono $K_3$ che dipende dalla profondità di posa e $K_{4}$ dipende dalla resistenza termica.
+In questo caso $K_{1}$ è diverso da 1 per temperature diverse da $20°C$.
+$K_3$ corregge la profondità di posa di 80cm per le quali vale invece 1.
+Per la resistività termica che dipende da $K_{4}$ si può anche ricavare, dipende dal terreno, dalla probabilità che questo ghiacci o meno ecc...
+
+Moltiplicando tutti i coefficienti si ottiene $K_{tot}$ dunque la portata effettiva del cavo sarà:
+$$
+I_{z} = I_{z_{0}}\cdot K_{tot}
+$$
+che è quella da utilizzare per cercare la sezione normalizzata del cavo in vendita.
+
+
+# Criterio elettrico
+Utilizzato spesso come criterio di verifica per il dimensionamento di impianti industriali, si deve garantire che la caduta di tensione non superi il valore limite del 4% per gli impianti industriali e del 5% per i sistemi di illuminazione, si può eventualmente imporre un valore di caduta di tensione limite più basso.
+
+Questo criterio prevale su quello elettrico invece per impianti MT o AT.
+
+# Selettività degli interruttori
+Se si considerano due interruttori in serie, si ha selettività totale se la corrente nominale di quello a valle è minore di quello a monte e per correnti di corto circuito fino al valore di quello a valle si avrà l'intervento solo degli interruttori a valle, si parla di **selettività totale**.
+Non sempre questa tipologia di selettività è possibile, si rischierebbe di avere sovraccarichi troppo elevati sulle linee a monte o il costo degli interruttori aumenterebbe a dismisura.
+Si usa allora in alcuni casi la **selettività parziale**, ovvero esiste una regione di incertezza tra i due interruttori in cui esiste anche la possibilità di intervento congiunto.
+
+La selettività va studiata rispetto al sovraccarico e al corto circuito, in tal caso:
+$$
+\frac{I_{nA}}{I_{nB}} \geq 1.6
+$$
+dove $A$ è l'interruttore a monte rispetto a $B$, la corrente di intervento di $B$ deve essere più piccola della corrente convenzionale di non intervento di $A$:
+$$
+I_{fB} \leq I_{nfA}
+$$
+ma usando le relazioni dei costruttori di interruttori:
+$$
+I_{nB}\cdot {1}.45 \leq I_{nA}\cdot 1.13
+$$
+
+## Selettività al corto circuito
+Può essere:
+- Amperometrica: In questo caso la corrente magnetica dell'interruttore a valle deve essere più piccola di quello a monte:
+  $$
+  I_{mB}\leq I_{mA}: \frac{I_{mA}}{I_{mB}} \geq 1.5
+$$
+- Cronometrica: si modificano i tempi di intervento del relèè magnetico, si introduce un ritardo nella curva caratteristica, oltre un certo valore di corrente ci sarà comunque un intervento congiunto.
+- Energetica: fa riferimento all'energia specifica passante, nel conduttore, si impone quella massima tenendo conto sia dell'effettivo valore della corrente e sia del tempo di permanenza.
+- Logica: si usano interruttori programmabili in cui si può specificare un tempo di ritardo in funzione della corrente che li attraversa e del loro punto di montaggio.
+
