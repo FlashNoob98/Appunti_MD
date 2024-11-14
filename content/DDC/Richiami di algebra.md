@@ -383,3 +383,48 @@ P_{\perp} = \sqrt{ \frac{2}{3} }
 \end{pmatrix}
 $$
 è una matrice ortogonale perché moltiplicata per la sua inversa fornisce come risultato la matrice identità, ovvero la sua inversa coincide con la trasposta.
+
+Dunque i vettori $\hat{v}_{d}$ e $\hat{v}_{q}$ giacciono su un piano ortogonale a $\hat{v}_{\gamma}$ e sono ortogonali tra loro; entrambi ruotano su una circonferenza con pulsazione $\omega$ in verso antiorario, formano un sistema di riferimento ortogonale rotante.
+
+Posso riportare il vettore di tensione $\vec{v}$ di modulo pari a $\sqrt{ 3 }V_{\Delta}$ nel nuovo riferimento di Park:
+$$
+\begin{bmatrix}
+v_{d} \\ v_{q} \\ v_{\gamma}
+\end{bmatrix} = 
+\sqrt{ \frac{2}{3} }\cdot 
+\begin{pmatrix}
+\cos (\omega t) & \cos\left( \omega t-\frac{2\pi}{3} \right) & \cos\left( \omega t-\frac{4\pi}{3} \right)\\ 
+-\sin(\omega t) & - \sin \left( \omega t-\frac{2\pi}{3} \right) & -\sin\left( \omega t-\frac{4\pi}{3} \right)\\  
+\frac{1}{\sqrt{ 2 }} & \frac{1}{\sqrt{ 2 }} & \frac{1}{\sqrt{ 2 }}
+\end{pmatrix}\cdot
+\begin{bmatrix}
+\sqrt{ 2 }V_{\Delta}\cos (\omega t) \\ 
+\sqrt{ 2 }V_{\Delta}\cos \left( \omega t - \frac{2\pi}{3} \right) \\
+\sqrt{ 2 }V_{\Delta}\cos \left( \omega t-\frac{4\pi}{3} \right)
+\end{bmatrix}
+$$
+si ottiene:
+$$
+\begin{aligned}
+v_{d} &= \sqrt{ \frac{2}{3} }\sqrt{ 2 }V_{\Delta} = \frac{2\sqrt{ 3 }}{3}V_{\Delta}\\
+v_{q} &= 0 \\
+v_{\gamma} &= 0
+\end{aligned}
+$$
+Dunque nel nuovo riferimento il vettore è fisso, il modulo resta invariato, anche se cambia l'ampiezza delle sue componenti:
+$$
+||\vec{v}|| = \sqrt{ 3} V_{\Delta} = ||v_{a,b,c}||
+$$
+
+## Riferimento di Clarke
+Fissando un istante di tempo $t=0$ si può ricavare un sistema di riferimento fisso nello spazio e ortonormale:
+$$
+C_{T} = \sqrt{ \frac{2}{3} } 
+\begin{pmatrix}
+1 & \cos\left( \frac{2\pi}{3} \right) & \cos\left( \frac{4\pi}{3} \right)  \\
+0 & \sin\left( \frac{2\pi}{3} \right) & \sin\left( \frac{4\pi}{3} \right) \\ 
+\frac{1}{\sqrt{ 2 }} & \frac{1}{\sqrt{ 2 }} & \frac{1}{\sqrt{ 2 }}
+\end{pmatrix}
+$$
+La matrice è ancora ortogonale perché deriva dalla precedente, che era ortogonale per ogni $t$.
+La matrice $C_{T}$ permette il passaggio dal sistema di riferimento cartesiano a quello ortonormale di Clarke.
