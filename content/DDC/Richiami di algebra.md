@@ -419,7 +419,7 @@ $$
 ## Riferimento di Clarke
 Fissando un istante di tempo $t=0$ si può ricavare un sistema di riferimento fisso nello spazio e ortonormale:
 $$
-C_{T} = \sqrt{ \frac{2}{3} } 
+C_{T} = { \frac{2}{3} } 
 \begin{pmatrix}
 1 & \cos\left( \frac{2\pi}{3} \right) & \cos\left( \frac{4\pi}{3} \right)  \\
 0 & \sin\left( \frac{2\pi}{3} \right) & \sin\left( \frac{4\pi}{3} \right) \\ 
@@ -428,3 +428,61 @@ C_{T} = \sqrt{ \frac{2}{3} }
 $$
 La matrice è ancora ortogonale perché deriva dalla precedente, che era ortogonale per ogni $t$.
 La matrice $C_{T}$ permette il passaggio dal sistema di riferimento cartesiano a quello ortonormale di Clarke.
+
+Se si fa coincidere il piano di Clarke $\Sigma$ con quello di Gauss si può utilizzare la seguente notazione:
+$$
+\begin{aligned}
+v_{\alpha} &= \mathrm{Re}\vec{v}\\
+v_{\beta} &= \mathrm{Im}\vec{v}
+\end{aligned}
+$$
+applicando la definizione si ottengono le componenti di un generico vettore di tensione nel riferimento di Clarke a partire dal riferimento cartesiano:
+$$
+\begin{bmatrix}
+v_{\alpha}\\ v_{\beta}\\ v_{\gamma}
+\end{bmatrix} = 
+{ \frac{2}{3} } 
+\begin{pmatrix}
+1 & \cos\left( \frac{2\pi}{3} \right) & \cos\left( \frac{4\pi}{3} \right)  \\
+0 & \sin\left( \frac{2\pi}{3} \right) & \sin\left( \frac{4\pi}{3} \right) \\ 
+\frac{1}{\sqrt{ 2 }} & \frac{1}{\sqrt{ 2 }} & \frac{1}{\sqrt{ 2 }}
+\end{pmatrix} \cdot
+\begin{bmatrix}
+v_{1}(t) \\ v_{2}(t) \\ v_{3}(t)
+\end{bmatrix}
+$$
+dunque:
+$$
+\begin{aligned}
+v_{\alpha} &= \frac{2}{3}\left[ v_{1}+v_{2}\cos\left( \frac{2\pi}{3} \right) + v_{3}\cos\left( \frac{4\pi}{3} \right) \right]\\
+v_{\beta} &= \frac{2}{3}\left[v_{2}\sin\left( \frac{2\pi}{3} \right) + v_{3}\sin\left( \frac{4\pi}{3} \right) \right] \\
+v_{\gamma} &= \frac{1}{3} \left[v_{1} +v_{2} + v_{3}\right]
+\end{aligned}
+$$
+Riportati nel piano di Gauss, i primi due vettori si riscrivono:
+$$
+\begin{aligned}
+\vec{v}&= v_{\alpha} + jv_{\beta} = \frac{2}{3}\left[ v_{1}+v_{2}\left( \cos\left( \frac{2\pi}{3} \right) + j\sin\left( \frac{2\pi}{3} \right) \right) + v_{3}\left( \cos\left( \frac{4\pi}{3} \right) + j\sin\left( \frac{4\pi}{3} \right) \right) \right] =\\
+&= \frac{2}{3} \left[v_{1}+v_{2}e^{j{2}\pi/3} + v_{3}e^{j{4}\pi/3}\right]
+\end{aligned}
+$$
+Ma quella ottenuta è proprio la definizione di componente simmetrico.
+Nel riferimento di Clark o Park si possono scrivere i vettori utilizzando due componenti e non più tre, semplificando la trattazione, inoltre i vettori che rappresentano grandezze sinusoidali nel riferimento cartesiano, diventano costanti in quello di Park.
+Questo può essere comodo per applicare ad esempio il modello averaged ad un inverter che fornisce in uscita una tensione sinusoidale, in questo caso lo schema di controllo diventa lineare e si può applicare il modello averaged.
+
+## Prodotto scalare
+La potenza istantanea è definita come il prodotto tra tensione e corrente nel tempo, per grandezze multidimensionali si usa la definizione di prodotto scalare euclideo:
+$$
+p(t) = \left\langle  \vec{v},\vec{i}  \right\rangle \stackrel{\Delta}{=} \sum_{k=1}^3 v_{k}i_{k}
+$$
+mentre la potenza attiva è definita come il prodotto scalare hermitiano:
+$$
+P_{\text{att}} \stackrel{\Delta}{=} \left\langle  \vec{v},\vec{i}  \right\rangle = \frac{1}{T} \int_{0}^T \vec{v}^T \cdot\vec{i}\ dt  = \frac{1}{T} \left\{  \int_{0}^T v_{1},i_{1}dt + \int_{0}^T v_{2},i_{2}dt +\dots+\int_{0}^T v_{n},i_{n}dt \right\}
+$$
+Se nel cambio di riferimenti si conservano le norme e gli angoli, allora è possibile semplificare il calcolo della potenza:
+$$
+\begin{aligned}
+P(t) = v_{d}i_{d} + v_{q}i_{q}\quad &\text{nel riferimento di Park} \\
+P(t) = v_{\alpha}i_{\alpha} + v_{\beta}i_{\beta}\quad &\text{nel riferimento di Clarke}
+\end{aligned}
+$$
