@@ -486,3 +486,36 @@ P(t) = v_{d}i_{d} + v_{q}i_{q}\quad &\text{nel riferimento di Park} \\
 P(t) = v_{\alpha}i_{\alpha} + v_{\beta}i_{\beta}\quad &\text{nel riferimento di Clarke}
 \end{aligned}
 $$
+Moltiplicando per $\sqrt{ \frac{2}{3} }$ si rende il sistema di riferimento ortonormale e dunque si eguagliano i moduli delle potenze calcolate nel riferimento cartesiano e in quelli di Park e Clarke.
+
+Per passare dal riferimento di Clarke a quello di Park si esegue la seguente operazione:
+$$
+\vec{v}_{dq} = \vec{v}_{\alpha,\beta} e^{-j\theta}
+$$
+o l'inversa:
+$$
+\vec{v}_{\alpha,\beta} = \vec{v}_{dq} e^{j\theta}
+$$
+# Potenze generalizzate
+Akagi introducenel 1977 il concetto di potenza istantanea nel riferimento di Clarke, in un sistema trifase a quattro fili, la somma delle correnti lungo le tre fasi può essere diversa da zero, così come la somma delle tensioni.
+Le quattro potenze erano così definte:
+$$
+\begin{pmatrix}
+P \\ q_{\alpha} \\ q_{\beta} \\ q_{0}
+\end{pmatrix} = 
+\begin{pmatrix}
+v_{\alpha} & v_{\beta} & v_{0} \\
+0& -v_{0} & v_{\beta} \\
+v_{0}& 0 & -v_{\alpha} \\
+-v_{\beta} & v_{\alpha} & 0
+\end{pmatrix}\cdot
+\begin{pmatrix}
+i_{\alpha}\\ 
+i_{\beta} \\
+i_{0}
+\end{pmatrix}
+$$
+Il primo termine è la potenza attiva istantanea:
+$$
+P(t) = 
+$$
