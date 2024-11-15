@@ -25,3 +25,26 @@ Così come svolto nel FOC, il valore di riferimento di velocità provoiene dalla
 Partendo dall'anello più esterno di velocità, cosa si ottiene in uscita  dal regolatore di velcoità? Si ottiene in uscita dal regolatore la coppia di riferimento e quindi i_rq (come si vede dall'espressione della coppia), avendo imposto il flusso phi_sd costante.
 
 
+## Analisi sperimentale del controllo vettoriale sul DFIG
+Si vede sperimentalmente l'andamento nel tempo della velocità del rotore e delle correnti di asse diretto e in quadratura.
+Mantenendo la corrente di asse diretto pari a zero, si mantiene il flusso costante, varia la componente in quadratura, che modificherà la coppia elettrica resistente, all'aumentare della velocità del vento va aumentata la coppia della macchina e dunque la corrente in quadratura.
+Sarà il regolatore di velocità a fornire il valore di coppia resistente della macchina.
+
+In questo caso il regolatore di velocità non interviene istantaneamente all'aumentare della velocità richiesta dalla turbina, questo per permettere un'accelerazione rapida del sistema, non fornisce istantaneamente la corrente in quadratura diversa da zero, quest'ultima crescerà solo raggiunta la velocità di riferimento, in cui la macchina elettrica inizierà a fornire la nuova coppia richiesta per mantenere costante la nuova velocità raggiunta.
+
+Analogamente durante la decelerazione della macchina, ci sarà un aumento di corrente in quadratura per aumentare la coppia resistente e rallentare il sistema.
+
+In ogni caso la potenza massima estraibile dalla turbina è saturata dalla potenza nominale della macchina, non si prende più il punto di massima potenza della turbina, mi porto ad una velocità inferiore rispetto a quella di potenza massima estraibile dalla turbina.
+
+Al rotore sono collegati dunque due convertitori, il primo regola la velocità, il secondo la potenza trasferita alla rete, per questo secondo convertitore si usano i riferimenti fissi di statore, dobbiamo fornire energia alla rete. La regolazione di potenza attiva è garantita mantenendo costante la tensione sul DC-Link, se questa resta costante allora tutta la potenza trasferita viene iniettata in rete.
+Controllare la tensione del DC-Link implica controllare la corrente di asse diretto nel riferimento di statore, ovvero la tensione di rete.
+L'inverter deve essere **sincronizzato** con la tensione di rete, ovvero conoscere la fase della tensione di rete rispetto al riferimento dell'inverter.
+Le potenze trasferite sono:
+$$
+\begin{aligned}
+P &= 3(v_{d}i_{d}+v_{q}i_{q})\\
+Q &= 3(v_{d}i_{q}+v_{q}i_{d})
+\end{aligned}
+$$
+Il riferimento di tensione sul DC-Link $E^*$ serve al funzionamento dell'inverter mentre la corrente $i_{q}$ e quindi la potenza reattiva erogata può essere richiesta o meno dalla rete.
+I riferimenti di tensione e corrente sulla rete sono presi a valle delle induttanze di filtro poste in uscita all'inverter.
