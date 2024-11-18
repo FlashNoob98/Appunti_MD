@@ -28,3 +28,15 @@ In caso di distanza elevata dalla cabina, potrebbe comunque essere più economic
 ## Inserimenti in MT
 In caso di inserimento in MT si può effettuare un collegamento in antenna con la cabina Primaria, lato MT oppure con inserimento in antenna da cabina secondaria esistente.
 In alternativa si può effettuare un collegamento a T mediante un organo di manovra, non conviene eseguire l'inserimento rigido, anche se questo è concesso.
+
+## Inserimenti in BT
+Ci si può inserire a T, in questo caso ci si collega mediante dei sezionatori, gestiti dal distributore, ad una linea in bassa tensione tra due cabine secondarie, non si effettua un collegamento rigido.
+
+In alternativa il distributore può costruire una nuova cabina secondaria, pubblica, a cui si collega l'utente in BT.
+
+In caso di cabina con più trasformatori, un congiuntore permette di scegliere quale trasformatore lasciare collegato all'impianto.
+In caso di guasto la corrente di corto circuito sarebbe molto più elevata.
+Il dispositivo di protezione generale non è tarato per poter interrompere una corrente di corto circuito che attraversi entrambi i trasformatori, devo coordinarli con gli interruttori in cabina primaria.
+
+Il cavo di collegamento tra la cabina lato utente e il locale del distributore è di fondamentale importanza, deve soddisfare determinati requisiti in termini di sezione e lunghezza, in caso di guasto sul cavo di collegamento non si riesce a protegge la linea meno che il collegamento non sia in antenna.
+
