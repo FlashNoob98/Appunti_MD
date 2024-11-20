@@ -172,7 +172,7 @@ $$
 $$
 ovvero:
 $$
-i_{rd} = \frac{\Phi_{s}}{L_{m}} - \frac{V_{sd}}{R_{s}} \frac{L_{s}}{L_{m}}
+i_{rd} = \frac{\Phi_{sd}}{L_{m}} - \frac{V_{sd}}{R_{s}} \frac{L_{s}}{L_{m}}
 $$
 Si sottrae un termine proporzionale alla tensione all'asse diretto alla componente di $i_{rd}$, imponendo questa equazione si ottiene il flusso costante e si possono trascurare i termini differenziali del flusso (ultimo termine terza equazione $K_{s} \frac{d}{dt}\Phi_{sd}$).
 
