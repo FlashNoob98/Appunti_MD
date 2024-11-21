@@ -182,3 +182,138 @@ $$
 Si ha la velocità massima in rapporto alla coppia di rovesciamento, ovvero se la coppia di rovesciamento è il doppio della nominale, la velocità massima è il doppio della velocità nominale.
 
 Si analizzano i [[convertitori per la macchina asincrona]].
+
+# Modello ai valori istantanei della macchina asincrona
+La macchina è costituita da tre avvolgimenti elettrici spaziati di 120° nello spazio, si suppone che siano distribuiti e si abbia un campo spazialmente quasi sinusoidale, non è invece vero per le correnti che attraversano gli avvolgimenti, di forma generica:
+$$
+B^{(1)}_{s,k}(\alpha,t) =\mu_{0}\frac{\cancel{4}2}{\pi}\frac{N_{s}\xi_{s}}{\cancel{2}p\delta} i_{s,k}(t)\cos\left( p\alpha-\frac{2\pi}{3}(k-1) \right)
+$$
+il termine $\frac{4}{\pi}$ dipende dall'ampiezza della prima armonica spaziale dell'onda quadra.
+Ciascun avvolgimento crea un campo magnetico al traferro fisso nello spazio, di ampiezza variabile nel tempo. Nell'ipotesi in cui $i(t)$ sia sinusoidale, l'ampiezza del campo è fissa.
+
+Se ogni avvolgimento di statore crea un campo magnetico al traferro, allora il campo complessivo sarà la somma dei tre campi:
+$$
+B_{s}^{(1)}(\alpha,t) = \sum_{k=1}^3B_{s,k}^{(1)}(\alpha,t) = \frac{2\mu_{0}N_{s}\xi_{s}}{\pi p\delta}\sum_{k=1}^3 \mathrm{Re}\left\{i_{s,k}(t)e^{jp\alpha}e^{-j2\pi/3(k-1)}\right\}
+$$
+raccogliendo i termini che non dipendono da $k$ e moltiplicando per $\frac{3}{2}$:
+$$
+B_{s}^{(1)}(\alpha,t) = \frac{3\mu_{0}N_{s}\xi_{s}}{\pi \delta p}\mathrm{Re}\left\{ \vec{i}_{s}e^{jp\alpha} \right\}
+$$
+con $\vec{i}_{s}$ il componente simmetrico, o in inglese lo *space vector* pari a:
+$$
+\vec{i}_{s}\stackrel{\Delta}{=}\frac{2}{3}\sum_{k=1}^3 i_{s,k}(t) e^{-j 2\pi/3(k-1)}
+$$
+è un vettore complesso, il termine $\frac{2}{3}$ è tale che il risultato della sommatoria ha la stessa ampiezza della prima fase.
+
+A meno di una costante posso estendere l'operatore parte reale anche al valore del campo:
+$$
+B_{s}^{(1)}(\alpha,t) = \mathrm{Re}\left\{ \vec{B}_{s}e^{jp\alpha} \right\}
+$$
+Si può utilizzare la stessa definizione anche per le tensioni:
+$$
+\vec{V}_{s} = \frac{2}{3} \sum_{k=1}^3 v_{s,k}(t)e^{j 2\pi/3(k-1)}
+$$
+Per calcolare il campo di rotore e quindi la corrente di rotore è necessario conoscere il numero di fasi del rotore $m_{r}$ e il componente simmetrico della corrente di rotore diventa:
+$$
+\vec{i}_{r} = \frac{2}{m_{r}}\sum_{k=1}^3 i_{r,k}(t)e^{-j{2}\pi/m_{r}(k-1)}
+$$
+Siano i due angoli di statore e rotore $\alpha$ e $\beta$ si ha che:
+$$
+\beta = \alpha - \theta_{r}(t)
+$$
+con $\theta_{r}$ l'angolo percorso dal rotore.
+Il campo al traferro sarà pari alla somma di quello di statore e quello di rotore:
+$$
+B_{\delta}^{(1)}(\alpha,t) = B_{s}^{(1)}(\alpha,t) + B_{r}^{(1)}(\alpha,t)
+$$
+L'equazione di equilibrio alle varie fasi di statore:
+$$
+\begin{aligned}
+v_{s,1} &= R_{s}i_{s{1}} \\
+v_{s,2} &= R_{s}i_{s 2} \\
+v_{s,3} &= R_{s}i_{s 3}
+\end{aligned}
+\Rightarrow
+\begin{aligned}
+v_{s,1} &= R_{s}i_{s{1}} \\
+e^{-j{2}\pi/3}v_{s,2} &= R_{s}i_{s 2}e^{-j{2}\pi/3} \\
+e^{-j{4}\pi/3}v_{s,3} &= R_{s}i_{s 3}e^{-j{4}\pi/3}
+\end{aligned} \Rightarrow
+\vec{v}_{s} = R_{s}\vec{i}_{s}
+$$
+moltiplicando ambo i membri per dei termini esponenziali si ottiene la stessa espressione scritta in funzione dei componenti simmetrici.
+
+Usando i componenti simmetrici si può scrivere il modello della macchina:
+$$
+\begin{aligned}
+\vec{v}_{s} &= R_{s}\vec{i}_{s} + L_{s} \frac{d}{dt}\vec{i}_{s} + L_{m} \frac{d}{dt} \left( \vec{i}_{r}'e^{jp\theta_{r}} \right)\\
+0 &= R_{r}'\vec{i}_{r}' + L_{r}' \frac{d}{dt} \vec{i}_{r}' + L_{m} \frac{d}{dt} \left( \vec{i}_{s}e^{j p \theta_{r}} \right)\\
+\frac{d^2\theta_{r}}{dt^2} &= \frac{1}{J}(M_{e}-M_{L})\quad \text{con }M_{e}=\frac{3}{2}p L_{m}\mathrm{Im}\left\{ \vec{\hat{i}}\ \vec{i}_{r}' e^{jp\theta_{r}} \right\}
+\end{aligned}
+$$
+L'ultima equazione è l'equilibrio meccanico ed è valida solo nell'ipotesi di albero rigido, ovvero tutti i punti ruotino alla stessa velocità.
+
+Il calcolo del momento elementare:
+$$
+m_{e}^{(1)} = \frac{LD}{2} \int_{0}^{2\pi} B_{\delta}^{(1)}(\alpha,t)\cdot \Theta_{r}(\alpha,t)d\alpha
+$$
+con $L$ la lunghezza della macchina e $D$ il suo diametro.
+Il momento risultante dipende fisicamente dal flusso per la corrente, se moltiplico però il flusso di statore per la corrente di statore ottengo una componente reale nulla, dunque non c'è coppia tra il flusso e la corrente che la genera, per questo devo considerare il flusso di statore con la corrente di rotore o dal flusso di statore generato dalla corrente di rotore.
+
+L'equazione della coppia si può anche scrivere nel seguente modo:
+$$
+m_{e} = \frac{3}{2}pL_{m} i_{s}i_{r}' \sin(\varphi_{s}-\varphi_{r}+\theta_{r})
+$$
+Possiamo riportare il sistema rispetto allo statore:
+$$
+\vec{i}_{r}^s = \vec{i}_{r}'e^{jp\theta_{r}}
+$$
+ottenendo:
+$$
+\begin{aligned}
+\vec{v}_{s}^s &= R_{s}\vec{i}_{s}^s + L_{s} \frac{d}{dt} \vec{i}_{s}^s + L_{m}{\frac{d}{dt}} \vec{i}_{r}^s \\
+0 &= -j\omega_{r}L_{m}\vec{i}_{s}^s +L_{m} \frac{d}{dt} \vec{i}_{s}^s + (R_{r}'-j\omega_{r}L_{r}')\vec{i}_{r}^s + L_{r}'\frac{d}{dt}\vec{i}_{r}^s \\
+M_{e} &= \frac{3}{2} p L_{m} \mathrm{Im} \left\{ \vec{i}_{r}^s\hat{\vec{i}}_{s^s} \right\}
+\end{aligned}
+$$
+
+di queste due incognite la $\vec{i}_{s}$ è misurabile ma non la $\vec{i}_{r}^r$, effettuando il cambio di variabile tra la corrente e il flusso si ottiene:
+$$
+0= (R_{r}' - j\omega L_{r}')\vec{i}_{r}' -j\omega_{r}L_{m} \vec{i}_{s}^s + L_{m}\frac{d}{dt}\left( L_{m}\vec{i}_{s}^s + L'_{r}\vec{i}_{r}^s \right)
+$$
+raggruppando i termini e sostituendo con il flusso:
+$$
+0 = (R_{r}'-j\omega_{r}L_{r}') \left( \frac{-L_{m}\vec{i}_{s}^s + \vec{\Phi}_{r}^s}{L_{r}'} \right) -j\omega_{r}L_{m}\vec{i}_{s}^s  + L_{m}\frac{d}{dt} \vec{\Phi}_{r}^s
+$$
+e quindi ponendo $\sigma_{r} = \frac{R_{r}'}{L_{r}'}$ e $k_{r} = \frac{L_{m}}{L_{r}'}$:
+$$
+0 = -\sigma_{r} L_{m} \vec{i}_{s}^s + (\sigma_{r}-j\omega_{r})\vec{\Phi}_{r}^s + L_{m} \frac{d}{dt}\vec{\Phi}_{r}^s
+$$
+
+Si considera adesso un sistema di riferimento solidale al vettore di flusso $\vec{\Phi}_{r}^s$, si considera un sistema di assi cartesiani $d-q$ traslati di un angolo $\Psi$ rispetto al riferimento fisso (di statore).
+In questo caso il vettore $\vec{\Phi}_{r}$ sarà reale, avrà solo componente lungo $d$.
+$$
+\vec{\Phi}_{r} = \vec{\Phi}_{r}^s e^{-j\Psi} \quad \text{e}\quad \vec{i}_{s} = \vec{i}_{s}^s e^{-j\Psi}
+$$
+Si sostituisce nelle equazioni precedenti:
+$$
+0 = -\sigma_{r} L_{m} \vec{i}_{s}e^{j\Psi} + (\sigma_{r}-j\omega_{r}){\Phi}_{r}e^{j\Psi} + \frac{d}{dt} \Phi_{r}e^{j\Psi}
+$$
+sviluppando la derivata:
+$$
+e^{j\Psi} \frac{d}{dt}\Phi_{r} + j \frac{d\Psi}{dt} \Phi_{r}e^{j\Psi}
+$$
+Dunque si scompone in due equazioni, reale e immaginaria:
+$$
+\begin{aligned}
+0 &= -\sigma_{r} L_{m} i_{sd} + \sigma_{r}\Phi_{r} + \frac{d}{dt} \Phi_{r} \\
+0 &= -\sigma_{r} L_{m} i_{sq} + (\omega-\omega_{r})\Phi_{r} \\
+M_{e} &= \frac{3}{2} p k_{r} i_{sq} \Phi_{r}
+\end{aligned}
+$$
+con $\omega= \frac{d\Psi}{dt}$.
+La coppia si è ottenuta sempre per sostituzione:
+$$
+M_{e} = -\frac{3}{2} p k_{r}\Phi_{r} \mathrm{Im}\left\{ \Phi_{r}\cancel{e^{j\Psi}} \hat{\vec{i}}_{s}\cancel{e^{-j\Psi}} \right\} = \frac{3}{2} p k_{r}\Phi_{r} \mathrm{Im}\left\{ \vec{i}_{s} \right\}
+$$
+In questo riferimento è possibile variare il flusso variando la corrente in asse diretto e variare la coppia con la corrente di asse in quadratura.
