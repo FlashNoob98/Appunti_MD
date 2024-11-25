@@ -103,3 +103,41 @@ $$
 $$
 Dunque il trasformatore 2 è ancora in sovraccarico.
 Se le tensioni di corto circuito fossero identiche, si avrebbero tutti e tre i trasformatori caricati allo stesso modo.
+
+
+## Protezione dei trasformatori lato BT
+In caso di cabina con trasformatori in parallelo, sono disposti degli interruttori lato BT per ogni macchina, a monte della sbarra BT. 
+In caso di guasto, a causa della piccola lunghezza della sbarra potrebbe essere difficoltoso avere una selettività degli interruttori, il guasto sarebbe alimentato da entrambi i trasformatori.
+
+Il problema diventa delicato se ci sono più di due trasformatori in parallelo. In caso di guasto a monte dell'interruttore e tre trasformatori in parallelo, si avrebbe una corrente di guasto pari a $2I$ se $I$ è la corrente di guasto che si avrebbe con un singolo trasformatore.
+
+Sembrerebbe che gli interruttori lato BT dovrebbero essere in grado di interrompere una corrente doppia rispetto ad una configurazione non in parallelo.
+Per questo motivo non è mai consigliabile di utilizzare trasformatori in parallelo, solo in casi particolari come guasti di uno dei trasformatori, si può utilizzare un *congiuntore di sbarra*.
+Il carico va partizionato sui vari trasformatori durante il normale funzionamento.
+In questo caso si potrebbero considerare anche trasformatori di taglia differente, solitamente le cabine utente presentano tre trasformatori di cui uno di riserva fredda, ovvero non in uso ma pronto ad essere utilizzato.
+Se uno degli interruttori a valle di un trasformatore si apre, sarà necessaria la chiusura del *congiuntore di sbarra*.
+
+## Comando del dispositivo di protezione generale
+Il dispositivo di Protezione Generale (PG o PG0) interviene in seguito a misure effettuate sulla linea a monte, mediante TA, TV o TO (trasformatori omopolari, per i guasti a terra in MT).
+Sia il distributore che l'utente devono attenersi alla CEI 0-16.
+Il PG è necessario in caso di guasti in media tensione, dei trasformatori o degli elementi di manovra, è necessario al fine di non causare un'interruzione in cabina primaria, che causerebbe la disalimentazione dell'intera linea.
+
+Per il rilevamento delle sovracorrenti si usa il relee 51, con soglia termica, magnetica e
+Esistono infatti tre soglie:
+$$
+\left\{
+\begin{aligned}
+51.S{1}&\ I>\text{ facoltativa}\\
+51.S 2&\ I>> 250A\ 500 ms\\
+51.S3&\ I >>> 600A\ 120 ms\\
+\end{aligned}\right.
+$$
+La prima soglia è facoltativa, potrebbe causare degli interventi intempestivi, ha la caratteristica di una curva termica a tempo inverso.
+Se si usa va coordinato con il distributore che deve fornire le soglie.
+Con la soglia S2 si indica il valore minimo oltre il quale intervenire.
+La soglia S3 richiede l'intervento "istantaneo" del relee, ovvero $50ms$ per individuare il guasto e $70ms$ per estinguere l'arco.
+Tutti gli interruttori a valle del sistema dovranno essere al di sotto di queste soglie.
+
+Le soglie vanno stabilite in funzione del TA, ad esempio con un TA di rapporto $m:300/5=60$ allora la soglia $IS_{2}=\frac{250}{60}=4.16A$ mentre la soglia $I{S}_{3} = \frac{600}{60}=10A$.
+
+Per quanto riguarda il tempo, i TA sono caratterizzati da una classe di precisione 5p, con valori tabellati che indicano il massimo tempo, a  cui vanno sottratti $70ms$ quindi i valori di soglia dei relee diventano $430ms$ e $50ms$ per S_2 e S_15 a causa dei delay introdotti dai TA.
