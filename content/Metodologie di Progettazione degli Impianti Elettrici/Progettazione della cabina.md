@@ -190,4 +190,6 @@ Ad esempio:
 - inerzia della protezione 20ms, 
 - errore del temporizzatore 60ms,
 - margine di sicurezza 50 $\div$ 100 ms, in funzione della qualità dei dispositivi
-Sommando tutti questi valori si ottiene un tempo totale di $190\div 240\ ms$, inserendo anche solamente due interruttori si avrebbe un tempo totale di quasi $500ms$.
+Sommando tutti questi valori si ottiene un tempo totale di $190\div 240\ ms$, inserendo anche solamente due interruttori in serie, per garantire la selettività si avrebbe un tempo totale di quasi $500ms$.
+
+In caso di selettività logica i due relee sono connessi mediante un cavo dati, il relee a monte non interviene entro un certo ritardo, aspettando l'intervento del relee a valle.
