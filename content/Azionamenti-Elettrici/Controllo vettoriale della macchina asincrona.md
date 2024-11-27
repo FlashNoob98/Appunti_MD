@@ -181,6 +181,13 @@ Se si desidera una tensione maggiore, si finisce in sovramodulazione.
 ## Inverter multilivello
 Con l'aumentare delle tensioni di alimentazione delle macchine, è necessario fornire tensioni più elevate, ciò pone un limite tecnologico sull'isolamento dei componenti, per questo motivo si realizzano degli inverter *multilivello* che abbiano più stadi per ogni gamba, e non più solo due, ottenendo anche i vettori intermedi.
 
+<center>
+
+![[inverter_multilivello_gamba.svg]]
+
+</center>
+
+
 ## Modello predittivo
 A partire dall'equazione di statore si può supporre di integrare l'equazione di corrente in un $\Delta t$ piccolo nel limite del sistema, si calcola poi la coppia che si otterrebbe applicando $v_{1}$, la coppia per $v_{2}$ e così via per le 7 coppie ottenibili, si sceglie infine il vettore che minimizza l'errore con la coppia di riferimento.. sono necessari processori molto veloci per eseguire un calcolo simile.
 

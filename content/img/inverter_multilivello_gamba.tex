@@ -1,0 +1,38 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{arrows.meta,shapes.geometric,positioning}
+\usepackage{circuitikz}
+
+\begin{document}
+
+
+\begin{circuitikz}
+\draw (0,0) node[nmos](M1){}
+      (0,2) node[nmos](M2){}
+      (0,4) node[nmos](M3){}
+      (0,6) node[nmos](M4){};
+
+\draw (M1.D) -- (M2.S)
+      (M2.D) -- (M3.S)
+      (M3.D) -- (M4.S)
+      (M1.S) node[ground]{}
+      (M1.S) node[circle,fill,inner sep=1.5pt]{}
+      (M4.D) node[voltage source]{}
+      (M4.D) node[circle,fill,inner sep=1.5pt]{}
+      (M2.D) node[circle,fill,inner sep=1.5pt]{}
+      (M1.G) node[above]{}
+      (M2.G) node[above]{}
+      (M3.G) node[above]{}
+      (M4.G) node[above]{};
+      
+\draw (M1.S) ++(-4,0) node[](Vmin){} -- ++ (6,0);
+\draw (M4.D) ++(-4,0) node[](Vin){} -- ++ (6,0);
+\draw (M2.D) ++(-4,0) node[](Vo){}  ++(4,0) -- ++(2,0);
+\draw (M4.S) -- ++(-2,0)  [C]  to ++(0,-4.3)|- (M1.D);
+
+\draw (Vin.center) [C] to (Vo.center) [C] to (Vmin.center);
+\end{circuitikz}
+
+
+\end{document}
+
+
