@@ -3,7 +3,7 @@ Non si tiene sotto controllo la transizione della macchina tra il regime corrent
 
 Si utilizza il circuito equivalente a $T$, con i parametri di statore $R_{s}$ e 
 $X_{ds}$, la reattanza di mutua $X_m$ e i parametri di rotore $R'_{r}/s$ e $X'_{ds}$, questi parametri sono valutati alla frequenza nominale $\omega$ della macchina.
-Dato che si vuole controllare la veloità della macchina andrà variata anche la $\omega$, per evidenziare il fatto che la $\omega$ sia un parametro del controllo della macchina si indicano gli elementi reattivi come il prodotto della frequenza per l'induttanza e non con i termini di reattanza (che assumono implicitamente un valore di $\omega$), dunque $\omega L_{s}$ e $\omega L'_{r}$.
+Dato che si vuole controllare la velocità della macchina andrà variata anche la $\omega$, per evidenziare il fatto che la $\omega$ sia un parametro del controllo della macchina si indicano gli elementi reattivi come il prodotto della frequenza per l'induttanza e non con i termini di reattanza (che assumono implicitamente un valore di $\omega$), dunque $\omega L_{s}$ e $\omega L'_{r}$.
 
 Relazione della coppia:
 $$
