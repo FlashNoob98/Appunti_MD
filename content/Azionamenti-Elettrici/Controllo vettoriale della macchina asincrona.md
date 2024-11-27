@@ -131,3 +131,57 @@ Feed-forward perché non è presente retroazione su $\omega_{\sigma}$.
 
 Il flusso di riferimento può essere calcolato da un blocco che lo limiti al flusso nominale alla velocità nominale e porti poi la macchina in deflussaggio per velocità della macchina maggiori di quella nominale.
 Dunque anche il valore di $\Phi_{r}^*$ sarà variabile.
+
+
+Si potrebbe in teoria usare il modello della macchina per convertire dei riferimenti in corrente in riferimenti in tensione, non si ha però il disaccoppiamento tra la componente di asse diretto e quello in quadratura e andrebbero dunque corretti, per questo motivo conviene quasi sempre usare i regolatori di corrente per pilotare l'inverter anziché calcolare le tensioni.
+
+Analogamente si è provato a riportare il flusso allo statore ma si è visto che non si semplificava il modello.
+
+Ricavata la tensione diretta, in uscita dal regolatore di corrente, si deve trovare una strategia di controllo per pilotare l'inverter, la strategia più utilizzata è quella di scegliere i due vettori che delimitano la regione che contiene il vettore di tensione nell'intervallo $\Delta t$ di calcolo, insieme al vettore nullo.
+Si divide dunque $\Delta t$ in tre intervalli in cui si applicano i tre vettori, tali che la loro somma sia comunque $\Delta t$.
+$$
+\alpha\Delta t + \beta\Delta t + \gamma\Delta t = \Delta t \Rightarrow \alpha + \beta + \gamma = 1
+$$
+Vi sono due gradi di libertà fissato l'intervallo $\Delta t$.
+$$
+\begin{aligned}
+\alpha\Delta t &= \vec{v}_{1}\\
+\beta\Delta t &= \vec{v}_{2} \\
+\gamma\Delta t &= \vec{0}
+\end{aligned}
+$$
+
+Valore medio della tensione:
+$$
+\frac{1}{\Delta T}\int_{0}^{\Delta t} \vec{v}^* dt = \frac{1}{\Delta t} \left[ \int_{0}^{\alpha\Delta t} \vec{v}_{1}dt +  \int_{\alpha\Delta t}^{(\alpha+\beta)\Delta t} \vec{v}_{2}dt  + \int_{(\alpha+\beta)\Delta t}^{\Delta t} \vec{0}dt \right]
+$$
+E dunque ottenere:
+$$
+\vec{v}^*\Delta t =\vec{v}_{1}\alpha\Delta t + \vec{v}_{2}\beta\Delta t
+$$
+che nel riferimento $x-y$ diventa:
+$$
+\begin{aligned}
+V_{x}^* &= \alpha v_{1x} + \beta v_{2x} \\
+V_{y}^* &= \alpha v_{1y} + \beta v_{2y}
+\end{aligned}
+$$
+Si può dividere il periodo $\Delta t$ in quattro semi periodi, suddividere il tempo $\gamma$ in due sotto intervalli a monte e a valle di $\alpha$ e $\beta$, però nell'intervallo $\Delta t$ successivo avrei una commutazione inutile passando da 111 a 000. Per ovviare a questo problema si divide l'intervallo in sette parti:
+$$
+\left|\frac{\gamma}{4}\right| \left. \frac{\alpha}{2} \right|\left. \frac{\beta}{2} \right| \frac{\gamma}{2}\left| \frac{\beta}{2}\right.\left| \frac{\alpha}{2} \right.\left|\frac{\gamma}{4}\right|
+$$
+ottenuto con:
+$$
+000 - 100 - 110 - 111 - 110 - 100 - 000
+$$
+inizia e termina con la stessa combinazione, ogni fase commuta una sola volta nell'intervallo dunque $\Delta t$ diventa proprio la frequenza di commutazione del convertitore.
+La tensione risultante giace all'interno dell'esagono ottenuto dai 6 vettori dell'inverter.
+Se si desidera una tensione maggiore, si finisce in sovramodulazione.
+
+## Inverter multilivello
+Con l'aumentare delle tensioni di alimentazione delle macchine, è necessario fornire tensioni più elevate, ciò pone un limite tecnologico sull'isolamento dei componenti, per questo motivo si realizzano degli inverter *multilivello* che abbiano più stadi per ogni gamba, e non più solo due, ottenendo anche i vettori intermedi.
+
+## Modello predittivo
+A partire dall'equazione di statore si può supporre di integrare l'equazione di corrente in un $\Delta t$ piccolo nel limite del sistema, si calcola poi la coppia che si otterrebbe applicando $v_{1}$, la coppia per $v_{2}$ e così via per le 7 coppie ottenibili, si sceglie infine il vettore che minimizza l'errore con la coppia di riferimento.. sono necessari processori molto veloci per eseguire un calcolo simile.
+
+Mediante un sistema detto *osservatore* posso eseguire l'identificazione dei parametri con precisione, osservando i valori di tensione e corrente della macchina.
