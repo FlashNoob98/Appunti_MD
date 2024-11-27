@@ -193,3 +193,102 @@ Ad esempio:
 Sommando tutti questi valori si ottiene un tempo totale di $190\div 240\ ms$, inserendo anche solamente due interruttori in serie, per garantire la selettività si avrebbe un tempo totale di quasi $500ms$.
 
 In caso di selettività logica i due relee sono connessi mediante un cavo dati, il relee a monte non interviene entro un certo ritardo, aspettando l'intervento del relee a valle.
+
+# Collegamento del trasformatore ai sistemi di protezione in cabina
+Collegamento di un trasformatore tipico con tensione di alimentazione 15kV e potenza nominale $A_{n}=1600kVA$, con un limite tipico di 3MW di potenza per utenti attivi si usa solitamente un trasformatore di questa taglia.
+
+Stima della corrente nominale:
+$$
+I_{n}'= \frac{1600}{\sqrt{ 3 }V_{n}} = \frac{1600}{\sqrt{ 3 }\cdot 15} = 61.66A
+$$
+Un ulteriore valore di riferimento è la corrente di corto circuito al primario:
+$$
+I_{cc}' = \frac{V_{n}}{\sqrt{ 3 }Z_{cc}} = \frac{V_{n}\cancel{\sqrt{ 3 }}I_{n}'}{\cancel{\sqrt{ 3 }}V_{cc}}\cdot \frac{100}{100} = \frac{100\cdot I_{n}'}{V_{cc}\%} = 100\cdot \frac{61.66}{6} = 1027A
+$$
+con una tensione di corto circuito del 6% un valore tipico.
+
+Per una rete di media tensione il distributore garantisce solitamente un intervento per una corrente di 1200A, dunque dobbiamo garantire che 1027A sia inferiore a 1200A per non causare un intervento della protezione del distributore in cabina primaria con un guasto sul trasformatore utente.
+
+Si può pensare di provare un trasformatore più grande, ad esempio 2000kVA, si ricava una $I_{n}'=77.07A$ a cui corrisponde una $I_{cc}=1285A$, maggiore dei 1200A. Dunque il trasformatore non soddisfa i requisiti della CEI 0-16.
+
+Si potrebbe in questo caso richiedere una deroga al distributore,che potrebbe essere concessa in funzione dello stato della rete e della posizione dell'utente rispetto al resto della rete.
+
+
+Per la rete di distribuzione a 20kV, considerando sempre questo trasformatore da 2000kVA, si ottiene una corrente di corto circuito di 963A, minore dei 1200A, dunque non è richiesta alcuna deroga in questo caso.
+
+Un trasformatore da 2500kVA ha una corrente di corto circuito di 1205A, di poco superiore ai 1200A, il distributore concederà la deroga con molta facilità.
+
+
+Per quanto riguarda la corrente di inserzione, si deve evitare che la protezione lato MT del trasformatore intervenga per l'inserzione:
+$$
+i_{0i}(t) = \frac{I_{0i}}{\sqrt{ 2 }}e^{-t/T_{i}}
+$$
+per quanto riguarda i trasformatori in olio:
+
+<center>
+
+
+| Tipo trasformatore | $T_i$ | $K_i$ |
+| ------------------ | ----- | ----- |
+| Olio               | 0.45  | 8     |
+
+</center>
+
+con $I_{0i}=k_{i}\cdot I_{n}'$, in questo caso trafo da 2000kvA su rete 20kV pari a $462.4\ A$.
+La soglia del 51.N $\frac{I_{S.2}}{I_{0i}} = \frac{250}{462.4}=0.54$ a 250A.
+In caso di non inserimento della prima soglia, il distributore potrebbe fornire un valore di soglia più bassa, se comunicata dal distributore, pari a 125A.
+
+## Avviamento contemporaneo di due trasformatori
+
+Non si possono avviare più di 3 trasformatori in contemporanea da 2000 kVA nella rete da 20kV e 3 trasformatori da 1600 nella rete da 15kV.
+
+
+Ricavare la potenza del trasformatore a partire dai dati della cabina:
+$P_{t} = 350kW$, $P_{s}=35kW$ le potenze attive degli utilizzatori e dei servizi, fattore di contemporaneità $F=0.8$, la potenza apparente totale:
+$$
+A_{tot} = \frac{(350+35)\cdot 0.8\cdot(1.3)}{\cos \varphi=0.9} = 445kVA \to A_{n} = 500kVA
+$$
+dove $1.3$ è il margine di sicurezza futuro per eventuali aumenti di potenza, si ottiene la potenza massima e quindi la taglia commerciale immediatamente successiva.
+
+Lo schema presenta l'arrivo linea con un sezionatore e un dispositivo generale DG e direttamente collegato il trasformatore, poi il dispositivo generale in BT, successivamente il quadro QGBT da cui partono le linee in BT.
+
+Il distributore può fornire la potenza di corto circuito $A_{cc}=500MVA$ con cui calcolare la corrente $I_{cc} = \frac{A_{cc}}{\sqrt{ 3  }V_{n}}=12kA$, il dispositivo generale deve avere un potere di apertura superiore a questo valore.
+
+La corrente nominale è invece fornita dal trasformatore:
+$$
+I_{n}' = \frac{A_{n}}{\sqrt{ 3 }V_{n}'} = \frac{500}{\sqrt{ 3 }\cdot 20} = 14.4A
+$$
+Per la corrente nominale al secondario si procede analogamente:
+$$
+I_{n}'' = \frac{A_{n}}{\sqrt{ 3 }\cdot V_{n}''} = \frac{500}{\sqrt{ 3 }\cdot 400} = 721.7A
+$$
+Questa linea da 721A è quella che collega il secondario del trasformatore al quadro generale in BT, è solitamente breve.
+
+Per quanto riguarda il potere di interruzione, si calcola la corrente di corto circuito al secondario, non dipende dalla linea ma  è limitata dal trasformatore:
+$$
+I_{cc}'' = 100\cdot \frac{I_{n}''}{V_{cc\%}} = 12kA
+$$
+con una tensione di corto circuito del 6%.
+La corrente richiamata a monte con il guasto a valle del trasformatore:
+$$
+I_{cc}' = 100\cdot \frac{14.4}{6} = 240A
+$$
+In teoria, in caso di guasto in BT dovremmo considerare anche l'impedenza della linea in BT:
+$$
+I_{cc}'' = \frac{V_{n}''}{\sqrt{ 3 }\left|\dot{Z}_{cc}+\dot{Z}_{l}\right|}
+$$
+
+##### Perdite a pieno carico del trasformatore
+Fino a 3000kVA sono assegnate le massime perdite a pieno carico ammissibili, da normativa europea. Per taglie superiori è definito il PEI.
+
+## Guasti del trasformatore
+Esistono due relee per la protezione del trasformatore in cabina, il relee buchholz per la protezione da sovratemperature, si misura la variazione di volume dovuta alla variazione di temperatura dell'olio.
+In caso di guasti interni al trasformatore si potrebbero avere punti di gassificazione dell'olio, il relee rileva queste quantità di gas, ci sono prima delle indicazioni luminose per uno stato di allarme e successivamente con guasti estremi si richiama l'intervento dell'interruttore MT.
+
+Il relee differenziale misura, mediante due TA, la corrente a monte e a valle del trasformatore, i due TA sono tali che la corrente riportata sia la stessa rispetto al rapporto di trasformazione del trasformatore.
+Il relee differenziale è usato su trasformatori da almeno 1MVA.
+
+Questo relee è spesso usato anche a protezione dei generatori sincroni in centrale.
+
+## Calcolo della resistenza di terra in cabina
+Per calcolare la resistenza di terra si sfruttano tre dispersori, due sono disposti alla corrente di dispersione forzata dalla tensione dello strumento di misura, un terzo dispersore è posto tra questi due, si misura la tensione tra questo dispersore e uno dei due connessi al generatore.
