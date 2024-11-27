@@ -1,0 +1,18 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{arrows.meta,shapes.geometric,positioning}
+\usepackage{circuitikz}
+\usepackage{pgfplots}
+
+\begin{document}
+
+\begin{circuitikz}
+\draw (0,0) to[american current source,l=$I_{ph}$] (0,2) -- ++(2,0)
+to[diode,l=$D$,i>_=$i_D$] (2,0) -- (0,0);
+\draw (2,0) -- (4,0)  [R,l=$R_{sh}$] to (4,2);
+\draw (2,2) [short] to (5,2) [R,l=$R_s$,i=$I$] to (7,2);
+\draw (7,2) [open,v^<=$V$] to (7,0) -- (4,0);
+\end{circuitikz}
+
+\end{document}
+
+
