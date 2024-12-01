@@ -114,3 +114,23 @@ Si vuole infine costruire la curva di sicurezza $t/V$, sulla soglia di $50V$ si 
 
 Le curve di pericolosità e sicurezza sono considerazioni fatte in BT perché gli utenti non sono esperti.
 In caso di ambienti speciali in MT, accessibili solo a personale autorizzato e qualificato, si possono utilizzare le curve più a destra e si considera il valore del 50% per i valori di resistenza, il tempo limite non è più 5 secondi ma 10 e la tensione asintotica riportata nella curva di sicurezza diventa $80V$ e non più $50$.
+
+# Verifica dell'anello di guasto in un sistema TT
+Si verifica l'anello di guasto in un sistema TT mediante l'inserzione di una resistenza variabile posta tra una fase e il nodo equipotenziale di terra, si misura la tensione $U_r$ ai capi della resistenza variabile appena posta, la corrente di guasto sarà:
+$$
+I_{F} = \frac{U_{R}}{R}
+$$
+applicando la seconda legge di Kirchhoff:
+$$
+U_{0} - U_{R} = \frac{(R_{E}+R_{N})U_{0}}{R} \Rightarrow R_{E}+R_{N} = \frac{U_{0}-U_{R}}{U_{0}}R
+$$
+Si può solitamente trascurare la $R_{N}$ rispetto alla $R_{E}$ e quindi affermare
+che
+$$
+R_{E} = \frac{U_{0}-U_{R}}{U_{0}}R
+$$
+In caso di interruttore differenziale:
+$$
+R_{E}\cdot I_{dn} \leq U_{L}
+$$
+con $I_{dn}$ la corrente nominale dell'interruttore differenziale.

@@ -292,3 +292,67 @@ Questo relee è spesso usato anche a protezione dei generatori sincroni in centr
 
 ## Calcolo della resistenza di terra in cabina
 Per calcolare la resistenza di terra si sfruttano tre dispersori, due sono disposti alla corrente di dispersione forzata dalla tensione dello strumento di misura, un terzo dispersore è posto tra questi due, si misura la tensione tra questo dispersore e uno dei due connessi al generatore.
+
+Posti due dispersori ad una distanza $l$, si applica una tensione ai loro capi, per determinare il potenziale rispetto all'infinito si pone un'altra sonda non interessata dalla corrente di dispersione, il potenziale nel punto $A$:
+$$
+\begin{aligned}
+U_{a} &= \frac{\rho I}{2\pi r} - \frac{\rho I}{2\pi l} \\
+U_{c} &= \frac{\rho I}{2\pi x} - \frac{\rho I}{2\pi(l-x)}
+\end{aligned}
+$$
+la misura fornita dal voltmetro:
+$$
+U_{a}-U_{c} = \frac{\rho I}{2\pi} \left( \frac{1}{r}-\frac{1}{l} -\frac{1}{x} + \frac{1}{l-x} \right)
+$$
+dove $x$ è la distanza del dispersore $C$ da $A$.
+Se riuscissimo ad isolare il termine $\frac{1}{r}$ si ha che:
+$$
+U_{a}-U_{c}=\frac{\rho I}{2\pi r}
+$$
+è proprio la tensione totale di terra del dispersore e quindi la resistenza di terra sarebbe:
+$$
+R_{E} = \frac{U_{a}-U_{c}}{I}
+$$
+
+Si deve trovare la $x$ che annulli i restanti tre termini:
+$$
+\frac{-x(l-x)-l(l-x)+lx}{xl(l-x)}=0
+$$
+annullando il denominatore:
+$$
+-xl+x^2-l^2+xl+xl=0
+$$
+si risolve l'equazione di secondo grado per $x$:
+$$
+x^2+xl-l^2=0\Rightarrow x_{1/2}= \frac{-l\pm \sqrt{ l^2+4l^2 }}{2} = \frac{l\left(\sqrt{ 5 }-1\right)}{2} = 0.618l
+$$
+dunque assegnata la distanza $l$ si ricava la distanza alla quale porre il terzo dispersore, si è considerata solo la soluzione positiva.
+Queste formule sono state applicate per un dispersore emisferico, usando un dispersore cilindrico si deve considerare $a=0.1l$.
+
+Ponendo il dispersore C a sinistra di A:
+$$
+-x^2-xl -\cancel{xl} - l^2 + \cancel{xl} = 0 \Rightarrow x^2+xl +l^2=0
+$$
+Non fornisce soluzione.
+
+
+Nel caso in cui la sonda sia esterna tra A e B:
+$$
+U_{a}-U_{c} = \frac{\rho I}{2\pi} \left( \frac{1}{r}-\frac{1}{l} -\frac{1}{x} + \frac{1}{x-l} \right) \Rightarrow x^2-xl-l^2 = 0
+$$
+dunque
+$$
+x = \frac{l\pm \sqrt{ l^2+4l^2 }}{2} = 1.618l
+$$
+.
+
+### Misura resistività del terreno
+Si dispongono quattro dispersori, a distanza $a$ fra loro, si inietta corrente tra $A$ e $D$, si misura la tensione tra $B$ e $C$:
+$$
+\begin{aligned}
+U_{B} &= \frac{\rho I}{2\pi a} - \frac{\rho I}{2\pi 2a} = \frac{\rho I}{4\pi a} \\
+U_{C} &= \frac{\rho I}{2\pi_{2}a} - \frac{\rho I}{2\pi a} = -\frac{\rho I}{4\pi a}\\
+\frac{U_{B}-U_{C}}{I} &= \frac{\rho_{E}}{2\pi a} = R \Rightarrow \rho_{E}= \frac{U_{B}-U_{C}}{I} 2\pi a
+\end{aligned}
+$$
+sempre con un raggio del dispersore pari a $r=0.1a$, questo risultato fornisce il valore di resistività con dispersore profondo $4a$ e largo $8a$.
