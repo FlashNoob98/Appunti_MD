@@ -130,7 +130,7 @@ Si definisce *prodotto scalare*:
 $$
 S\left( \vec{x},\vec{y} \right): V\times V \to \mathbb{R}
 $$
-È una forma bilineare simmetrica definita su un campo reale nello spazio $V$ cartesiano su se stesso, deve essere:
+È una [[forma bilineare]] simmetrica definita su un campo reale nello spazio $V$ cartesiano su se stesso, deve essere:
 - Non degenere: $S\left( \vec{x},\vec{y} \right)=0\quad \forall\ \vec{x}\in V\Rightarrow \vec{y}=0$
 - Definito positivo: $S\left( \vec{x},\vec{x} \right)>0\ \forall\ \vec{x}\neq {0}$
 Si riporta il prodotto scalare di uno spazio vettoriale numerico $\mathbb{R}^n$ sul campo $\mathbb{R}$:
@@ -497,8 +497,8 @@ $$
 \vec{v}_{\alpha,\beta} = \vec{v}_{dq} e^{j\theta}
 $$
 # Potenze generalizzate
-Akagi introducenel 1977 il concetto di potenza istantanea nel riferimento di Clarke, in un sistema trifase a quattro fili, la somma delle correnti lungo le tre fasi può essere diversa da zero, così come la somma delle tensioni.
-Le quattro potenze erano così definte:
+Akagi introduce nel 1977 il concetto di potenza istantanea nel riferimento di Clarke, in un sistema trifase a quattro fili, la somma delle correnti lungo le tre fasi può essere diversa da zero, così come la somma delle tensioni.
+Le quattro potenze erano così definite:
 $$
 \begin{pmatrix}
 P \\ q_{\alpha} \\ q_{\beta} \\ q_{0}
@@ -517,5 +517,21 @@ i_{0}
 $$
 Il primo termine è la potenza attiva istantanea:
 $$
-P(t) = 
+P(t) = v_{\alpha}i_{\alpha} + v_{\beta}i_{\beta} + v_{0}i_{0}
 $$
+i rimanenti termini:
+$$
+\begin{aligned}
+q_{\alpha} &= -v_0i_{\alpha} + v_{\beta}i_{0} \\
+q_{\beta} &= v_{0}i_{\alpha} - v_{\alpha}i_{0} \\
+q_{0} &= -v_{\beta}i_{\alpha} + v_{\alpha}i_{\beta}
+\end{aligned}
+$$
+Se il sistema è trifase, sinusoidale e simmetrico:
+$$
+\begin{aligned}
+q_{\alpha} &= q_{\beta} = 0\qquad q_{0}\neq {0}\\
+P &= v_{\alpha}i_{\alpha} + v_{\beta}i_{\beta}
+\end{aligned}
+$$
+.
