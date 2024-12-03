@@ -534,4 +534,131 @@ q_{\alpha} &= q_{\beta} = 0\qquad q_{0}\neq {0}\\
 P &= v_{\alpha}i_{\alpha} + v_{\beta}i_{\beta}
 \end{aligned}
 $$
-.
+In questo caso la potenza istantanea coincide con la potenza attiva:
+$$
+\begin{aligned}
+p(t) &= \sqrt{ 2 }V\sqrt{ 2 }I \left[ \cos \omega t\cdot \cos (\omega t-\varphi) + \cos \left( \omega t-\frac{2\pi}{3} \right)\cdot \cos\left( \omega t-\frac{2\pi}{3}-\varphi \right) + \right. \\
+& + \left. \cos\left( \omega t-\frac{4\pi}{3} \right)\cdot \cos\left( \omega t-\frac{4\pi}{3}-\varphi \right) \right]
+\end{aligned}
+$$
+ricordando che 
+$$
+\cos \alpha \cos\beta = \frac{\cos(\alpha+\beta)+\cos(\alpha-\beta)}{2}
+$$
+si ottiene
+$$
+p(t) = 2VI \frac{3}{2}\cos \varphi = 3VI\cos \varphi
+$$
+con $V$ la tensione stellata, si è ricavata la formula della potenza attiva su un carico trifase simmetrico ed equilibrato.
+
+Per il calcolo della potenza $q_{0}$ si riportano le tensioni e le correnti di asse diretto e in quadratura:
+$$
+\begin{aligned}
+v_{\alpha} &= \sqrt{ 2 }V\cos \omega t\quad i_{\alpha} = \sqrt{ 2 }I\cos(\omega t-\varphi) \\
+v_{\beta} &= \sqrt{ 2 }V\sin \omega t \quad i_{\beta} = \sqrt{ 2 }I\sin(\omega t-\varphi)
+\end{aligned}
+$$
+dunque
+$$
+q_{0} = 2VI[\cos \omega t\sin(\omega t-\varphi)-\sin \omega t\cos(\omega t-\varphi)] = -2VI \frac{3}{2} \sin \varphi = -3VI\sin \varphi
+$$
+indica proprio la potenza reattiva assorbita dal sistema.
+
+Se il sistema non è equilibrato, le componenti omopolari saranno diverse da zero, dunque si avrà un vettore di potenze $\vec{q}= \vec{v}_{\alpha,\beta}\times \vec{i}_{\alpha,\beta}= q(q_{\alpha},q_{\beta},q_{0})$ così definito:
+$$
+\begin{vmatrix}
+\hat{e}_{\alpha} & \hat{e}_{\beta} & \hat{e}_{0}\\ 
+v_{\alpha} & v_{\beta} &v_{0}\\  
+i_{\alpha} & i_{\beta} & i_{0} 
+\end{vmatrix}
+$$
+Coincide con un vettore ortogonale al piano $\alpha,\beta$ quando $i_{0}$ e $v_{0}$ sono nulle.
+
+Nel riferimento di Park la formulazione è analoga:
+$$
+P = v_{d}i_{d}+v_{q}i_{q}+v_{\gamma}i_{\gamma}
+$$
+se il sistema è simmetrico ed equilibrato:
+$$
+v_{q}=0, v_{\gamma}=0 \Rightarrow P = v_{d}i_{d}
+$$
+e 
+$$
+q_{\gamma} = v_{d}i_{q} - v_{q}i_{d}
+$$
+che diventa
+$$
+q_{\gamma} = v_{d}i_{q}
+$$
+se la rete è simmetrica.
+La variazione della componente di corrente $i_{d}$ permette dunque la regolazione di $P$ senza variare $q_{\gamma}$ e viceversa.
+
+## Prodotto scalare hermitiano
+Si definisce lo spazio vettoriale su cui verrà definito il prodotto scalare euclideo:
+$$
+\left( \coprod^2_T \right)^n = \coprod_{T}^2\times\coprod_{T}^2\times\dots \times\coprod_{T}^2
+$$
+ovvero il prodotto cartesiano delle funzioni di quadrato sommabile di periodo $T$, in questo caso $\vec{v},\vec{i}\in\left( \coprod_{T}^2 \right)^3$.
+
+Se si esegue il prodotto scalare in questo spazio si ottiene la potenza istantanea:
+$$
+\left\langle  \vec{v},\vec{i}  \right\rangle \stackrel{\Delta}{=} \left.\sum_{k=1}^{n} v_{k}i_{k}\right|_{n=3} = v_{1}i_{i} + v_{2}i_{2} + v_{3}i_{3}
+$$
+Se si costruisce uno spazio di Banach, in cui si introduce un prodotto scalare che introduce a sua volta una metrica, si definisce uno spazio di Hillbert.
+
+La norma introdotta da questo prodotto scalare:
+$$
+||\vec{v}|| \stackrel{\Delta}{=} \sqrt{ \left\langle  \vec{v},\vec{v}  \right\rangle  } = \sqrt{ \vec{v}\cdot \vec{v}^T } = \sqrt{ \sum_{k=1}^{n} v_{k}^2 }
+$$
+non coincide con il valore efficace come invece accade con il prodotto scalare hermitiano:
+$$
+\left\langle  \vec{v},\vec{i}  \right\rangle =\frac{1}{T} \int_{0}^T \vec{v}\cdot \hat{i}\ d\tau
+$$
+il vettore di corrente è reale dunque il suo coniugato coincide con il vettore stesso, se ne considera il trasposto:
+$$
+\left\langle  \vec{v},\vec{i}^T  \right\rangle \stackrel{\Delta}{=} \frac{1}{T}\int_{0}^T \vec{v}\cdot \vec{i}^T\ d\tau = \frac{1}{T} \int_{0}^T [v_{1}i_{1} +v_{2}i_{2} + \dots  + v_{n}i_{n}]\  d\tau
+$$
+Per la linearità dell'integrale si stanno sommando le potenze attive per ogni fase.
+La norma introdotta da questo prodotto scalare:
+$$
+||\vec{v}|| = \sqrt{ \left\langle  \vec{v},\vec{v}  \right\rangle  } = \sqrt{ \frac{1}{T}\int_{0}^T \vec{v}\cdot \vec{v}^T\  d\tau} = \sqrt{ \frac{1}{T} \left[ \int_{0}^T v_{1}^2\ d\tau +  \int_{0}^T v_{2}^2\ d\tau + \dots +  \int_{0}^T v_{n}^2\ d\tau \right] }
+$$
+Dunque il valore efficace del vettore è pari alla somma dei valori efficaci delle sue componenti.
+
+## Disuguaglianza di Cauchy-Scwartz
+Dalle proprietà degli spazi vettoriali:
+$$
+\left\langle  \vec{v},\vec{i}  \right\rangle \leq ||\vec{v}||\cdot||\vec{i}|| 
+$$
+L'identità di Lagrange fornisce la differenza fra i due termini:
+$$
+||\vec{v}||^2\cdot||\vec{i}||^2 = \left\langle  \vec{v},\vec{i}  \right\rangle^2 + \frac{1}{2T} \sum_{\rho=1}^n \sum_{\sigma=1}^n \int_{0}^T \int_{0}^T (v_{\rho}i_{\sigma}-v_{\sigma}i_{\rho})^2d\tau dt
+$$
+Il primo termine coincide con la potenza apparente  $V^2\cdot I^2=S^2=P_{att}^2+Q^2$.
+Ci si aspetta che il secondo termine (gli integrali) sia pari alla potenza reattiva.
+Si esplicita il secondo termine in forma matriciale:
+$$
+\begin{aligned}
+\left[ \vec{v}^T\cdot \vec{i} - \vec{i}^T\vec{v} \right] &= \begin{bmatrix}
+v_{1}i_{1} & v_{1}i_{2} & v_{1}i_{3}  \\
+v_{2}i_{1} & v_{2}i_{2} & v_{2}i_{3} \\
+v_{3}i_{1} & v_{3}i_{2} & v_{3}i_{3}
+\end{bmatrix} -
+\begin{bmatrix}
+i_{1}v_{1} & i_{1}v_{2} & i_{1}v_{3} \\
+i_{2}v_{1} & i_{2}v_{2} & i_{2}v_{3} \\
+i_{3}v_{1} & i_{3}v_{2} & i_{3}v_{3}
+\end{bmatrix} =\\
+&= \begin{bmatrix}
+0 & v_{1}i_{2}-i_{1}v_{2} & v_{1}i_{3}-i_{1}v_{3} \\
+v_{2}i_{1} - i_{2}v_{1} & 0 & v_{2}i_{3}-i_{2}v_{3}  \\
+v_{3}i_{1}-i_{3}v_{1} &  v_{3}i_{2}-i_{3}v_{3} & 0
+\end{bmatrix}
+\end{aligned}
+$$
+ottenendo una matrice antisimmetrica perché $a_{i,j} = -a_{\hat{j},\hat{i}}$ con $\hat{i}\neq i$ e $\hat{j}\neq j$, è anche isomorfa in $\mathbb{R}^3$.
+
+Si definisce con **norma di Frobenius** di una matrice, la sommatoria al quadrato di tutti i suoi elementi.
+Portando l'integrale all'interno della precedente matrice, si associa la potenza reattiva generalizzata alla norma di Frobenius della matrice degli integrali delle differenze.
+
+Per come è definita però non conserva il segno e dunque non rispetta il principio di conservazione dell'energia.
