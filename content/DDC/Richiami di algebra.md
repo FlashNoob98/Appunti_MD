@@ -761,3 +761,50 @@ $$
 ||\mathbf{R}||^2 = \frac{2(3VI\sin \varphi)}{4} \Rightarrow Q_{i} = \left|\frac{3VI\sin \varphi}{\sqrt{ 2 }}\right| \Rightarrow Q = ||\mathbf{R}||\sqrt{ 2 }
 $$
 in questo caso il $\sin \varphi$ ci garantisce il segno della potenza.
+
+## Rifasamento
+Per rifasare un impianto è necessario minimizzare la norma della corrente assorbita dall'utente, a pari potenza attiva assorbita.
+$$
+\min\left\{ \vec{I} \right\}:\left\langle  \vec{v},\vec{i}  \right\rangle =P 
+$$
+scomponendo:
+$$
+\begin{aligned}
+\left\langle  \vec{v},\vec{i}_{1}  \right\rangle &=P_{1}\\
+\left\langle  \vec{v},\vec{i}_{2}  \right\rangle &=P_{2}\\
+&\vdots\\
+\left\langle  \vec{v},\vec{i}_{n}  \right\rangle &=P_{n}
+\end{aligned}
+$$
+Dato uno spazio di Hilbert, esiste un sottospazio $\mathcal{M}$ dei vettori di tensione $\vec{v}_{1},\vec{v}_{2},\dots, \vec{v}_{m}\in\mathcal{M}$ tali che essi siano una base per $\vec{v}$ che permettono la *ortonormalizzazione di Gransmith*:
+$$
+\vec{I}_{a} = \sum_{k=1}^m \beta_{k}\vec{v}_{k}
+$$
+ovvero:
+$$
+\begin{aligned}
+\beta_{1}\left\langle  \vec{v}_{1},\vec{v}_{1}  \right\rangle + \beta_{2}\left\langle  \vec{v}_{2},\vec{v}_{1}  \right\rangle  +& \dots + \beta_{n}\left\langle  \vec{v}_{n},\vec{v}_{1}  \right\rangle =P_{1} \\
+\beta_{1}\left\langle  \vec{v}_{1},\vec{v}_{2}  \right\rangle + \beta_{2}\left\langle  \vec{v}_{2},\vec{v}_{2}  \right\rangle  + & \dots + \beta_{n}\left\langle  \vec{v}_{n},\vec{v}_{2}  \right\rangle =P_{2} \\
+& \vdots\\
+\beta_{1}\left\langle  \vec{v}_{1},\vec{v}_{n}  \right\rangle + \beta_{2}\left\langle  \vec{v}_{2},\vec{v}_{n}  \right\rangle  + & \dots + \beta_{n}\left\langle  \vec{v}_{n},\vec{v}_{n}  \right\rangle =P_{n} 
+\end{aligned}
+$$
+Nello spazio $\mathbb{R}^3$ le componenti di $\vec{I}_{a}$ corrispondono tutte ad una proiezione sullo stesso piano e dunque alla stessa $P$.
+
+Si definisce la corrente in eccesso
+$$
+I_{\text{ecc}}=\vec{I}-\vec{I}_{a}
+$$
+e i due termini sono tra loro ortogonali, dunque si può applicare pitagora:
+$$
+I^2 = I^2_{a} + I^2_{\text{ecc}}
+$$
+Iniettando una corrente pari a $-I_{\text{ecc}}$si può compensare interamente il sistema:
+$$
+||I||^2 = ||I_{a}||^2 + ||I_{\text{ecc}}||^2 \Rightarrow
+||V||^2||I||^2 = ||V||^2||I_{a}||^2 + ||V||^2||I_{\text{ecc}}||^2
+$$
+ovvero
+$$
+S^2 = P_{\text{att}}^2 + Q^2
+$$
