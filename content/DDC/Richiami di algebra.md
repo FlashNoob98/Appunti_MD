@@ -662,3 +662,102 @@ Si definisce con **norma di Frobenius** di una matrice, la sommatoria al quadrat
 Portando l'integrale all'interno della precedente matrice, si associa la potenza reattiva generalizzata alla norma di Frobenius della matrice degli integrali delle differenze.
 
 Per come è definita però non conserva il segno e dunque non rispetta il principio di conservazione dell'energia.
+
+## Prodotto esterno
+Per come sono definiti gli elementi $v_{\sigma}$ e $i_{\rho}$ sono ortogonali fra loro, si può definire un prodotto *esterno* che non sarà un prodotto scalare ma un *bi-vettore* che ha per ampiezza l'area del parallelepipedo ottenuto da $V_{\rho}\cdot I_{\sigma}$ (la stessa del prodotto vettoriale) ma il vettore giace nel piano stesso, è ancora un'area orientata ma la direzione è interna al piano.
+
+Nell'algebra esterna vale la seguente regola, applicata ai versori del riferimento cartesiano:
+$$
+\hat{i},\hat{i}=1\qquad \hat{i},\hat{j}=-\hat{j},\hat{i}
+$$
+dunque siano $\vec{a}$ e $\vec{b}$ due vettori in questo riferimento definiti con due coefficienti:
+$$
+\vec{a}= a_{1}\hat{i} + a_{2}\hat{j}\qquad \vec{b}=b_{1}\hat{i} + b_{2}\hat{j} 
+$$
+il loro prodotto:
+$$
+\begin{aligned}
+\vec{a}\vec{b}&= a_{1}\hat{i}b_{1}\hat{i} + a_{1}\hat{i}b_{2}\hat{j}  +a_{2}\hat{j}b_{1}\hat{i} +a_{2}\hat{j}b_{2}\hat{j}=\\
+&=a_{1}b_{1}\cancel{\hat{i}\hat{i}} + a_{2}b_{2}\cancel{\hat{j}\hat{j}} + (a_{1}b_{2}-a_{2}b_{1})\hat{i}\hat{j} = \\
+&= \left\langle  \vec{a},\vec{b}  \right\rangle + \vec{a} \land \vec{b} 
+\end{aligned}
+$$
+con $\vec{a}\land \vec{b}$ si definisce il prodotto esterno tra i due vettori, il cui risultato rappresenta un parallelogramma con lati i due vettori e area pari al prodotto vettoriale di questi due.
+
+Dalla disuguaglianza di Cauchy-Swartz si può definire l'angolo di un prodotto scalare:
+$$
+\cos \theta \stackrel{\Delta}{=} \frac{\left\langle  \vec{v},\vec{i}  \right\rangle }{||\vec{v}||\cdot||\vec{i}||} \leq 1
+$$
+dunque il segno di $P$ dipende da quest'angolo mentre il segno di $Q$, definita con la norma di Frobenius della matrice $\mathbf{R}$ è sempre positivo.
+Questa matrice $\mathbf{R}^{3\times 3}$ è emisimmetrica e può essere associata in maniera biunivoca ad un vettore di tre elementi, pari a quelli del triangolo superiore o inferiore della matrice, dunque
+$$
+q_{n} = \begin{bmatrix}
+v_{1}i_{2} - i_{1}v_{2} \\
+v_{1}i_{3}-i_{1}v_{3} \\
+v_{2}i_{3}-i_{2}v_{3}
+\end{bmatrix}
+$$
+Nel caso di uno spazio $\mathbb{R}^3$ il prodotto vettoriale e il prodotto esterno coincidono, il valore dell'area del parallelepipedo è proiettata sul vettore ortogonale al piano stesso.
+Se si proietta il vettore $q_{n}$ lungo un vettore facente parte della base dello spazio, allora tutte le altre componenti saranno nulle, il segno dell'unica componente diversa da zero definirà la natura della potenza reattiva se induttiva o capacitiva.
+Gli elementi della matrice associata a questo vettore, costruito nel seguente modo rispettano il teorema di Tellegen.
+
+Nel riferimento di Clarke
+$$
+\begin{aligned}
+v_{\alpha} &= \sqrt{ 3 }V\cos \omega t & v_{\beta}&=\sqrt{ 3 }V\sin \omega t\\
+i_{\alpha} &= \sqrt{ 3 }I\cos (\omega t-\varphi) & i_{\beta}&=\sqrt{ 3 }I\sin (\omega t-\varphi)
+\end{aligned}
+$$
+Si vuole costruire la matrice $\mathbf{R}$ per il calcolo della potenza reattiva:
+$$
+\mathbf{R} = \frac{1}{2T^2} \int_{0}^T \int_{0}^T [v_{\alpha\beta}^T i_{\alpha\beta} - i_{\alpha\beta}^T v_{\alpha\beta}]d\tau dt
+$$
+dunque
+$$
+v_{\alpha\beta}^T i_{\alpha\beta} = \begin{bmatrix}
+v_{\alpha}i_{\alpha} & v_{\alpha}i_{\beta} & 0 \\
+v_{\beta}i_{\alpha} & v_{\beta}i_{\beta} & 0 \\
+0&0&0
+\end{bmatrix} \qquad
+i_{\alpha\beta}^T v_{\alpha\beta} = \begin{bmatrix}
+i_{\alpha}v_{\alpha} & i_{\alpha}v_{\beta} & 0 \\
+i_{\beta}v_{\alpha} & i_{\beta}v_{\beta} & 0 \\
+0&0&0
+\end{bmatrix}
+$$
+la cui differenza:
+$$
+[v_{\alpha\beta}^T i_{\alpha\beta} - i_{\alpha\beta}^T v_{\alpha\beta}] = \begin{bmatrix}
+0 & v_{\alpha}i_{\beta}-i_{\alpha}v_{\beta} & 0 \\
+v_{\beta}i_{\alpha} - i_{\beta}v_{\alpha} & 0 & 0 \\
+0&0&0
+\end{bmatrix}
+$$
+sostituendo con i termini trigonometrici si ricava $\mathbf{R}'$:
+$$
+\begin{aligned}
+\mathbf{R'} &= 
+\begin{bmatrix}
+0 & 3VI[\cos \omega t\sin(\omega t-\varphi) - \sin \omega t\cos(\omega t-\varphi)] & 0 \\
+ 3VI[\sin \omega t\cos(\omega t-\varphi) - \cos \omega t\sin(\omega t-\varphi)] & 0 & 0 \\
+0&0&0
+\end{bmatrix} = \\
+&= \begin{bmatrix}
+0 & -3VI\sin \varphi & 0  \\
+3VI\sin \varphi &0 &0 \\
+0 & 0  &0
+\end{bmatrix}
+\end{aligned}
+$$
+dunque
+$$
+\mathbf{R} = \begin{bmatrix}
+0 & -\frac{3}{2}VI\sin \varphi \\
+\frac{3}{2}VI\sin \varphi &0
+\end{bmatrix}
+$$
+la cui norma
+$$
+||\mathbf{R}||^2 = \frac{2(3VI\sin \varphi)}{4} \Rightarrow Q_{i} = \left|\frac{3VI\sin \varphi}{\sqrt{ 2 }}\right| \Rightarrow Q = ||\mathbf{R}||\sqrt{ 2 }
+$$
+in questo caso il $\sin \varphi$ ci garantisce il segno della potenza.
