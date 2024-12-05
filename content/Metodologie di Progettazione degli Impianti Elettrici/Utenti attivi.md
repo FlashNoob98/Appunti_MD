@@ -18,3 +18,14 @@ Inoltre, in caso di guasto, questo non dovrebbe essere alimentato dall'utente, p
 Un sistema di produzione non deve alterare le caratteristiche della rete, pertubandone le tensioni o la frequenza, l'immissione di potenza deve avvenire in maniera sincrona con la rete.
 
 Per potenze superiori ad 1MW è necessario un dispositivo di controllo centrale (**CCI**) necessario ad abilitare funzioni e servizi aggiuntivi al fine di sfruttare le proprie risorse per aiutare la rete.
+
+L'intervento del dispositivo di interfaccia non è semplice da gestire, in caso di funzionamento connesso in rete il controllo di un impianto fotovoltaico ad esempio richiede solo di inseguire il MPP, viceversa durante il funzionamento in isola è richiesta la generazione di tensioni sinusoidali a 230V e 50Hz, dunque il convertitore deve avere la capacità di fornire questa tensione, scollegato dalla rete, si parla di grid-following e grid-forming.
+
+Nel caso in cui la potenza dell'impianto di produzione sia inferiore a 400kW, il gestore richiede un limite di potenza erogata con un $\cos \varphi$ non inferiore a 0.9, viceversa per potenze superiori può essere richiesta qualsiasi potenza reattiva, al fine di regolare la caduta di tensione sulla linea.
+
+## FRT Fault-Ride-Through
+La normativa prevede una zona in un piano tensione-tempo entro la quale l'impianto di produzione non deve essere disconnesso dalla rete.
+Ad esempio l'impianto non si deve disconnettere in caso di un buco di tensione fino al 5% per un tempo massimo di 200ms, aumenta linearmente fino all'85% della tensione nominale per un tempo di 1.5s.
+Per quanto riguarda l'overvoltage invece c'è una sovratensione del 25% ammissibile per 100ms, fino a diminuire al 15% di tensione oltre il mezzo secondo.
+Questi fenomeni sono legati ad eventuali guasti e le sovratensioni possono essere dovute agli interventi degli organi di manovra.
+Con questi valori vanno tarati i relee di minima e massima tensione.
