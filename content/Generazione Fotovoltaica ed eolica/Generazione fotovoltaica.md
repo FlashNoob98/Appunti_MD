@@ -85,15 +85,11 @@ quindi determinare una conduzione elettrica, ovvero
 una corrente elettrica diversa da zero. Questo meccanismo di trasporto dovuto al campo elettrico
 prende il nome di corrente di trascinamento o di *drift*.
 
-  
-
 Ad una temperatura maggiore di 0 K
 un elettrone può prendere energia sufficiente rompendo un legame covalente passando dalla banda di valenza
 a quella di conduzione e lasciando una 
 lacuna che potrebbe essere colmata da un altro elettrone; la lacuna è definita come una particella fittizia di carica positiva che esprime il moto
 degli elettroni di valenza che passano in banda di conduzione; un altro elettrone occupa la lacuna che si sposta in verso opposto. Ho elettroni in banda di conduzione e lacune in banda di valenza.
-
-  
 
 Poiché una lacuna si forma quando un elettrone si è liberato, in un semiconduttore intrinseco il 
 numero di lacune è pari a quello di elettroni; sia $n$ la concentrazione di elettroni, pari a
@@ -103,13 +99,10 @@ che $n \times p = n_i^2$.
 Per passare dalla banda di valenza a quella di conduzione, gli elettroni devono avere un'energia $E_g$ pari all'ampiezza
 della banda proibita; nel caso del silicio, $1.12 eV$ (elettronVolt).
 
-
 Nel semiconduttore si ha una certa banda proibita; nel caso di un isolante è maggiore di $5 eV$, molto ampia, gli 
 elettroni
 non hanno solitamente energia sufficiente per passare in banda di conduzione,
 mentre in un conduttore è praticamente nulla.
-
-  
 
 ## Drogaggio
 
@@ -128,8 +121,6 @@ Nel caso dell'atomo di fosforo, è pentavalente; se va a sostituire un atomo di 
 covalenti con gli atomi di silicio vicini e un elettrone resta libero per la conduzione; si dice che dona un
 elettrone diventando uno ione donatore, avendo donato un elettrone avrà carica positiva. Discorso
 inverso per gli atomi trivalenti; acquista un elettrone, diventa uno ione accettore e diventa uno ione negativo.
-
-  
 
 Con l'introduzione controllata di droganti si possono controllare le cariche libere nel semiconduttore
 mediante un processo di ionizzazione dell'atomo drogante.
@@ -183,8 +174,6 @@ attraversare la giunzione.
 La giunzione P-N è composta da due regioni neutre e una regione di carica spaziale chiamata regione di svuotamento;
 la concentrazione di ioni sarà maggiore di quella di portatori liberi.
 
-  
-
 Al campo elettrico all'interno della regione di carica spaziale si può associare una differenza di potenziale, chiamata 
 potenziale di contatto o intrinseco o built-in; questa differenza di potenziale crea un gap su quelli che sono i movimenti
 degli elettroni e delle lacune, nel senso che le successive cariche che vorranno diffondere 
@@ -194,16 +183,12 @@ di trasporto è agevolato; all'equilibrio quelli che si muovono per effetto del 
  saranno
 pochi e riescono a compensare i pochi elettroni che si muovono per diffusione che abbiano una energia sufficiente a superare questa barriera, all'equilibrio termodinamico i due fenomeni si equilibrano.
 
-  
-
 Se applico una polarizzazione alla giunzione, ovvero una differenza di potenziale all'esterno, in polarizzazione diretta, la 
 barriera si abbassa e vi saranno più portatori in grado di diffondere,
 si ha la conduzione delle cariche maggioritarie che attraversano la giunzione.
 Nel caso della polarizzazione inversa si ha un incremento della barriera; i maggioritari avranno una maggiore
 difficoltà ad attraversare la barriera; non vi sarà differenza invece
 per i minoritari; non cambia il loro numero, si avrà comunque una piccola corrente detta di polarizzazione inversa.
-
-  
 
 La giunzione P-N ha fondamentalmente la caratteristica di un diodo.
 In caso di polarizzazione diretta, l'abbassamento della barriera di potenziale determina un incremento notevole del 
@@ -215,11 +200,8 @@ In polarizzazione inversa si ha solo una piccola corrente di polarizzazione inve
 L'equazione della corrente nel diodo:
 
 $$
-
 I = I_0(e^{V/nV_t}-1)
-
 $$
-
 Con $I_0$ la corrente di polarizzazione inversa,
 $V$ la tensione ai capi del diodo, ovvero della giunzione,
 $V_t$ è la tensione termica pari a $kT/q$ con $k$ la costante di Boltzmann,
@@ -243,16 +225,12 @@ delle coppie nel cristallo di silicio, ma
 in maniera "confusa"; ne è solo aumentata la conducibilità, non si ha però alcuna generazione di
 energia.
 
-  
-
 Per costringere le cariche ad attraversare il cristallo di silicio, questo deve essere drogato di tipo PN.
 Con l'incidenza della radiazione sulla giunzione P-N si genera una coppia elettrone-lacuna in prossimità della 
 regione di svuotamento, e vien separata dal campo elettrico.
 Si avrà oltre ad un aumento della conduzione, un accumulo di elettroni da un lato e di lacune dall'altro, ovvero la 
 giunzione si auto-polarizza; se chiusa su un carico si avrà una corrente elettrica, questo fenomeno prende il nome
 di effetto fotovoltaico.
-
-  
 
 La corrente fotogenerata è dovuta ai portatori minoritari, perché si muovono sotto l'effetto del campo.
 elettrico.
@@ -261,16 +239,12 @@ Supponiamo di essere in regione P; si crea la coppia elettrone-lacuna; sotto l'e
 La cosa opposta si ottiene se la coppia elettrone-lacuna si forma nella regione N, saranno le lacune ad attraversare
 la giunzione.
 
-  
-
 Per creare la giunzione si fa un doppio drogaggio, prima P e poi si inserisce un drogaggio di tipo N per formare
-la giunzione. 
+la giunzione.
 
 Il processo produttivo inizia con la sabbia che è ricca di silicio e silicati,
-viene disposta in un forno, ottenendo un cristallo puro al 98\%, composto da grani cristallini
+viene disposta in un forno, ottenendo un cristallo puro al 98%, composto da grani cristallini
 con differenti orientazioni reticolari.
-
-  
 
 Con processi di distillazione si ottiene un silicio di grado elettronico, policristallino, è più puro del precedente.
 Si ottengono man mano cristalli di silicio sempre più puri, ottenendo un cilindro di nome carotone, 
@@ -279,13 +253,10 @@ Da ogni fetta del wafer si tagliano delle celle rettangolari.
 Sulla cella sono disposti i "fingers" che sono contattati dai i bus-bar della cella, ovvero delle stringhe leggermente più grandi che ne permettono il collegamento in serie tra le varie celle.
 Per formare un modulo fotovoltaico, le celle sono connesse in serie.
 
-  
-
 Una giunzione PN ha una tensione piccola; per questo motivo vanno connesse in serie; in un pannello
 commerciale ci sono tre sottomoduli dove sono connesse in serie, poi connessi in serie tra loro.
 Ciascun sottomodulo è connesso ad un diodo di bypass, necessario a bypassare il modulo in caso di un differente
 irraggiamento. Un modulo commerciale è composto da tre sotto-moduli, connessi in serie.
-  
 
 ## Definizione di irradianza
 
@@ -295,7 +266,6 @@ $$
 P = \Phi \times hc/\lambda
 $$
 dove $\Phi$ è il numero di fotoni che incide sulla superficie di aria unitaria nell'unità di tempo.
-
 
 Non tutti i fotoni sono necessari alla conduzione fotovoltaica; solo quelli con energia sufficiente
 a generare una coppia elettrone-lacuna; nel caso della lunghezza d'onda deve essere inferiore a $1.1 \mu m$,
@@ -311,8 +281,6 @@ L'efficienza di conversione di un sistema fotovoltaico, è definita come il rapp
 ricavare e la potenza luminosa incidente; il limite assoluto di questo rapporto è dovuto al mismatch
 spettrale e dunque dal semiconduttore utilizzato per realizzare la cella solare.
 
-  
-
 Il limite si calcola con il principio dell'equilibrio dettagliato (che non vedremo); si basa su considerazioni
 di natura termodinamica; il risultato invece è un grafico che mostra che l'efficienza massima raggiungibile da un 
 materiale, in funzione della sua banda proibita,
@@ -320,14 +288,10 @@ si ottiene proprio con il silicio; è il materiale che teoricamente potrebbe rag
 efficienza di circa il 40\%; questo è il limite superiore massimo che nessuna tecnologia fotovoltaica potrà mai
 superare, è un limite intrinseco del materiale.
 
-  
-
 Attualmente si raggiunge a livello pratico un'efficienza del 24\% delle celle presenti sul mercato.
 È un'efficienza bassa, ma non si paga l'energia primaria; dunque non teniamo conto dell'energia solare
 incidente per calcolare l'efficienza di conversione del convertitore; consideriamo solo l'energia elettrica
 effettivamente prodotta dalle celle per iniziare il calcolo di efficienza di conversione.
-
-  
 
 ## Caratteristica corrente-tensione di una cella solare
 A partire da una giunzione P-N direttamente polarizzata,
@@ -345,10 +309,8 @@ Il meccanismo di diffusione si oppone a quello di fotogenerazione; la corrente d
 è data dalla somma delle correnti degli elettroni e delle lacune.
 Per ottenere in modo semplice la caratteristica si utilizza il principio di sovrapposizione degli effetti.
 
-
 La corrente fotogenerata è considerata come una corrente costante; dunque modellata da un generatore ideale
 di corrente.
-
 
 La giunzione è un diodo con la sua caratteristica esponenziale; a tensione nulla si ha una corrente $I$
 pari alla corrente di cortocircuito; è uguale a $I_{ph}$ (fotogenerata); per $V < V_{soglia}$ del diodo invece
@@ -360,19 +322,16 @@ la corrente $I$ è ancora uguale a $I_{ph}$, come schematizzato in figura.
 
 </center>
 
-
 Quando la tensione supera la tensione di soglia del diodo, il valore della corrente $I$ diventa $I_{ph}-I_d$ e
 tende verso il basso;
 la $I_d$ cresce esponenzialmente all'aumentare della tensione, fino alla tensione di circuito aperto 
 in cui la corrente si annulla e quella fotogenerata sarà pari alla corrente che circola nella giunzione, ovvero ogni portatore fotogenerato
 che attraversa la giunzione per effetto del campo elettrico, è compensato da quello che lo attraversa per diffusione, alla tensione di circuito aperto $V_{oc}$.
 
-  
 La giunzione PN, dal punto di vista della conversione fotovoltaica, agisce come un elemento parassita; la corrente
 di polarizzazione diretta  della giunzione si oppone alla corrente fotogenerata, ma è proprio quella che permette la 
 conversione dell'energia solare in energia elettrica. Se non esistesse la giunzione si avrebbe solo un aumento della
 conducibilità del silicio, se esposto alla radiazione solare.
-
 
 Se si chiude il circuito su un carico, il punto di lavoro dipenderà dall'intersezione delle caratteristiche della
 cella e del carico;
@@ -381,15 +340,12 @@ un punto di massima potenza, Maximum Power Point (MPP), nel quale si vuole lavor
 per questo motivo è necessario l'inverter DC-DC per inseguire il MPP ed estrarre la massima potenza dal pannello,
 variando l'impedenza vista dal pannello.
 
-  
-
 ## Efficienza della cella solare
 
 Si calcola considerando la massima potenza erogabile dalla cella rispetto alla potenza posseduta dalla radiazione solare 
 incidente, corrispondente allo spettro standard normalizzato, ovvero $1 kW/m^2$.
 Si mostra la caratteristica della cella allo spettro standard uniforme e ad un irraggiamento con potenza inferiore di 
 $800w/m^2$, come mostrato in figura:
-
 
 <center>
 
@@ -412,18 +368,14 @@ In questo caso la caratteristica (ingrandita) si modifica come mostrato in figur
 </center>
 
 
-  
-
 Ho due massimi locali; integrando l'area
 posso capire il punto a potenza maggiore;
 quindi dovrò avere un boost per rispettare
 la minore tensione del pannello e avere una
 tensione sul DC link elevata per far funzionare
 l'inverter; per questo motivo devo usare il boost.
-Se usassi un buck potrei non riuscire ad imporre la massima potenza sul pannello perchè dovrei rispettare come
+Se usassi un buck potrei non riuscire ad imporre la massima potenza sul pannello perché dovrei rispettare come
 vincolo la minima tensione sul DC-Link per garantire il funzionamento dell'inverter presso la rete.
-
-  
 
 ## Definizioni delle potenze e dei rendimenti
 
@@ -441,11 +393,9 @@ Si riportano alcune grandezze caratteristiche delle celle fotovoltaiche:
   $$
   Se il fill factor tende ad 1, la cella si comporta come un generatore ideale di corrente, ma nella realtà una buona cella ha un fill factor di 0,78 fino a 0,82.
 
-
 Si potrebbe massimizzare l'efficienza massimizzando separatamente la tensione e la corrente nel punto di massimo
 ma si può dimostrare che il punto di massimo si trova solitamente all'85-90\% della $V_{oc}$.
-Le non idealità causano un limite all'efficienza reale che non supera il 27\%.
-
+Le non idealità causano un limite all'efficienza reale che non supera il 27%.
 
 ## Effetto della temperatura
 
@@ -463,7 +413,6 @@ coefficiente correttivo della potenza massima sarà negativo.
 Si ha una riduzione della potenza massima che è possibile generare all'aumentare della temperatura.
 I coefficienti vengono calcolati nelle condizioni NOCT (Normal Operating Cell Temperature),
 ovvero una cella sottoposta a $800 W/m^2$ con temperatura ambiente di 20 °C e velocità del vento di $1 m/s$.
-
 
 Si caratterizzano i parametri parassiti: la tensione $V$ ai capi della cella è misurata ai terminali
 esterni e non alla giunzione; c'è un certo percorso; ci sono i contatti elettrici esterni e quindi degli effetti
@@ -492,12 +441,10 @@ eventuali percorsi preferenziali della corrente fotogenerata rispetto alla giunz
 a bypassare la giunzione; si tengono
 in conto con una resistenza di shunt messa in parallelo alla giunzione ($R_{sh}$).
 
-  
-
 La diminuzione della $R_{sh}$ non muove la corrente di cortocircuito ma riduce la $V_{oc}$; nella
 realtà questa è una resistenza molto elevata; il suo effetto è quasi sempre trascurabile; ha un peso più alto
-quanto più è piccola la corrente fotogenerata; se questa corrente diventa piccola può essere confrontabile con 
-quella drenata dalla resistenza shunt; se riduco di 10 volte la corrente fotogenerata ho un peso 10 volte
+quanto più è piccola la corrente foto-generata; se questa corrente diventa piccola può essere confrontabile con 
+quella drenata dalla resistenza shunt; se riduco di 10 volte la corrente foto-generata ho un peso 10 volte
 maggiore della resistenza di shunt; se prima pesava 0,3\%, ora peserà per il 3\%.
 
 In ogni caso una buona cella fotovoltaica deve avere una resistenza di shunt nell'ordine dei $k\Omega$.
@@ -508,17 +455,60 @@ Il modello circuitale completo:
 ![[cella_PV_completo.svg]]
 
 </center>
-
  
-
 La relazione caratteristica si modifica con un modello a 5 parametri:
 
 $$
-
-I = I_{ph} - I_0\left(e^{\frac{V_d}{nV_t}}-1\right) - \frac{V_d}{R_{sh}} = I_{ph} - I_0\left(e^{\frac{V+R_sI}{nV_t}}-1\right)
-
-- \frac{V+R_sI}{R_{sh}}
-
+I = I_{ph} - I_0\left(e^{\frac{V_d}{nV_t}}-1\right) - \frac{V_d}{R_{sh}} = I_{ph} - I_0\left(e^{\frac{V+R_sI}{nV_t}}-1\right)- \frac{V+R_sI}{R_{sh}}
 $$
 
-  
+# Pannello fotovoltaico
+In commercio possono esistere pannelli costituiti da materiali differenti, questo per catturare più bande in frequenza e ridurre il fenomeno del mismatch; questo aumenta l'efficienza di conversione.
+La tensione a vuoto tipica di una singola cella è di $0.5\sim0.7V$ con dimensioni di 10x10cm o 15x15cm, da cui si può estrarre un valore di corrente $I_{cc}$ di $5\sim 10A$.
+È necessario disporre le celle in serie per aumentare la tensione fino ad un valore utile per applicazioni industriali, si dispongono poi in parallelo per aumentare la corrente.
+
+Ogni singolo pannello (o modulo) è composto da celle disposte in serie fino a tensioni di 36V o 48V.
+La potenza di taglia del pannello si riferisce al valore di picco in condizioni di massima irradianza (con 1 $\frac{W}{m^2}$).
+Il limite imposto dalla legge è di 1000V.
+
+Una serie di pannelli prende il nome di stringa, è una parte del campo fotovoltaico.
+Il campo fotovoltaico è composto da stringhe, quindi sottocampi, disposti in serie e in parallelo.
+Ogni sistema di generazione comprende l'insieme dei dispositivi fotovoltaici e dei dispositivi di conversione, oltre ai dispositivi di accumulo.
+Un sistema fotovoltaico può essere grid-connected o stand alone.
+
+Riassumendo dalla lezione precedente la corrente fotogenerata varia molto con l'irraggiamento ma non la tensione a vuoto, viceversa al variare della temperatura varia molto la tensione a vuoto e poco la corrente di corto circuito.
+Ridurre la tensione a vuoto peggiora di molto però l'efficienza rispetto alla variazione di corrente di corto circuito, per questo caso in alcune applicazioni che richiedono particolare efficienza si può pensare di disporre di sistemi di raffreddamento.
+
+Le potenze di picco vanno dai 2 ai 5 W per celle 10x10 e 15x15.
+La caratteristica di un pannello, composto dalla serie di più celle, si ottiene aumentando la tensione a vuoto e mantenendo la corrente costante. $N$ saranno le celle in serie e $M$ quelle in parallelo.
+Questo vale nell'ipotesi di tre celle perfettamente irradiate alla stessa maniera, è importante durante il posizionamento dell'impianto il **disegno delle ombre** si cerca di evitare se possibile di avere zone d'ombra anche su una parte dell'impianto.
+
+Nel circuito reale si può approssimare la resistenza serie totale come la somma delle resistenze serie e analogamente per quelle shunt.
+$$
+I = I_{ph}-I_{0}\left(e^{\frac{V+R_{s,serie}I}{nNV_{t}}}-1\right) - \left( \frac{V+R_{s,serie}I}{R_{sh,serie}} \right)
+$$
+Se una delle celle è completamente ombreggiata, si troverà nel punto di funzionamento a vuoto, con tensione $V_{oc}$ e corrente nulla, ciò interromperebbe l'intera serie ma la corrente fotogenerata delle singole celle si richiude nella giunzione. Inoltre la cella in ombra vede ai suoi capi una tensione opposta pari alla somma delle tensioni a vuoto delle altre celle, si possono avere fenomeni di breakdown per serie numerose.
+
+Per questo motivo si usano i diodi di by-pass, si usano solitamente per ogni sottomodulo, è difficile che vada in ombra una singola cella e non l'intero modulo.
+
+Nella realtà in ogni caso la corrente si richiude nella resistenza di shunt della cella in ombra, che per la cella è un carico, dunque causa un surriscaldamento della cella.
+Può essere usato come sistema di diagnostica, cercare degli hotspot permette di determinare celle in ombra oppure celle annerite, a causa ad esempio di residui o sporcizia.
+
+Con il diodo di bypass si esclude la cella (o il modulo) in ombra, finchè la tensione ai capi delle celle illuminate è maggiore della tensione sul carico.
+Per una tensione in uscita maggiore della somma delle tensioni delle celle illuminate, si ha una caratteristica corrispondente a quella di 1 cella parzialmente ombreggiata, senza diodo di bypass, ovvero la corrente in uscita sarà limitata dalla cella ombreggiata.
+
+In caso di più celle o pannelli in ombra si formeranno più punti di massimo, serviranno strategie di controllo in grado di trovare il massimo assoluto, algoritmi chiamati MPPT, Maximum-Power-Point-Tracking.
+Ciascun modulo è spesso suddiviso in due sottomoduli, ciascuno con il suo diodo di bypass.
+
+## Stringa
+Una stringa è per definizione una serie di pannelli, stringhe in parallelo costituiscono un sottocampo.
+
+Il fenomeno di mismatch visto per le celle, è analogo per le stringhe, quando sono disposte in parallelo, in caso di ombreggiamento, si può avere un funzionamento nella regione di breakdown della stringa in ombra.
+
+Si supponga di avere una stringa con 5 moduli ed una con 4, quella con 4 non può fornire la tensione di quella a 5.
+La caratteristica complessiva, data dalla somma delle due caratteristiche fornirebbe una tensione ideale per la stringa da 5 ma una corrente negativa per quella da 4, ipoteticamente si avrebbe la tensione a vuoto dove prima era presente il punto di massimo.
+Si deve ridurre la tensione su un nuovo punto di massimo, a potenza inferiore.
+
+Per evitare che una stringa si comporti da carico rispetto alle altre si può disporre un diodo di blocco a valle di ogni stringa, si ottiene una caratteristica simile a quella di condizione di irraggiamento non uniforme.
+
+Il livello di producibilità di un impianto varia con l'inclinazione e la sua posizione geografica.
