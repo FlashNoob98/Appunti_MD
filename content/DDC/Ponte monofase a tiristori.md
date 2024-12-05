@@ -68,3 +68,43 @@ $$
 \frac{d}{dt}i_{S_{c}} &= \frac{V_{S}}{L_{c}}(u_{1}+u_{2})
 \end{aligned}\right.
 $$
+Durante la commutazione invece il modello diventa del secondo ordine.
+In DCM il tempo $S_{1}$ si riduce di $\mu_{1}$ e analogamente $S_{2}$ si riduce di $\mu_{2}$.
+$$
+\left\{
+\begin{aligned}
+\frac{d}{dt}i_{D} &= \frac{v_{S}(S_{1}-u_{1})-v_{S}(s_{2}-u_{2})-Ri_{D}[S_{1}-u_{1}+S_{2}-u_{2}]}{L+L_{c}} - \frac{Ri_{D}(u_{1}+u_{2})}{L}\\
+\frac{d}{dt}i_{sc} &= \frac{v_{S}}{L_{c}}(u_{1}+u_{2})
+\end{aligned}
+\right.
+$$
+raccogliendo i termini:
+$$
+\left\{
+\begin{aligned}
+\frac{d}{dt}i_{D} &= \frac{v_{S}[2S_{1}-1-u_{1}+u_{2}]-Ri_{D}[1-(u_{1}+u_{2})]}{L+L_{c}} - \frac{Ri_{D}(u_{1}+u_{2})}{L}\\
+\frac{d}{dt}i_{sc} &= \frac{v_{S}}{L_{c}}(u_{1}+u_{2})
+\end{aligned}
+\right.
+$$
+mettendo in relazione la corrente dell'alimentazione con quella del carico
+$$
+i_{s} = i_{sc}(u_{1}+u_{2}) + i_{d}[2S_{1}-1-(u_{1}+u_{2})]
+$$
+si può scrivere il modello globale in forma matriciale:
+$$
+\frac{d}{dt}
+\begin{bmatrix}
+i_{D}\\ \\ i_{sc}
+\end{bmatrix}  =
+\begin{pmatrix}
+\frac{-v_{S}-Ri_{D}}{L+L_{c}} \\ \\ 0
+\end{pmatrix} +
+\begin{pmatrix}
+\frac{2V_{s}}{L+L_{c}} & \frac{-V_{s}+Ri_{D}}{L+L_{c}} - \frac{Ri_{D}}{L} & \frac{v_{S}+Ri_{D}}{L+L_{c}}-\frac{Ri_{D}}{L}\\  \\
+0 & \frac{v_{S}}{L_{c}} & \frac{v_{S}}{L_{c}}
+\end{pmatrix}
+\begin{pmatrix}
+S_{1}\\ u_{1}\\ u_{2}
+\end{pmatrix}
+$$
