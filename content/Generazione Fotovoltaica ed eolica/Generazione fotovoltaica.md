@@ -511,4 +511,108 @@ Si deve ridurre la tensione su un nuovo punto di massimo, a potenza inferiore.
 
 Per evitare che una stringa si comporti da carico rispetto alle altre si può disporre un diodo di blocco a valle di ogni stringa, si ottiene una caratteristica simile a quella di condizione di irraggiamento non uniforme.
 
+# Producibilità dei pannelli fotovoltaici
 Il livello di producibilità di un impianto varia con l'inclinazione e la sua posizione geografica.
+La producibilità del pannello si calcola in funzione dell'irradianza standard, in tutte le situazioni differenti dal punto di producibilità massima hanno una producibilità inferiore, riducendo anche il tempo del ROI (Return of Investment), un tempo tipico è di circa 10 anni.
+Altre condizioni che influenzano la producibilità si riferiscono alla radiazione diffusa, oltre a quella diretta.
+
+Alcuni impianti fotovoltaici prevedono un sistema di inseguimento della traiettoria del Sole, sono solitamente sistemi molto costosi e previsti solo in particolari impianti.
+
+## Angoli caratteristici dei pannelli fotovoltaici
+L'angolo $\alpha$ rappresenta **l'altitudine solare**, ovvero l'angolo dei raggi rispetto al piano dell'orizzonte.
+L'angolo di **zenit** invece $\theta_{z}$ è il suo complementare, ovvero l'angolo tra i raggi solari e l'asse perpendicolare al piano dell'orizzonte, ovvero lo zenit.
+L'angolo $\beta$ è quello di **inclinazione del pannello** rispetto al piano dell'orizzonte.
+L'angolo $\theta$ è **l'angolo di incidenza**, quello che effettivamente determina la producibilità del pannello, compreso tra i raggi solari e la normale del pannello, si cerca di minimizzare quest'angolo.
+
+Il valore di irradianza diretta $P_{b0}$ è quella che si avrebbe se i raggi incidessero in maniera perpendicolare al pannello.
+L'irradianza incidente sarà dunque:
+$$
+P_{b}=P_{b0}\cos \theta
+$$
+L'irradianza diretta incidente sul pannello orizzontale invece:
+$$
+P_{bh} = P_{b0}\sin \alpha
+$$
+e quindi si può esprimere l'irradianza in funzione di quella del pannello orizzontale:
+$$
+P_{b} = P_{bh} \frac{\cos \theta}{\sin\alpha} = P_{bh} \frac{\cos \theta}{\cos \theta_{z}}
+$$
+L'altezza solare $\alpha$ varia anche durante la stessa giornata.
+Si definisce inoltre un altro angolo $\delta$ compreso tra il raggio solare e il piano equatoriale.
+L'angolo $\delta$ varia tra -23.45° durante il solstizio d'estate e 23.45° durante il solstizio d'inverno; è nullo durante gli equinozi.
+Un modo per stimare il valore di questo angolo, con $n$ il giorno dell'anno:
+$$
+\delta[°] = 23.45 \sin\left[ \frac{360}{365}\cdot(284+n) \right]
+$$
+dunque $\delta=0$ per $n=81$ il 22 Marzo o $\delta=\delta_{\text{max}}$ per $n=173$ il 22 Giugno.
+
+Si definisce l'angolo di azimut del pannello quello compreso tra la normale del pannello e la direzione Sud e l'angolo azimut del sole $\gamma_{S}$ rispetto alla direzione Nord.
+
+L'angolo di incidenza $\theta$ è così determinato:
+$$
+\begin{aligned}
+\cos\theta&=(\sin\phi \sin\beta \cos \gamma+\cos \phi \cos\beta)\cos\delta \cos \omega+\\
+&+\sin\delta(\cos\beta \sin \phi-\sin\beta \cos \phi \cos\gamma) + \\
+&+\cos\delta \sin\omega \sin\gamma \sin\beta
+\end{aligned}
+$$
+Il valore che più incide sulla scelta di inclinazione del pannello è quello della latitudine, è comunque un valore di compromesso.
+
+# Convertitore elettrico fotovoltaico
+Il sistema di conversione, in questo caso un inverter, è un dispositivo fondamentale del sistema di produzione fotovoltaico, la tensione in uscita dai pannelli è continua e si vuole collegare l'impianto alla rete di distribuzione in alternata.
+
+L'inverter oltre a creare l'interfaccia di connessione alla rete alternata deve anche gestire la potenza attiva estratta dai pannelli, affinché lavorino nel punto di massima producibilità.
+Deve inoltre garantire la power quality.
+
+La configurazione base di un inverter grid connected è rappresentato da un impianto PV, un condensatore in ingresso, un inverter a ponte monofase e un collegamento alla rete monofase mediante un'induttanza di filtro.
+L'induttanza agisce da filtro rispetto alla corrente ma ha un importante ruolo perchè la tensione in uscita dall'inverter è modulata e può variare tra Vd e 0 (unipolare) o Vd e -Vd, compreso lo 0 (bipolare).
+
+La commutazione bipolare fornisce una frequenza di modulazione doppia rispetto alla unipolare.
+L'induttore disaccoppia la tensione del pannello dalla tensione di rete, fornendo questa caduta di tensione permette proprio il funzionamento della struttura, regolando la corrente che attraversa l'induttore regolo proprio la potenza attiva fornita dal pannello, facendogli vedere inoltre uno specifico punto di lavoro.
+
+L'induttore si comporta come un "volano energetico"
+Per il calcolo della potenza si può considerare sinusoidale la tensione in uscita dall'inverter.
+
+Il ruolo del condensatore è quello di gestire la **potenza fluttuante** a pulsazione doppia tra i pannelli e la rete:
+$$
+P_{\text{grid}}(t) = v_{\text{grid}}(t)\cdot i_{\text{grid}}(t)
+$$
+Si avrebbe una corrente unidirezionale nel pannello, con valor medio diverso da zero e a frequenza doppia.
+In realtà è calcolata a tensione sul pannello costante ma al variare della corrente varierà anche la tensione del pannello per la sua caratteristica costitutiva.
+Ci si sposterebbe sulla caratteristica del pannello fotovoltaico.
+
+Il condensatore per filtrare la tensione dovrà assorbire questa corrente sinusoidale a pulsazione doppia.
+Maggiore è la capacità del condensatore e minore sarà l'oscillazione di tensione e quindi l'oscillazione di corrente sul pannello.
+L'oscillazione di corrente non sarà mai nulla.
+Inoltre il condensatore deve assorbire la corrente dovuta all'apertura dei componenti, mediante i diodi di free-wheeling.
+
+Per garantire una modulazione lineare la tensione ai capi del dc-link deve essere superiore di quella massima di rete.
+Si usa solitamente un trasformatore per non ridurre la tensione necessaria al DC-Link.
+
+La regione di lavoro del sistema
+è determinata alle tensioni massime e minimi, la corrente massima del pannello, la potenza massima dell'inverter. La tensione $V_{dc}$ minima deve essere superiore al valore di picco della rete.
+
+Il rendimento MPPT, l'unico che può essere pari ad 1, definito come la potenza fornita dal pannello rispetto alla potenza nel punto di massimo.
+$$
+\eta_{MPPT} = \frac{P_{pv}}{P_{MPP}}
+$$
+Il rendimento del convertitore, legato al convertitore appunto:
+$$
+\eta_{conv} = \frac{P_{ac}}{P_{dc}}
+$$
+Il rendimento globale:
+$$
+\eta = \eta_{{MPPT}}\cdot\eta_{{conv}} = \frac{P_{pv}}{P_{MPP}}\cdot \frac{P_{ac}}{P_{dc}}
+$$
+Non si tiene conto del rendimento del pannello, ovvero del rendimento di conversione della radiazione solare, la sorgente di energia non ha costi.
+
+## Inseguimento del punto di massimo (MPPT)
+Esistono molteplici algoritmi, esistono algoritmi di stima o algoritmi di inseguimento iterativo.
+Quello di stima prevede appunto la stima del valore di tensione ottimale.
+
+Mediante l'inverter regolo la potenza attiva erogata. L'algoritmo iterativo prende il nome di *perturba e osserva*
+ovvero conoscendo la curva tipica a campana Potenza-Tensione di un pannello fotovoltaico, mi è sufficiente valutare la derivata della potenza rispetto alla tensione per capire in che direzione portare la tensione.
+L'incremento del duty cycle causa un incremento della tensione e viceversa un decremento.
+
+Questo algoritmo entra in crisi nel caso in cui ci siano punti di massimo locale, potrebbe bloccarsi su un massimo locale inferiore al massimo assoluto del pannello.
+
