@@ -1,5 +1,3 @@
-  
-
 # Caratteristiche generali
 
 Un sistema di generazione fotovoltaica è composto da una sorgente primaria, il Sole, un generatore
@@ -615,4 +613,3 @@ ovvero conoscendo la curva tipica a campana Potenza-Tensione di un pannello foto
 L'incremento del duty cycle causa un incremento della tensione e viceversa un decremento.
 
 Questo algoritmo entra in crisi nel caso in cui ci siano punti di massimo locale, potrebbe bloccarsi su un massimo locale inferiore al massimo assoluto del pannello.
-
