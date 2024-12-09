@@ -14,11 +14,38 @@ $$
 \begin{aligned}
 V_{3}-L_{c} \frac{d}{dt}i_{3} - L \frac{di_{D}}{dt}-Ri_{D}&=0\\ &+ \\
 V_{1}-L_{c} \frac{d}{dt}i_{1} - L \frac{di_{D}}{dt}-Ri_{D}&=0 \\ &= \\
-V_{3}+V_{1}-L_{c}\frac{d}{dt}i_{d} - 2L \frac{d}{dt}i_{D} -2Ri_{D} &=0
+V_{3}+V_{1}-L_{c}\frac{d}{dt}i_{D} - 2L \frac{d}{dt}i_{D} -2Ri_{D} &=0
 \end{aligned}
 $$
 Dunque dalla LKC si ricava:
 $$
-i_{3}+i_{1} = i_{d} \Rightarrow di_{3} + di_{1} = di_{D}
+i_{3}+i_{1} = i_{D} \Rightarrow di_{3} + di_{1} = di_{D}
 $$
 .
+Si vuole calcolare la commutazione tra tutte e tre le gambe per ottenere un modello generico:
+$$
+\frac{d}{dt} i_{D} = \frac{(S_{1}-u_{1})v_{1}+(S_{2}-u_{2})v_{2}+(S_{3}-u_{3})v_{3}-Ri_{D}[S_{1}-u_{1}+S_{2}-u_{2}+S_{3}-u_{3}]}{L+L_{c}}
+$$
+ricordando che si deve sempre rispettare $S_{1}+S_{2}+S_{3}=1$ si può raccogliere il secondo termine:
+$$
+\frac{d}{dt} i_{D} = \frac{(S_{1}-u_{1})v_{1}+(S_{2}-u_{2})v_{2}+(S_{3}-u_{3})v_{3}-Ri_{D}[1-(u_{1}+u_{2}+u_{3})]}{L+L_{c}}
+$$
+con il comando di impulso, ad esempio $S_{1}$ così imposto:
+$$
+S_{1} = \left\{\begin{aligned}
+1 \quad & \forall t \in \left[\alpha, \frac{2\pi}{3}+\alpha \right] \frac{1}{\omega}\\
+0  \quad &  \forall t \notin \left[\alpha, \frac{2\pi}{3}+\alpha \right] \frac{1}{\omega}
+\end{aligned}\right.
+$$
+e
+$$
+u_{1} = \left\{\begin{aligned}
+1  \quad & T_{3}\& T_{1} \text{ durante commutazione}\\
+0 \quad & \text{altrove}
+\end{aligned}
+\right.
+$$
+Durante la commutazione la tensione in uscita sarà pari alla semisomma delle due tensioni che alimentano la maglia di commutazione:
+$$
+\frac{d}{dt}i_{D} = \frac{\frac{v_{1}+v_{3}}{2}}{\frac{L_{c}}{2}+L} - \frac{R}{\frac{L_{c}}{2}+L}i_{D}
+$$
