@@ -49,3 +49,40 @@ Durante la commutazione la tensione in uscita sarà pari alla semisomma delle du
 $$
 \frac{d}{dt}i_{D} = \frac{\frac{v_{1}+v_{3}}{2}}{\frac{L_{c}}{2}+L} - \frac{R}{\frac{L_{c}}{2}+L}i_{D}
 $$
+Sommando le semitensioni alle precedenti equazioni si ottiene il modello globalmente valido del convertitore:
+$$
+\begin{aligned}
+\frac{d}{dt}i_{D} &= \frac{(S_{1}-u_{1})v_{1}+(S_{2}-u_{2})v_{2}+(S_{3}-u_{3})v_{3}-Ri_{D}[1-(u_{1}+u_{2}+u_{3})]}{L+L_{c}}+ \\
+&+ \frac{(v_{1}+v_{3})u_{1} + (v_{1}+v_{2})u_{2} + (v_{2}+v_{3})u_{3} - 2Ri_{D}(u_{1}+u_{2}+u_{3})}{2L+L_{c}}
+\end{aligned}
+$$
+
+Si definiscono le correnti di commutazione $i_{C_{k}}$:
+$$
+\begin{aligned}
+\frac{d}{dt}i_{C_{1}} &= \frac{v_{3}-v_{1}}{L_{c}}\\
+\frac{d}{dt}i_{C_{2}} &= \frac{v_{1}-v_{2}}{L_{c}} \\
+\frac{d}{dt}i_{C_{3}} &= \frac{v_{2}-v_{3}}{L_{c}}
+\end{aligned}
+$$
+che permettono di completare il modello dinamico.
+
+Formalizzando per una singola corrente:
+$$
+\begin{aligned}
+\frac{d}{dt}i_{1} &= \frac{1}{2}\left[ \frac{v_{1}+v_{3}}{2L+L_{c}} -\frac{2Ri_{D}}{2L+L_{c}} - \frac{v_{3}-v_{1}}{2L+L_{c}} \right]u_{1} + \\
+&+ \frac{(S_{1}-u_{1})v_{1} - Ri_{D}(S_{1}-u_{1})}{L+L_{c}} + \\
+&+ \frac{1}{2}\left[ \frac{v_{1}+v_{2}-2Ri_{D}}{2L+L_{c}}+ \frac{v_{1}-v_{2}}{L_{c}} \right]u_{2}
+\end{aligned}
+$$
+Dove il primo termine rappresenta la commutazione da $T_{3}$ a $T_{1}$ovvero il turn-on del componente $T_{1}$, il secondo termine modella la dinamica durante la conduzione pura.
+Il  terzo modella la dinamica di turn-off da $T_{1}$ a $T_{2}$.
+Sviluppato diventa:
+$$
+\begin{aligned}
+\frac{d}{dt}i_{1} &=\frac{v_{1}(S_{1}-u_{1})}{L_{c}+L} - \frac{R(S_{1}-u_{1})i_{D}}{L_{c}+L} + \\
++& \frac{1}{L_{c}(2L + L_{c})}\cdot [(L_{c}+L)v_{1}(u_{1}+u_{2}) - Lv_{2}u_{2}-Lv_{3}u_{1}]-\\
+-& \frac{Ri_{D}}{L_{c}+2L}(u_{1}+u_{2})
+\end{aligned}
+$$
+.
