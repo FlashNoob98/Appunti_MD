@@ -39,7 +39,7 @@ $$
 $$
 Tutto ciò è valido in CCM con angolo di commutazione nullo (Come faccio ad avere commutazione nulla se ho considerato proprio la $L_{c}$?)
 
-Aggiungendo l'ipotesi di complementarietà si ricava un modello dinamico alle configurazioni globalmente valido di ordine 1:
+Aggiungendo l'ipotesi di complementarietà si ricava un [[modello dinamico alle configurazioni]] globalmente valido di ordine 1:
 $$
 \begin{aligned}
 \frac{d}{dt}i_{D} &= \frac{S_{1}V_{S}-S_{2}V_{S}-Ri_{D}}{L+L_{c}} \\
@@ -108,3 +108,22 @@ i_{D}\\ \\ i_{sc}
 S_{1}\\ u_{1}\\ u_{2}
 \end{pmatrix}
 $$
+
+# [[Modello ROAM]]
+Si può sostituire il carico a corrente impressa con un carico $RL$, la dinamica della corrente nel carico sarà:
+$$
+\frac{d}{dt}i_{0} = \frac{v_{s}[(2S_{1}-1)-u_{1}+u_{2}]-Ri_{0}[1-(u_{1}+u_{2})]}{L+L_{c}} - \frac{Ri_{0}}{L}(u_{1}+u_{2})
+$$
+mentre quella di commutazione:
+$$
+\frac{d}{dt} i_{sc} = \frac{V_{s}}{L_{c}}(u_{1}+u_{2})
+$$
+La caduta di tensione induttiva:
+$$
+V_{x} = \frac{2}{\pi} \omega L_{c}I_{0}
+$$
+dunque il valore medio di tensione sul carico:
+$$
+\langle v_{0} \rangle_{0} = \frac{2}{\pi} \sqrt{ 2 }V\cos\alpha - \frac{2}{\pi}\omega L_{c}I_{0} 
+$$
+ma $I_{0}$ è il valor medio di corrente e per la sua stima andrebbero calcolati i valori medi di $u_{1}$ e $u_{2}$ che dipendono invece dallo stato del sistema e sono discontinue.
