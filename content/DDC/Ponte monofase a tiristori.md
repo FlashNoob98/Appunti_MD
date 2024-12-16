@@ -127,3 +127,80 @@ $$
 \langle v_{0} \rangle_{0} = \frac{2}{\pi} \sqrt{ 2 }V\cos\alpha - \frac{2}{\pi}\omega L_{c}I_{0} 
 $$
 ma $I_{0}$ è il valor medio di corrente e per la sua stima andrebbero calcolati i valori medi di $u_{1}$ e $u_{2}$ che dipendono invece dallo stato del sistema e sono discontinue.
+
+Se l'induttanza di carico $L$ è molto maggiore rispetto a quella di commutazione $L_{c}$, inoltre la corrente di commutazione persiste per un tempo certamente inferiore al periodo del sistema di $20ms$ (se alimentato a 50 Hz).
+
+Se calcola la media esatta del modello:
+$$
+\frac{d}{dt}\langle i_{0} \rangle_{0} = \frac{\langle V_{S}(2S_{1}-1) \rangle_{0} }{L+L_{c}} +\frac{\langle V_{S}(u_{2}-u_{1}) \rangle_{0} }{L+L_{c}} - \frac{\langle Ri_{D} [1-(u_{1}+u_{2})] \rangle_{0} }{L+L_{c}} - \frac{\langle R(u_{1}+u_{2})i_{D} \rangle_{0} }{L}
+$$
+si esegue la media di ordine $k$ sulla funzione di comando:
+$$
+\langle 2S_{1}-1 \rangle_{k} = \frac{J}{(2k-1)\pi} [e^{-j(2k-1)\pi}-1]
+$$
+la media di ordine 1:
+$$
+\langle 2S_{1} -1\rangle_{1} = \frac{J(-2)}{\pi}e^{j\alpha} = \frac{2}{\pi}\left[ \sin\alpha-j \frac{2}{\pi}\cos\alpha \right] 
+$$
+Per quanto riguarda i termini di commutazione invece:
+$$
+\begin{aligned}
+\langle u_{1} \rangle_{0} &= \frac{u_{1}}{2\pi} \\
+A_{1} & = \frac{2}{2\pi} \int_{0}^{2\pi} u_{1}(\omega t) \cos \omega t\ d\omega t = \frac{1}{\pi}\int_{\alpha}^{\alpha+\mu_{1}} \cos \omega t \ d\omega t = \frac{\sin(\alpha+\mu_{1})-\sin\alpha}{\pi} \\
+B_{1} & = \frac{2}{2\pi} \int_{0}^{2\pi} u_{1}(\omega t) \sin \omega t\ d\omega t = \frac{1}{\pi}\int_{\alpha}^{\alpha+\mu_{1}} \sin \omega t \ d\omega t = \frac{\cos\alpha-\cos(\alpha+\mu_{1})}{\pi} \\
+\langle u_{1} \rangle_{1} &= \frac{A_{1}-jB_{1}}{2} = \frac{\sin(\alpha+\mu_{1})-\sin\alpha}{2\pi} - \frac{j\cos\alpha+j\cos(\alpha+\mu_{1})}{2\pi} 
+\end{aligned}
+$$
+Per $\langle u_{2} \rangle_{1}$ il ragionamento è analogo ma l'intervallo di integrazione diventa $[\alpha+\pi, \alpha+\pi+\mu_{2}]$:
+$$
+\langle u_{2} \rangle_{1} = \frac{\sin\alpha-\sin(\alpha+\mu)}{2\pi} - \frac{j[\cos(\alpha+\mu_{2})-\cos\alpha]}{2\pi}
+$$
+Per quanto riguarda la tensione di alimentazione, è presente solo la prima armonica:
+$$
+\langle V_{s} \rangle_{1} = \frac{1}{T} \int_{0}^T \sqrt{ 2 }V\sin \omega t \cdot e^{-j\omega t} dt = \frac{1}{\cancel{T}}\cdot \frac{\sqrt{ 2 }}{2j}\cancel{T} = -j \frac{\sqrt{ 2 }}{2}V
+$$
+Si può quindi calcolare il seguente prodotto:
+$$
+\begin{aligned}
+\langle V_{s}(2S_{1}-1) \rangle_{0} &= \langle V_{s} \rangle_{1}\langle 2S_{1}-1 \rangle_{-1} + \langle V_{s} \rangle_{-1}\langle 2S_{1-1} \rangle_{1} = \\
+&= 2\left( -\frac{\sqrt{ 2 }V}{2} \right) \left( -\frac{2}{\pi} \cos\alpha\right) = \frac{2}{\pi}\sqrt{ 2 }V\cos\alpha
+\end{aligned}
+$$
+con qualche passaggio in più si calcola anche
+$$
+\begin{aligned}
+\langle V_{s}(u_{2}-u_{1}) \rangle_{0} &= \langle V_{s} \rangle_{1} \langle u_{2}-u_{1} \rangle_{-1} + \langle V_{s} \rangle_{-1}\langle u_{2}-u_{1} \rangle_{1} =  \\
+&=\left( -\frac{\sqrt{ 2 }}{2}V\cdot {2} \right)\left( \frac{2\cos\alpha - \cos(\alpha+\mu_{1})-\cos(\alpha+\mu_{2})}{2\pi} \right)=\\
+&= -\sqrt{ 2 }V \frac{2\cos\alpha-\cos(\alpha+\mu_{1})-\cos(\alpha+\mu_{2})}{2\pi} 
+\end{aligned}
+$$
+
+Unendo i vari termini si riporta la media esatta del modello:
+$$
+\begin{aligned}
+\frac{d}{dt} \langle i_{0} \rangle_{0} &= \left[ \frac{2}{\pi}\sqrt{ 2 }V\cos\alpha - \sqrt{ 2 }V\left[ \frac{2\cos\alpha-\cos(\alpha+\mu_{1})-\cos(\alpha+\mu_{2})}{2\pi} \right] \right] \frac{1}{L+L_{c}} - \\
+&- \frac{R\langle i_{0} \rangle_{0} }{L+L_{c}} + \cancel{\frac{R\langle i_{0} \rangle_{0} }{L+L_{c}}\left( \frac{\mu_{1}+\mu_{2}}{2\pi} \right)}
+-\cancel{\frac{R\langle i_{0} \rangle_{0} }{L+L_{c}}\left( \frac{\mu_{1}+\mu_{2}}{2\pi} \right)}
+\end{aligned}
+$$
+Per rimuovere i termini in $\mu$ si calcola la corrente nella sorgente, a regime:
+$$
+\frac{d}{dt}i_{sc} = \frac{V_{s}}{L}\Rightarrow \int_{-\langle i_{0} \rangle_{0} }^{+\langle i_{0} \rangle_{0} } d i_{sc} = \int_{\alpha}^{\alpha+\mu_{1}} \frac{V_{s}}{\omega LC} d\omega t = 2\langle i_{0} \rangle_{0} = \frac{\sqrt{ 2 }V}{\omega L_{c}}[\cos\alpha-\cos(\alpha+\mu_{1})] 
+$$
+analogamente nel periodo $[\pi+\alpha,\pi+\alpha+\mu_{2}]$ si ottiene:
+$$
+2\langle i_{0} \rangle_{0} = \frac{\sqrt{ 2 }V}{\omega L_{c}}[\cos\alpha-\cos(\alpha+\mu_{2})] 
+$$
+A regime i due termini di commutazione sono identici $\mu_{1}=\mu_{2}=\mu$ dunque:
+$$
+2\omega L_{c} \langle i_{0} \rangle_{0} = \frac{\sqrt{ 2 }V}{\omega L_{c}} [\cos\alpha-\cos(\alpha+\mu)]
+$$
+Sostituendo nel termine generale:
+$$
+\frac{d}{dt} \langle i_{0} \rangle_{0} =\frac{\frac{2}{\pi}\sqrt{ 2 }V\cos\alpha-\frac{2}{\pi}\omega L_{c}\langle i_{0} \rangle_{0} }{L+L_{c}} - \frac{R\langle i_{0} \rangle_{0} }{L+L_{c}}
+$$
+A regime periodico $\frac{d}{dt}\langle i_{0} \rangle_{0}=0$ si ricava quanto già ottenuto in un precedente corso:
+$$
+R\langle i_{0} \rangle_{0}=V_{0} = \frac{2}{\pi}\sqrt{ 2 }V\cos\alpha-\frac{2}{\pi}\omega L_{c}I_{0} 
+$$
+.
