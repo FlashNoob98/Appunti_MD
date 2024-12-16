@@ -13,3 +13,5 @@ H_{m} = - \left( \frac{B_{Fe}}{\mu_{r}\mu_{0}} \frac{l_{Fe}}{l_{m}}  +\frac{B_{0
 $$
 Ciò rappresenta una retta a pendenza negativa nel piano $B,H$ che interseca il ciclo di isteresi nel secondo quadrante, dunque solo il tratto detto *curva di smagnetizzazione* del ciclo di isteresi viene rappresentato.
 Per massimizzare il valore di $B$ si deve massimizzare la pendenza della curva di carico, ovvero diminuire il traferro o aumentare la lunghezza del magnete, riducendo la sezione se si desidera mantenere il flusso costante.
+
+Se il motore a magneti permanenti genera una tensione indotta allo statore sinusoidale, prende il nome di AC Brushless.
