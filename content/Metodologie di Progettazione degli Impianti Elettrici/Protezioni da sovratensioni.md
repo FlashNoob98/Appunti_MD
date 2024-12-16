@@ -41,12 +41,17 @@ Si può utilizzare il valore di tenuta all'impulso per caratterizzare gli appare
 
 Si definiscono le categorie degli apparecchi in base alle tenute all'impulso:
 
+<center>
+
 | Cat | Tenuta |
 | --- | ------ |
 | IV  | 6kV    |
 | III | 4kV    |
 | II  | 2.5kV  |
 | I   | 1.5kV  |
+
+</center>
+
 Gli apparecchi in categoria IV sono quelli ad esempio all'esterno dell'impianto, in prossimità del punto di consegna della linea.
 
 ## Sistemi di protezione
@@ -55,12 +60,17 @@ L'impianto va protetto da un sistema LPS (parafulmine)?
 La corrente di fulmine, in caso di parafulmine dovrà essere scaricata mediante il conduttore di protezione, non si può installare a prescindere un impianto parafulmine, va eseguita un'analisi di rischio.
 L'analisi di rischio viene caratterizzata su più livelli di rischio:
 
+<center>
+
 | Livello | Rischio                           |
 | ------- | --------------------------------- |
 | R1      | Perdita di vita umana             |
 | R2      | Interruzione di pubblico servizio |
 | R3      | Danneggiamento di beni culturali  |
 | R4      | Perdita economica                 |
+
+</center>
+
 Si deve moltiplicare il rischio per la probabilità dell'evento di fulminazione.
 
 Si suppone che in caso di fulminazione sia presente una corrente di fulminazione nel conduttore di protezione, in parallelo saranno collegate le masse degli apparecchi, si ha un innalzamento della tensione dovuta dalla corrente di fulminazione per la resistenza del conduttore, inserendo uno schermo si riduce l'accoppiamento galvanico e in generale la resistenza del conduttore di protezione.
@@ -112,3 +122,23 @@ All'interno dei locali, tra la zona LPZ1 e LPZ2 si collegano scaricatori di tipo
 Al confine con la LPZ3 sono presenti i dispositivi di categoria I come server ecc... e vanno protetti da scaricatori di tipo 3.
 
 Le zone definite dalla norma definiscono il rapporto tra la tipologia di scaricatori e la categoria di utilizzatori da proteggere.
+
+## Coordinamento con gli altri sistemi di protezione
+Siano date tre fasi $L_{1},L_{2},L_{3},N$ lo scaricatore sarà collegato tra il conduttore attivo e la terra, intendendo quanto detto prima la via più breve tra lo scaricatore e il collettore o tra lo scaricatore e il conduttore di protezione.
+La corrente di sovratensione su una singola fase causerebbe l'intervento dell'interruttore differenziale, dunque dovrà essere installato a monte di quest'ultimo.
+
+L'interruttore differenziale è presente nel sistema TT e può essere presente nel sistema TN-S.
+Gli scaricatori di tipo 1 sono solitamente dei MOV e quindi interessati da una corrente di fuga $I_{c}$, a seguito di un intervento del varistore potrebbe guastarsi, la corrente di fuga non verrà rilevata dall'interruttore differenziale, per questo motivo a protezione dell'impianto è solitamente disposto un fusibile a monte del varistore, con una certa caratteristica tempo corrente, termica, che non intervenga prima del varistore ma interverrebbe per la corrente di guasto del varistore.
+Interverrà prima dell'interruttore magneto-termico a monte.
+Nel sistema TN-S deve intervenire il fusibile con dei tempi previsti dalle norme come se la $I_{c}$ fosse proprio una corrente di guasto.
+
+Nel caso in cui lo scaricatore fosse un GDT interverrebbe comunque in questo caso il fusibile, il valore di questa corrente nei sistemi TT è limitata dalla resistenza di terra e potrebbe essere relativamente piccola, a differenza dei sistemi TN-C e TN-S dove la corrente sarebbe più elevata perché si richiuderebbe nel conduttore di protezione.
+
+Nei sistemi IT e nei sistemi TN il collegamento tra i conduttori di fase e la terra dei varistori prende il nome di collegamento di tipo A; ciascun conduttore attivo è collegato a terra mediante un varistore.
+
+Se il sistema è di tipo TN-C il neutro non può essere collegato a terra dunque non vi sarà uno scaricatore per il neutro.
+
+Per il TT esiste un collegamento di tipo B, analogo a quello A per il TN, tutti i conduttori attivi sono collegati a terra mediante lo scaricatore. 
+La corrente di guasto dello scaricatore potrebbe non essere rilevata, si decide di collegare il neutro dei varistori al neutro, in tal caso sarà una corrente di guasto rilevante.
+Si realizza poi il collegamento a terra mediante un GDT.
+Questo collegamento con tre varistori e un GDT prende il nome di tipo C. Può essere adottata anche per il TN-S e prende il nome di protezione "1+1".
