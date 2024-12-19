@@ -47,4 +47,78 @@ $$
 \frac{d}{dt}v_{C} &= \frac{i_{s}}{C}-\frac{v_{C}}{R_{f}C}-  \frac{i_{1}u_{1}+i_{2}u_{2}+i_{3}u_{3}}{C}
 \end{aligned}
 $$
-.
+Dal modello ai valori istantanei si ricava facilmente la forma affine nel controllo:
+$$
+\frac{d}{dt}\vec{x}=
+\begin{bmatrix}
+-\frac{R}{L}x_{1}-\frac{v_{g1}}{L}\\ -\frac{R}{L}x_{2}-\frac{v_{g2}}{L}\\ -\frac{R}{L}x_{3}-\frac{v_{g3}}{L}  \\
+\frac{i_{S}}{C} - \frac{x_{4}}{R_{F}C}
+\end{bmatrix} + 
+\begin{bmatrix}
+\frac{2}{3} \frac{x_{4}}{L} & -\frac{x_{4}}{3L} & -\frac{x_{4}}{3L}  \\
+-\frac{x_{4}}{3L} & \frac{2}{3} \frac{x_{4}}{L} & -\frac{x_{4}}{3L} \\
+-\frac{x_{4}}{3L} & -\frac{x_{4}}{3L} & \frac{2}{3}\frac{x_{4}}{3L} \\
+-\frac{x_{1}}{C} & -\frac{x_{2}}{C} & -\frac{X_{3}}{C}
+\end{bmatrix} \cdot
+\begin{bmatrix}
+u_{1} \\ u_{2} \\ u_{3}
+\end{bmatrix}
+$$
+In [[forma bilineare]]:
+$$
+\begin{aligned}
+\frac{d}{dt}\vec{x} &= 
+\begin{bmatrix}
+-\frac{R}{L} & 0 & 0 & 0 \\
+0 & -\frac{R}{L}  & 0 & 0  \\ 
+0 & 0 & -\frac{R}{L}  & 0 \\ 
+0 & 0 & 0 & -\frac{1}{R_{F}C} 
+\end{bmatrix}\vec{x} + 
+\begin{bmatrix}
+-\frac{v_{g1}}{L} \\
+-\frac{v_{g2}}{L} \\
+-\frac{v_{g3}}{L} \\
+\frac{i_{5}}{C}
+\end{bmatrix} \\
+B_{1} &= \begin{bmatrix}
+0 & 0 & 0 & \frac{2}{3} \frac{1}{L}\\ 
+0 & 0 &0 &-\frac{1}{3} \frac{1}{L} \\
+0 & 0 & 0 & -\frac{1}{3} \frac{1}{L} \\
+-\frac{1}{C} & 0 & 0 & 0 
+\end{bmatrix}; b_{1} = 0\quad B_{2} = 
+\begin{bmatrix}
+0 & 0 & 0 & -\frac{1}{3} \frac{1}{L}\\ 
+0 & 0 &0 & \frac{2}{3} \frac{1}{L} \\
+0 & 0 & 0 & -\frac{1}{3} \frac{1}{L} \\
+0 & -\frac{1}{C} & 0 & 0 
+\end{bmatrix}; b_{2}=0\\
+B_{3} &= \begin{bmatrix}
+0 & 0 & 0 & -\frac{1}{3} \frac{1}{L}\\ 
+0 & 0 &0 & -\frac{1}{3} \frac{1}{L} \\
+0 & 0 & 0 & \frac{2}{3} \frac{1}{L} \\
+0 & 0 &-\frac{1}{C}  & 0 
+\end{bmatrix}; b_{3}=0
+\end{aligned}
+$$
+
+Nello spazio euclideo e di Clarke i segnali di controllo sono discreti, nello spazio di Park invece saranno continui e sinusoidali.
+Viceversa le grandezze sinusoidali in $\mathbb{R}^3$ sono costanti nello spazio di Park.
+
+Si semplifica il modello, eliminando la dinamica del condensatore, eliminando la tensione di rete, si supponga ad esempio una batteria, a tensione costante, connessa  mediante l'inverter ad un carico passivo $RL$ trifase.
+
+Il modello si semplifica e diventa: 
+$$
+\begin{aligned}
+\frac{d}{dt}i_{1}&= \frac{V_{s}}{L}u_{1} - \frac{R}{L}i_{1} - \frac{V_{s}}{3L}(u_{1}+u_{2}+u_{3}) \\
+\frac{d}{dt}i_{2}&= \frac{V_{s}}{L}u_{2} - \frac{R}{L}i_{2} - \frac{V_{s}}{3L}(u_{1}+u_{2}+u_{3}) \\
+\frac{d}{dt}i_{3}&= \frac{V_{s}}{L}u_{3} - \frac{R}{L}i_{3} - \frac{V_{s}}{3L}(u_{1}+u_{2}+u_{3})
+\end{aligned}
+$$
+dunque usando come riferimento il punto tra i due condensatori:
+$$
+v_{1O'} -Ri_{1} -L \frac{d}{dt}i_{1} - V_{NO'} = 0
+$$
+sommando:
+$$
+\sum_{k=1}^{3}V_{kO'} = 3V_{NO'} = \frac{1}{3} \frac{V_{s}}{2} \sum_{k=1}^{3} (2u_{k}-1) = \frac{1}{3}V_{s} \left(\sum_{k=1}^{3}u_{k} -3\right) = \frac{1}{3}V_{s} \sum_{k=1}^{3}u_{k} - \frac{V_{s}}{2}
+$$
