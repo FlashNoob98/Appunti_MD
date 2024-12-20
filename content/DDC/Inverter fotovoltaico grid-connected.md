@@ -122,3 +122,67 @@ sommando:
 $$
 \sum_{k=1}^{3}V_{kO'} = 3V_{NO'} = \frac{1}{3} \frac{V_{s}}{2} \sum_{k=1}^{3} (2u_{k}-1) = \frac{1}{3}V_{s} \left(\sum_{k=1}^{3}u_{k} -3\right) = \frac{1}{3}V_{s} \sum_{k=1}^{3}u_{k} - \frac{V_{s}}{2}
 $$
+dunque la dinamica di corrente:
+$$
+\frac{d}{dt}i_{1} = \frac{V_{s}}{\cancel{2}L}(\cancel{2}u_{1}-\cancel{1}) - \frac{R}{L}i_{1} - \frac{1}{3} \frac{V_{s}}{L} \sum_{k=1}^{3}u_{k} + \cancel{\frac{V_{s}}{2L}}
+$$
+Si ottiene la stessa dinamica a prescindere dal valore di riferimento, potrebbe però cambiare la strategia di controllo e si potrebbe preferire uno dei due riferimenti presentati.
+
+Lo stesso modello vuole essere riscritto nello spazio di Clarke, dunque è necessario ricavare il componente simmetrico di corrente:
+$$
+\vec{i} = \frac{2}{3} \left(i_{1}+i_{2}e^{j{2}\pi/3} + i_{3}e^{j{4}\pi/3}\right)
+$$
+e quello di $V_{s}$ con il quale si ricava il modello completo:
+$$
+\vec{i} = \left(\frac{2}{3}i_{1}+\frac{2}{3}i_{2}e^{j{2}\pi/3}+\frac{2}{3}i_{3}e^{j4\pi/3}\right) 
+$$
+$$
+\left\{
+\begin{aligned}
+\frac{d}{dt}\vec{i} &= \frac{V_{C}}{L}\left(\frac{2}{3}u_{1}+\frac{2}{3}u_{2}e^{j{2}\pi/3}+\frac{2}{3}u_{3}e^{j4\pi/3}\right) -\frac{R}{L}\vec{i} - \frac{1}{L}\vec{v}_{g} \\
+\frac{d}{dt}V_{C} &= \frac{i_{S}}{C} - \frac{v_{C}}{R_{F}C} - \frac{1}{C} \frac{3}{2} (u_{\alpha}i_{\alpha} + u_{\beta}i_{\beta})
+\end{aligned}\right. 
+$$
+Nel riferimento di Park:
+$$
+v_{d,q} = v_{\alpha,\beta}e^{-j\omega t}
+$$
+dunque
+$$
+e^{-j\omega t}\frac{d}{dt} \vec{i}_{\alpha,\beta} = \left[ \frac{v_{C}}{L} \vec{u}_{\alpha,\beta} - \frac{R}{L}\vec{i}_{\alpha,\beta} - \frac{v_{g\alpha,\beta}}{L} \right]e^{-j\omega t} = \frac{v_{C}}{L}\vec{u}_{d,q} - \frac{R}{L}\vec{i}_{d,q} - \frac{v_{g,d,q}}{L}
+$$
+si ricorda che 
+$$
+\frac{d}{dt}\left( \vec{i}_{\alpha,\beta}e^{-j\omega t} \right) = \frac{d}{dt} \vec{i}_{d,q}
+$$
+dunque il modello diventa:
+$$
+\left\{
+\begin{aligned}
+\frac{d}{dt} i_{dq} &= \frac{V_{c}}{L}\vec{v}_{dq} - \frac{R}{L} \vec{i}_{dq} -\frac{\vec{v}_{g,dq}}{L} - j\omega \cdot i_{dq} \\
+\frac{d}{dt} V_{C} &= \frac{i_{S}}{C} -\frac{V_{C}}{R_{F}C} - \frac{3}{2} \frac{1}{C}\left(u_{d}i_{d}+u_{q}i_{q}\right)
+\end{aligned}
+\right.
+$$
+si possono separare le equazioni in parte reale e immaginaria:
+$$
+\left\{
+\begin{aligned}
+\frac{d}{dt}i_{d} &= \frac{v_{C}}{L}u_{d}-\frac{R}{L}i_{d} - \frac{v_{g,d}}{L} + \omega i_{q} \\
+\frac{d}{dt}i_{q} &= \frac{v_{C}}{L}u_{q}-\frac{R}{L}i_{q} - \frac{v_{g,q}}{L} - \omega i_{d} \\
+\frac{d}{dt}V_{C} &= \frac{i_{S}}{C} - \frac{v_{C}}{R_{F}C} - \frac{3}{2C}(i_{d}u_{d}+u_{q}i_{q})
+\end{aligned}
+\right.
+$$
+Id ed Iq saranno costanti a regime, mentre le $u_{d}$ e $u_q$ saranno sinusoidali.
+Saranno più semplici da controllare le grandezze di stato, saranno costanti e non sinusoidali.
+
+Vantaggi del riferimento di Park: volendo formulare un  controllo delle grandezze di stato, queste saranno costanti a regime, il secondo vantaggio è che è possibile ricavare  facilmente il [[modello averaged]], posso ricavare le relazioni a regime periodico.
+
+Se considero il sistema di alimentazione facendo coincidere $V_{g,dq}$ sull'asse $d$, allora la componente $V_{gq}$ sarà nulla.
+
+Inoltre calcolando la potenza:
+$$
+P(t) = V_{g{1}}i_{1} + V_{g2}i_{2} + V_{g3}i_{3} = \frac{3}{2}(V_{gd}i_{d}+\cancel{V_{gq}}i_{q})
+$$
+controllando singolarmente le due correnti $i_{d}$ e $i_{q}$ se il sistema è simmetrico è possibile controllare in maniera indipendente la potenza attiva e quella reattiva.
