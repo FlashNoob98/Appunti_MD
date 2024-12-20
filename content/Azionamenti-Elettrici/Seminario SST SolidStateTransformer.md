@@ -5,6 +5,7 @@ Corrente DC:
 - Full utilization of conductors
 - Difficult to interrupt
 - Hard voltage transformation
+
 Corrente AC:
 - Reactive power
 - Skin effect
