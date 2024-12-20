@@ -16,7 +16,7 @@ La variazione di tensione è importante per facilitare il trasferimento di energ
 
 Funzionamento del trasformatore: legge di Faraday
 $$
-\oint_{\gamma} \vec{E}\cdot \hat{t}\cdot dl = - \int \int_{S_{\gamma}}  \frac{\partial\vec{B}}{\partial t}\cdot \hat{n}\cdot dS
+\oint_{\gamma} \vec{E}\cdot \hat{t}\cdot dl = -  \iint_{S_{\gamma}}  \frac{\partial\vec{B}}{\partial t}\cdot \hat{n}\cdot dS
 $$
 Il comportamento rispetto alle correnti è spiegato dalla legge di Ampère
 
