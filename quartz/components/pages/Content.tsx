@@ -6,8 +6,6 @@ const Content: QuartzComponent = ({ fileData, tree }: QuartzComponentProps) => {
   const classes: string[] = fileData.frontmatter?.cssclasses ?? []
   const classString = ["popover-hint", ...classes].join(" ")
   return <article class={classString}>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1853420323386888"
-     crossorigin="anonymous"></script>
      {content}</article>
 }
 
