@@ -312,7 +312,7 @@ $$
 $$
 per un iperpiano in $\mathbb{R}^n$ di dimensione $n$.
 
-Nel caso di un sistema elettrico trifase, si può dunque considerare un generico vettore di tensione così definito:
+Nel caso di un [[sistema elettrico]] trifase, si può dunque considerare un generico vettore di tensione così definito:
 $$
 \vec{v} = \left[v_{1}(t),v_{2}(t),v_{3}(t)\right]^T
 $$
@@ -468,7 +468,7 @@ $$
 $$
 Ma quella ottenuta è proprio la definizione di componente simmetrico.
 Nel riferimento di Clark o Park si possono scrivere i vettori utilizzando due componenti e non più tre, semplificando la trattazione, inoltre i vettori che rappresentano grandezze sinusoidali nel riferimento cartesiano, diventano costanti in quello di Park.
-Questo può essere comodo per applicare ad esempio il modello averaged ad un inverter che fornisce in uscita una tensione sinusoidale, in questo caso lo schema di controllo diventa lineare e si può applicare il modello averaged.
+Questo può essere comodo per applicare ad esempio il [[modello averaged]] ad un inverter che fornisce in uscita una tensione sinusoidale, in questo caso lo schema di controllo diventa lineare e si può applicare il [[modello averaged]].
 
 ## Prodotto scalare
 La potenza istantanea è definita come il prodotto tra tensione e corrente nel tempo, per grandezze multidimensionali si usa la definizione di prodotto scalare euclideo:
@@ -808,3 +808,79 @@ ovvero
 $$
 S^2 = P_{\text{att}}^2 + Q^2
 $$
+
+# Passaggio da Clarke a Park
+Si riporta il passaggio dal sistema di riferimento di Clarke a quello di Park:
+$$
+\begin{aligned}
+\vec{v}_{d,q} &= \vec{v}_{\alpha,\beta}e^{-j\theta}\\
+\theta &= \theta_{0} + \int_{0}^t \omega(\tau) d\tau
+\end{aligned}
+$$
+Dal sistema di riferimento cartesiano a Clarke ortogonale invece si utilizza la seguente matrice:
+$$
+C =\frac{2}{3} \begin{pmatrix}
+1 & -\frac{1}{2} & -\frac{1}{2}  \\
+0 & \frac{\sqrt{ 3 }}{2} & -\frac{\sqrt{ 3 }}{2} \\
+\frac{1}{2} & \frac{1}{2} & \frac{1}{2}
+\end{pmatrix}
+$$
+dunque:
+$$
+\begin{bmatrix}
+v_{\alpha}  \\
+v_{\beta}
+\end{bmatrix} = C
+\begin{bmatrix}
+v_{a} \\
+v_{b} \\
+v_{c}
+\end{bmatrix}
+$$
+sviluppando il primo termine:
+$$
+v_{\alpha} = \left( v_{a}-\frac{v_{b}}{2} - \frac{v_{c}}{2} \right)\cdot \frac{2}{3}
+$$
+ricordando che il sistema è simmetrico:
+$$
+v_{a} + v_{b} + v_{c} = 0 \Rightarrow v_{a} = -v_{b}-v_{c}
+$$
+e sostituendo nella precedente:
+$$
+v_{\alpha} = \frac{2}{3}\left( v_{a}+\frac{1}{2}v_{a}  \right) = v_{a} = V_{M} \cos \theta
+$$
+di conseguenza il termine $V_{\beta}$:
+$$
+v_{\beta} = \frac{2}{3} \frac{\sqrt{ 3 }}{2} (v_{b}-v_{c}) = \frac{v_{b}-v_{c}}{\sqrt{ 3 }}
+$$
+Allineando il vettore $v_{\alpha}$ con $v_{a}$ ed utilizzando la precedente relazione, è semplice passare nel riferimento di Park.
+Applicando la definizione invece:
+$$
+\begin{aligned}
+v_{\beta} &= \frac{1}{\sqrt{ 3 }} \left[ \cos \theta \cos \frac{2\pi}{3} + \sin \theta \sin \frac{2\pi}{3} - \cos \theta \cos \frac{4\pi}{3} - \sin \theta \sin \frac{4\pi}{3} \right] = \\
+&= \frac{\sqrt{ 3 }}{3}2V_{M} \sin \theta \sin \frac{2\pi}{3} = V_{M} \sin \theta
+\end{aligned}
+$$
+
+Per passare da un sistema di riferimento all'altro è necessario moltiplicare per $e^{-j\theta}$ e l'angolo $\theta$ si può ricavare con:
+$$
+\theta = \arctan \frac{v_{\beta}}{v_{\alpha}}
+$$
+infatti
+$$
+\vec{v}_{\alpha,\beta} = V_{M}\cos \theta + jV_{M}\sin \theta = V_{M}e^{j\theta}\Rightarrow \vec{v}_{d,q} = \vec{v}_{\alpha,\beta} e^{-j\hat{\theta}}
+$$
+un errore sulla stima di $\theta$ comporta un errore nella trasformazione:
+$$
+V_{M}e^{j\theta}\cdot e^{-j\hat{\theta}} = V_{M}e^{j(\theta-\hat{\theta})}
+$$
+Nel riferimento di Park, se la stima dell'angolo fosse corretta, si avrebbe la rappresentazione della terna di tensioni mediante un unico termine, reale e costante ma una stima errata porta alla seguente scomposizione:
+$$
+\begin{aligned}
+v_{d} &= V_{M}\cos(\theta-\hat{\theta})\\
+v_{q} &= V_{M}\sin(\theta-\hat{\theta})
+\end{aligned}
+$$
+ciò si vede nei sistemi di distribuzione in cui una frequenza di rete di 50 Hz può provocare errori considerevoli sulla stima della fase.
+
+I sistemi per compensare questo fenomeno possono essere algoritmi di calcolo in retroazione, come il [[Phase Locked Loop]] o il Frequency Locked Loop.
