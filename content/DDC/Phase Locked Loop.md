@@ -1,0 +1,4 @@
+Si considera un sistema trifase simmetrico, si esegue la trasformazione di Clarke nei versori $\alpha,\beta$ e successivamente la trasformazione nel dominio fisso di Park $d,q,0$ mediante l'angolo $\hat{\theta}$ stimato.
+In uscita vi saranno i due vettori $\vec{v}_{d}=V_{M}\cos\left(\theta-\hat{\theta}\right)$ mentre il vettore in quadratura $\vec{v}_{q}=V_{M}\sin\left(\theta-\hat{\theta}\right)$ viene inviato in un nodo sommatore nel quale si indica il valore desiderato, ad esempio $\vec{v}_{q}^*=0$, il risultato di questa differenza è inviato ad un regolatore PI, se si suppone l'errore piccolo, si può approssimare il seno con la sua tangente e quindi approssimare l'uscita del regolatore PI con il valore di errore di pulsazione $\Delta \omega$, al quale aggiunta la pulsazione di riferimento della rete e integrata nuovamente fornisce il valore corretto di $\hat{\theta}$ che viene retroazionato ed inviato all'algoritmo di conversione nel riferimento di Park.
+
+
