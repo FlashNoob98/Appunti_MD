@@ -186,3 +186,6 @@ $$
 P(t) = V_{g{1}}i_{1} + V_{g2}i_{2} + V_{g3}i_{3} = \frac{3}{2}(V_{gd}i_{d}+\cancel{V_{gq}}i_{q})
 $$
 controllando singolarmente le due correnti $i_{d}$ e $i_{q}$ se il sistema è simmetrico è possibile controllare in maniera indipendente la potenza attiva e quella reattiva.
+$$
+\left|\left|\vec{q}\right|\right| = - v_{d}i_{q}
+$$
