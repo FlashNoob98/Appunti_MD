@@ -189,3 +189,11 @@ controllando singolarmente le due correnti $i_{d}$ e $i_{q}$ se il sistema è si
 $$
 \left|\left|\vec{q}\right|\right| = - v_{d}i_{q}
 $$
+
+## Controllo dell'inverter fotovoltaico
+Il convertitore connesso al campo fotovoltaico deve agganciarsi alla rete a 50Hz, 400V trifase, che viene modellata con delle induttanze e delle resistenze serie che rappresentano la linea di collegamento.
+
+Si vuole eseguire un controllo di stato, in particolare saranno presenti due anelli di controllo, il primo più interno in corrente che pilota il regolatore connesso all'inverter.
+A monte è posto un ulteriore controllore che impone la corrente desiderata al controllore più interno, eseguendo a monte un controllo sulla tensione in uscita rispetto a quella di riferimento fornita dall'algoritmo di MPPT, ovvero *maximum power point tracking* ovvero l'inseguimento del punto di potenza massima, i pannelli fotovoltaici infatti presentano caratteristiche di potenza/tensione variabili al variare dell'irradianza, per questo motivo per massimizzare la potenza prodotta è necessario variare la tensione fornita ai pannelli.
+
+Per massimizzare la potenza immessa in rete invece si scompone la corrente in uscita dall'inverter connesso in rete nel riferimento di Park e si impone la corrente di asse in quadratura pari a zero per ottenere la massima potenza trasferita alla rete, inoltre in tale condizione $\delta v_{c}^* = \delta v_{c}$. 
