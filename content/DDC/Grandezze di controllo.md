@@ -56,3 +56,77 @@ si vincola la posizione degli zeri e dei poli del regolatore:
 $$
 \omega_{z} = \frac{\omega_{c}}{\sqrt{ k }}\quad \omega_{p} = \omega_{c} \sqrt{ k }
 $$
+continuando a sviluppare il calcolo della fase si ricorda che:
+$$
+\begin{aligned}
+\arctan{x} + \arctan \frac{1}{x} &= 90°\\
+-\arctan \frac{1}{x} &= \arctan x - 90°
+\end{aligned}
+$$
+dunque
+$$
+\begin{aligned}
+\angle R(\omega_{c}) &= -90° + 4\arctan\left(\sqrt{ k }\right) - 180°\\
+\angle R(\omega_{c}) &= -90° + \text{BOOST}
+\end{aligned}
+$$
+dove si è indicato con BOOST il recupero di fase fornito dal regolatore.
+Riprendendo la formula del margine di fase:
+$$
+P_{m} = 180° - \text{BOOST} + 90°- \angle G(\omega_{c})
+$$
+solitamente desiderato attorno ad un valore compreso tra 50° e 60°.
+Conoscendo $\angle G(\omega_{c})$ e imposto il margine desiderato, dunque il valore di BOOST si ricava il valore di $k$:
+$$
+4\arctan \sqrt{ k } = \text{BOOST} + 180° \Rightarrow \arctan \sqrt{ k } = \frac{\text{BOOST}}{4} + 45°
+$$
+infine
+$$
+k = \tan^2\left[ \frac{\text{BOOST}}{4} + 45° \right]
+$$
+con la quale si può ricavare il guadagno $A$ del regolatore:
+$$
+R(s) = \frac{A\left( 1 + \frac{\omega_{c}\sqrt{ k }}{\omega_{c}} \right)^2}{\omega_{c}\left( 1+\frac{\omega_{c}}{\sqrt{ k}\omega_{c} } \right)^2}
+$$
+alla pulsazione $\omega_{c}$ il modulo del sistema a ciclo aperto deve essere unitario, dunque $||R\cdot G||=1\Rightarrow R=\frac{1}{G}$.
+Resta da imporre $\omega_{c}=\frac{1}{2}\omega_{s}$ dove $\omega_{s}$ è la pulsazione di switching dei componenti del convertitore $\omega_{s}=\frac{2\pi}{T_{s}}$.
+Questo è un valore limite teorico, solitamente si preferisce mantenere un margine di almeno $\frac{1}{5}$ di $\omega_{s}$.
+La risposta dinamica migliora all'aumentare di $\omega_{c}$ ma aumenta anche la sensibilità del sistema ai disturbi esterni.
+
+La procedura appena presentata prende il nome di **metodo del fattore K**, riassumendo:
+1. Si fissa $\omega_{c}$ pari a meno di $\frac{1}{5}\omega_{s}$
+2. Si vincola il margine di fase e si ricava il BOOST
+3. Si calcola K con il quale ricavare i valori di $\omega_{z},\omega_{p}$ ed $A$
+4. Si costruisce la forma di $R$
+
+## Controllo di stato
+In alternativa al metodo del fattore $K$ si può controllare un convertitore DC/DC mediante una *retroazione di stato*, ovvero si linearizza il sistema nell'intorno di un punto di equilibrio:
+$$
+\delta \dot{x} = A\delta x + B\delta d
+$$
+In particolare la matrice $A$ contiene la dinamica del sistema, i suoi autovalori sono legati ai modi di evoluzione dello stato e coincidono con i poli della funzione di trasferimento.
+Si vuole realizzare un sistema che acceleri la dinamica del convertitore imponendo dei propri autovalori mediante una matrice di retroazione $K$.
+$$
+\delta d = -K \delta x
+$$
+Sostituendo
+$$
+\delta \dot{x} = A\delta x -BK\delta x
+$$
+Nel dominio di Laplace si può ricavare la soluzione:
+$$
+[s\hat{I} - A - BK]\delta x = 0
+$$
+Si supponga che il sistema sia del secondo ordine, esiste in tal caso una corrispondenza diretta tra i poli e le caratteristiche della risposta del sistema in termini di smorzamento e tempo caratteristico:
+$$
+-(p_{1}+p_{2}) = 2 \xi \omega_{0}
+$$
+dove $\xi$ è lo smorzamento e $\omega_{0}$ la pulsazione di risonanza del sistema:
+$$
+p_{1}\cdot p_{2} = \omega_{0}^2
+$$
+Fissati i parametri di risposta del sistema si possono calcolare i due poli desiderati $p_{1}$ e $p_{2}$, per ricavare invece la matrice $K$:
+$$
+\det[s\hat{I}-A+BK] = (s-p_{1})(s-p_{2})
+$$
+Questo sistema vale solo per sistemi del secondo ordine o ridotti al secondo ordine.
