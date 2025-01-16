@@ -290,3 +290,5 @@ $$
 \frac{K_{2}K_{v}}{T_{2}T_{v}} = \omega_{0v}^2 \qquad T_{2}\left( 1 + \frac{1}{K_{v}K_{2}} \right)= \frac{2\xi_{v}}{\omega_{0v}}
 $$
 ponendo sempre $\xi_{v}=0.7$ e $T_{2}<T_{v}$.
+
+Il valore di riferimento di tensione viene fornito dall'algoritmo di MPPT, mediante un algoritmo come il *Perturbe & Observe* che valuta la variazione di potenza al variare della tensione, inseguendo gli incrementi di potenza, fin quando non si raggiunge la potenza massima.
