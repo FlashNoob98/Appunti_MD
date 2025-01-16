@@ -197,3 +197,96 @@ Si vuole eseguire un controllo di stato, in particolare saranno presenti due ane
 A monte è posto un ulteriore controllore che impone la corrente desiderata al controllore più interno, eseguendo a monte un controllo sulla tensione in uscita rispetto a quella di riferimento fornita dall'algoritmo di MPPT, ovvero *maximum power point tracking* ovvero l'inseguimento del punto di potenza massima, i pannelli fotovoltaici infatti presentano caratteristiche di potenza/tensione variabili al variare dell'irradianza, per questo motivo per massimizzare la potenza prodotta è necessario variare la tensione fornita ai pannelli.
 
 Per massimizzare la potenza immessa in rete invece si scompone la corrente in uscita dall'inverter connesso in rete nel riferimento di Park e si impone la corrente di asse in quadratura pari a zero per ottenere la massima potenza trasferita alla rete, inoltre in tale condizione $\delta v_{c}^* = \delta v_{c}$. 
+
+Dal dominio di Park si vuole ricavare il modello tangente, si applica una variazione al punto di equilibrio nella prima equazione del modello:
+$$
+L\frac{d}{dt} (I_{d}+\delta i_{d}) = \left(V_{c}+\delta v_{c}\right)(D_{d}+\delta d_{d}) - 
+R(I_{d}+\delta i_{d}) - V_{g,d}+ \omega L(I_{q}+\delta i_{q})
+$$
+Si trascurano le oscillazioni della rete e si annullano i termini costanti, il sistema a regime avrà la derivata dei valori medi pari a zero.
+Il modello del sistema applicando gli stessi ragionamenti alle altre due equazioni del sistema diventa:
+$$
+\begin{aligned}
+L \frac{d}{dt} (\delta i_{d}) &= V_{c}\delta d_{d} + D_{d} \delta v_{c} - R\delta i_{d} + \omega L\delta i_{q}\\
+L \frac{d}{dt} (\delta i_{q}) &= V_{c}\delta d_{q} + D_{d}\delta v_{c} - R\delta i_{q} + \omega L\delta i_{d} \\
+C \frac{d}{dt}(\delta v_{c}) &=  \delta i_{s} - R_{s}\delta v_{c} - \frac{3}{2} (I_{d}\delta d_{d} + D_{d}\delta i_{d}+I_{q}\delta d_{q}+D_{q}\delta i_{q})
+\end{aligned}
+$$
+Per quanto esposto in precedenza, in caso di controllo in cascata si possono separare le due dinamiche e in questo caso il controllo in corrente non vede le variazioni della tensione $v_{C}$ che si può assumere costante nel modello della corrente.
+
+### Controllo della corrente di asse diretto
+Preso un sistema retroazionato si vuole ricavare la funzione di trasferimento, a partire dalla relazione ingresso-uscita:
+$$
+y = (r-y)(R_{c}F_{d}) \Rightarrow \frac{y}{r} = \frac{R_{c}F_{d}}{1 + R_{c}F_{d}}
+$$
+Nel casso di un regolatore proporzionale-integrale (PI) la relazione ingresso uscita diventa:
+$$
+y = K_{p}x + \frac{K_{i}}{s}x = \left( K_{p}+ \frac{K_{i}}{s} \right)x
+$$
+e dunque la f.d.t.:
+$$
+\frac{y}{x} = K_{p}\left( 1+ \frac{K_{i}}{K_{p}s} \right) = K_{p}\left( 1 +\frac{1}{T_{1}s} \right) = K_{p}\left( \frac{T_{1}s+1}{T_{1}s} \right)
+$$
+con $T_{1}=\frac{K_{p}}{K_{i}}$.
+
+La f.d.t. del sistema è del tipo:
+$$
+F = \frac{K_{c}}{T_{c}s +1}
+$$
+Dunque il sistema con regolatore, a ciclo chiuso diventa:
+$$
+\begin{aligned}
+\frac{y}{r} &= \frac{K_{p}K_{c} \frac{1+sT_{1}}{T_{1}s}\cdot \frac{1}{T_{c}s+1}}{1 + \frac{T_{1}s+1}{T_{1}T_{c}s^2 + T_{1}s}K_{p}K_{c}} = \frac{K_{p}K_{c}(T_{1}s+1)}{T_{1}T_{c}s^2+T_{1}s+ K_{p}K_{c}T_{1}s+K_{p}K_{c}} =\\
+&= \frac{T_{1}s+1}{\frac{T_{1}T_{c}s^2}{K_{p}K_{c}}+T_{1}\left( 1+\frac{1}{K_{p}K_{c}} \right)s+1}
+\end{aligned}
+$$
+Si effettuano le seguenti posizioni:
+$$
+\frac{K_{p}K_{c}}{T_{1}T_{c}} = \omega_{0}^2 \qquad
+T_{1}\left( \frac{K_{p}K_{c}+1}{K_{p}K_{c}} \right) = \frac{2\xi}{\omega_{0}}
+$$
+e per risolvere le incognite si assumono dei valori convenzionali di smorzamento e pulsazione di risonanza:
+$$
+\xi=0.7\qquad \omega_{0} = 5\omega_{c} = 5 \frac{2\pi}{T_{c}}
+$$
+Si mettono in relazione i due termini:
+$$
+\begin{aligned}
+\frac{2\xi}{\omega_{0}}&= T_{1}+ \frac{T_{1}}{K_{p}K_{c}} \\
+\frac{K_{p}K_{c}}{T_{i}} &= \omega_{0}^2 T_{c}\\
+\frac{2\xi}{\omega_{0}} &= T_{1} + \frac{1}{\omega_{0}^2T_{c}}
+\end{aligned}
+$$
+dunque
+$$
+\begin{aligned}
+\frac{T_{1}T_{c}\omega_{0}^2+1}{T_{c}\omega_{0}^2} &= \frac{2\xi}{\omega_{0}} & T_{1}&= \frac{2\xi T_{c}\omega-1}{T_{c}\omega_{0}^2} \\
+K_{p} &= \frac{\omega_{0}^2T_{1}T_{c}}{K_{c}} &
+\end{aligned}
+$$
+
+### Dimensionamento del regolatore di tensione
+Per il regolatore di tensione, più esterno, si considera la seguente equazione nel caso in cui si sia posta $I_{q}=0$:
+$$
+\left( Cs + \frac{1}{Rs} \right)\delta v_{c} = -\frac{3}{2}I_{d}\delta d_{d}
+$$
+sviluppando:
+$$
+\begin{aligned}
+\frac{R_{s}C_{s}+1}{R_{s}}\delta v_{c} &= -\frac{3}{2} I_{d}\delta d_{d}\\
+\frac{\delta v_{c}}{\delta d_{d}} &= -\frac{3}{2} \frac{I_{d}\delta d_{d} R_{s}}{R_{s}C_{s}+1} = \frac{-\frac{3}{2}I_{d}R_{s}}{RsCs+1} = \frac{K_{v}}{1+sT_{v}}
+\end{aligned}
+$$
+Il regolatore di tensione si sintetizza:
+$$
+R_{v} = K_{2}\left( \frac{T_{2}s+1}{T_{2}s} \right)
+$$
+e
+$$
+H_{v} = \frac{T_{2}s+1}{\frac{T_{2}T_{v}}{K_{2}K_{v}}s^2 + T_{2}\left( 1+\frac{1}{K_{v}K_{2}} \right)s+1}
+$$
+Per ricavare i parametri si pone
+$$
+\frac{K_{2}K_{v}}{T_{2}T_{v}} = \omega_{0v}^2 \qquad T_{2}\left( 1 + \frac{1}{K_{v}K_{2}} \right)= \frac{2\xi_{v}}{\omega_{0v}}
+$$
+ponendo sempre $\xi_{v}=0.7$ e $T_{2}<T_{v}$.
