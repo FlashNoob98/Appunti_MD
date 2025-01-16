@@ -884,3 +884,51 @@ $$
 ciò si vede nei sistemi di distribuzione in cui una frequenza di rete di 50 Hz può provocare errori considerevoli sulla stima della fase.
 
 I sistemi per compensare questo fenomeno possono essere algoritmi di calcolo in retroazione, come il [[Phase Locked Loop]] o il Frequency Locked Loop.
+
+# Derivate di Lie
+Le derivate di Lie definiscono gli angoli tra i campi vettoriali e le superfici attraversate dai campi, restituiscono dunque uno scalare.
+
+Siano
+$$
+\begin{aligned}
+f&:\mathbb{R}^n\to\mathbb{R}^n\\
+h&:\mathbb{R}^n\to\mathbb{R}
+\end{aligned}
+$$
+con $h$ una superficie ed $n$ pari a $3$ ad esempio:
+$$
+\mathcal{L}_{f}(h) = \nabla h\cdot f = \frac{\partial h}{\partial \vec{x}}\cdot f = \left( \frac{\partial h}{\partial x_{1}},\frac{\partial h}{\partial x_{2}},\frac{\partial h}{\partial x_{3}} \right)\begin{pmatrix}
+f_{1} \\
+f_{2} \\
+f_{3}
+\end{pmatrix}
+$$
+Se la derivata è nulla, la funzione $f$ è tangente alla superficie.
+Si definiscono le derivate n-esime:
+$$
+\mathcal{L}^2_{f}(h) = \mathcal{L}_{f}(\mathcal{L}_{f}(h)) = \mathcal{L}_{f}(\nabla h\cdot f)
+$$
+Ad esempio si considera il seguente campo vettoriale:
+$$
+\dot{x}=f(x)=\begin{pmatrix}
+8x_{1}-x_{2}\\ 
+2x_{2}+x_{1} \\
+x_{1}^4-x_{2}^2+x_{1}
+\end{pmatrix}
+$$
+la terza componente è non lineare. Si considera la superficie di esempio $h=x_{1}+x_{2}$ e si esegue la derivata del primo ordine:
+$$
+(1,1,0)\begin{pmatrix}
+8x_{1}-x_{2} \\
+2x_{2}+x_{1} \\
+x_{1}^4-x_{2}+x_{1}
+\end{pmatrix} = 8x_{1}-x_{2}+2x_{2}+x_{1} = 9x_{1}+x_{2}
+$$
+Il risultato ottenuto diventa la superficie per eseguire la derivata del secondo ordine $h=9x_{1}+x_{2}$:
+$$
+(9,1,0)\begin{pmatrix}
+8x_{1}-x_{2} \\
+2x_{2}+x_{1} \\
+x_{1}^4-x_{2}+x_{1}
+\end{pmatrix} = 72x_{1}-x_{2}+12x_{2}+x_{1}=73x_{1}+17x_{2}
+$$
