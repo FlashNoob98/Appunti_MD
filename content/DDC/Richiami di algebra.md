@@ -932,3 +932,212 @@ $$
 x_{1}^4-x_{2}+x_{1}
 \end{pmatrix} = 72x_{1}-x_{2}+12x_{2}+x_{1}=73x_{1}+17x_{2}
 $$
+## Stabilità dei sistemi non lineari
+Esistono delle funzioni in grado di studiare la stabilità dei sistemi non lineari, vengono chiamate funzioni di Ljapunov.
+
+Dato un sistema dinamico $\dot{x}=f(x,t)$, sia presente un punto di equilibrio per il sistema $x_{0}:f(x_{0},t)=0$ con $f$ continua e differenziabile rispetto ad $x$.
+Una funzione scalare $V:U\times \mathbb{R}^+\to \mathbb{R}^n$ è detta di Ljapunov se
+$$
+\begin{aligned}
+V(x)&>0\qquad x\neq x_{0}\\
+V(x_{0})&=0\\
+\nabla V(x)\cdot f(x)&=\frac{\partial}{\partial x_{1}}V(x)f_{1}(x)+\dots+\frac{\partial}{\partial x_{n}}V(x)f_{n}(x)\leq {0}
+\end{aligned}
+$$
+se la funzione $V$ esiste allora il punto di equilibrio $x_{0}$ è stabile.
+
+## Sliding mode control
+Sfruttando il lemma di Ljapunov si vuole imporre una determinata traiettoria o un regime al sistema dinamico, si ricerca dunque una superficie $\Sigma$ tale che:
+$$
+\Sigma:\left\{ \vec{x}\in\mathbb{R}^n: e(x)=\sigma(x) = \vec{x}-\vec{x}_{d}=0 \right\}
+$$
+Questa superficie divide lo spazio in due sottospazi, si vuole forzare lo stato del sistema a rimanere sulla superficie $\Sigma$.
+La legge di controllo deve prevedere due forzamenti diversi al fine di spostare lo stato del sistema su $\Sigma$ in base alla direzione in cui questo è deviato, si può avere il fenomeno di *chattering* per il quale il sistema oscilla intorno alla traiettoria desiderata ma non riesce a convergere in maniera puntuale.
+
+Un sistema non lineare presenta delle discontinuità, queste possono essere di ordine 0 se la funzione è semplicemente discontinua, di ordine 1 se è discontinua la sua derivata, vi saranno cambi bruschi della curvatura.
+
+Il sistema può essere rappresentato mediante due diverse funzioni se si trova sopra o sotto la superficie di controllo, ad esempio $F^+$ ed $F^-$, si ha la condizione di *crossing* nel passaggio da un sistema all'altro se il sistema attraversa la superficie di controllo senza convergere ad essa.
+Questa condizione si può descrivere mediante le derivate di Lie, in questa condizione infatti esse sono concordi, ovvero:
+$$
+\begin{aligned}
+\mathcal{L}F^+&<0 & \mathcal{L}F^+&>0\\
+\mathcal{L}F^-&<0 & \mathcal{L}F^-&>0
+\end{aligned}
+$$
+prese due differenti regioni (ovvero tali per cui il verso di attraversamento è diverso) le derivate sono concordi.
+
+Si verifica la *condizione di sliding*, ovvero il sistema converge alla superficie se le due derivate sono discordi:
+$$
+\mathcal{L}F^+<0\qquad\mathcal{L}F^->0
+$$
+La funzione $F_{S}$ deve essere tangente alla superficie di sliding, ovvero
+$$
+F_{S} = (1-\alpha)F^-  +\alpha F^+ \qquad \alpha \in[0,1]
+$$
+
+Se le derivate di Lie sono discordi in senso opposto si ha invece la *condizione di repulsività* ovvero il sistema tende ad allontanarsi dalla superficie:
+$$
+\mathcal{L}F^+>0\qquad\mathcal{L}F^-<0
+$$
+
+Un sistema può presentare comportamenti differenti nelle due regioni individuate dalla superficie di sliding, analogamente queste differenze possono essere usate proprio per determinare la superficie di sliding.
+
+Si consideri il seguente sistema di esempio:
+$$
+\left\{
+\begin{aligned}
+A\vec{x} - b ,\ C^T\vec{x}>0\\
+A\vec{x} + b,\ C^T\vec{x}<0
+\end{aligned}
+\right.
+$$
+con le seguenti matrici:
+$$
+A=
+\begin{bmatrix}
+0 & -1  \\
+1 & -1
+\end{bmatrix}
+\qquad
+B=
+\begin{bmatrix}
+1  \\
+1
+\end{bmatrix}\qquad
+C=
+\begin{bmatrix}
+0  \\
+1
+\end{bmatrix}
+$$
+La superficie di sliding sarà quella in cui $\sigma\left( \vec{x} \right)=0$:
+$$
+\sigma\left( \vec{x} \right) =C^T\vec{x}=0\cdot x_{1}+1x_{2} = x_{2}
+$$
+Dunque si individua la superficie di sliding:
+$$
+\sigma\left( \vec{x} \right)=0\Rightarrow x_{2}=0
+$$
+
+Le due funzioni a monte e valle della superficie sono:
+$$
+F^+=\begin{bmatrix}
+-x_{2}-1 \\
+x_{1}-x_{2}-1
+\end{bmatrix}\qquad
+F^-=\begin{bmatrix}
+-x_{2}+1 \\
+x_{1}-x_{2}+1
+\end{bmatrix}
+$$
+Si possono ora calcolare le derivate di Lie per entrambe le funzioni:
+$$
+\mathcal{L}F^+(\sigma) = \begin{pmatrix}
+0 & 1
+\end{pmatrix} F^+ = x_{1}-x_{2}-1
+$$
+viceversa
+$$
+\mathcal{L}F^-(\sigma) =x_{1}-x_{2}-{3}
+$$
+Si sostituiscono i punti che annullano la derivata, ovvero $x_{2}=0$ e si ottengono le tre condizioni:
+- Crossing    $$
+\left\{
+\begin{aligned}
+x_{1}-&1>0\\
+x_{1}+&1>0
+\end{aligned}
+\right.\qquad \bigcup\quad \left\{
+\begin{aligned}
+x_{1}-&1<0\\
+x_{1}+&1<0
+\end{aligned}
+\right. 
+$$
+- Sliding    $$
+  \left\{
+\begin{aligned}
+x_{1}-&1<0\\
+x_{1}+&1>0
+\end{aligned}
+\right.\qquad \Rightarrow -1<x_{1}<1\to \Sigma\text{ reg. di sliding}
+  $$
+- Repulsivo    $$ 
+ \left\{
+\begin{aligned}
+x_{1}-&1>0\\
+x_{1}+&1<0
+\end{aligned}
+\right.\qquad \nexists\ \ x_{1}
+  $$
+Si definisce come campo vettoriale di sliding quello che nasce dalla continua commutazione dei due campi, si ricorda la definizione convessa di funzione di sliding:
+$$
+F_{S}=(1-\alpha)F^- + \alpha F^+
+$$
+Si calcola la derivata di Lie:
+$$
+\begin{aligned}
+&\nabla \sigma \cdot[(1-\alpha)F^- +\alpha F^+]=0\\
+&\nabla \sigma \cdot(1-\alpha)F^- + \nabla \sigma \cdot\alpha F^+=0\\
+&(1-\alpha)\mathcal{L}F^-(\sigma) + \alpha\mathcal{L}F^+(\sigma) = 0\\
+&\mathcal{L}F^-(\sigma) - \alpha\mathcal{L}F^-(\sigma) + \alpha\mathcal{L}F^+(\sigma)=0
+\end{aligned}
+$$
+Si cerca il valore $\hat{\alpha}$ per il quale $\mathcal{L}F_{s}(\sigma)=0$:
+$$
+\hat{\alpha} = \frac{-\mathcal{L}F^-(\sigma)}{\mathcal{L}F^+(\sigma)-\mathcal{L}F^-(\sigma)}
+$$
+Con tale valore di $\alpha$ il sistema converge e insegue la superficie.
+Il sistema va forzato in maniera opportuna al fine di ottenere il fenomeno di sliding, considerata la forma affine nel controllo:
+$$
+\begin{aligned}
+\dot{x} &= f(x)  + g(x)u \\
+u &= \left\{\begin{aligned}
+u^+ \text{ se } \sigma(x)>0\\
+u^- \text{ se } \sigma(x)<0
+\end{aligned}
+\right. \\
+\dot{x} &= \left\{\begin{aligned}
+f(x)+g(x)u^+ \text{ se } \sigma(x)>0\\
+f(x)+g(x)u^- \text{ se } \sigma(x)<0
+\end{aligned}
+\right.
+\end{aligned}
+$$
+Si impone la convergenza mediante le derivate di Lie nella forma affine:
+$$
+\begin{aligned}
+&\mathcal{L}F^+(\sigma)<0\text{ e } \mathcal{L}F^-(\sigma)>0 \\
+&\nabla \sigma \cdot[f(x)+ g(x)u^+]<0\\
+&\nabla \sigma \cdot[f(x)+ g(x)u^-]>0
+\end{aligned}
+$$
+Si vuole formulare la condizione di attrattività in una forma più compatta:
+$$
+\dot{\sigma}(x) = \frac{\partial \sigma}{\partial t} = \frac{\partial\sigma}{\partial x} \cdot \frac{\partial x}{\partial t} = \nabla \sigma \cdot\dot{x} = \mathcal{L}_{f}(\sigma)
+$$
+L'attrattività si verifica se:
+$$
+\begin{aligned}
+\sigma &>0 & \rightarrow & &\dot{\sigma}<0\\
+\sigma &<0 & \rightarrow & &\dot{\sigma}>0
+\end{aligned}
+$$
+in maniera compatta:
+$$
+\sigma \cdot \dot{\sigma} < 0
+$$
+
+Esiste una relazione equivalente tra la stabilità di sigma e l'attrattività del campo, si cerca
+una funzione di sigma tale che valga la condizione di Ljapunov
+$$
+V(\sigma(x)):\text{Ljapunov}
+$$
+Ad esempio con la funzione di prova $V=\frac{1}{2}\sigma^2(x)$, il punto di equilibrio $\sigma^*(x)=0$, la funzione è di classe $\mathbb{C}^1$, $V(\sigma^*(x))=V(0)=0$, $V(\sigma)>0$, resta da verificare la derivata, in questo caso:
+$$
+\dot{V}(\sigma)\leq{0}\ ? 
+$$
+si vede che la derivata è proprio la definizione compatta dell'attrattività ovvero:
+$$
+\dot{V} = \frac{\cancel{2}}{\cancel{2}} \sigma \dot{\sigma} = \sigma \dot{\sigma} \leq 0
+$$
