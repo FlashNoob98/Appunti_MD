@@ -210,7 +210,7 @@ i_{L}(t_{on}) &= I_{M}
 \end{aligned}
 \right.
 $$
-si riporta invece la dinamica $\vec{x}_{LF}$ con il modello averaged esatto:
+si riporta invece la dinamica $\vec{x}_{LF}$ con il [[modello averaged]] esatto:
 $$
 \frac{d}{dt} \langle v_{C} \rangle_{0} = \frac{\langle i_{L}(u_{2}-u_{1}) \rangle_{0} }{C} - \frac{\langle v_{C} \rangle_{0}}{RC}  
 $$
@@ -416,7 +416,7 @@ $$
 G_{d{0}} = \frac{v_{C}}{1-D} & \omega_{z}=\frac{R(1-D)^2}{L}\\ Q = (1-D)R\sqrt{ \frac{C}{L} } & \omega_{0}^2 = \frac{1-D}{LC}
 \end{matrix}
 $$
-e riscrivere la funzione di trasferimento in una [[funzione di trasferimento#FdT dei convertitori|forma generale]]:
+e riscrivere la [[funzione di trasferimento]] in una [[funzione di trasferimento#FdT dei convertitori|forma generale]]:
 $$
 \frac{\delta v_{C}}{\delta d} = G_{d 0} \frac{1-\frac{s}{\omega_{z}}}{1 + \frac{s}{Q\omega_{0}} + \frac{s^2}{\omega_{0}^2}}
 $$
@@ -516,3 +516,6 @@ $$
 \Gamma_{k}=e^{A_{N}d_{n}T_{s}}\cdot A_{N-1}^{-1}\left[e^{A_{N-1}d_{n-1}T}-\hat{I}\right]B_{N-1} + \sum_{\rho=1}^{N}A_{\rho}^{-1}\left[e^{A_{\rho}d_{\rho}T_{s}}-\hat{I}\right]B_{\rho}
 $$
 il termine incrementale.
+
+# Sliding mode
+Premessa l'analisi svolta per ricavare il [[Controllo sliding mode|controllo sliding mode]] per qualsiasi struttura, questo può essere applicato al boost converter.
