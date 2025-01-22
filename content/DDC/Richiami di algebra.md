@@ -1270,3 +1270,28 @@ $$
 -u|\sigma| + \sigma P^T(f_{\text{reale}}-f_{\text{stimata}}) < 0 \Rightarrow u|\sigma|>  \sigma P^T(f_{\text{reale}}-f_{\text{stimata}})
 $$
 una $u$ sufficientemente grande permette di compensare l'errore nella stima della funzione del sistema.
+Al fine di garantire l'attrattività è inoltre necessario che la funzione di controllo equivalente:
+$$
+0 < u_{eq} < 1
+$$
+Inoltre la superficie di sliding $\hat{\Sigma}$ deve essere compresa nel dominio $\Omega$ della funzione del sistema:
+$$
+\hat{\Sigma} \cap \Omega\neq {0}
+$$
+Va infine verificato il seguente sistema:
+$$
+\left\{\begin{aligned}
+\frac{d}{dt} \vec{x} &=f\left( \vec{x} \right) + g\left( \vec{x} \right) u_{eq}\\
+\sigma\left( \vec{x} \right)&= 0\ \ ;\ \ \frac{d\sigma}{dt}=0
+\end{aligned}
+\right.
+$$
+## Sliding mode sul Buck converter
+Si analizza l'uso del controllo sliding mode con un convertitore Buck.
+
+<center>
+
+![[buck_converter.svg]]
+
+</center>
+
