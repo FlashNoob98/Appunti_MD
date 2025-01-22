@@ -1041,7 +1041,8 @@ $$
 \mathcal{L}F^-(\sigma) =x_{1}-x_{2}-{3}
 $$
 Si sostituiscono i punti che annullano la derivata, ovvero $x_{2}=0$ e si ottengono le tre condizioni:
-- Crossing    $$
+- Crossing
+$$
 \left\{
 \begin{aligned}
 x_{1}-&1>0\\
@@ -1054,22 +1055,27 @@ x_{1}+&1<0
 \end{aligned}
 \right. 
 $$
-- Sliding    $$
-  \left\{
+
+- Sliding 
+$$
+\left\{
 \begin{aligned}
 x_{1}-&1<0\\
 x_{1}+&1>0
 \end{aligned}
 \right.\qquad \Rightarrow -1<x_{1}<1\to \Sigma\text{ reg. di sliding}
-  $$
-- Repulsivo    $$ 
- \left\{
+$$
+  
+- Repulsivo  
+$$ 
+\left\{
 \begin{aligned}
 x_{1}-&1>0\\
 x_{1}+&1<0
 \end{aligned}
 \right.\qquad \nexists\ \ x_{1}
-  $$
+$$
+  
 Si definisce come campo vettoriale di sliding quello che nasce dalla continua commutazione dei due campi, si ricorda la definizione convessa di funzione di sliding:
 $$
 F_{S}=(1-\alpha)F^- + \alpha F^+
@@ -1141,3 +1147,126 @@ si vede che la derivata è proprio la definizione compatta dell'attrattività ov
 $$
 \dot{V} = \frac{\cancel{2}}{\cancel{2}} \sigma \dot{\sigma} = \sigma \dot{\sigma} \leq 0
 $$
+Vale la relazione che se un sistema è asintoticamente stabile è anche attrattivo e viceversa.
+
+Va garantito anche l'intrappolamento del sistema mediante un ingresso equivalente $u_{eq}$ tale che:
+$$
+\dot{x}=f(x)+g(x)u_{eq}=F_{s} : \mathcal{L}F_{s}(\sigma)=0
+$$
+ovvero
+$$
+\begin{aligned}
+&\nabla \sigma  \cdot[f(x)+g(x)u_{eq}]=0\\
+&\nabla \sigma  \cdot f(x) + \nabla \sigma \cdot g(x)u_{eq}=0 \\
+&\mathcal{L}_{f}(\sigma)  + \mathcal{L}_{g}(\sigma)u_{eq}=0
+\end{aligned}
+$$
+si ricava il forzamento equivalente:
+$$
+u_{eq}\leq - \frac{\mathcal{L}_{f}(\sigma)}{\mathcal{L}_{g}(\sigma)}
+$$
+Imponendo l'esistenza del rapporto si ricava il criterio per determinare la superficie incognita $\sigma_{x}$:
+$$
+\nabla \sigma \cdot g\neq {0}
+$$
+la funzione $g$ è necessariamente diversa da zero altrimenti il sistema sarebbe non controllabile, non è però sufficiente avere $\nabla \sigma\neq 0$ ma va verificata la condizione sul prodotto, ad esempio:
+$$
+g=\begin{pmatrix}
+1 \\ 0
+\end{pmatrix},\ \sigma(x) = x_{2}-x_{2d}
+$$
+dove $x_{2d}$ è il valore desiderato per la seconda variabile di stato; il loro prodotto è nullo:
+$$
+\mathcal{L}_{g}(\sigma) = \begin{pmatrix}
+0 & 1
+\end{pmatrix}\cdot
+\begin{pmatrix}
+0 \\ 1
+\end{pmatrix} = 0
+$$
+In tal caso è necessario ricercare una differente superficie di sliding:
+$$
+\begin{aligned}
+\sigma_{2}(x) =P_{1}(x_{1}) + P_{2}(x_{2}-x_{2d})
+\end{aligned}
+$$
+dunque
+$$
+\mathcal{L}g(\sigma_{2}) = \begin{pmatrix}
+P_{1} & P_{2}
+\end{pmatrix}\cdot \begin{pmatrix}
+1 \\ 0
+\end{pmatrix} = P_{1} \neq 0
+$$
+Riassumendo, dato un sistema di esempio:
+$$
+\begin{aligned}
+\vec{\dot{x}} = \vec{f}\left( \vec{x} \right) + \vec{g}\left( \vec{x} \right)u
+\end{aligned}
+$$
+con il sistema così definito:
+$$
+\vec{\dot{x}} = \begin{pmatrix}
+\dot{x}_{1} =& f_{1}\left( \vec{x} \right)+g_{1}\left( \vec{x} \right)u \\
+\dot{x}_{2} =& x_{1} \\
+\vdots \\
+\dot{x}_{n} =& x_{n}-1
+\end{pmatrix}
+$$
+la traiettoria desiderata è $\vec{x}=0$.
+
+Riassumendo:
+ 1. Scelta di $\sigma(x)$, deve rispettare la condizione di trasversalità:
+
+$$
+\sigma(x) = P^Tx - p_{1}x_{1}
++p_{2}x_{2} +\dots + p_{n}x_{n}
+$$
+ con $P^T=(P_{1}\ \ P_{2}\ \ \dots\ \ P_{n})$. La condizione di trasversalità implica che:
+ $$
+\mathcal{L}_{g}(\sigma) = \nabla \sigma \cdot g \neq 0 \Rightarrow P^T\cdot g\neq {0}
+$$
+
+ 2. Calcolo di $u_{eq}$:
+$$
+u_{eq} = \frac{-\mathcal{L}_{f}(\sigma)}{\mathcal{L}_{g}(\sigma)} = -\frac{P^Tf(x)}{P^Tg(x)}
+$$
+3. Assegnazione dei coefficienti di $P^T$:
+$$
+\mathrm{Re}\left\{P^T\right\}<0
+$$
+4. Verifica dell'attrattività:
+   ricordando che:
+$$
+\dot{\sigma}(x)= \frac{\partial \sigma}{\partial x}\frac{\partial x}{\partial t} = P^T\dot{x}
+$$
+si ricava la condizione di attrattività:
+$$
+\dot{V}(\sigma(x))<0 \Longleftrightarrow \sigma \cdot \dot{\sigma} = \sigma \cdot[P^T\cdot\dot{x}] = \sigma P^T\left[ \vec{f}(x)+\vec{g}(x)u \right]<0
+$$
+
+Dunque la funzione $u$ sarà composta da due termini, il primo che verifica la trasversalità alla superficie di sliding, la seconda che verifica l'attrattività:
+$$
+u = u_{eq}+u_{sw}\Rightarrow \sigma \cdot P^T\cdot[f(x)+g(x)(u_{eq}+u_{sw})]<0
+$$
+La componente switchata può essere scelta con il seguente criterio:
+$$
+u_{sw} = -\frac{1}{P^Tg(x)}u\cdot\mathrm{sign}(\sigma)
+$$
+dunque:
+$$
+\begin{aligned}
+&\sigma \cdot P^T\left[ f(x)+g(x)\left( -\frac{P^Tf(x)}{P^Tg(x)}  - \frac{1}{P^Tg(x)} u \cdot\mathrm{sign}(\sigma) \right) \right]<0\\
+&\sigma \cdot \left[ \cancel{P^Tf(x)}+\cancel{P^Tg(x)}\left( -\frac{\cancel{P^Tf(x)}}{\cancel{P^Tg(x)}}  - \frac{1}{\cancel{P^Tg(x)}} u \cdot\mathrm{sign}(\sigma) \right) \right]<0
+\end{aligned}
+$$
+si semplifica in
+$$
+-\sigma u\cdot\mathrm{sign}(\sigma)=-u|\sigma|<0
+$$
+dunque la $u_{sw}$ scelta verifica l'attrattività per ogni $\sigma$.
+Se non si conosce il sistema si può effettuare una stima di $u$ per garantire l'attrattività, si verifica infatti che
+$$
+-u|\sigma| + \sigma P^T(f_{\text{reale}}-f_{\text{stimata}}) < 0 \Rightarrow u|\sigma|>  \sigma P^T(f_{\text{reale}}-f_{\text{stimata}})
+$$
+una $u$ sufficientemente grande permette di compensare l'errore nella stima della funzione del sistema.
