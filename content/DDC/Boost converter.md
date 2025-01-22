@@ -519,3 +519,12 @@ il termine incrementale.
 
 # Sliding mode
 Premessa l'analisi svolta per ricavare il [[Controllo sliding mode|controllo sliding mode]] per qualsiasi struttura, questo può essere applicato al boost converter.
+A partire dal [[#Modello affine e bilineare|modello affine]] si sceglie una superficie di sliding, ad esempio $\sigma(x)=x_{1}-x_{1}^*$, dal [[#modello averaged]] si ricava invece
+$$
+\langle i_{L} \rangle = \frac{\langle v_{C} \rangle }{R(1-D)} \Rightarrow x_{1}^* = \frac{x_{2}^*}{R(1-D^*)}
+$$
+di conseguenza la grandezza di controllo $D^* = 1-\frac{V_{s}}{x_{2}^*}$.
+Sostituendo nella precedente:
+$$
+x_{1}^* = \frac{{x_{2}^*}^2}{R\cdot V_{s}}
+$$
