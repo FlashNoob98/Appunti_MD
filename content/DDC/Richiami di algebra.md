@@ -946,3 +946,36 @@ V(x_{0})&=0\\
 $$
 se la funzione $V$ esiste allora il punto di equilibrio $x_{0}$ è stabile.
 Questa trattazione è fondamentale per lo studio del [[Controllo sliding mode]].
+
+# Sistemi lagrangiani
+In alcuni casi per studiare sistemi complessi può essere utile ricorrere ad una formulazione matematica più generale, ad esempio si consideri la seconda legge della dinamica, è un'equazione differenziale del secondo ordine rispetto alla posizione di un corpo nel tempo.
+$$
+\vec{F} = m \vec{a} \Longrightarrow \frac{d^2x}{dt^2} = \frac{\vec{F}}{m}
+$$
+o la si può formulare con due equazioni del primo ordine:
+$$
+\left\{ \begin{aligned}
+\frac{dx}{dt} &= \vec{v} \\
+\frac{d\vec{v}}{dt} &= \frac{\vec{F}}{m}
+\end{aligned} \right.
+$$
+Assegnate delle condizioni iniziali, la risoluzione di questo problema di Cauchy definisce il moto della massa $m$.
+
+Lagrange pervenne alla seguente conclusione:
+$$
+\vec{F} = -\nabla V \Rightarrow F\text{ conservativa}
+$$
+con $V$ una funzione scalare. In caso di moto lineare (un solo grado di libertà) diventa
+$$
+\vec{F} = - \frac{\partial V}{\partial x} = m\frac{d^2x}{dt^2}
+$$
+Il termine del secondo ordine si può collegare all'energia cinetica
+$$
+T = \frac{1}{2}mv^2
+$$
+derivando:
+$$
+\begin{aligned}
+\frac{\partial T}{\partial v} = mv \rightarrow 
+\end{aligned} \frac{d}{dt}\left(\frac{\partial T}{\partial v}\right) = m\dot{v} = m \frac{dv}{dt}
+$$
