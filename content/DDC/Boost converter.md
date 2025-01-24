@@ -519,6 +519,7 @@ il termine incrementale.
 
 # Sliding mode
 Premessa l'analisi svolta per ricavare il [[Controllo sliding mode|controllo sliding mode]] per qualsiasi struttura, questo può essere applicato al boost converter.
+## Controllo in corrente
 A partire dal [[#Modello affine e bilineare|modello affine]] si sceglie una superficie di sliding, ad esempio $\sigma(x)=x_{1}-x_{1}^*$, dal [[#modello averaged]] si ricava invece
 $$
 \langle i_{L} \rangle = \frac{\langle v_{C} \rangle }{R(1-D)} \Rightarrow x_{1}^* = \frac{x_{2}^*}{R(1-D^*)}
@@ -528,3 +529,158 @@ Sostituendo nella precedente:
 $$
 x_{1}^* = \frac{{x_{2}^*}^2}{R\cdot V_{s}}
 $$
+Si calcolano inizialmente le derivate di Lie:
+$$
+\mathcal{L}_{f}(\sigma) = \frac{V_{s}-x_{2}}{L}\ \ ; \ \ \mathcal{L}_{g}(\sigma) = \frac{x_{2}}{L}
+$$
+dunque si cerca la legge di controllo equivalente:
+$$
+\frac{d}{dt}\sigma =  \mathcal{L}_{f}(\sigma) + \mathcal{L}_{g}(\sigma)u = \frac{V_{s}}{L} -\frac{x_{2}}{L} + \frac{x_{2}}{L}u = \frac{V_{s}}{L} - \frac{x_{2}}{L}(1-u)
+$$
+I valori della funzione di controllo:
+$$
+\begin{aligned}
+&u^+ \text{ se } \sigma(x)>0 \Rightarrow \frac{d\sigma}{dt}< 0 \\
+&u^- \text{ se } \sigma(x)<0 \Rightarrow \frac{d\sigma}{dt}> 0 
+\end{aligned}
+$$
+dunque
+$$
+u = \left.\left.\frac{1}{2}\right[1-\mathrm{{sign}}(\sigma(x))\right]
+$$
+eseguendo il rapporto tra $-\mathcal{L}_{f}$ ed $\mathcal{L}_{g}$ si ricava la funzione di controllo equivalente:
+$$
+u_{eq} = \frac{\frac{x_{2}}{L}-\frac{V_{s}}{L}}{\frac{x_{2}}{L}} = 1 - \frac{V_{s}}{x_{2}}
+$$
+si limita la funzione tra 0 ed 1: $x_{2}\geq Vs$.
+
+Sostituendo $u_{eq}$ in $u$ si ottiene:
+$$
+\begin{aligned}
+\frac{d}{dt}x_{1} &= 0 \text{ è sulla superficie di sliding}\\
+\frac{d}{dt}x_{2} &= \frac{x_{1}}{C} - \frac{x_{2}}{RC} - \frac{x_{1}}{C}\left( 1-\frac{V_{s}}{x_{2}} \right)\\
+\frac{d}{dt}x_{2} &= \frac{x_{1}^*}{C} \frac{V_{s}}{x_{2}} - \frac{x_{2}}{RC} \\
+x_{2} \frac{d}{dt}x_{2} &= \frac{x_{1}^*}{C}\cdot V_{s} - \frac{x_{2}^2}{RC} =\\
+&= \frac{1}{2} \frac{d}{dt} (x_{2}^2) = x_{1}^* \frac{V_{s}}{C} - \frac{x_{2}^2}{RC}
+\end{aligned}
+$$
+effettuando una sostituzione
+$$
+y=x_{2}^2
+$$
+si ottiene:
+$$
+\frac{d}{dt}y + \frac{2y}{RC} = 2x_{1}^* \frac{V_{s}}{C}
+$$
+a regime $y= x_{1}^*RV_{s}$ ovvero 
+$$
+x_{1}^*=\frac{x_{2}^2}{RV_{s}}
+$$
+ma ricordando che avevamo già imposto il limite $x_{2}\geq V_{s}$ si ottiene come condizione per la superficie di sliding:
+$$
+x_{1}^*\geq \frac{V_{s}}{R}
+$$
+
+## Controllo in tensione
+Si decide di controllare in tensione:
+$$
+\sigma\left( {x} \right) = x_{2}-x_{2}^*
+$$
+la derivata di Lie:
+$$
+\mathcal{L}_{g}(\sigma) = -\frac{x_{1}}{C}
+$$
+ma non è una soluzione accettabile.
+
+Si potrebbe ipotizzare come superficie di sliding:
+$$
+\begin{aligned}
+\sigma\left( \vec{x} \right) &= -x_{1} + k(x_{2}-x_{2}^*)\\
+\sigma\left( \vec{x} \right) &= x_{2} -x_{2}^* + \lambda \frac{d}{dt}x_{2}\\
+\sigma\left( \vec{x} \right) &= P^T\cdot\vec{x} = P_{1}x_{1}+P_{2}x_{2}+ \dots + p_{n}x_{n} \\
+\sigma\left( \vec{x} \right) &= P_{1}(x_{1}-x_{1}^*) + P_{2}(x_{2}-x_{2}^*)
+\end{aligned}
+$$
+Le soluzioni dovranno essere tutte a parte reale negativa.
+
+La derivata di $f$ invece:
+$$
+\mathcal{L}_{f}(\sigma) = \frac{x_{1}}{C}-\frac{x_{2}}{RC}
+$$
+per ricavare la derivata della superficie di sliding:
+$$
+\begin{aligned}
+\frac{d\sigma}{dt} &= \mathcal{L}_{f}(\sigma) + \mathcal{L}_{g}(\sigma)u \\
+\frac{d\sigma}{dt} &= \frac{x_{1}}{C} - \frac{x_{2}}{RC} - \frac{x_{1}}{C}u\\
+\frac{d\sigma}{dt} &= \frac{x_{1}}{C}(1-u) - \frac{x_{2}}{RC}
+\end{aligned}
+$$
+dunque per $u=1$ 
+$$
+\frac{d}{dt}\sigma = - \frac{x_{2}}{RC} < 0 
+$$
+per $u=0$ 
+$$
+\frac{d}{dt}\sigma = \frac{x_{1}}{C} - \frac{x_{2}}{RC}
+$$
+dunque per garantire l'attrattività si ha che $x_{1}>\frac{x_{2}}{R}$.
+Il calcolo della $u_{eq}$:
+$$
+u_{eq} = \frac{-\mathcal{L}_{f}(\sigma)}{\mathcal{L}_{g}(\sigma)} = \left( \frac{x_{2}}{RC}-\frac{x_{1}}{C} \right)\cdot \left( -\frac{x_{1}}{C} \right)^{-1} = 1-\frac{x_{2}}{Rx_{1}}
+$$
+Condizione necessaria e sufficiente affinché il sistema converga alla superficie di sliding:
+$$
+\begin{aligned}
+u_{eq} > 0 &\Rightarrow 1> \frac{x_{2}}{x_{1}R} &\Rightarrow & & x_{1} &> \frac{x_{2}}{R}\\
+u_{eq}<0 &\Rightarrow 1-\frac{x_{2}}{Rx_{1}} <1 &\Rightarrow & & \frac{x_{2}}{Rx_{1}}&>0
+\end{aligned}
+$$
+dunque la superficie di sliding plausibile:
+$$
+\hat{\Sigma} = \left\{ (x_{1},x_{2})\in\Omega:x_{1} > \frac{x_{2}}{R}\ ,\ \begin{aligned}
+x_{1}&>0\\
+x_{2}&>0
+\end{aligned}  \right\}
+$$
+Se si sostituisce la $u_{eq}$ nel sistema ai valori istantanei si ottengono una condizione di equilibrio
+ed una derivata diversa da zero, non lineare.
+$$
+\frac{d}{dt}x_{1} = \frac{V_{s}}{L} - \frac{x_{2}^*}{L} + \frac{x_{2}^*}{L}\left(  1-\frac{x_{2}^*}{Rx_{1}} \right) = \frac{V_{s}}{L} - \frac{{x_{2}^*}^2}{LRx_{1}}
+$$
+Si suppone di trovare un punto di equilibrio:
+$$
+\frac{d}{dt}x_{1}=0 \Rightarrow x_{1} = \frac{{x_{2}^*}^2}{RV_{s}}
+$$
+L'equazione differenziale è non lineare si può applicare Taylor al primo ordine intorno al punto di equilibrio.
+$$
+\frac{d}{dt} \delta x_{1} = \left. \frac{\partial h}{\partial x_{1}} \right|_{{\begin{aligned}
+x_{1} &= x_{10}\\
+x_{2} &= x_{2}^*
+\end{aligned}}} \cdot \delta x_{1} + \left.\frac{\partial h}{\partial x_{2}^*}\right|_{\begin{aligned}
+x_{1}&=x_{10}\\
+x_{2} &= x_{2}^*
+\end{aligned}}\cdot \delta x_{2}^*
+$$
+si calcolano separatamente i due termini:
+$$
+\frac{\partial h}{\partial x_{1}} = \left.\frac{{x_{2}^*}^2}{RLx_{1^2}}\right|_{\begin{aligned}
+x_{10}\ ; \ x_{2}^*
+\end{aligned}} = \frac{{x_{2}^*}^2}{RLx_{10}^2} = \frac{{x_{2}^*}^2}{RL \frac{{x_{2}^*}^4}{V_{s}^2R^2}} = \frac{V_{s}^2R}{L{x_{2}^*}^2}
+$$
+
+$$
+\frac{\partial h}{\partial x_{2}^*} = \left. -\frac{2x_{2}^*}{LRx_{1}} \right|_{x_{10}\ ; \ x_{2}^*} = -\frac{2x_{2}^*}{RL \frac{{x_{2}^*}^2}{V_{s}R}} = -\frac{2V_{s}}{Lx_{2}^*}
+$$
+Si può ora comporre l'equazione differenziale lineare:
+$$
+\frac{d}{dt} \delta x_{1} = \frac{V_{s}^2R}{L{x_{2}^*}^2} \delta{x_{1}} - \frac{2V_{s}}{L x_{2}^*} \delta x_{2}^*
+$$
+Si sfrutta il dominio di Laplace:
+$$
+\left( s-\frac{V_{s}^2R}{L{x_{2}^*}^2} \right)\delta x_{1} = -\frac{2V_{s}}{L{x_{2}^*}} \delta x_{2}^*
+$$
+ovvero
+$$
+\frac{\delta x_{1}}{\delta x_{2}^*} = -\frac{2 \frac{V_{s}}{L{x_{2}^*}}}{\left( s - \frac{V_{s}R}{L{x_{2}^*}} \right)}
+$$
+Il denominatore si annulla per $s=\frac{V_{s}R}{L{x_{2}^*}}>0$ dunque il polo è a parte reale positiva, dunque la superficie di sliding $x_{2}-x_{2}^*$ non può essere utilizzata.
