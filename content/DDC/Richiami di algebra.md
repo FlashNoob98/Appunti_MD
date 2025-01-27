@@ -979,3 +979,95 @@ $$
 \frac{\partial T}{\partial v} = mv \rightarrow 
 \end{aligned} \frac{d}{dt}\left(\frac{\partial T}{\partial v}\right) = m\dot{v} = m \frac{dv}{dt}
 $$
+si ottiene la variazione di quantità di moto.
+Si possono dunque combinare i due termini e ottenere:
+$$
+\frac{d}{dt}\left(  \frac{\partial T}{\partial v} \right) + \frac{\partial v}{\partial x} = 0
+$$
+il primo rappresenta la variazione di energia cinetica, il secondo la variazione di energia potenziale.
+
+Un'espressione che tiene conto della variazione tra energia cinetica e potenziale di un sistema prende il nome di **Lagrangiana** del sistema, esprimibile anche in forma vettoriale:
+$$
+\frac{d}{dt} \left( \frac{\partial\mathcal{L}}{\partial \vec{\dot{x}}} \right) - \left( \frac{\partial \mathcal{L}}{\partial \vec{x}} \right)= 0
+$$
+Si può formulare ad esempio in funzione della carica elettrica presente in un sistema:
+$$
+\frac{d}{dt} \left( \frac{\partial\mathcal{L}}{\partial \dot{\vec{q}}} \right) - \frac{\partial\mathcal{L}}{\partial \vec{q}} = 0
+$$
+Dato un sistema dinamico, detta $\mathcal{L}$ la sua Lagrangiana che evolve tra le coordinate generalizzate $\vec{q}_{1}$ e $\vec{q}_{2}$ mediante la seguente formulazione $\mathcal{L}(q,\dot{q},t)$ e secondo la funzione di azione $S$ così definita:
+$$
+S = \int_{t_{1}}^{t_{2}}\mathcal{L}\left( \vec{q},  \dot{\vec{q}},t \right)dt
+$$
+
+Esiste un principio di minimizzazione o principio di **Hamilton** che afferma: tra tutte le possibili coppie $\vec{q}_{1}$ e $\vec{q}_{2}$ che soddisfano tale equazione, il sistema sceglierà sempre la traiettoria che minimizzi $S$.
+Sia $\vec{q}(t)$ la soluzione di $S$, allora $S$ calcolata nel punto $\vec{q}$ fornirà un punto di minimo o almeno stazionario.
+Si applica una piccola variazione $\delta q$ alla traiettoria
+$$
+\vec{q}'(t) = \vec{q}(t) + \delta \vec{q}
+$$
+gli estremi della traiettoria coincideranno in ogni caso, il funzionale d'azione diventa:
+$$
+S = \int_{t_{1}}^{t_{2}} \mathcal{L}\left( \vec{q}+\delta \vec{q}, \dot{\vec{q}} + \delta \dot{\vec{q}} , t\right) dt
+$$
+
+Si applica la formula di Taylor al primo ordine
+$$
+\int_{t_{1}}^{t_{2}}\left[ \mathcal{L}\left( \vec{q}, \dot{\vec{q}},t \right) + \left.\frac{\partial\mathcal{L}}{\partial \dot{q}}\right|_{\begin{aligned}
+q &= q(t) \\
+\dot{q} &= \dot{q}(t) 
+\end{aligned}}
+\delta \dot{q}
++ \left.\frac{\partial\mathcal{L}}{\partial q}\right|_{\begin{aligned}
+q &= q(t) \\
+\dot{q} &= \dot{q}(t) 
+\end{aligned}} +
+\mathcal{R}\right]dt
+$$
+con $\mathcal{R}$ si intende il resto di Lagrange ed esso tende a zero quando i punti $\vec{q}_{1}(t)$ e $\vec{q}_{2}(t)$ sono molto vicini tra loro.
+
+Si può rappresentare la variazione dell'azione intorno un punto di minimo:
+$$
+dS = \int_{t_{1}}^{t_{2}} \left.\frac{\partial\mathcal{L}}{\partial {\vec{q}}}\right| \delta \dot{q} + \left.\frac{\partial\mathcal{L}}{\partial \dot{\vec{q}}}\right| \delta q\  dt
+$$
+sfruttando la regola di derivazione delle funzioni composte:
+$$
+\delta S = \int_{t_{1}}^{t_{2}} \left[ \frac{d}{dt} \left(\frac{\partial\mathcal{L}}{\partial \dot{q}}\delta q\right) - \frac{d}{dt} \left( \frac{\partial\mathcal{L}}{\partial \dot{q}} \right)\delta q + \frac{\partial\mathcal{L}}{\partial q}\delta q \right]dt
+$$
+il termine $\frac{\partial\mathcal{L}}{\partial \dot{q}}\delta q$ è costante, dunque la sua derivata nulla; affinché sia minimo il funzionale d'azione, deve essere nullo $dS$, dunque:
+$$
+-\frac{d}{dt} \left( \frac{\partial\mathcal{L}}{\partial \dot{q}} \right)\delta q + \frac{\partial\mathcal{L}}{\partial q}\delta q = 0
+$$
+dunque rispetta l'equazione di Lagrange.
+
+Si definisce il momento angolare rispetto a $\dot{q}$ :
+$$
+\vec{p} = \frac{\partial\mathcal{L}}{\partial \dot{\vec{q}}} \quad\text{ e }\quad \dot{\vec{p}} = \frac{\partial\mathcal{L}}{\partial q}
+$$
+
+Si definisce l'**Hamiltoniana**:
+$$
+\mathcal{H} = p\dot{q} + \mathcal{L}
+$$
+tale che 
+$$
+\left\{\begin{aligned} \frac{\partial \mathcal{H}}{\partial \dot{q}}  &= p \\
+\frac{\partial \mathcal{H}}{\partial q} &= \frac{\partial\mathcal{L}}{\partial q}
+\end{aligned}\right.
+$$
+è un'equazione abbastanza generale che vale anche nei sistemi non conservativi:
+$$
+\frac{d}{dt}\left( \frac{\partial\mathcal{L}}{\partial \dot{\vec{q}}} \right) - \frac{\partial\mathcal{L}}{\partial \vec{q}}=Q
+$$
+con $\vec{q}=i_{L}\ e \   q_{C}$, le energie immagazzinate nei componenti dinamici saranno:
+$$
+\begin{aligned}
+E_{c} &= \frac{1}{2}CV_{c}^2 = \frac{1}{2C}q_{C}^2\\
+E_{L}&= \frac{1}{2}L\dot{q}_{L}^2
+\end{aligned}
+$$
+Analogamente ad un circuito LC, nei convertitori elettronici sono presenti le seguenti funzioni:
+$$
+Q = Mu + Qd - \frac{\partial F(\dot{q})}{\partial \dot{q}} + Q^n
+$$
+Il primo termine tiene conto della legge di controllo, il secondo dei disturbi esterni, il terzo della dissipazione per effetto Joule, il quarto dei generatori ideali.
+
