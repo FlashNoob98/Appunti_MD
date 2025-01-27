@@ -1071,3 +1071,4 @@ Q = Mu + Qd - \frac{\partial F(\dot{q})}{\partial \dot{q}} + Q^n
 $$
 Il primo termine tiene conto della legge di controllo, il secondo dei disturbi esterni, il terzo della dissipazione per effetto Joule, il quarto dei generatori ideali.
 
+Si può applicare questa formulazione al [[Boost converter#formulazione hamiltoniana|boost converter]].

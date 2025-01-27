@@ -684,3 +684,56 @@ $$
 \frac{\delta x_{1}}{\delta x_{2}^*} = -\frac{2 \frac{V_{s}}{L{x_{2}^*}}}{\left( s - \frac{V_{s}R}{L{x_{2}^*}} \right)}
 $$
 Il denominatore si annulla per $s=\frac{V_{s}R}{L{x_{2}^*}}>0$ dunque il polo è a parte reale positiva, dunque la superficie di sliding $x_{2}-x_{2}^*$ non può essere utilizzata.
+
+# Formulazione hamiltoniana
+Un diverso formalismo può essere utilizzato per modellare il convertitore boost, come accennato nei [[Richiami di algebra#Sistemi lagrangiani|richiami]].
+Si definiscono l'energia cinetica e potenziale del sistema
+$$
+T_{1} = \frac{1}{2} L \dot{q}_{L}^2\qquad \qquad V_{1} = \frac{1}{2C} q_{C}^2
+$$
+e la funzione di azione per $u=1$:
+$$
+\mathcal{F}_{0}(q_{C}) = \frac{1}{2} R \dot{q}_{C}^2
+$$
+e per $u=0$:
+$$
+\mathcal{F}_{0}(q_{L,}q_{C}) = \frac{1}{2} R \left[q_{L -} \dot{q}_{C}\right]^2
+$$
+raggruppando si ottengono le funzioni con i parametri globalmente validi:
+$$
+\begin{aligned}
+&\mathcal{L}(q_{L},q_{C},\dot{q}_{L},\dot{q}_{C}) = \frac{1}{2} L \dot{q}_{L}^2 - \frac{1}{2C} q_{C}^2\\
+F(\dot{q}_{L},\dot{q}_{C}) &= \frac{1}{2}R \left[ (1-u) \dot{q}_{L}-\dot{q}_{C} \right]^2 = \\
+& = \frac{1}{2}R \left[(1-u)^2\dot{q}_{L}^2 +\dot{q}_{C}^2 - 2(1-u)\dot{q}_{L}\dot{q}_{C} \right]
+\end{aligned}
+$$
+da cui si ricava l'equazione di Lagrange:
+$$
+\frac{d}{dt}\left( \frac{\partial\mathcal{L}}{\partial \dot{\vec{q}}} \right) - \frac{\partial\mathcal{L}}{\partial \vec{q}} = Q
+$$
+in questo caso saranno presenti due equazioni come la dimensione di $\vec{q}$ :
+$$
+\begin{aligned}
+L \ddot{q}_{L} &= V_{s} - \frac{1}{2}R \left[(1-u)^2\cdot{2}\dot{q}_{L} -2(1-u) \dot{q}_{C} \right] = \\
+&= V_{s} - R(1-u) \left[(1-u) \dot{q}_{L} - \dot{q}_{C}\right]
+\end{aligned}
+$$
+analogamente con $q_{C}$ :
+$$
+\begin{aligned}
+\frac{q_{C}}{C} &= -\frac{1}{2}R \left[2\dot{q}_{C} - 2(1-u)\dot{q}_{L}\right] \\
+&= R \left[(1-u)\dot{q}_{L}-\dot{q}_{C}\right]
+\end{aligned}
+$$
+dunque la sua derivata:
+$$
+\dot{q}_{C} = -\frac{q_{C}}{RC} + (1-u)\dot{q}_{L}
+$$
+da cui il sistema completo:
+$$
+\begin{aligned}
+L \ddot{q}_{L} &= V_{S} - (1-u) \frac{q_{C}}{C}\\
+\dot{q}_{C} &= (1-u) \dot{q}_{L}  \frac{q_{C}}{RC}
+\end{aligned}
+$$
+coincide con il modello dinamico ai valori istantanei.
