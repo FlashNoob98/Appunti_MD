@@ -15,6 +15,7 @@ Dato un insieme di vettori non vuoto $V$, una legge di composizione interna "+" 
 - $(a+b)\vec{v} = a\vec{v}+b\vec{v}$
 - $a\left( \vec{v}_{1}+\vec{v}_{2} \right) = a\vec{v}_{1}+a\vec{v}_{2}$
 - $(ab)\vec{v}=a\left( b\vec{v} \right)=b\left( a\vec{v} \right)$
+
 gli elementi di $V$ sono chiamati *vettori* mentre gli elementi di $\mathbb{K}$ sono chiamati *scalari*.
 
 ## Combinazione lineare
@@ -49,6 +50,7 @@ Si definisce $f:(V,\mathbb{K})\to(W,\mathbb{K})\ V\neq W$, è un'applicazione li
 - $f\left( \vec{a}+\vec{b} \right) = f\left( \vec{a} \right)+f\left( \vec{b} \right)$
 - $f\left( a\vec{b} \right)=af\left( \vec{b} \right)$
 con $\vec{a},\vec{b} \in V;\ \alpha \in \mathbb{K};\ f\left( \vec{a} \right),f\left( \vec{b} \right)\in\ W$.
+
 Se $V=W$ allora l'applicazione lineare è un **endomorfismo**, ovvero un'applicazione in sé stessa.
 L'applicazione è **biettiva** se ad ogni elemento di $V$ coincide uno ed un solo elemento di $W$ e viceversa.
 Se un'applicazione è lineare e biettiva, si parla di **isomorfismo**.
@@ -62,6 +64,7 @@ Si chiama *distanza* di $\vec{x}$ da $\vec{y}$ la funzione metrica applicata ai 
 - $d\left( \vec{x},\vec{y} \right)\geq 0\quad\quad d\left( \vec{x},\vec{y} \right)=0\Leftrightarrow \vec{x}\equiv\vec{y}$
 - $d\left( \vec{x},\vec{y} \right)=d\left( \vec{y},\vec{x} \right)$
 - $d\left( \vec{x},\vec{z} \right)\leq d\left( \vec{x},\vec{y} \right)+d\left( \vec{y},\vec{z} \right)$
+  
 La metrica permette di definire il concetto di *intorno* di un punto, così come il punto di accumulazione, il limite, la derivata.
 Intorno chiuso: $\left\{ \vec{x}:d\left( \vec{x},\vec{x}_{0} \right)\leq R \right\}$
 Intorno aperto: $\left\{ \vec{x}:d\left( \vec{x},\vec{x}_{0} \right)< R \right\}$
@@ -105,6 +108,7 @@ Sia $X$ un $\mathbb{K}$-spazio, si definisce l'operatore norma "$||\cdot||$"$:X\
 - $||\vec{x}||\geq 0\quad\quad ||\vec{x}||=0\Leftrightarrow\vec{x}=\vec{0}$
 - $||\lambda \vec{x}||=|\lambda|\cdot||\vec{x}||\quad \lambda\in\mathbb{K}$
 - $||\vec{x}+\vec{y}||\leq||\vec{x}||+||\vec{y}||$
+  
 Il concetto di norma amplia il concetto di ampiezza di un vettore, il modulo è una particolare norma.
 La norma può indurre una metrica:
 $$
@@ -130,9 +134,10 @@ Si definisce *prodotto scalare*:
 $$
 S\left( \vec{x},\vec{y} \right): V\times V \to \mathbb{R}
 $$
-È una [[forma bilineare]] simmetrica definita su un campo reale nello spazio $V$ cartesiano su se stesso, deve essere:
+È una [[Forma bilineare|forma bilineare]] simmetrica definita su un campo reale nello spazio $V$ cartesiano su se stesso, deve essere:
 - Non degenere: $S\left( \vec{x},\vec{y} \right)=0\quad \forall\ \vec{x}\in V\Rightarrow \vec{y}=0$
 - Definito positivo: $S\left( \vec{x},\vec{x} \right)>0\ \forall\ \vec{x}\neq {0}$
+  
 Si riporta il prodotto scalare di uno spazio vettoriale numerico $\mathbb{R}^n$ sul campo $\mathbb{R}$:
 $$
 \left\langle  \vec{x},\vec{y}  \right\rangle = \sum_{k=1}^n x_{k}y_{k}\quad \vec{x},\vec{y}\in\mathbb{R}^n 
@@ -256,6 +261,7 @@ $$
 Si consideri un insieme $\mathbb{A}\neq 0$ e sia $\mathbb{K}-V$ uno spazio vettoriale $V$ sul campo $\mathbb{K}$, sia possibile un'applicazione $\Pi$ tra due spazi vettoriali, si definisce **spazio affine** associato allo spazio $V$ sul campo $\mathbb{K}$ la terna $(\mathbb{A},V,\Pi)$ con $\Pi:\mathbb{A}\times\mathbb{A}\to V$ se gode delle seguenti proprietà:
 - L'applicazione $\Pi$ è suriettiva: $\forall\ P \in\mathbb{A},\forall\ \vec{v}\in V\ \exists{!}\ Q\in\mathbb{A}:\Pi(P,Q)=\vec{V}$
 - Gode dell'identità di Charles: $P,Q,Z \in\mathbb{A}\Rightarrow \Pi(Q,Z)=\Pi(P,Q)+\Pi(Q,Z)$
+  
 Un'applicazione è suriettiva se e solo se ogni elemento di $B$ è immagine di almeno un elemento di $A$, ovvero tutti gli elementi di $B$ sono immagini di almeno un elemento di $A$, l'insieme immagine coincide col codominio della funzione.
 $F:A\to B$.
 
