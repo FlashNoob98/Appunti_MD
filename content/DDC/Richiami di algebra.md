@@ -364,15 +364,15 @@ $$
 $$
 Si calcola il numeratore:
 $$
-\frac{d}{dt}\hat{v}_{d} = -\frac{\sqrt{ 2 }\cancel{V_{\Delta}}\left[ \omega \sin (\omega t)\hat{i} + \omega \sin\left( \omega t-\frac{2\pi}{3} \right)\hat{j} +\omega \sin\left( \omega t-\frac{4\pi}{3} \right)\hat{k}\right]}{\frac{\cancel{\sqrt{ 2 }V_{\Delta}}\sqrt{ 3 }}{\cancel{\sqrt{ 2 }}}}
+\frac{d}{dt}\hat{v}_{d} = -\frac{\sqrt{ 2 }\cancel{V_{\Delta}}\omega\left[  \sin (\omega t)\hat{i} +  \sin\left( \omega t-\frac{2\pi}{3} \right)\hat{j} + \sin\left( \omega t-\frac{4\pi}{3} \right)\hat{k}\right]}{\frac{\cancel{\sqrt{ 2 }V_{\Delta}}\sqrt{ 3 }}{\cancel{\sqrt{ 2 }}}}
 $$
 mentre il modulo della derivata:
 $$
-\left|\left| \frac{d}{dt} \hat{v}_{d} \right|\right| = \frac{\sqrt{ \omega^2\sin^2(\omega t)+\omega^2\sin^2\left( \omega t-\frac{2\pi}{3} \right)+\omega^2\sin^2\left( \omega t-\frac{4\pi}{3} \right) }}{\frac{\sqrt{ 2 }}{\sqrt{ 3 }}} = \sqrt{ \frac{3}{2} }\omega
+\left|\left| \frac{d}{dt} \hat{v}_{d} \right|\right| = \sqrt{ \frac{2}{3} }\cdot  \frac{\sqrt{ \omega^2\sin^2(\omega t)+\omega^2\sin^2\left( \omega t-\frac{2\pi}{3} \right)+\omega^2\sin^2\left( \omega t-\frac{4\pi}{3} \right) }}{\frac{\sqrt{ 2 }}{\sqrt{ 3 }}} = \omega
 $$
 effettuando il rapporto:
 $$
-\hat{v}_{q} = -\left[  \sin (\omega t)\hat{i} +  \sin\left( \omega t-\frac{2\pi}{3} \right)\hat{j} + \sin\left( \omega t-\frac{4\pi}{3} \right)\hat{k}\right]
+\hat{v}_{q} = -\sqrt{ \frac{2}{3} } \left[  \sin (\omega t)\hat{i} +  \sin\left( \omega t-\frac{2\pi}{3} \right)\hat{j} + \sin\left( \omega t-\frac{4\pi}{3} \right)\hat{k}\right]
 $$
 
 Infine si riporta il terzo versore, che individua il piano pari alla somma dei tre versori (o al versore del vettore somma $\vec{w}$):
