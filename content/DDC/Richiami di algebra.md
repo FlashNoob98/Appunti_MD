@@ -473,8 +473,8 @@ $$
 \end{aligned}
 $$
 Ma quella ottenuta è proprio la definizione di componente simmetrico.
-Nel riferimento di Clark o Park si possono scrivere i vettori utilizzando due componenti e non più tre, semplificando la trattazione, inoltre i vettori che rappresentano grandezze sinusoidali nel riferimento cartesiano, diventano costanti in quello di Park.
-Questo può essere comodo per applicare ad esempio il [[modello averaged]] ad un inverter che fornisce in uscita una tensione sinusoidale, in questo caso lo schema di controllo diventa lineare e si può applicare il [[modello averaged]].
+Nel riferimento di Clarke o Park si possono scrivere i vettori utilizzando due componenti e non più tre, semplificando la trattazione, inoltre i vettori che rappresentano grandezze sinusoidali nel riferimento cartesiano, diventano costanti in quello di Park.
+Questo può essere comodo per applicare ad esempio il [[Modello Averaged|modello averaged]] ad un inverter che fornisce in uscita una tensione sinusoidale, in questo caso lo schema di controllo diventa lineare e si può applicare il [[Modello Averaged|modello averaged]].
 
 ## Prodotto scalare
 La potenza istantanea è definita come il prodotto tra tensione e corrente nel tempo, per grandezze multidimensionali si usa la definizione di prodotto scalare euclideo:
@@ -483,7 +483,7 @@ p(t) = \left\langle  \vec{v},\vec{i}  \right\rangle \stackrel{\Delta}{=} \sum_{k
 $$
 mentre la potenza attiva è definita come il prodotto scalare hermitiano:
 $$
-P_{\text{att}} \stackrel{\Delta}{=} \left\langle  \vec{v},\vec{i}  \right\rangle = \frac{1}{T} \int_{0}^T \vec{v}^T \cdot\vec{i}\ dt  = \frac{1}{T} \left\{  \int_{0}^T v_{1},i_{1}dt + \int_{0}^T v_{2},i_{2}dt +\dots+\int_{0}^T v_{n},i_{n}dt \right\}
+P_{\text{att}} \stackrel{\Delta}{=} \left\langle  \vec{v},\vec{i}  \right\rangle = \frac{1}{T} \int_{0}^T \vec{v}^T \cdot\vec{i}\ dt  = \frac{1}{T} \left\{  \int_{0}^T v_{1}\cdot i_{1}\ dt + \int_{0}^T v_{2} \cdot i_{2}\ dt +\dots+\int_{0}^T v_{n} \cdot i_{n}\ dt \right\}
 $$
 Se nel cambio di riferimenti si conservano le norme e gli angoli, allora è possibile semplificare il calcolo della potenza:
 $$
@@ -528,7 +528,7 @@ $$
 i rimanenti termini:
 $$
 \begin{aligned}
-q_{\alpha} &= -v_0i_{\alpha} + v_{\beta}i_{0} \\
+q_{\alpha} &= -v_0i_{\beta} + v_{\beta}i_{0} \\
 q_{\beta} &= v_{0}i_{\alpha} - v_{\alpha}i_{0} \\
 q_{0} &= -v_{\beta}i_{\alpha} + v_{\alpha}i_{\beta}
 \end{aligned}
@@ -572,6 +572,7 @@ indica proprio la potenza reattiva assorbita dal sistema.
 
 Se il sistema non è equilibrato, le componenti omopolari saranno diverse da zero, dunque si avrà un vettore di potenze $\vec{q}= \vec{v}_{\alpha,\beta}\times \vec{i}_{\alpha,\beta}= q(q_{\alpha},q_{\beta},q_{0})$ così definito:
 $$
+\vec{q}=
 \begin{vmatrix}
 \hat{e}_{\alpha} & \hat{e}_{\beta} & \hat{e}_{0}\\ 
 v_{\alpha} & v_{\beta} &v_{0}\\  
