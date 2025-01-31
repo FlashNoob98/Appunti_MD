@@ -632,7 +632,7 @@ $$
 $$
 Dunque il valore efficace del vettore è pari alla somma dei valori efficaci delle sue componenti.
 
-## Disuguaglianza di Cauchy-Scwartz
+## Disuguaglianza di Cauchy-Schwarz
 Dalle proprietà degli spazi vettoriali:
 $$
 \left\langle  \vec{v},\vec{i}  \right\rangle \leq ||\vec{v}||\cdot||\vec{i}|| 
@@ -691,7 +691,7 @@ $$
 $$
 con $\vec{a}\land \vec{b}$ si definisce il prodotto esterno tra i due vettori, il cui risultato rappresenta un parallelogramma con lati i due vettori e area pari al prodotto vettoriale di questi due.
 
-Dalla disuguaglianza di Cauchy-Swartz si può definire l'angolo di un prodotto scalare:
+Dalla disuguaglianza di Cauchy-Schwarz si può definire l'angolo di un prodotto scalare:
 $$
 \cos \theta \stackrel{\Delta}{=} \frac{\left\langle  \vec{v},\vec{i}  \right\rangle }{||\vec{v}||\cdot||\vec{i}||} \leq 1
 $$
