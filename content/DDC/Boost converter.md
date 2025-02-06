@@ -1,4 +1,4 @@
-Qui si presenteranno i modelli del boost converter
+Si presentano i diversi modelli con i quali si può studiare il boost converter
 # Modello dinamico
 Se si ipotizza la conduzione continua (CCM) si hanno due stati del convertitore se
 l'istante di tempo $t$ è maggiore o minore di $t_{on}$, considerato come il tempo di conduzione del dispositivo dinamico.
@@ -15,7 +15,6 @@ questo si ricava applicando la [[Leggi di Kirchhoff#Legge di Kirchhoff per le te
 $$
 \frac{d\vec{x}}{dt} = \frac{d}{dt}\begin{bmatrix} i_L \\ v_C \end{bmatrix} = \begin{bmatrix} 0 & 0 \\ 0 & \frac{-1}{RC} \end{bmatrix} \cdot \begin{bmatrix} i_L \\ v_C \end{bmatrix} + \begin{bmatrix} \frac{1}{L} \\0 \end{bmatrix}\cdot V_s
 $$
-
 
 ## $t  \geq t_{on}$
 Aperto lo switch si ha l'andata in conduzione del diodo, cambia il modello del sistema che diventa:

@@ -42,7 +42,7 @@ R(s) = \frac{A\left( 1+ \frac{s}{\omega_{z}} \right)^2}{s\left( 1 +\frac{s}{\ome
 $$
 Vanno determinati i tre parametri della funzione $A,\omega_{p},\omega_{z}$.
 
-Si calcola la funzione di trasferimento del controllore accoppiato al sistema per determinare il margine di ampiezza e di fase, definiti come il guadagno della fdt alla pulsazione in cui la fase è $-180°$. Il margine di fase è invece la distanza della fase della funzione a ciclo aperto dall'inversione di fase (ovvero $180°-\left|\angle T(\omega_{c})\right|$) in corrispondenza della pulsazione critica, ovvero quella in cui il modulo della funzione di trasferimento sia unitario.
+Si calcola la funzione di trasferimento del controllore accoppiato al sistema per determinare il margine di ampiezza e di fase, definiti come il guadagno della funzione di trasferimento alla pulsazione in cui la fase è $-180°$. Il margine di fase è invece la distanza della fase della funzione a ciclo aperto dall'inversione di fase (ovvero $180°-\left|\angle T(\omega_{c})\right|$) in corrispondenza della pulsazione critica, ovvero quella in cui il modulo della funzione di trasferimento sia unitario.
 
 Il regolatore non deve influenzare la stabilità del sistema, al fine di calcolare i parametri del regolatore si separa il calcolo della fase tra regolatore e sistema:
 $$
@@ -115,7 +115,7 @@ $$
 $$
 Nel dominio di Laplace si può ricavare la soluzione:
 $$
-[s\hat{I} - A - BK]\delta x = 0
+[s\hat{I} - A + BK]\delta x = 0
 $$
 Si supponga che il sistema sia del secondo ordine, esiste in tal caso una corrispondenza diretta tra i poli e le caratteristiche della risposta del sistema in termini di smorzamento e tempo caratteristico:
 $$

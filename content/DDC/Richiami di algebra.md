@@ -1027,20 +1027,20 @@ q &= q(t) \\
 + \left.\frac{\partial\mathcal{L}}{\partial q}\right|_{\begin{aligned}
 q &= q(t) \\
 \dot{q} &= \dot{q}(t) 
-\end{aligned}} +
+\end{aligned}} \delta q +
 \mathcal{R}\right]dt
 $$
 con $\mathcal{R}$ si intende il resto di Lagrange ed esso tende a zero quando i punti $\vec{q}_{1}(t)$ e $\vec{q}_{2}(t)$ sono molto vicini tra loro.
 
 Si può rappresentare la variazione dell'azione intorno un punto di minimo:
 $$
-dS = \int_{t_{1}}^{t_{2}} \left.\frac{\partial\mathcal{L}}{\partial {\vec{q}}}\right| \delta \dot{q} + \left.\frac{\partial\mathcal{L}}{\partial \dot{\vec{q}}}\right| \delta q\  dt
+dS = \int_{t_{1}}^{t_{2}} \frac{\partial\mathcal{L}}{\partial {\vec{q}}} \delta \dot{q} + \frac{\partial\mathcal{L}}{\partial \dot{\vec{q}}} \delta q\  dt
 $$
 sfruttando la regola di derivazione delle funzioni composte:
 $$
 \delta S = \int_{t_{1}}^{t_{2}} \left[ \frac{d}{dt} \left(\frac{\partial\mathcal{L}}{\partial \dot{q}}\delta q\right) - \frac{d}{dt} \left( \frac{\partial\mathcal{L}}{\partial \dot{q}} \right)\delta q + \frac{\partial\mathcal{L}}{\partial q}\delta q \right]dt
 $$
-il termine $\frac{\partial\mathcal{L}}{\partial \dot{q}}\delta q$ è costante, dunque la sua derivata nulla; affinché sia minimo il funzionale d'azione, deve essere nullo $dS$, dunque:
+il termine $\frac{\partial\mathcal{L}}{\partial \dot{q}}\delta q$ è costante, dunque la sua derivata nulla; affinché sia minimo il funzionale d'azione, deve essere nullo $\delta S$, dunque:
 $$
 -\frac{d}{dt} \left( \frac{\partial\mathcal{L}}{\partial \dot{q}} \right)\delta q + \frac{\partial\mathcal{L}}{\partial q}\delta q = 0
 $$
