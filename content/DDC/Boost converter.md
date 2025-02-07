@@ -4,7 +4,13 @@ Se si ipotizza la conduzione continua (CCM) si hanno due stati del convertitore 
 l'istante di tempo $t$ è maggiore o minore di $t_{on}$, considerato come il tempo di conduzione del dispositivo dinamico.
 ## $t <  t_{on}$
 Si presenta il modello dinamico del boost converter
-![Immagine](https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Boost_conventions.svg/1920px-Boost_conventions.svg.png)
+<center>
+
+![[boost_converter.svg]]
+
+</center>
+
+
 Durante la fase iniziale quindi per $t<T_{on}$ lo switch è in conduzione, il diodo è interdetto dunque
 
 $$
