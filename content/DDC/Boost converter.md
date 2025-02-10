@@ -101,7 +101,6 @@ $$
 # DCM
 Se cade l'ipotesi di conduzione continua si ha il fenomeno di conduzione discontinua, la corrente nell'induttore ovvero raggiunge il valore nullo per un certo periodo di tempo, in ogni periodo di switching, ciò comporta il passaggio da 2 a 3 configurazioni, dunque $m$ dovrà essere pari a 2 (e non più 1).
 
-
 # Grandezze di switching
 Il convertitore boost presenta due dispositivi switching, uno di questi però, il diodo, non è controllabile dall'esterno, se si vuole includere il suo stato nel modello globale alle configurazioni è necessario includere una ulteriore variabile di switching $u_2$ che tenga appunto conto dello stato del diodo, ciò aggiunge una ulteriore configurazione al modello, in cui il tiristore non conduce ma il diodo sì a causa della scarica dell'induttore.
 
@@ -241,7 +240,6 @@ $$
 R_{PP}(i_{L}) = \frac{\Delta i_{L}}{\langle i_{L} \rangle_{0} } = \frac{I_{\text{max}}\cdot2T}{I_{\text{max}}(t_{on}+t_{1})} = \frac{2T}{t_{on}+t_{1}} \gg 1
 $$
 Non è trascurabile il ripple e dunque non si può utilizzare in questo caso il [[Modello Averaged|modello averaged]].
-
 
 # Curva integrale
  Utilizzando il [[Problema di Cauchy|teorema di Cauchy]] si vuole risolvere il [[#Modello dinamico|modello dinamico in CCM]] del convertitore, separato nelle due differenti configurazioni.
