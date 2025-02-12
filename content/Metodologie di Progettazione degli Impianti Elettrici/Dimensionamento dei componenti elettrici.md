@@ -413,9 +413,11 @@ $$
 ## Selettività al corto circuito
 Può essere:
 - Amperometrica: In questo caso la corrente magnetica dell'interruttore a valle deve essere più piccola di quello a monte:
-  $$
+
+$$
   I_{mB}\leq I_{mA}: \frac{I_{mA}}{I_{mB}} \geq 1.5
 $$
+
 - Cronometrica: si modificano i tempi di intervento del relèè magnetico, si introduce un ritardo nella curva caratteristica, oltre un certo valore di corrente ci sarà comunque un intervento congiunto.
 - Energetica: fa riferimento all'energia specifica passante, nel conduttore, si impone quella massima tenendo conto sia dell'effettivo valore della corrente e sia del tempo di permanenza.
 - Logica: si usano interruttori programmabili in cui si può specificare un tempo di ritardo in funzione della corrente che li attraversa e del loro punto di montaggio.

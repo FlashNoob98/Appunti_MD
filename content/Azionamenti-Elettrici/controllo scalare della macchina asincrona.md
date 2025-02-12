@@ -89,8 +89,9 @@ $$
 con $k_r=\frac{L_{m}}{L_{r}'}$
 Si ricava nuovamente la coppia:
 $$
-M_{e} = 3p\cancel{R_{r}'} \frac{s\omega \cancel{k_{r}^2}}{\cancel{k_{r}^2}R_{r}'^\cancel{2}}\Phi_{r}^2 = 3p\frac{s\omega }{R_{r}'}\Phi_{r}^2
+M_{e} = 3p\cancel{R_{r}'} \frac{s\omega \cancel{k_{r}^2}}{\cancel{k_{r}^2}R_{r}'^{\cancel{2}}}\Phi_{r}^2 = 3p\frac{s\omega }{R_{r}'}\Phi_{r}^2
 $$
+
 ovvero la coppia è lineare con lo scorrimento.
 La corrente tende ad infinito per $s\omega\to \infty$, il limite superiore è la sovra modulazione dell'inverter.
 Questa condizione fornisce condizioni di utilizzo più semplici rispetto al flusso di statore costante.
