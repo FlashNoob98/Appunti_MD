@@ -20,7 +20,7 @@ Si calcola la funzione integrale nel punto di discontinuità
 $$
 G_{1}(C) = G_{1}(C^-) = G_{1}(t-T) + \lim_{ \tau \to C^- } \int_{t-T}^C x_{1}'(\tau) d \tau
 $$
-Siano $G_1$ e $G_2$ delle primitive, si indica con $\phi_{1}$ e $\phi_2$  le loro rispettive famiglie:
+Siano $G_1$ e $G_2$ delle primitive, si indica con $\phi_{1}$ e $\phi_2$ le loro rispettive famiglie:
 $$
 \begin{aligned}
 \phi_{1}(\tau) &= G_{1}(\tau) + K_{1}\\

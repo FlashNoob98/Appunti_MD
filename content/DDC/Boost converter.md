@@ -287,14 +287,17 @@ $$
 \begin{aligned}
 A & = C\sin \varphi \\
 B & = C\cos \varphi \\
-C & = \sqrt{A^2+B^2}
+C & = \sqrt{A^2+B^2} \\
+\varphi &= \arctan\left( \frac{A}{B} \right)
 \end{aligned}
 $$
  sostituendo nelle precedenti si ottiene una forma più compatta:
  $$
 \begin{aligned}
-i_{L}(t) &= \sqrt{ A^2+B^2 }\cdot \sin \left(\omega_{0}(t-t_{{on}})+\arctan \frac{A}{B} \right) \\
+&\text{Addizione del seno:}\\
+i_{L}(t) &= \sqrt{ A^2+B^2 }\cdot \sin \left(\omega_{0}(t-t_{{on}})+\arctan \frac{A}{B} \right) + I_{0} \\
 \frac{d}{dt}i_{L}(t) &= \sqrt{ A^2+B^2 }\cdot \omega _{0} \cos \left(\omega_{0}t+\arctan \frac{A}{B} \right)= \\
+\arctan\left( \frac{A}{B} \right)&=\varphi  = \arcsin\left( \frac{A}{C} \right) \\
 &= \sqrt{ A^2+B^2 }\cdot \omega _{0} \cos \left[\arcsin\frac{\left(i_{L}(t)-I_{0}\right)}{\sqrt{ A^2+B^2 }} \right]  = \\
 &=\sqrt{A^2+B^2} \cdot \omega_{0} \sqrt{ 1- \frac{(i_{L}(t)-I_{0})^2}{A^2+B^2} } = \frac{V_{s}-V_{c}(t)}{L} \\
 \left(A^2+B^2\right) \cdot & \left[\frac{A^2+B^2-(i_{L}(t)-I_{0})^2}{A^2+B^2}\right] = \frac{(V_{s}-V_{c}(t))^2}{\omega_{0}^2L^2} \\
