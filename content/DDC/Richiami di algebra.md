@@ -989,11 +989,11 @@ $$
 si ottiene la variazione di quantità di moto.
 Si possono dunque combinare i due termini e ottenere:
 $$
-\frac{d}{dt}\left(  \frac{\partial T}{\partial v} \right) + \frac{\partial v}{\partial x} = 0
+\frac{d}{dt}\left(  \frac{\partial T}{\partial v} \right) + \frac{\partial V}{\partial x} = 0
 $$
 il primo rappresenta la variazione di energia cinetica, il secondo la variazione di energia potenziale.
 
-Un'espressione che tiene conto della variazione tra energia cinetica e potenziale di un sistema prende il nome di **Lagrangiana** del sistema, esprimibile anche in forma vettoriale:
+Un'espressione che tiene conto della variazione tra energia cinetica e potenziale di un sistema prende il nome di **Lagrangiana** del sistema $L=T-V$, esprimibile anche in forma vettoriale:
 $$
 \frac{d}{dt} \left( \frac{\partial\mathcal{L}}{\partial \vec{\dot{x}}} \right) - \left( \frac{\partial \mathcal{L}}{\partial \vec{x}} \right)= 0
 $$
