@@ -1034,7 +1034,7 @@ con $\mathcal{R}$ si intende il resto di Lagrange ed esso tende a zero quando i 
 
 Si può rappresentare la variazione dell'azione intorno un punto di minimo:
 $$
-dS = \int_{t_{1}}^{t_{2}} \frac{\partial\mathcal{L}}{\partial {\vec{q}}} \delta \dot{q} + \frac{\partial\mathcal{L}}{\partial \dot{\vec{q}}} \delta q\  dt
+dS = \int_{t_{1}}^{t_{2}} \frac{\partial\mathcal{L}}{\partial \dot{{\vec{q}}}} \delta \dot{q} + \frac{\partial\mathcal{L}}{\partial \vec{q}} \delta q\  dt
 $$
 sfruttando la regola di derivazione delle funzioni composte:
 $$

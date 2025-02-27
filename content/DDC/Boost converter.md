@@ -703,7 +703,7 @@ $$
 $$
 e per $u=0$:
 $$
-\mathcal{F}_{0}(q_{L,}q_{C}) = \frac{1}{2} R \left[q_{L -} \dot{q}_{C}\right]^2
+\mathcal{F}_{0}(q_{L,}q_{C}) = \frac{1}{2} R \left[\dot{q}_{L -} \dot{q}_{C}\right]^2
 $$
 raggruppando si ottengono le funzioni con i parametri globalmente validi:
 $$
