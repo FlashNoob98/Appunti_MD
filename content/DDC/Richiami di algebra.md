@@ -1053,12 +1053,12 @@ $$
 
 Si definisce l'**Hamiltoniana**:
 $$
-\mathcal{H} = p\dot{q} + \mathcal{L}
+\mathcal{H} = p\dot{q} - \mathcal{L}
 $$
 tale che 
 $$
 \left\{\begin{aligned} \frac{\partial \mathcal{H}}{\partial \dot{q}}  &= p \\
-\frac{\partial \mathcal{H}}{\partial q} &= \frac{\partial\mathcal{L}}{\partial q}
+\frac{\partial \mathcal{H}}{\partial q} &= -\frac{\partial\mathcal{L}}{\partial q}
 \end{aligned}\right.
 $$
 è un'equazione abbastanza generale che vale anche nei sistemi non conservativi:
