@@ -1,4 +1,4 @@
-Il problema principale dell'analisi di un convertitore,come è stato già [[Modello dinamico affine nel controllo|anticipato]], è la sua forte non linearità e la conseguente non linearità delle forme d'onda che lo caratterizzano. Uno strumento di analisi può essere la scomposizione in serie di Fourier.
+Il problema principale dell'analisi di un convertitore, come è stato già [[Modello dinamico affine nel controllo|anticipato]], è la sua forte non linearità e la conseguente non linearità delle forme d'onda che lo caratterizzano. Uno strumento di analisi può essere la scomposizione in serie di Fourier.
 
 Si dice che la funzione reale definita su $\mathbb{R}$ è di classe $P_T$ se:
 - La funzione è periodica di un certo periodo $T \in \mathbb{R}^+$ escluso l'infinito
