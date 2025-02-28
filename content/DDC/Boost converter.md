@@ -739,7 +739,7 @@ da cui il sistema completo:
 $$
 \begin{aligned}
 L \ddot{q}_{L} &= V_{S} - (1-u) \frac{q_{C}}{C}\\
-\dot{q}_{C} &= (1-u) \dot{q}_{L}  \frac{q_{C}}{RC}
+\dot{q}_{C} &= (1-u) \dot{q}_{L} - \frac{q_{C}}{RC}
 \end{aligned}
 $$
 coincide con il modello dinamico ai valori istantanei.
