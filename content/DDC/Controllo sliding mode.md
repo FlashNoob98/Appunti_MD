@@ -89,7 +89,7 @@ $$
 $$
 viceversa
 $$
-\mathcal{L}F^-(\sigma) =x_{1}-x_{2}-{3}
+\mathcal{L}F^-(\sigma) =x_{1}-x_{2}+1
 $$
 Si sostituiscono i punti che annullano la derivata, ovvero $x_{2}=0$ e si ottengono le tre condizioni:
 - Crossing
@@ -232,7 +232,7 @@ $$
 0 & 1
 \end{pmatrix}\cdot
 \begin{pmatrix}
-0 \\ 1
+1 \\ 0
 \end{pmatrix} = 0
 $$
 In tal caso è necessario ricercare una differente superficie di sliding:
