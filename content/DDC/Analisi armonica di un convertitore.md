@@ -99,7 +99,7 @@ $$
 \langle x\cdot y \rangle_{-3} &= [x_{-2}\cdot y_{-1}]e^{-j{3}\omega t} \\
 \langle x\cdot y \rangle_{-2} &= [x_{-2}\cdot y_{0} + x_{-1}\cdot y_{-1}]e^{-j{2}\omega t}\\
 \langle x\cdot y \rangle_{-1} &= [x_{-2}\cdot y_{1} + x_{-1}\cdot y_{0} + x_{0}\cdot y_{-1}] e^{-j\omega t} \\
-\langle x\cdot y \rangle_{0} &= [x_{-1}\cdot y_{-1} + x_{0}\cdot y_{0} + x_{1}\cdot y_{-1}] \\
+\langle x\cdot y \rangle_{0} &= [x_{-1}\cdot y_{1} + x_{0}\cdot y_{0} + x_{1}\cdot y_{-1}] \\
 \langle x\cdot y \rangle_{1} &= [x_{0}\cdot y_{1} + x_{1}\cdot y_{0} + x_{2}\cdot y_{-1}] e^{j \omega t} \\
 \langle x\cdot y \rangle_{2} &= [x_{2}\cdot y_{0} + x_{1}\cdot y_{1}] e^{j{2}\omega t} \\
 \langle x\cdot y \rangle_{3} &= [x_{2}\cdot y_{1}]e^{j{3} \omega t}
