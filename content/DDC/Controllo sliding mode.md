@@ -11,8 +11,8 @@ Il sistema può essere rappresentato mediante due diverse funzioni se si trova s
 Questa condizione si può descrivere mediante le derivate di Lie, in questa condizione infatti esse sono concordi, ovvero:
 $$
 \begin{aligned}
-\mathcal{L}F^+&<0 & \mathcal{L}F^+&>0\\
-\mathcal{L}F^-&<0 & \mathcal{L}F^-&>0
+\mathcal{L}F^+&<0 &\text{oppure} \qquad  &\mathcal{L}F^+>0\\
+\mathcal{L}F^-&<0 & & \mathcal{L}F^->0
 \end{aligned}
 $$
 prese due differenti regioni (ovvero tali per cui il verso di attraversamento è diverso) le derivate sono concordi.
