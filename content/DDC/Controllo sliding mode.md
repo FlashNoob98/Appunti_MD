@@ -202,21 +202,21 @@ Vale la relazione che se un sistema è asintoticamente stabile è anche attratti
 
 Va garantito anche l'intrappolamento del sistema mediante un ingresso equivalente $u_{eq}$ tale che:
 $$
-\dot{x}=f(x)+g(x)u_{eq}=F_{s} : \mathcal{L}F_{s}(\sigma)=0
+\dot{x}=f(x)+g(x)u_{eq}=F_{s} : \mathcal{L}F_{s}(\sigma) \leq0
 $$
 ovvero
 $$
 \begin{aligned}
-&\nabla \sigma  \cdot[f(x)+g(x)u_{eq}]=0\\
-&\nabla \sigma  \cdot f(x) + \nabla \sigma \cdot g(x)u_{eq}=0 \\
-&\mathcal{L}_{f}(\sigma)  + \mathcal{L}_{g}(\sigma)u_{eq}=0
+&\nabla \sigma  \cdot[f(x)+g(x)u_{eq}] \leq 0\\
+&\nabla \sigma  \cdot f(x) + \nabla \sigma \cdot g(x)u_{eq}\leq 0 \\
+&\mathcal{L}_{f}(\sigma)  + \mathcal{L}_{g}(\sigma)u_{eq} \leq 0
 \end{aligned}
 $$
 si ricava il forzamento equivalente:
 $$
 u_{eq}\leq - \frac{\mathcal{L}_{f}(\sigma)}{\mathcal{L}_{g}(\sigma)}
 $$
-Imponendo l'esistenza del rapporto si ricava il criterio per determinare la superficie incognita $\sigma_{x}$:
+Imponendo l'esistenza del rapporto si ricava il criterio per determinare la superficie incognita $\sigma_{x}$, ovvero che rispetti la condizione di trasversalità:
 $$
 \nabla \sigma \cdot g\neq {0}
 $$
@@ -261,7 +261,7 @@ $$
 \dot{x}_{1} =& f_{1}\left( \vec{x} \right)+g_{1}\left( \vec{x} \right)u \\
 \dot{x}_{2} =& x_{1} \\
 \vdots \\
-\dot{x}_{n} =& x_{n}-1
+\dot{x}_{n} =& x_{n-1}
 \end{pmatrix}
 $$
 la traiettoria desiderata è $\vec{x}=0$.

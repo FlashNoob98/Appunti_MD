@@ -1,0 +1,59 @@
+%\documentclass[tikz]{standalone}
+%\usepackage[american]{circuitikz}
+%\begin{document}
+
+
+%\begin{tikzpicture}[scale=1.5, transform shape,every node/.style={font=\footnotesize}]
+
+
+\documentclass[tikz]{standalone}
+\usepackage[american]{circuitikz}
+\begin{document}
+\begin{circuitikz}[american, scale=1, transform shape]
+  %-------------------------
+  % Nodo comune (Neutral) per la connessione a stella
+  %-------------------------
+  \coordinate (Neutral) at (0,0);
+  
+  %-------------------------
+  % Induttanze che rappresentano i generatori (reti)
+  %-------------------------
+  % Fase A: da Neutral a punto A
+  \draw (Neutral) to[L, l_={$L_A$}] (2,2) node[right] {A};
+  % Fase B: da Neutral a punto B
+  \draw (Neutral) to[L, l_={$L_B$}] (2,0) node[right] {B};
+  % Fase C: da Neutral a punto C
+  \draw (Neutral) to[L, l_={$L_C$}] (2,-2) node[right] {C};
+  
+  %-------------------------
+  % Tiristori (SCR) disposti verticalmente verso il basso
+  % Ogni tiristore parte dal rispettivo punto di fase e scende verso il bus DC+
+  % Utilizzo del simbolo "scr" (silicon controlled rectifier) in circuitikz.
+  %-------------------------
+  % SCR per la fase A:
+  \draw (2,2) -- (3,2); % collegamento orizzontale dalla fase al tiristore
+  \draw (3,2) to[scr, rotate=90, l_={$SCR_A$}] (3,0);
+  
+  % SCR per la fase B:
+  \draw (2,0) -- (3,0);
+  \draw (3,0) to[scr, rotate=90, l_={$SCR_B$}] (3,-2);
+  
+  % SCR per la fase C:
+  \draw (2,-2) -- (3,-2);
+  \draw (3,-2) to[scr, rotate=90, l_={$SCR_C$}] (3,-4);
+  
+  %-------------------------
+  % Formazione del bus DC positivo
+  % I terminali inferiori (c
+
+\end{circuitikz}
+\end{document}
+
+
+
+
+
+%\end{tikzpicture}
+
+
+%\end{document}
