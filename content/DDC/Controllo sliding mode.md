@@ -270,8 +270,8 @@ Riassumendo:
  1. Scelta di $\sigma(x)$, deve rispettare la condizione di trasversalità:
 
 $$
-\sigma(x) = P^Tx - p_{1}x_{1}
-+p_{2}x_{2} +\dots + p_{n}x_{n}
+\sigma(x) = P^Tx = P_{1}x_{1}
++P_{2}x_{2} +\dots + P_{n}x_{n}
 $$
  con $P^T=(P_{1}\ \ P_{2}\ \ \dots\ \ P_{n})$. La condizione di trasversalità implica che:
  $$
