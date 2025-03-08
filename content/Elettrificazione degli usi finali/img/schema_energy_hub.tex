@@ -1,0 +1,92 @@
+\documentclass[tikz]{standalone}
+\usepackage{circuitikz}
+\usetikzlibrary{positioning}
+
+
+\usetikzlibrary{shapes.geometric}
+\tikzset{cisterna/.style={cylinder,aspect=0.5,draw,rotate=90,path picture={
+\draw (path picture bounding box.160) to[out=180,in=180] (path picture bounding
+box.20);
+%\draw (path picture bounding box.200) to[out=180,in=180] (path picture bounding
+%box.340);
+}}}
+
+
+\begin{document}
+
+
+\begin{tikzpicture}[scale=1.5, transform shape]
+
+\node at (3,0) [rectangle,draw,minimum height=1.5cm, minimum width=1.8cm](A) {};
+\draw (A.east) to [resistor,l=$\eta_h$] (A.west);
+\node [right = 3cm of A] (B){};
+\node [below = 1cm of B,rectangle,draw,minimum height=1.5cm,minimum width = 1.8cm] (C){};
+
+
+\node (0,0) (origin){Calore};
+\draw (origin) node[xshift=1.1cm,yshift=0.3cm]{$P_H$};
+
+
+\draw  (origin) -- (A) -- (B.center) -- (C) ;
+
+\node at (C) [cisterna,minimum height = 1.2cm, minimum width=1.5cm]{};
+\node [right = 0.2cm of C] (ETA1) {$\eta_{carica}$};
+\node [below =0cm  of ETA1] (ETA2) {$\eta_{scarica}$};
+
+\node [right = 3cm of B] (D) {$L_T$};
+\draw [->] (B.center) -- (D);
+
+\begin{scope}[shift={(0,5)}]
+\node at (3,0) [rectangle,draw,minimum height=1.8cm, minimum width=1.6cm](A) {};
+
+\draw (A.east) to [voosource] (A.west);
+\draw (A) node[yshift=-0.6cm]{$\eta_T$};
+\node [right = 3cm of A] (B){};
+\node [below = 1cm of B,rectangle,draw,minimum height=1.5cm,minimum width = 1.8cm] (C){};
+
+% Draw battery
+\draw (C.north) to [battery] (C.south);
+\node at (C.east) [xshift=0.7cm]{Battery};
+
+\node (0,0) (origin){Elettrico};
+\draw (origin) node[xshift=1.1cm,yshift=0.3cm]{$P_E$};
+\draw  (origin) -- (A) -- (B.center) -- (C) ;
+
+%\node at (C) [battery,minimum height = 1.2cm, minimum width=1.5cm]{};
+
+\node [right = 3cm of B] (D) {$L_E$};
+\draw [->] (B.center) -- (D);
+
+
+
+%% Disegno potenza gas
+
+\begin{scope}[shift={(0,-2.5)}]
+\node at (3,0) [rectangle,minimum height=1.8cm, minimum width=1.6cm](A) {};
+
+\ctikzset{amplifiers/plus={}}
+\ctikzset{amplifiers/minus={}}
+
+\draw (A) node[gm  amp,xscale=-0.7,yscale=0.5]{};
+\draw (A) node[yshift=-0.6cm]{$\eta_{TG}$};
+\node [right = -0.215cm of A, rectangle,draw,fill,color=white,minimum height=1cm,minimum width = 0.05cm]{};
+
+\node [right = -0.45cm of A] (A1){};
+\draw (A1) -- ++(1.5,0) -- ++(0,2.5);
+
+\node [right = 3cm of A] (B){};
+
+
+\node (0,0) (origin){Gas};
+\draw (origin) node[xshift=1.1cm,yshift=0.3cm]{$P_T$};
+\draw  (origin) -- (A);
+\draw  (B.center) -- (C) ;
+
+\end{scope}
+
+\end{scope}
+
+\end{tikzpicture}
+
+
+\end{document}

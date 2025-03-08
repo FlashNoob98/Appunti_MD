@@ -62,7 +62,12 @@ In fase di sviluppo, a livello sperimentale, sono presenti reti di trasporto di 
 
 # Minimizzazione di costo di un hub energetico
 
-Vedi sul quaderno hub energetico
+<center>
+
+![[schema_energy_hub.svg]]
+
+</center>
+
 
 $$
 \begin{bmatrix}
