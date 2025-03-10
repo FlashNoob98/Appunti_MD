@@ -11,3 +11,4 @@ draft: false
 
 [Generazione da fonti fotovoltaica ed eolica](/Generazione-Fotovoltaica-ed-eolica/)
 
+[Elettrificazione degli usi finali](/Elettrificazione-degli-usi-finali/)
