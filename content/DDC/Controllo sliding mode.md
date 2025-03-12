@@ -396,13 +396,13 @@ $$
 $$
 ovvero per $u=0$:
 $$
-\frac{d}{dt} \sigma(x) < 0 = -\frac{x_{2}}{2} \Rightarrow u^+ = 0
+\frac{d}{dt} \sigma(x)  = -\frac{x_{2}}{L} <0 \Rightarrow u^+ = 0
 $$
 invece per $u=1$:
 $$
-\frac{d}{dt}\sigma(x) > 0 \Rightarrow u^- = 1
+\frac{d}{dt}\sigma(x) =\frac{V_{s}}{L}-\frac{x_{2}}{L} > 0 \Rightarrow u^- = 1
 $$
-dato che $V_{s}\geq x_{2}\forall t$ , si può riassumere la funzione di controllo con:
+dato che $V_{s}\geq x_{2}\forall t$ ovvero $V_{s}>V_{c}$ , si può riassumere la funzione di controllo con:
 $$
 u = \frac{1}{2}\left[ 1-\text{sign}\left[ \sigma \left(  \vec{x} \right) \right] \right]
 $$
@@ -449,4 +449,4 @@ $$
 $$
 Resta il problema del chattering, il controllo mediante superficie di sliding non può avvenire a frequenza infinita ma deve comunque rispettare il limite imposto dai componenti reali. La funzione di controllo $u_{eq}$ è stata infatti ricavata a partire dal [[modello averaged]], si applica correttamente al modello ai valori istantanei solo per frequenze infinite.
 
-Analogamente si può applicare tale controllo per il [[boost converter#Sliding mode|boost converter]].
+Analogamente si può applicare tale controllo per il [[Boost converter#Sliding mode|boost converter]].
