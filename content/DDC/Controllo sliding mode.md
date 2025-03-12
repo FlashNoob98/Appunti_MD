@@ -447,6 +447,6 @@ $$
 \frac{V_{s}}{L}  \\ 0
 \end{bmatrix} = 0
 $$
-Resta il problema del chattering, il controllo mediante superficie di sliding non può avvenire a frequenza infinita ma deve comunque rispettare il limite imposto dai componenti reali. La funzione di controllo $u_{eq}$ è stata infatti ricavata a partire dal [[modello averaged]], si applica correttamente al modello ai valori istantanei solo per frequenze infinite.
+Resta il problema del chattering, il controllo mediante superficie di sliding non può avvenire a frequenza infinita ma deve comunque rispettare il limite imposto dai componenti reali. La funzione di controllo $u_{eq}$ è stata infatti ricavata a partire dal [[Modello Averaged|modello averaged]], si applica correttamente al modello ai valori istantanei solo per frequenze infinite.
 
 Analogamente si può applicare tale controllo per il [[Boost converter#Sliding mode|boost converter]].
