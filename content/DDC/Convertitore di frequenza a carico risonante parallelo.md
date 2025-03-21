@@ -80,7 +80,7 @@ Dunque lo spazio di controllo è l'insieme dei segnali di controllo linearmente 
 L'insieme di controllo è invece l'insieme dei segnali che verranno inviati ai componenti, pari al numero dei componenti da controllare.
 Se si usassero tutti e quattro i segnali si avrebbe la relazione tra la tensione in ingresso e in uscita:
 $$
-v = \frac{v_c}{2}\left[u_1+u_1'-u_2-u_2'\right]
+v = \frac{v_c}{2}\left[u_1+u_1'-u_2-u_2'\right] = v_{c}(2u_{1}-1)
 $$
 I vincoli tra le variabili sarebbero inclusi nel modello differenziale ottenendo un sistema di 7 equazioni, considerando solo il "comando libero" si semplifica il calcolo del modello dinamico alle configurazioni.
 # Modello ai valori istantanei
@@ -114,7 +114,7 @@ $$
 \langle i_{0} \rangle_{1} &= x_{4} +jx_{5} 
 \end{aligned}
 $$
-La tensione è la corrente sul carico sono sinusoidali, dunque si è assunto che il loro valore medio sia nullo.
+La tensione e la corrente sul carico sono sinusoidali, dunque si è assunto che il loro valore medio sia nullo.
 Il segnale di controllo $u$ è un'onda quadra simmetrica, che assume valori $[-1,1]$ e cambia segno, per semplicità, a $\frac{T}{2}$, dunque ne si calcola il contenuto armonico.
 $$
 \begin{aligned}
@@ -173,7 +173,7 @@ j\omega C\vec{V}_{C} &= -\frac{2}{\pi} jx_{1} - \frac{\vec{V}_{C}}{R+j\omega L} 
 $$
 Va sostituita nella dinamica della prima equazione la media di ordine zero del prodotto $V_{C}u$:
 $$
-\langle v_{C}u \rangle_{0} = -\frac{4}{\pi}x_{3} = -\frac{4}{\pi} \mathrm{Im}{\vec{V}_{C}}
+\langle v_{C}u \rangle_{0} = -\frac{4}{\pi}x_{3} = -\frac{4}{\pi} \mathrm{Im}\{{\vec{V}_{C}}\}
 $$
 dunque $x_3$:
 $$
@@ -189,7 +189,7 @@ L \frac{di}{dt} = V - Ri
 $$
 dove 
 $$
-R = \frac{R_{F}}{L_{F}} -\frac{4}{\pi }x_{1}R(\omega)
+R = \frac{R_{F}}{L_{F}} -\frac{4}{\pi L_{F}}R(\omega)
 $$
 Si ricavano le altre variabili:
 $$
