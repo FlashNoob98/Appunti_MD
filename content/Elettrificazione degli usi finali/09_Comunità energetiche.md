@@ -1,0 +1,1 @@
+Uno scambio energetico "virtuale" permette ad utenti "lontani" da una comunità energetica di usufruire di energia prodotta con energie rinnovabili. Basta che questi siano connessi alla stessa cabina primaria.
