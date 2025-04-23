@@ -1,7 +1,7 @@
 Gli ADC permettono l'acquisizione single ended o differenziale, nel primo caso il riferimento è la massa che se ha un rumore viene riportato nella misura.
 La misura su canali differenziali prevede la misura tra due canali, l'eventuale rumore sulla massa viene eliminato per sottrazione:
 $$
-V_{in}+V_{noise}-(V_{min}+V_{noise}) = V_{in}-V_{noise}
+V_{in}+V_{noise}-(V_{min}+V_{noise}) = V_{in}-V_{min}
 $$
 
 Si usa l'ENOB per quantificare la qualità del convertitore, più vicino è al nominale e più l'AD è ideale, ad esempio il convertitore è a 12 bit ma l'ENOB è 11.3 bit in modalità differenziale.
