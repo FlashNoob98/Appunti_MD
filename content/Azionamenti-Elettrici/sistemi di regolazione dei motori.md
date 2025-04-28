@@ -1,4 +1,4 @@
-Prima dell'avvento dei [[Dinamica dei convertitori elettrici|convertitori]] esistevano delle macchine elettriche che svolgevano il compito di alimentatori a tensione variabile, erano detti convertitori rotanti, con tutti i problemi annessi a rumore eingombri.
+Prima dell'avvento dei [[Dinamica dei convertitori elettrici|convertitori]] esistevano delle macchine elettriche che svolgevano il compito di alimentatori a tensione variabile, erano detti convertitori rotanti, con tutti i problemi annessi a rumore e ingombri.
 L'evoluzione è stata quella di sostituire tutte le variazioni di tensione reostatiche e mediante convertitori rotanti con dei convertitori statici, che possano effettuare la conversione in uno o più stadi.
 
 Nel caso dei [[Motori in corrente continua|motori in corrente continua]] vengono utilizzati convertitori come i chopper (come il [[Boost converter|boost]]) se la tensione in ingresso è continua, oppure se la sorgente è alternata si può utilizzare un raddrizzatore, variando eventualmente l'angolo di innesco dei componenti.

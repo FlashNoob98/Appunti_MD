@@ -272,7 +272,7 @@ ottenendo:
 $$
 \begin{aligned}
 \vec{v}_{s}^s &= R_{s}\vec{i}_{s}^s + L_{s} \frac{d}{dt} \vec{i}_{s}^s + L_{m}{\frac{d}{dt}} \vec{i}_{r}^s \\
-0 &= -j\omega_{r}L_{m}\vec{i}_{s}^s +L_{m} \frac{d}{dt} \vec{i}_{s}^s + (R_{r}'-j\omega_{r}L_{r}')\vec{i}_{r}^s + L_{r}'\frac{d}{dt}\vec{i}_{r}^s \\
+0 &= -jp\omega_{r}L_{m}\vec{i}_{s}^s +L_{m} \frac{d}{dt} \vec{i}_{s}^s + (R_{r}'-jp\omega_{r}L_{r}')\vec{i}_{r}^s + L_{r}'\frac{d}{dt}\vec{i}_{r}^s \\
 M_{e} &= \frac{3}{2} p L_{m} \mathrm{Im} \left\{ \vec{i}_{r}^s\hat{\vec{i}}_{s^s} \right\}
 \end{aligned}
 $$
