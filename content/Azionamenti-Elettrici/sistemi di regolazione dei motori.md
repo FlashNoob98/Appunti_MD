@@ -109,6 +109,7 @@ Il raddrizzatore più semplice è il ponte a diodi, orientati nello stesso verso
 - non controllato: 4 diodi
 - semi controllato: 2 diodi e 2 tiristori
 - total controllato: 4 tiristori
+  
 Aggiungendo un'ulteriore gamba è possibile realizzare una struttura trifase:
 - non controllato: 6 diodi
 - semi controllato: 3 diodi e 3 tiristori

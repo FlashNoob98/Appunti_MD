@@ -34,6 +34,7 @@ $$
 \vec{\Phi}_{s} = L_{s}\vec{I}_{s} + L_{m}\vec{I}'_{r}
 $$
 con $L_{s}=L_{m}+L_{ds}$.
+
 Il flusso di mutua:
 $$
 \vec{\Phi}_{m} = L_{m}\left( \vec{I}_{s}+\vec{I}'_{r} \right)
