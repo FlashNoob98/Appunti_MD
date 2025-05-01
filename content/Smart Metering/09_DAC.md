@@ -33,3 +33,11 @@ Quando si seleziona invece una modalità di trigger (TEN=1) allora dovrò attend
 
 DAC1OUT1 è PA4, è accanto a PA2, quindi si possono collegare con un jumper il DAC con l'ingresso dell'ADC su PA2.
 
+
+Con 100 campioni e una frequenza di 1kHz devo contare con l'ARR 10us
+La frequenza base è 8MHz, dunque 8.000.000.000/100.000 100khz perchè
+il segnale è a 1khz per 100 campioni e abbiamo 100khz, il valore dell'ARR sarà 80
+Usare il prescaler?
+Frequenza di rete: 50Hz x100 campioni genero campioni a 5kHz, il numero di ARR aumenterà
+
+// pari a 8.000.000/5.000 = 1600
