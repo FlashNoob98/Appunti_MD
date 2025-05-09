@@ -1,7 +1,7 @@
 Si studia il modello matematico del motore in corrente continua ad eccitazione indipendente, a partire dalle grandezze di armatura:
 $$
 \begin{aligned}
-V_{a } + e_{a} &= R_{a } i_{a} \\
+v_{a} + e_{a} &= R_{a } i_{a} \\
 v_{a} &= R_{a} i_{a} -e_{a} \\
 &= R_{a}i_{a} -e_{da} - e_{ma}\\
 e_{da} &= -N_{a} \frac{d\Phi_{da}}{dt} \\
@@ -11,7 +11,7 @@ e_{da} &= -L_{da}  \frac{di_{a}}{dt}
 $$
 il pedice $da$ indica i termini di dispersione mentre $ma$ quelli di mutua, dunque si riporta tutto in funzione della tensione e corrente di armatura:
 $$
-v_{a} = R_{a}i_{a} + \frac{L_{da}d_{ia}}{dt} - e_{ma}
+v_{a} = R_{a}i_{a} + L_{da}\frac{d_{ia}}{dt} - e_{ma}
 $$
 Con l'ipotesi di macchina compensata, il flusso di armatura coincide con il flusso di eccitazione(?).
 
@@ -64,7 +64,7 @@ v_{e} &= R_{e}i_{e} +  L_{e} \frac{di_{e}}{dt} \\
 $$
 
 ## Equilibrio meccanico
-Con l'ipotesi di albero rigido, in ogni istante vale la legge di d?Alembert:
+Con l'ipotesi di albero rigido, in ogni istante vale la legge di d'Alembert:
 $$
 m_{e} - m_{r} = J \frac{d\omega_{r}}{dt}
 $$
@@ -210,7 +210,7 @@ Si può agire sul flusso di eccitazione, proporzionale alla corrente:
 $$
 \Phi = \Phi_{e} = L_{e}I_{e} = \frac{L_{e}V_{e}}{R_{e}} 
 $$
-dunque diminuendo la tensione di eccitazione si riduce la corrente e quindi il flusso di eccitazione, a parità di coppia però si ha la minore coppia possibile se si lavora a flusso nominale, lo si può al massimo diminuire e non aumentare, *deflussaggio* in inglese *flux reduction(?)*.
+dunque diminuendo la tensione di eccitazione si riduce la corrente e quindi il flusso di eccitazione, a parità di coppia però si ha la minima corrente possibile se si lavora a flusso nominale, lo si può al massimo diminuire e non aumentare, *deflussaggio* in inglese *flux reduction(?)*.
 Si ha una variazione sia del coefficiente angolare che del punto di intersezione della caratteristica.
 Sicuramente il punto di intersezione aumenta, dunque si sposta verso destra e diminuisce il coefficiente angolare.
 Si coprono in questo modo punti del piano a velocità maggiori rispetto a quella di sincronismo.
